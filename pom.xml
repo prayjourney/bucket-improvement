@@ -19,6 +19,7 @@
     <module>java8</module>
     <module>netty</module>
     <module>dubbo</module>
+    <module>jvm</module>
   </modules>
 
   <name>improvement-java-skill</name>
