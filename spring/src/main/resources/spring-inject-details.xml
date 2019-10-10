@@ -52,4 +52,17 @@
         </constructor-arg>
     </bean>
 
+    <!-- list -->
+    <bean id="jay" class="com.zgy.learn.injectdetails.Singer">
+        <property name="name" value="周杰伦"/>
+        <property name="age" value="35"/>
+        <property name="songs">
+            <list>
+                <!-- 引用了2个对象， 而非普通的字面值 -->
+                <ref bean="qinghuaci"/>
+                <ref bean="faruxue"/>
+            </list>
+        </property>
+    </bean>
+
 </beans>

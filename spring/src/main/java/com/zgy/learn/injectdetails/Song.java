@@ -21,6 +21,10 @@ public class Song {
      */
     private Poet poet;
 
+    public String getName() {
+        return name;
+    }
+
     // 使用构造器来注入
     public Song(String name, float time, Poet poet) {
         this.name = name;

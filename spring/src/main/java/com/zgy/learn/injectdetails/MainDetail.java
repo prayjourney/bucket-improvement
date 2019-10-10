@@ -26,5 +26,7 @@ public class MainDetail {
         System.out.println(s2);
         System.out.println(s3);
         System.out.println(s4);
+        Singer jay = (Singer) ctx.getBean("jay");
+        jay.getAllSongs();
     }
 }
