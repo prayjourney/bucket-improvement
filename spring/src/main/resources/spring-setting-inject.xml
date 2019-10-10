@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!-- id不能有多个 -->
+    <bean id="car" class="com.zgy.learn.setter.Car">
+        <property name="brand" value="福特"/>
+        <property name="price" value="123456.7"/>
+        <property name="origin" value="重庆"/>
+    </bean>
+    <!-- 多个名字，name可以有多个名字，但是id必须唯一 -->
+    <bean name="car2, car3, car4" class="com.zgy.learn.setter.Car">
+        <property name="brand" value="郑州"/>
+        <property name="price" value="145126.8"/>
+        <property name="origin" value="日产"/>
+    </bean>
+    <bean id="car5" class="com.zgy.learn.setter.Car">
+        <property name="brand" value="本田"/>
+        <property name="price" value="223456.7"/>
+        <property name="origin" value="广州"/>
+    </bean>
+
+    <bean id="car6" class="com.zgy.learn.setter.Car">
+        <property name="brand" value="奥迪"/>
+        <property name="price" value="345434.2"/>
+        <property name="origin" value="上海"/>
+    </bean>
+
+</beans>
