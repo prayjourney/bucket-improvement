@@ -18,5 +18,13 @@ public class MainDetail {
         System.out.println(p1);
         System.out.println(p2);
         System.out.println(p3);
+        Song s1 = (Song) ctx.getBean("qinghuaci");
+        Song s2 = (Song) ctx.getBean("faruxue");
+        Song s3 = (Song) ctx.getBean("meiguihuadezangli");
+        Song s4 = (Song) ctx.getBean("juejian");
+        System.out.println(s1);
+        System.out.println(s2);
+        System.out.println(s3);
+        System.out.println(s4);
     }
 }

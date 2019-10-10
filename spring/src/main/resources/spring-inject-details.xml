@@ -40,5 +40,16 @@
         <constructor-arg value="4.10" index="1"/>
         <constructor-arg ref="xusong"/>
     </bean>
+    <!-- 内部bean，使用属性注入的方式是一样的！ -->
+    <bean id="juejian" class="com.zgy.learn.injectdetails.Song">
+        <constructor-arg index="0" value="倔强"></constructor-arg>
+        <constructor-arg index="1" value="4.50"/>
+        <constructor-arg>
+            <bean class="com.zgy.learn.injectdetails.Poet">
+                <property name="name" value="阿信"/>
+                <property name="age" value="32"/>
+            </bean>
+        </constructor-arg>
+    </bean>
 
 </beans>
