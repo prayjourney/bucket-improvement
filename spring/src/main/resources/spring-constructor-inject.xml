@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!-- 按照索引匹配入参, 指定参数的位置-->
+    <bean id="liuyifei" class="com.zgy.learn.constructor.SuperStar">
+        <constructor-arg value="18" index="0"/>
+        <constructor-arg value="刘亦菲" index="1"/>
+        <constructor-arg value="女" index="2"/>
+    </bean>
+    <!-- 构造器是对应的，有几个参数，POJO类中的构造器有几个参数，在定义Bean的时候就要有几个参数，如下就会报错-->
+    <!--    <bean id="zhangsan" class="com.zgy.learn.constructor.People">-->
+    <!--        <constructor-arg value="18" index="0"/>-->
+    <!--        <constructor-arg value="zhangsan" index="1"/>-->
+    <!--    </bean>-->
+
+    <!-- 使用name -->
+    <bean name="zhangsan" class="com.zgy.learn.constructor.SuperStar">
+        <constructor-arg value="18" index="0"/>
+        <constructor-arg value="zhangsan" index="1"/>
+        <constructor-arg value="男" index="2"/>
+    </bean>
+
+    <!-- 按照类型匹配入参，指定参数的类型 -->
+    <bean id="huge" class="com.zgy.learn.constructor.SuperStar">
+        <constructor-arg value="27" type="int"/>
+        <constructor-arg value="胡歌" type="java.lang.String"/>
+        <constructor-arg value="男" type="java.lang.String"/>
+    </bean>
+</beans>
