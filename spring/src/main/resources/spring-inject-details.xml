@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!-- 一些装配的细节 -->
+    <!-- 使用属性注入的时候， 必须要有无参构造器， 或者没有显示的有参构造器-->
+    <bean name="fangwenshan" class="com.zgy.learn.injectdetails.Poet">
+        <property name="name" value="方文山"/>
+        <property name="age" value="48"/>
+    </bean>
+    <!-- 特殊字符<![CDATA[]]> 处理 -->
+    <bean id="xusong" class="com.zgy.learn.injectdetails.Poet">
+        <property name="name">
+            <value><![CDATA[<许嵩>]]></value>
+        </property>
+        <property name="age" value="29"/>
+    </bean>
+    <bean id="lanxiaoxie" class="com.zgy.learn.injectdetails.Poet">
+        <constructor-arg value="蓝小邪" type="java.lang.String"/>
+        <constructor-arg value="25" type="int"/>
+    </bean>
+
+    <!-- 引用其他的bean -->
+    <bean id="qinghuaci" class="com.zgy.learn.injectdetails.Song">
+        <constructor-arg value="青花瓷" index="0"/>
+        <constructor-arg value="3.78" index="1"/>
+        <constructor-arg ref="fangwenshan"/>
+    </bean>
+    <bean id="faruxue" class="com.zgy.learn.injectdetails.Song">
+        <constructor-arg value="发如雪" index="0"/>
+        <constructor-arg value="4.10" index="1"/>
+        <constructor-arg ref="fangwenshan"/>
+    </bean>
+    <bean id="meiguihuadezangli" class="com.zgy.learn.injectdetails.Song">
+        <!-- 直接放在里面是有问题的 -->
+        <!-- <constructor-arg value="<![CDATA[<玫瑰花的葬礼!>]]>"" index="0">-->
+        <constructor-arg index="0">
+            <value><![CDATA[<玫瑰花的葬礼!>]]>"</value>
+        </constructor-arg>
+        <constructor-arg value="4.10" index="1"/>
+        <constructor-arg ref="xusong"/>
+    </bean>
+
+</beans>
