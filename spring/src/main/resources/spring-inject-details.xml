@@ -31,17 +31,17 @@
         <constructor-arg value="4.10" index="1"/>
         <constructor-arg ref="fangwenshan"/>
     </bean>
-    <bean id="meiguihuadezangli" class="com.zgy.learn.injectdetails.Song">
+    <bean id="qingmingyushang" class="com.zgy.learn.injectdetails.Song">
         <!-- 直接放在里面是有问题的 -->
-        <!-- <constructor-arg value="<![CDATA[<玫瑰花的葬礼!>]]>"" index="0">-->
+        <!-- <constructor-arg value="<![CDATA[<清明雨上!>]]>"" index="0">-->
         <constructor-arg index="0">
-            <value><![CDATA[<玫瑰花的葬礼!>]]>"</value>
+            <value><![CDATA[<清明雨上!>]]>"</value>
         </constructor-arg>
         <constructor-arg value="4.10" index="1"/>
         <constructor-arg ref="xusong"/>
     </bean>
     <!-- 内部bean，使用属性注入的方式是一样的！ -->
-    <bean id="juejian" class="com.zgy.learn.injectdetails.Song">
+    <bean id="juejiang" class="com.zgy.learn.injectdetails.Song">
         <constructor-arg index="0" value="倔强"></constructor-arg>
         <constructor-arg index="1" value="4.50"/>
         <constructor-arg>
@@ -94,5 +94,16 @@
                 <entry key-ref="feilunhai" value-ref="gudanmotianlun"/>
             </map>
         </property>
+    </bean>
+
+    <!-- 注入map-->
+    <bean id="superSingers2010" class="com.zgy.learn.injectdetails.SuperSingers2">
+        <constructor-arg value="10年代" index="0"/>
+        <constructor-arg index="1">
+            <map>
+                <entry key="许嵩" value-ref="qingmingyushang"></entry>
+                <entry key="五月天" value-ref="juejiang"/>
+            </map>
+        </constructor-arg>
     </bean>
 </beans>
