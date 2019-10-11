@@ -50,5 +50,9 @@ public class MainDetail {
         // 测试null
         Song songOld = (Song)ctx.getBean("null4Song");
         System.out.println(songOld);
+
+        // 测试级联属性
+        // Song song4Cascade = (Song)ctx.getBean("song4Cascade");
+        // System.out.println(song4Cascade);
     }
 }

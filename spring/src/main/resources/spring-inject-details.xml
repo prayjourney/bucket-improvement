@@ -112,4 +112,11 @@
         <constructor-arg value="3.52" index="1"/>
         <constructor-arg><null/></constructor-arg>
     </bean>
+    <!-- 级联属性, 出问题了啊？！ -->
+<!--    <bean id="song4Cascade" class="com.zgy.learn.injectdetails.Song">-->
+<!--        <constructor-arg value="蒹葭苍苍" index="0"/>-->
+<!--        <constructor-arg value="4.12" index="1"/>-->
+<!--        <constructor-arg ref="xusong" index="2"/>-->
+<!--        <property name="xusong.age" value="31"> </property>-->
+<!--    </bean>-->
 </beans>

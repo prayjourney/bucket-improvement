@@ -25,6 +25,10 @@ public class Song {
         return name;
     }
 
+    public void setPoet(Poet poet) {
+        this.poet = poet;
+    }
+
     // 使用构造器来注入
     public Song(String name, float time, Poet poet) {
         this.name = name;
