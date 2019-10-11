@@ -106,4 +106,10 @@
             </map>
         </constructor-arg>
     </bean>
+    <!-- null -->
+    <bean id="null4Song" class="com.zgy.learn.injectdetails.Song">
+        <constructor-arg value="秦风-岂曰无衣" index="0"/>
+        <constructor-arg value="3.52" index="1"/>
+        <constructor-arg><null/></constructor-arg>
+    </bean>
 </beans>
