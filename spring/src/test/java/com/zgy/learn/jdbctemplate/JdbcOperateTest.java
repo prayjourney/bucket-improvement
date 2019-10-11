@@ -3,7 +3,9 @@ package com.zgy.learn.jdbctemplate;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -54,5 +56,17 @@ public class JdbcOperateTest {
         int[] s = jdbcTemplate.batchUpdate(insertBatch, batchArgs);
         String info = String.format("%d, %d, %d, %d", s[0], s[1], s[2], s[3]);
         System.out.println(info);
+    }
+
+    /**
+     * 从数据库查询一条记录，实际获得一个对象
+     * 不是调用这个方法，而是要配合RowMapper使用，queryForObject(String sql, Class<T> requiredType, @Nullable Object... args)
+     */
+    @Test
+    public void testQueryForObject() {
+        String sql = "select id, name, age, salary from employee where id = ?";
+        RowMapper<Employee> rowMapper = new BeanPropertyRowMapper<>(Employee.class);
+        Employee e = jdbcTemplate.queryForObject(sql, rowMapper, 4);
+        System.out.println(e.toString());
     }
 }
