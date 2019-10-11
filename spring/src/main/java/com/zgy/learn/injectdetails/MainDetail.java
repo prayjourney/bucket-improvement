@@ -20,8 +20,8 @@ public class MainDetail {
         System.out.println(p3);
         Song s1 = (Song) ctx.getBean("qinghuaci");
         Song s2 = (Song) ctx.getBean("faruxue");
-        Song s3 = (Song) ctx.getBean("meiguihuadezangli");
-        Song s4 = (Song) ctx.getBean("juejian");
+        Song s3 = (Song) ctx.getBean("qingmingyushang");
+        Song s4 = (Song) ctx.getBean("juejiang");
         System.out.println(s1);
         System.out.println(s2);
         System.out.println(s3);
@@ -31,5 +31,8 @@ public class MainDetail {
 
         SuperSingers singers2008 = (SuperSingers) ctx.getBean("superSingers2008");
         System.out.println(singers2008.toString());
+
+        SuperSingers2 singers2010 = (SuperSingers2) ctx.getBean("superSingers2010");
+        System.out.println(singers2010.toString());
     }
 }
