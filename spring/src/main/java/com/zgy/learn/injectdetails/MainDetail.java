@@ -54,5 +54,14 @@ public class MainDetail {
         // 测试级联属性
         // Song song4Cascade = (Song)ctx.getBean("song4Cascade");
         // System.out.println(song4Cascade);
+
+
+        // 测试list注入
+        Singer jay2 = (Singer) ctx.getBean("jay2");
+        jay2.getAllSongs();
+
+        // 测试map注入,utility scheme
+        SuperSingers2 singers2010_2 = (SuperSingers2) ctx.getBean("superSingers2010-2");
+        System.out.println(singers2010_2.toString());
     }
 }

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/util https://www.springframework.org/schema/util/spring-util.xsd">
     <!-- 一些装配的细节 -->
     <!-- 使用属性注入的时候， 必须要有无参构造器， 或者没有显示的有参构造器-->
     <bean name="fangwenshan" class="com.zgy.learn.injectdetails.Poet">
@@ -110,13 +110,48 @@
     <bean id="null4Song" class="com.zgy.learn.injectdetails.Song">
         <constructor-arg value="秦风-岂曰无衣" index="0"/>
         <constructor-arg value="3.52" index="1"/>
-        <constructor-arg><null/></constructor-arg>
+        <constructor-arg>
+            <null/>
+        </constructor-arg>
     </bean>
     <!-- 级联属性, 出问题了啊？！ -->
-<!--    <bean id="song4Cascade" class="com.zgy.learn.injectdetails.Song">-->
-<!--        <constructor-arg value="蒹葭苍苍" index="0"/>-->
-<!--        <constructor-arg value="4.12" index="1"/>-->
-<!--        <constructor-arg ref="xusong" index="2"/>-->
-<!--        <property name="xusong.age" value="31"> </property>-->
-<!--    </bean>-->
+    <!--    <bean id="song4Cascade" class="com.zgy.learn.injectdetails.Song">-->
+    <!--        <constructor-arg value="蒹葭苍苍" index="0"/>-->
+    <!--        <constructor-arg value="4.12" index="1"/>-->
+    <!--        <constructor-arg ref="xusong" index="2"/>-->
+    <!--        <property name="xusong.age" value="31"> </property>-->
+    <!--    </bean>-->
+
+    <!-- 使用utility scheme 定义集合-->
+    <util:list id="song-list">
+        <ref bean="qinghuaci"/>
+        <ref bean="faruxue"/>
+        <bean id="heisemaoyi" class="com.zgy.learn.injectdetails.Song">
+            <constructor-arg value="黑色毛衣" index="0"/>
+            <constructor-arg value="3.59" index="1"/>
+            <constructor-arg index="2">
+                <!-- 内部bean -->
+                <bean class="com.zgy.learn.injectdetails.Poet">
+                    <property name="name" value="蔡依林"/>
+                    <property name="age" value="25"/>
+                </bean>
+            </constructor-arg>
+        </bean>
+    </util:list>
+    <util:map id="mp">
+        <entry key="许嵩" value-ref="qingmingyushang"></entry>
+        <entry key="五月天" value-ref="juejiang"/>
+    </util:map>
+
+    <!-- list utility scheme -->
+    <bean id="jay2" class="com.zgy.learn.injectdetails.Singer">
+        <property name="name" value="周杰伦"/>
+        <property name="age" value="35"/>
+        <property name="songs" ref="song-list"/>
+    </bean>
+    <!-- 注入map utility scheme-->
+    <bean id="superSingers2010-2" class="com.zgy.learn.injectdetails.SuperSingers2">
+        <constructor-arg value="10年代" index="0"/>
+        <constructor-arg index="1" ref="mp"/>
+    </bean>
 </beans>
