@@ -1,5 +1,6 @@
 package com.zgy.learn.jdbctemplate;
 
+import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -68,5 +69,37 @@ public class JdbcOperateTest {
         RowMapper<Employee> rowMapper = new BeanPropertyRowMapper<>(Employee.class);
         Employee e = jdbcTemplate.queryForObject(sql, rowMapper, 4);
         System.out.println(e.toString());
+    }
+
+    /**
+     * 从数据库查询实体类的集合， 但是调用的不是queryForList()方法
+     */
+    @Test
+    public void testQueryForList() {
+        String sql = "select id, name, age, salary from employee where id < ?";
+        RowMapper<Employee> rowMapper = new BeanPropertyRowMapper<>(Employee.class);
+        List<Employee> e = jdbcTemplate.query(sql, rowMapper, 5);
+        System.out.println(e.size());
+    }
+
+    /**
+     * 统计查询
+     */
+    @Test
+    public void testQueryForObject2() {
+        String sql = "select count(id) from employee";
+        int no = jdbcTemplate.queryForObject(sql, Integer.class);
+        System.out.println(no);
+    }
+
+    /**
+     * 获取单个列的值, 为何此处有问题？
+     */
+    @Test
+    public void testQueryForObject3() {
+        String sql = "select name from employee where id = ?";
+        RowMapper<String> stringRowMapper = new BeanPropertyRowMapper<>(String.class);
+        String name = jdbcTemplate.queryForObject(sql, stringRowMapper, 1);
+        Assert.assertEquals("黄忠", name);
     }
 }
