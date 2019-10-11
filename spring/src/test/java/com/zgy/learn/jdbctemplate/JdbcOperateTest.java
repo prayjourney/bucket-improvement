@@ -39,6 +39,9 @@ public class JdbcOperateTest {
         jdbcTemplate.update(sqlDelete, 7);
     }
 
+    /**
+     * batchUpdate 批量执行insert, update, delete
+     */
     @Test
     public void testBatchUpdate() {
         String insertBatch = "insert into employee(name, age, salary) values(?,?,?)";
