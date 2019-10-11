@@ -65,4 +65,34 @@
         </property>
     </bean>
 
+    <!-- 开始为map准备 -->
+    <bean id="gudanmotianlun" class="com.zgy.learn.injectdetails.Song">
+        <constructor-arg value="孤单摩天轮" index="0"/>
+        <constructor-arg value="4.29" index="1"/>
+        <constructor-arg ref="lanxiaoxie" index="2"/>
+    </bean>
+    <bean id="feilunhai" class="com.zgy.learn.injectdetails.Singer">
+        <property name="age" value="29"/>
+        <property name="name" value="飞轮海"/>
+        <property name="songs">
+            <list>
+                <bean class="com.zgy.learn.injectdetails.Song">
+                    <constructor-arg value="寂寞暴走" index="0"/>
+                    <constructor-arg value="3.57" index="1"/>
+                    <constructor-arg ref="lanxiaoxie" index="2"/>
+                </bean>
+                <ref bean="gudanmotianlun"/>
+            </list>
+        </property>
+    </bean>
+    <!-- 注入map, 表示的是2000年代的超级巨星们 -->
+    <bean id="superSingers2008" class="com.zgy.learn.injectdetails.SuperSingers">
+        <property name="time" value="08年代"/>
+        <property name="representative">
+            <map>
+                <entry key-ref="jay" value-ref="faruxue"></entry>
+                <entry key-ref="feilunhai" value-ref="gudanmotianlun"/>
+            </map>
+        </property>
+    </bean>
 </beans>

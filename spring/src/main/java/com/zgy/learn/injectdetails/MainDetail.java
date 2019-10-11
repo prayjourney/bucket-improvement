@@ -28,5 +28,8 @@ public class MainDetail {
         System.out.println(s4);
         Singer jay = (Singer) ctx.getBean("jay");
         jay.getAllSongs();
+
+        SuperSingers singers2008 = (SuperSingers) ctx.getBean("superSingers2008");
+        System.out.println(singers2008.toString());
     }
 }
