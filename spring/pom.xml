@@ -20,6 +20,9 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
+        <!-- 版本数据 -->
+        <mysql-connector-java.version>5.1.45</mysql-connector-java.version>
+        <spring.version>5.1.7.RELEASE</spring.version>
     </properties>
 
     <dependencies>
@@ -27,22 +30,53 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-beans</artifactId>
-            <version>5.1.7.RELEASE</version>
+            <version>${spring.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
-            <version>5.1.7.RELEASE</version>
+            <version>${spring.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-core</artifactId>
-            <version>5.1.7.RELEASE</version>
+            <version>${spring.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-expression</artifactId>
-            <version>5.1.7.RELEASE</version>
+            <version>${spring.version}</version>
+        </dependency>
+        <!-- jdbcTemplate需要 -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-jdbc</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <!-- spring声明式事务需要 -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-tx</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+
+        <!-- mysql连接器 -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>${mysql-connector-java.version}</version>
+        </dependency>
+        <!-- c3p0连接池 -->
+        <dependency>
+            <groupId>com.mchange</groupId>
+            <artifactId>c3p0</artifactId>
+            <version>0.9.5.2</version>
+        </dependency>
+        <!-- druid连接池 -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid</artifactId>
+            <version>1.1.10</version>
         </dependency>
     </dependencies>
 
