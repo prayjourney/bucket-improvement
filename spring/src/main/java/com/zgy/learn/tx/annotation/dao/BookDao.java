@@ -52,7 +52,7 @@ public class BookDao {
      * 通过isbn来获取书籍价格
      *
      * @param isbn
-     * @return
+     * @return 价格
      */
     public double queryBookPriceByIsbn(int isbn) {
         String sql = "select price from book where isbn = ?";

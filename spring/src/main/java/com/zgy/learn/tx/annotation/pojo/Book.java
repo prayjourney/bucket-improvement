@@ -4,7 +4,7 @@ import org.springframework.stereotype.Component;
 
 /**
  * @Author: renjiaxin
- * @Despcription:
+ * @Despcription: POJO类， Book书籍信息和库存
  * @Date: Created in 2019/10/13 1:07
  * @Modified by:
  */

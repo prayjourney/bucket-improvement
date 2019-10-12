@@ -6,10 +6,11 @@ import org.springframework.transaction.annotation.Transactional;
 
 /**
  * @Author: renjiaxin
- * @Despcription:
+ * @Despcription: 购买书籍的服务类， 没有具体的对应实体， 这个需要注意购买书籍的过程，就是一个完整的业务流程的思考模式，需要重点注意
  * @Date: Created in 2019/10/13 1:09
  * @Modified by:
  */
+// 默认的bean是dealService
 @Service
 public class DealService {
     @Autowired
@@ -47,6 +48,7 @@ public class DealService {
                 double balance = accountService.getBalance(id);
                 double count = balance - price * number;
                 if (count < 0) throw new Exception("余额不够！");
+                // 更新账户余额
                 accountService.updateBalance(id, count);
                 System.out.println("购买成功！");
             } else {

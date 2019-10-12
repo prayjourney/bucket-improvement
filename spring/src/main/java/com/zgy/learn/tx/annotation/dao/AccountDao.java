@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 
 /**
  * @Author: renjiaxin
- * @Despcription:
+ * @Despcription: AccountDao
  * @Date: Created in 2019/10/13 1:09
  * @Modified by:
  */

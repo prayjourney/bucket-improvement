@@ -4,7 +4,7 @@ import org.springframework.stereotype.Component;
 
 /**
  * @Author: renjiaxin
- * @Despcription:
+ * @Despcription: POJO类， Account账户
  * @Date: Created in 2019/10/13 1:06
  * @Modified by:
  */
