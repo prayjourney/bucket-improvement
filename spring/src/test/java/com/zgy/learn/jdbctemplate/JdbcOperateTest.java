@@ -7,6 +7,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.jdbc.core.SingleColumnRowMapper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -94,12 +95,15 @@ public class JdbcOperateTest {
 
     /**
      * 获取单个列的值, 为何此处有问题？
+     * RowMapper类的形式，决定了我们取到值的形式BeanPropertyRowMapper是一个bean-->POJO类的方式，
+     * SingleColumnRowMapper是一个查询属性的形式， 二者都是RowMapper的实现类
      */
     @Test
     public void testQueryForObject3() {
         String sql = "select name from employee where id = ?";
-        RowMapper<String> stringRowMapper = new BeanPropertyRowMapper<>(String.class);
-        String name = jdbcTemplate.queryForObject(sql, stringRowMapper, 1);
+        // RowMapper<String> stringRowMapper = new BeanPropertyRowMapper<>(String.class);
+        RowMapper<String> stringRowMapper = new SingleColumnRowMapper<>(String.class);
+        String name = jdbcTemplate.queryForObject(sql, stringRowMapper, 5);
         Assert.assertEquals("黄忠", name);
     }
 }
