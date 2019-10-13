@@ -27,5 +27,9 @@ public class ExternalFileTest {
 
         Boy boy3 = (Boy)context.getBean("boy3");
         System.out.println(boy3.toString());
+
+        Boy sb = (Boy)context.getBean("superBoy");
+        System.out.println(sb);
+
     }
 }
