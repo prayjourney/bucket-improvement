@@ -12,6 +12,8 @@ public class Boy {
     private String sex;
     private String address;
 
+    private SuperCar car;
+
     public int getAge() {
         return age;
     }
@@ -44,6 +46,14 @@ public class Boy {
         this.address = address;
     }
 
+    public SuperCar getCar() {
+        return car;
+    }
+
+    public void setCar(SuperCar car) {
+        this.car = car;
+    }
+
     @Override
     public String toString() {
         return "Boy{" +
@@ -51,6 +61,7 @@ public class Boy {
                 ", name='" + name + '\'' +
                 ", sex='" + sex + '\'' +
                 ", address='" + address + '\'' +
+                ", car=" + car +
                 '}';
     }
 }
