@@ -69,4 +69,8 @@
     <bean id="car1" class="com.zgy.learn.scope2file.SuperCar" p:name="Ford" p:price="50000"/>
     <bean id="car2" class="com.zgy.learn.scope2file.SuperCar" p:price="30000" parent="car1"/>
     <bean id="sbBoy2" class="com.zgy.learn.scope2file.Boy" p:car-ref="car1" parent="boy3"/>
+
+    <!-- bean的scope, 默认的是single单例的，每次都会返回相同的对象， 而prototype是每一次调用，都是一个新的对象  -->
+    <bean id="human1" class="com.zgy.learn.scope2file.Human" p:name="H1" p:age="22" p:sex="男" scope="prototype"/>
+    <bean id="human2" class="com.zgy.learn.scope2file.Human" p:name="H1" p:age="22" p:sex="男" scope="singleton"/>
 </beans>
