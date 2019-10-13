@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="xiaoming" scope="singleton" class="com.zgy.learn.autowire.DogHost" p:name="小明" p:age="22"/>
+    <!-- 普通装配 -->
+    <bean id="xiaohuang" scope="singleton" class="com.zgy.learn.autowire.PastoralDog" p:age="1" p:name="小黄"
+          p:host-ref="xiaoming"/>
+
+    <!-- 自动装配, byname, 此时我们要配置的是host， 所以我们要装配的bean的id或者name必须是host, 否则就装配不上，
+    下面就装配xiaoming就装配不上, host=null，但是可以装配上小花的host -->
+    <bean id="xiaohei" class="com.zgy.learn.autowire.PastoralDog" p:age="1" p:name="小黑" autowire="byName"/>
+
+    <bean id="host" scope="singleton" class="com.zgy.learn.autowire.DogHost" p:name="小花" p:age="26"/>
+    <bean id="xiaoMmm" class="com.zgy.learn.autowire.PastoralDog" p:age="1" p:name="小Mmm" autowire="byName"/>
+
+</beans>
