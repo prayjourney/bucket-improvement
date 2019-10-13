@@ -56,5 +56,17 @@ public class BookService {
     public void updateStockByIsbn(int isbn, int stock) {
         bookDao.updateStockByIsbn(isbn, stock);
     }
+
+    /**
+     * 买书，此处要关心的是书的库存和我们要购买的数量之间的关系， 如果不够，那就执行不成功，这看成是一个事务
+     *
+     * @param isbn   isbn
+     * @param number number
+     * @return 返回总价
+     */
+    public double buyTheBookByIsbn(int isbn, int number) throws Exception {
+        double no = bookDao.buyTheBookByIsbn(isbn, number);
+        return no;
+    }
 }
 

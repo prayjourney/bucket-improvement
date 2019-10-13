@@ -6,6 +6,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.SingleColumnRowMapper;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * @Author: renjiaxin
@@ -70,6 +71,33 @@ public class BookDao {
         String sql = "update book set stock =? where isbn =?";
         jdbcTemplate.update(sql, stock, isbn);
 
+    }
+
+    /**
+     * 买书，此处要关心的是书的库存和我们要购买的数量之间的关系， 如果不够，那就执行不成功，这看成是一个事务
+     *
+     * @param isbn   isbn
+     * @param number number
+     * @return 返回总价
+     */
+    @Transactional
+    public double buyTheBookByIsbn(int isbn, int number) throws Exception {
+        // 查询库存
+        String queryStock = "select stock from book where isbn = ?";
+        RowMapper<Integer> rm = new SingleColumnRowMapper<>(Integer.class);
+        int stock = jdbcTemplate.queryForObject(queryStock, rm, isbn);
+        if (stock - number < 0) throw new Exception("库存不够！");
+
+        // 更新库存
+        String updateStock = "update book set stock =? where isbn =?";
+        jdbcTemplate.update(updateStock, stock - number, isbn);
+
+        // 查询单价
+        String getPrice = "select price from book where isbn =?";
+        double price = jdbcTemplate.queryForObject(getPrice, rm, isbn);
+
+        // 返回总价
+        return price * number;
     }
 }
 

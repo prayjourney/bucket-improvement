@@ -46,4 +46,16 @@ public class AccountService {
     public void updateBalance(int id, double nu) {
         accountDao.updateBalance(id, nu);
     }
+
+    /**
+     * 为购买的书，付钱，余额和总的金额之间的关系
+     *
+     * @param id           账户id
+     * @param countCashier 总的金额
+     * @return 返回执行结果
+     */
+    public int payForBookById(int id, double countCashier) throws Exception {
+        int result = accountDao.payForBookById(id, countCashier);
+        return result;
+    }
 }

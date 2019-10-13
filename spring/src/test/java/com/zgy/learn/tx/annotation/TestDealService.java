@@ -30,4 +30,10 @@ public class TestDealService {
     public void testBuyBook() throws Exception {
         dealService.buyBook(1, 1, 2);
     }
+
+    @Test
+    public void testBuyBook2() throws Exception {
+        dealService.buyBookTwoStep(10, 2, 1);
+    }
+
 }

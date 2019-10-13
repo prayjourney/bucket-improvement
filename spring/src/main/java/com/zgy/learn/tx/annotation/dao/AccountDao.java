@@ -6,6 +6,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.SingleColumnRowMapper;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * @Author: renjiaxin
@@ -61,4 +62,34 @@ public class AccountDao {
         String sql = "update account set balance = ? where id =?";
         jdbcTemplate.update(sql, nu, id);
     }
+
+
+    /**
+     * 为购买的书，付钱，余额和总的金额之间的关系
+     *
+     * @param id           账户id
+     * @param countCashier 总的金额
+     * @return 返回执行结果
+     */
+    @Transactional
+    public int payForBookById(int id, double countCashier) throws Exception {
+        // 检查账户
+        String checkId = "select count(id) from account where id = ?";
+        RowMapper<Integer> rw = new SingleColumnRowMapper<>(Integer.class);
+        int idCount = jdbcTemplate.queryForObject(checkId, rw, id);
+        if (idCount == 0) throw new Exception("账户不存在！");
+
+        // 查询账户
+        String balanceSql = "select balance from account where id = ?";
+        RowMapper<Double> rw2 = new SingleColumnRowMapper<>(Double.class);
+        double balance = jdbcTemplate.queryForObject(balanceSql, rw2, id);
+
+        // 付钱
+        if (balance - countCashier < 0) throw new Exception("余额不足！");
+        String updateBalanceSql = "update account set balance = ? where id = ?";
+        double newBalance = balance - countCashier;
+        int result = jdbcTemplate.update(updateBalanceSql, newBalance, id);
+        return result;
+    }
+
 }

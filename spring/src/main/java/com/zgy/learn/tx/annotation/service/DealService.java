@@ -59,4 +59,25 @@ public class DealService {
         }
 
     }
+
+    /**
+     * 分两个步骤买书，先检查书的isbn, 检查库存，更新库存，okay后返回总价
+     * 然后，检查账户id, 获取余额，更新余额，然后返回购买成功的标志
+     *
+     * @param id     购买者的余额id
+     * @param isbn   书籍的isbn号
+     * @param number 购买书籍的数量
+     */
+    @Transactional
+    public void buyBookTwoStep(int id, int isbn, int number) throws Exception {
+        double no = bookService.buyTheBookByIsbn(isbn, number);
+        int result = accountService.payForBookById(id, no);
+        if (result == 1) {
+            System.out.println("购买成功！");
+        }else {
+            System.out.println("购买失败！");
+        }
+
+
+    }
 }
