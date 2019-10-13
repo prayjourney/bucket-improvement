@@ -33,7 +33,7 @@ public class TestDealService {
 
     @Test
     public void testBuyBook2() throws Exception {
-        dealService.buyBookTwoStep(10, 2, 1);
+        dealService.buyBookTwoStep(1, 2, 1);
     }
 
 }
