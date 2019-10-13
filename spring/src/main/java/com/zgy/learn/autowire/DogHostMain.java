@@ -13,12 +13,18 @@ public class DogHostMain {
     public static void main(String[] args) {
         ApplicationContext context = new ClassPathXmlApplicationContext("classpath:spring-autowire.xml");
         DogHost xiaoming = (DogHost) context.getBean("xiaoming");
+        // byName
         PastoralDog xiaohuang = (PastoralDog) context.getBean("xiaohuang");
         PastoralDog xiaohei = (PastoralDog) context.getBean("xiaohei");
-        PastoralDog xiaoMmm = (PastoralDog) context.getBean("xiaoMmm");
+        //PastoralDog xiaoMmm = (PastoralDog) context.getBean("xiaoMmm");
         System.out.println(xiaohuang);
         System.out.println(xiaoming);
         System.out.println(xiaohei);
-        System.out.println(xiaoMmm);
+        //System.out.println(xiaoMmm);
+
+        // byType
+        PastoralDog xiaolang = (PastoralDog) context.getBean("xiaolang");
+        System.out.println(xiaolang);
+
     }
 }

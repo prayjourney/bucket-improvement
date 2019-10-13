@@ -12,7 +12,12 @@
     下面就装配xiaoming就装配不上, host=null，但是可以装配上小花的host -->
     <bean id="xiaohei" class="com.zgy.learn.autowire.PastoralDog" p:age="1" p:name="小黑" autowire="byName"/>
 
-    <bean id="host" scope="singleton" class="com.zgy.learn.autowire.DogHost" p:name="小花" p:age="26"/>
-    <bean id="xiaoMmm" class="com.zgy.learn.autowire.PastoralDog" p:age="1" p:name="小Mmm" autowire="byName"/>
+<!--    <bean id="host" scope="singleton" class="com.zgy.learn.autowire.DogHost" p:name="小花" p:age="26"/>-->
+<!--    <bean id="xiaoMmm" class="com.zgy.learn.autowire.PastoralDog" p:age="1" p:name="小Mmm" autowire="byName"/>-->
+
+    <bean id="xiaolang" class="com.zgy.learn.autowire.PastoralDog" autowire="byType">
+        <property name="name" value="小狼"/>
+        <property name="age" value="2"/>
+    </bean>
 
 </beans>
