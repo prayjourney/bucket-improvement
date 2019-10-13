@@ -12,4 +12,21 @@
         <property name="address" value="${address}"/>
         <property name="sex" value="${sex}"/>
     </bean>
+    <bean id="beijingren1" class="com.zgy.learn.scope2file.Human">
+        <property name="name" value="北京人1"/>
+        <property name="sex" value="男"/>
+        <property name="age" value="29"/>
+    </bean>
+
+    <bean id="beijingren2" class="com.zgy.learn.scope2file.Human">
+        <property name="name" value="北京人2"/>
+        <property name="sex" value="女"/>
+        <property name="age" value="33"/>
+    </bean>
+
+    <!-- 继承 ，但是也可以设置自己的值 -->
+    <bean id="beijingren3" class="com.zgy.learn.scope2file.Human" parent="beijingren2">
+        <property name="name" value="北京人3"/>
+        <property name="age" value="25"/>
+    </bean>
 </beans>
