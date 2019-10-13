@@ -21,5 +21,11 @@ public class ExternalFileTest {
         System.out.println(h2.toString());
         Human h3 = (Human)context.getBean("beijingren3");
         System.out.println(h3.toString());
+
+        Boy boy2 = (Boy)context.getBean("boy2");
+        System.out.println(boy2.toString());
+
+        Boy boy3 = (Boy)context.getBean("boy3");
+        System.out.println(boy3.toString());
     }
 }
