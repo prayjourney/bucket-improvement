@@ -62,5 +62,6 @@
     <!-- 创建superBoy之前，必须创建好superCar，这就是depends-on的含义，林外使用了p空间 继承了bean，boy2的属性 -->
     <bean id="superBoy" class="com.zgy.learn.scope2file.Boy" p:address="南京" parent="boy2" depends-on="superCar">
         <property name="name" value="李二壮"/>
+        <property name="car" ref="superCar"/>
     </bean>
 </beans>

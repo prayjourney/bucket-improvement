@@ -25,4 +25,12 @@ public class SuperCar {
     public void setPrice(Integer price) {
         this.price = price;
     }
+
+    @Override
+    public String toString() {
+        return "SuperCar{" +
+                "name='" + name + '\'' +
+                ", price=" + price +
+                '}';
+    }
 }
