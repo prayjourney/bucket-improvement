@@ -64,4 +64,9 @@
         <property name="name" value="李二壮"/>
         <property name="car" ref="superCar"/>
     </bean>
+
+    <!-- p空间简化了配置 -->
+    <bean id="car1" class="com.zgy.learn.scope2file.SuperCar" p:name="Ford" p:price="50000"/>
+    <bean id="car2" class="com.zgy.learn.scope2file.SuperCar" p:price="30000" parent="car1"/>
+    <bean id="sbBoy2" class="com.zgy.learn.scope2file.Boy" p:car-ref="car1" parent="boy3"/>
 </beans>

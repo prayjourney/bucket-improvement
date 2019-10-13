@@ -15,6 +15,7 @@ public class ExternalFileTest {
         Boy zgy = (Boy)context.getBean("zgy");
         System.out.println(zgy.toString());
 
+        // 测试继承 parent
         Human h1 = (Human)context.getBean("beijingren1");
         System.out.println(h1.toString());
         Human h2 = (Human)context.getBean("beijingren2");
@@ -22,6 +23,7 @@ public class ExternalFileTest {
         Human h3 = (Human)context.getBean("beijingren3");
         System.out.println(h3.toString());
 
+        // 测试依赖 depends-on
         Boy boy2 = (Boy)context.getBean("boy2");
         System.out.println(boy2.toString());
 
@@ -30,6 +32,12 @@ public class ExternalFileTest {
 
         Boy sb = (Boy)context.getBean("superBoy");
         System.out.println(sb);
+
+        // 测试p空间
+        Boy sbBoy = (Boy)context.getBean("sbBoy2");
+        System.out.println(sbBoy);
+        SuperCar scar = (SuperCar)context.getBean("car2");
+        System.out.println(scar);
 
     }
 }
