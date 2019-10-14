@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.function.Consumer;
+import java.util.function.Function;
 import java.util.function.Supplier;
 
 /**
@@ -68,6 +69,24 @@ public class StandardUse {
         for (Integer i : ll) {
             System.out.println(i);
         }
+    }
+
+    // 3.函数型接口, 有返回值，一个参数, 前者是参数：String类型， 后者是返回值：Integer类型, 此处的dealString方法的返回值，
+    //   和我们的Function接口的参数类型，返回值类型毫无关系！Function<T, R> : 函数型接口, R apply(T t);
+    public void dealString(String str, Function<String, Integer> function) {
+        // function.apply(str); 调用的时候，真正去实现， 使用lambda表达式
+        int ss = function.apply(str);
+        System.out.println(str + "的长度是： " + ss);
+    }
+
+    // 测试消费型接口
+    @Test
+    public void testFunction() {
+        // 是说，此处的Function接口，有返回值，一个参数, 前者是参数：String类型， 后者是返回值：Integer类型
+        dealString("helloWorld!", s -> {
+            System.out.println("正在处理的字符串是： " + s);
+            return s.length();
+        });
     }
 
 }
