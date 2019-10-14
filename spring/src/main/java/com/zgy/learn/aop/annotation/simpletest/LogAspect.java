@@ -1,4 +1,4 @@
-package com.zgy.learn.aop.annotation;
+package com.zgy.learn.aop.annotation.simpletest;
 
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.After;
@@ -24,13 +24,14 @@ public class LogAspect {
      * 使用 @Pointcut 来声明切入点表达式.
      * 后面的其他通知直接使用方法名来引用当前的切入点表达式.
      */
-    @Pointcut("execution(* com.zgy.learn.aop.annotation.*.*(..))")
+    @Pointcut("execution(* com.zgy.learn.aop.annotation.simpletest.*.*(..))")
     public void declareJointPointExpression(){}
 
     /**
      * 在 com.zgy.learn.aop.annotation.XiaoMing每一个方法开始之前执行一段代码
      */
-    @Before("execution(* com.zgy.learn.aop.annotation.*.*(..))")
+    // 切点的位置很重要
+    @Before("execution(* com.zgy.learn.aop.annotation..simpletest.*.*(..))")
     public void beforeMethod(JoinPoint joinPoint){
         String methodName = joinPoint.getSignature().getName();
         Object [] args = joinPoint.getArgs();

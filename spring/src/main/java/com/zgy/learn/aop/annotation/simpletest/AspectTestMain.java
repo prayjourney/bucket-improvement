@@ -1,4 +1,4 @@
-package com.zgy.learn.aop.annotation;
+package com.zgy.learn.aop.annotation.simpletest;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
