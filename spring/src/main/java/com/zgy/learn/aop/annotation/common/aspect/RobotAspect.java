@@ -10,6 +10,8 @@ import org.springframework.stereotype.Component;
 @Aspect
 @Component
 public class RobotAspect {
+    // spring aop两种配置方式
+    // https://www.cnblogs.com/junzi2099/p/8274813.html
 
     // 定义切点， com.zgy.all.aop.annotation.service包下的任何访问权限的类下的，有任何参数的任何方法
     // pointcut这个可以直接定义成为一个方法，也可以直接写到advice的条件之上，表示在这个切入的点，我去加载相应的通知
