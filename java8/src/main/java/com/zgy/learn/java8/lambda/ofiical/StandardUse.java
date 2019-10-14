@@ -3,10 +3,12 @@ package com.zgy.learn.java8.lambda.ofiical;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 import java.util.function.Consumer;
 import java.util.function.Function;
+import java.util.function.Predicate;
 import java.util.function.Supplier;
 
 /**
@@ -88,5 +90,30 @@ public class StandardUse {
             return s.length();
         });
     }
+
+    // 4.断言型接口：boolean返回值，一个参数
+    // 需求：将满足条件的字符串，放入集合中
+    public List<String> filterStr(List<String> list, Predicate<String> pre) {
+        List<String> strList = new ArrayList<>();
+
+        for (String str : list) {
+            if (pre.test(str)) {
+                strList.add(str);
+            }
+        }
+        return strList;
+    }
+
+    @Test
+    public void test4() {
+        List<String> list = Arrays.asList("Hello", "html", "Lambda", "www", "ok");
+        List<String> strList = filterStr(list, (s) -> s.length() > 3);
+
+        for (String str : strList) {
+            System.out.println(str);
+        }
+    }
+
+
 
 }
