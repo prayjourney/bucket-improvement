@@ -114,6 +114,44 @@ public class StandardUse {
         }
     }
 
+    // 断言型接口， 返回布尔值，需要一个参数， 过滤掉不符合长度要求的字符串，然后返回一个list
+    public List<String> strHandler(List<String> ls, int len, Predicate<String> ps) {
+        List<String> newList = new ArrayList<>();
+        for (String s : ls) {
+            if (ps.test(s)) {
+                newList.add(s);
+            }
+        }
+        return newList;
+    }
+
+    @Test
+    public void testStrHandler() {
+        List<String> m = new ArrayList<>();
+        List<String> ss = Arrays.asList(
+                "12345",
+                "fsdafasfsafa",
+                "safsawwerwerwer",
+                "张三李四a a dsf",
+                "hello",
+                "mm"
+        );
+//        m = strHandler(ss, 4, s1s -> {
+//            List<String> newList = new ArrayList<>();
+//            for (String s : ss) {
+//                if (s.length() > 4) {
+//                    newList.add(s);
+//                }
+//            }
+//            return newList;
+//        });
+        List<String> strList = strHandler(ss, 4, (s) -> s.length() > 4);
+
+        for (String str : strList) {
+            System.out.println(str);
+        }
+    }
+
 
 
 }
