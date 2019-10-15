@@ -1,4 +1,4 @@
-package com.zgy.learn.java8.lambda.yinyong.array;
+package com.zgy.learn.java8.lambda.refmethod.array;
 
 import java.util.function.Function;
 

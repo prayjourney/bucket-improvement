@@ -1,4 +1,4 @@
-package com.zgy.learn.java8.lambda.yinyong.constructor;
+package com.zgy.learn.java8.lambda.refmethod.constructor;
 
 import java.util.function.Function;
 
