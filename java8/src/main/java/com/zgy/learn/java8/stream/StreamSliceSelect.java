@@ -1,9 +1,9 @@
 package com.zgy.learn.java8.stream;
 
+import com.zgy.learn.java8.lambda.CommonUseData;
 import com.zgy.learn.java8.lambda.Employee;
 import org.junit.Test;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Stream;
 
@@ -14,16 +14,7 @@ import java.util.stream.Stream;
  * @Modified by:
  */
 public class StreamSliceSelect {
-    List<Employee> emps = Arrays.asList(
-            new Employee(100, "关羽", 35, 19000),
-            new Employee(101, "张飞", 32, 13000),
-            new Employee(102, "刘备", 37, 30000),
-            new Employee(105, "诸葛亮", 29, 20000),
-            new Employee(107, "赵云", 31, 18000),
-            new Employee(109, "马超", 31, 18000),
-            new Employee(109, "马超", 32, 20000),
-            new Employee(120, "黄忠", 60, 19000)
-    );
+    List<Employee> emps = CommonUseData.emps;
 
     /**
      * 筛选与切片
