@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd">
+
+    <!-- 定义jisuan bean -->
+    <bean id="jisuan" class="com.zgy.learn.aop.xml.JisuanService"/>
+    <!-- 定义jisuanAspcet bean -->
+    <bean id="jisuanAspcet" class="com.zgy.learn.aop.xml.JisuanAspcet"></bean>
+
+    <!-- 开始配置aop -->
+    <aop:config>
+
+        <!-- 配置切点表达式 -->
+        <aop:pointcut id="hello" expression="execution(* com.zgy.learn.aop.xml.JisuanService.show(..))"/>
+        <aop:pointcut id="hello2" expression="execution(* com.zgy.learn.aop.xml.JisuanService.*(..))"/>
+        <!-- 配置了切面 -->
+        <aop:aspect id="jisuanapsect" ref="jisuanAspcet" order="1">
+            <!-- 通知 -->
+            <aop:before method="test1" pointcut-ref="hello"></aop:before>
+            <aop:after method="test2" pointcut-ref="hello"></aop:after>
+            <aop:before method="test1" pointcut-ref="hello2"></aop:before>
+            <aop:after method="test2" pointcut-ref="hello2"></aop:after>
+            <aop:around method="test3" pointcut-ref="hello"></aop:around>
+        </aop:aspect>
+        <!-- 放在这儿就会报错 -->
+        <!--<aop:pointcut id="hello2" expression="execution(* com.zgy.learn.aop.xml.JisuanService.*(..))"/>-->
+
+
+    </aop:config>
+</beans>
