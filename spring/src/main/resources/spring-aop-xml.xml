@@ -12,6 +12,7 @@
 
     <!-- 开始配置aop -->
     <aop:config>
+        <!-- 切点必须在通知之前， 不然报错。。。。-->
 
         <!-- 配置切点表达式 -->
         <aop:pointcut id="hello" expression="execution(* com.zgy.learn.aop.xml.JisuanService.show(..))"/>
