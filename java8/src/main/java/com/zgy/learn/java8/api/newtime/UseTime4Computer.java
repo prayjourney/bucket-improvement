@@ -1,7 +1,10 @@
 package com.zgy.learn.java8.api.newtime;
 
+import java.time.Duration;
 import java.time.Instant;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.Period;
 import java.time.ZoneId;
 
 /**
@@ -29,6 +32,19 @@ public class UseTime4Computer {
         // 转化成LocalDateTime
         LocalDateTime lll = LocalDateTime.ofInstant(i, ZoneId.of("Asia/Shanghai"));
         System.out.println(lll);
+        // 时间相隔
+        Duration d1 = Duration.between(start, end);
+
+        // 日期相隔
+        LocalDateTime localDateTime = LocalDateTime.now();
+        LocalDate l2 = LocalDate.of(1999, 2, 3);
+        LocalDateTime l3 = LocalDateTime.of(2001, 2, 4, 1, 2);
+        // LocalDate之间的转换LocalDateTime
+        LocalDate l4 = l3.toLocalDate();
+
+        Period p1 = Period.between(l2, l4);
+        System.out.println(d1);
+        System.out.println(p1);
 
     }
 }
