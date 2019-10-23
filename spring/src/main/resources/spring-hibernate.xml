@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+    <!-- 导入外部文件 -->
+    <context:property-placeholder location="classpath:datasource.properties"/>
+
+    <!-- c3p0数据源 -->
+    <bean id="data" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+        <property name="user" value="${jdbc.username}"/>
+        <property name="password" value="${jdbc.password}"/>
+        <property name="jdbcUrl" value="${jdbc.jdbcUrl}"/>
+        <property name="driverClass" value="${jdbc.driverClass}"/>
+        <property name="initialPoolSize" value="${jdbc.initPoolSize}"/>
+        <property name="maxPoolSize" value="${jdbc.maxPoolSize}"/>
+    </bean>
+
+    <!-- 配置hibernate的sessionFactory 实例， 使用spring提供的localSessionFactoryBean 进行配置-->
+    <bean id="S" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean" lazy-init="false">
+        <!-- 注入datasource，给sessionfactoryBean内setdatasource提供数据源 -->
+        <property name="dataSource" ref="data"/>
+        <!-- hibernate配置文件的位置和名称 -->
+        <property name="configLocation" value="classpath:hibernate.cfg.xml"></property>
+
+        <!-- 加载实体类的映射文件位置及名称 -->
+        <property name="mappingLocations" value="classpath:com/zgy/learn/hibernate/entity/*.hbm.xml"/>
+    </bean>
+    <!-- 配置spring声明式事务 -->
+</beans>
