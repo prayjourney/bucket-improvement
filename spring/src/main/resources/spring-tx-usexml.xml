@@ -24,17 +24,17 @@
     <bean id="bookShopDao" class="com.zgy.learn.tx.xml.BookDao">
         <property name="jdbcTemplate" ref="jdbcTemplate"/>
     </bean>
-    <bean id="bookShopService" class="com.zgy.learn.tx.xml.BookService">
+    <bean id="bookShopService" class="com.zgy.learn.tx.xml.service.BookService">
         <property name="bookDao" ref="bookShopDao"/>
     </bean>
     <bean id="accountDao" class="com.zgy.learn.tx.xml.AccountDao">
         <property name="jdbcTemplate" ref="jdbcTemplate"/>
     </bean>
-    <bean id="accountCardService" class="com.zgy.learn.tx.xml.AccountService">
+    <bean id="accountCardService" class="com.zgy.learn.tx.xml.service.AccountService">
         <property name="accountDao" ref="accountDao"/>
     </bean>
 
-    <bean id="dealService" class="com.zgy.learn.tx.xml.DealService">
+    <bean id="dealService" class="com.zgy.learn.tx.xml.service.DealService">
         <property name="bookService" ref="bookShopService"/>
         <property name="accountService" ref="accountCardService"/>
     </bean>
@@ -46,12 +46,16 @@
     <!-- 2.配置事务属性 -->
     <tx:advice id="txAdvice" transaction-manager="txManager">
         <tx:attributes>
-            <tx:method name="*"/>
+            <!--  <tx:method name="*"/> -->
+            <!-- 指定事务传播性 -->
+            <tx:method name="buyBook" propagation="REQUIRES_NEW"/>
+            <tx:method name="buyBookTwoStep" propagation="REQUIRES_NEW"/>
+            <tx:method name="check*" read-only="true"/>
         </tx:attributes>
     </tx:advice>
     <!-- 3.配置事务切入点， 以及把事务切入点和事务属性关联起来 -->
     <aop:config>
-        <aop:pointcut id="txPointCut" expression="execution(* com.zgy.learn.tx.xml.DealService.*(..))"/>
+        <aop:pointcut id="txPointCut" expression="execution(* com.zgy.learn.tx.xml.service.DealService.*(..))"/>
         <aop:advisor advice-ref="txAdvice" pointcut-ref="txPointCut"/>
     </aop:config>
 

@@ -1,5 +1,8 @@
 package com.zgy.learn.tx.xml;
 
+import com.zgy.learn.tx.xml.service.AccountService;
+import com.zgy.learn.tx.xml.service.BookService;
+import com.zgy.learn.tx.xml.service.DealService;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
