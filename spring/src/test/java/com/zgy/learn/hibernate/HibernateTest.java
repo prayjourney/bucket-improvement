@@ -1,6 +1,8 @@
 package com.zgy.learn.hibernate;
 
 import com.zgy.learn.hibernate.entity.MyBook;
+import com.zgy.learn.hibernate.entity2.Teacher;
+import com.zgy.learn.hibernate.service.TeacherService;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -25,29 +27,25 @@ public class HibernateTest {
     public void testDataSource() throws SQLException {
         DataSource dataSource = ctx.getBean(DataSource.class);
         System.out.println(dataSource.getConnection());
-        MyBook book = new MyBook();
-        book.setId(2);
-        book.setBookName("Java程序设计");
-        book.setPrice(48);
-        book.setStock(78);
-        book.setIsbn("ISBN-001-0980");
-    }
-
-    @Test
-    public void testSetBook() throws SQLException {
-        DataSource dataSource = ctx.getBean(DataSource.class);
-        MyBook book = new MyBook();
-        book.setId(2);
-        book.setBookName("Java程序设计");
-        book.setPrice(48);
-        book.setStock(78);
-        book.setIsbn("ISBN-001-0980");
     }
 
     @Test
     public void testDataSource2() throws SQLException {
         DataSource dataSource = ctx.getBean(DataSource.class);
         System.out.println(dataSource.getConnection());
+    }
+
+    @Test
+    public void testFindTeacherById(){
+        TeacherService ts = (TeacherService) ctx.getBean("teacherService");
+        int no = ts.findTeacherNameById(1);
+        System.out.println(no);
+    }
+
+    @Test
+    public void testUpdateTeacherById(){
+        TeacherService ts = (TeacherService) ctx.getBean("teacherService");
+        ts.updateTeacherNameById(1,"xxx");
     }
 
 }

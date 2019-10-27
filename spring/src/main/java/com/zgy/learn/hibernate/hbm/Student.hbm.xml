@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+
+<hibernate-mapping package="com.zgy.learn.hibernate.entity2">
+    <class name="Student" table="tb_student">
+        <id name="sid" type="java.lang.Integer">
+            <column name="sid"/>
+            <generator class="increment"/>
+        </id>
+        <property name="name" column="name" type="java.lang.String"/>
+        <property name="gender" column="gender" type="java.lang.String"/>
+        <property name="roomId" column="roomId" type="java.lang.Integer"/>
+    </class>
+</hibernate-mapping>
