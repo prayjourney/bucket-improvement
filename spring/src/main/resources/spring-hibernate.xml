@@ -4,6 +4,8 @@
        xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
        xmlns:aop="http://www.springframework.org/schema/aop"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd">
+    <!-- 配置包扫描-->
+    <context:component-scan base-package="com.zgy.learn.hibernate"></context:component-scan>
     <!-- 导入外部文件 -->
     <context:property-placeholder location="classpath:datasource.properties"/>
 
@@ -29,9 +31,10 @@
         <!-- 使用 hibernateProperties 属相来配置 Hibernate 原生的属性 -->
         <property name="hibernateProperties">
             <props>
-                <prop key="hibernate.dialect">org.hibernate.dialect.MySQL5InnoDBDialect</prop>
+                <prop key="hibernate.dialect">org.hibernate.dialect.MariaDB103Dialect</prop>
                 <prop key="hibernate.show_sql">true</prop>
                 <prop key="hibernate.format_sql">true</prop>
+                <!-- 为何没有自动生成我们想要的表呢? -->
                 <prop key="hibernate.hbm2ddl.auto">update</prop>
             </props>
         </property>
