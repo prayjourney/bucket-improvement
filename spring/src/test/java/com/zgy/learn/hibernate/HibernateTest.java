@@ -32,8 +32,9 @@ public class HibernateTest {
         book.setStock(78);
         book.setIsbn("ISBN-001-0980");
     }
+
     @Test
-    public void  testSetBook() throws SQLException {
+    public void testSetBook() throws SQLException {
         DataSource dataSource = ctx.getBean(DataSource.class);
         MyBook book = new MyBook();
         book.setId(2);
@@ -41,6 +42,12 @@ public class HibernateTest {
         book.setPrice(48);
         book.setStock(78);
         book.setIsbn("ISBN-001-0980");
+    }
+
+    @Test
+    public void testDataSource2() throws SQLException {
+        DataSource dataSource = ctx.getBean(DataSource.class);
+        System.out.println(dataSource.getConnection());
     }
 
 }
