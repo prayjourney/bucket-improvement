@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:context="http://www.springframework.org/schema/context"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+       xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd">
     <!-- 导入外部文件 -->
     <context:property-placeholder location="classpath:datasource.properties"/>
 
@@ -16,17 +17,48 @@
         <property name="maxPoolSize" value="${jdbc.maxPoolSize}"/>
     </bean>
 
-    <!-- 配置hibernate的sessionFactory 实例， 使用spring提供的localSessionFactoryBean 进行配置-->
-    <bean id="S" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean" lazy-init="false">
-        <!-- 注入datasource，给sessionfactoryBean内setdatasource提供数据源 -->
+    <!-- 配置 hibernate 的 sessionFactory 实例， 使用spring提供的localSessionFactoryBean 进行配置-->
+    <bean id="sessionFactoryBean" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean" lazy-init="false">
+        <!-- 数据源 -->
+        <!-- 注入datasource 给sessionfactoryBean内setdatasource提供数据源 -->
         <property name="dataSource" ref="data"/>
-        <!-- hibernate配置文件的位置和名称 -->
-        <property name="configLocation" value="classpath:hibernate.cfg.xml"></property>
 
-        <!-- 加载实体类的映射文件位置及名称 -->
-<!--        <property name="mappingLocations" value="classpath:com/zgy/learn/hibernate/entity/*.hbm.xml"/>-->
-<!--        <property name="mappingLocations" value="classpath:com/zgy/learn/hibernate/hbm/*.hbm.xml"/>-->
+        <!-- hibernate配置文件 的位置和名称, 可以直接写到sessionFactory里面了 -->
+        <!-- <property name="configLocation" value="classpath:hibernate.cfg.xml"></property> -->
+
+        <!-- 使用 hibernateProperties 属相来配置 Hibernate 原生的属性 -->
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.dialect">org.hibernate.dialect.MySQL5InnoDBDialect</prop>
+                <prop key="hibernate.show_sql">true</prop>
+                <prop key="hibernate.format_sql">true</prop>
+                <prop key="hibernate.hbm2ddl.auto">update</prop>
+            </props>
+        </property>
+
+        <!-- 加载实体类的映射文件位置及名称， 可以使用通配符  -->
+        <!-- <property name="mappingLocations" value="classpath:com/zgy/learn/hibernate/entity/*.hbm.xml"/> -->
+        <!-- <property name="mappingLocations" value="classpath:com/zgy/learn/hibernate/hbm/*.hbm.xml"/> -->
         <property name="mappingLocations" value="classpath:com/zgy/learn/hibernate/**/*.hbm.xml"/>
     </bean>
+
+
     <!-- 配置spring声明式事务 -->
+    <!-- 1.事务管理器， 这是给Hibernate的 -->
+    <bean id="hibernateTransactionManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">
+        <property name="sessionFactory" ref="sessionFactoryBean"/>
+    </bean>
+    <!-- 2.事务属性-->
+    <tx:advice id="txAdvice" transaction-manager="hibernateTransactionManager">
+        <tx:attributes>
+            <tx:method name="get" read-only="true"/>
+            <tx:method name="*"/>
+        </tx:attributes>
+    </tx:advice>
+    <!-- 3. 配置事务切点 -->
+    <aop:config>
+        <aop:pointcut id="hibernateTx" expression="execution(* com.zgy.learn.hibernate.service.*.*(..))"/>
+
+        <aop:advisor pointcut-ref="hibernateTx" advice-ref="txAdvice"/>
+    </aop:config>
 </beans>
