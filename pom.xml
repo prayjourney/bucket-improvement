@@ -22,6 +22,7 @@
     <module>dubbo</module>
     <module>jvm</module>
     <module>springmvc</module>
+    <module>mvc</module>
   </modules>
 
   <!-- improvement-java-skill  to bucket-improvement-->
