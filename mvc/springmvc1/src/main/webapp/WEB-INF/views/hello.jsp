@@ -14,6 +14,9 @@
     <title>hello</title>
 </head>
 <body>
+    <%--<h1 class="text-input">hello ${requestScope.get(name)}</h1>--%>
+    <%--<h1 class="text-input">hello ${requestScope.getParameter("name")}</h1>--%>
     <h1 class="text-input">hello ${name}</h1>
+    <h1 class="text-input">hello 123</h1>
 </body>
 </html>
