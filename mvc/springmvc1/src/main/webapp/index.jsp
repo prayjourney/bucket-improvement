@@ -28,5 +28,17 @@
     <a href="requestmap/gettime" class="arrow-button ">点我获取时间！</a>
     <br>
     <a href="requestmap/hello?name=zhangsan" class="arrow-button ">你好张三!</a>
+    <br>
+
+    <!-- post请求, 需要使用表单来草走-->
+    <form action="/requestmap/hellopost" method="post">
+        username: <input type="text" name="username" value="Tom"/>
+        <br>
+        email: <input type="text" name="email" value="tom@atguigu.com"/>
+        <br>
+        age: <input type="text" name="age" value="12"/>
+        <br>
+        <input type="submit" value="Submit"/>
+    </form>
 </body>
 </html>

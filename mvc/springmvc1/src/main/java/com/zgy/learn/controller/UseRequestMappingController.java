@@ -24,7 +24,7 @@ public class UseRequestMappingController {
     public String getTime(Model model) {
         System.out.println("get time: " + LocalDateTime.now());
         // 定义了一个变量， 用来装载我们的数据
-        model.addAttribute("timenow",LocalDateTime.now().toString());
+        model.addAttribute("timenow", LocalDateTime.now().toString());
         return "timenow";
     }
 
@@ -35,8 +35,21 @@ public class UseRequestMappingController {
          * 传值, 在方法中, 或者在url之中,其实都是在方法之中的意思, 一样的, 点击一下之后, 就会是一个url带值得样子了
          * 我们可以使用Model, ModelMap, ModelAndView来, 将后端的值, 传给前端的页面等
          */
-        map.addAttribute("name",name);
+        map.addAttribute("name", name);
         System.out.println("hello " + name);
         return "hello";
     }
+
+
+    // post方法需要使用到表单来完成
+    // 调用的流程是  某一个url--->controller--->处理的结果页面
+    @RequestMapping(value = "hellopost", method = RequestMethod.POST)
+    public String helloMap2(ModelMap map, String username, String email, String age) {
+        map.addAttribute("username", username);
+        map.addAttribute("email", email);
+        map.addAttribute("age", age);
+        System.out.println("hello " + username + ", " + email + ", " + age);
+        return "usepost";
+    }
+
 }
