@@ -22,6 +22,10 @@
 </head>
 <body>
     <h1 class="text-center text-primary">Hello, Spring mvc!</h1>
-    <a href="mvc" class="arrow-button key-text">hello spring mvc!</a>
+    <a href="mvc" class="arrow-button key-text text-input">hello spring mvc!</a>
+    <br>
+    <a href="requestmap/gettime" class="arrow-button ">点我获取时间！</a>
+    <br>
+    <a href="requestmap/hello?name=zhangsan" class="arrow-button ">你好张三!</a>
 </body>
 </html>
