@@ -15,9 +15,11 @@ import java.time.LocalDateTime;
  * @Date: Created in 2019/11/3 23:41
  * @Modified by:
  */
+// 类使用RequestMapping
 @Controller
 @RequestMapping("requestmap")
 public class UseRequestMappingController {
+    // 方法使用RequestMapping
     @RequestMapping(value = "gettime")
     public String getTime(Model model) {
         System.out.println("get time: " + LocalDateTime.now());
@@ -26,6 +28,7 @@ public class UseRequestMappingController {
         return "timenow";
     }
 
+    // RequestMapping的method方法
     @RequestMapping(value = "hello", method = RequestMethod.GET)
     public String helloMap(ModelMap map, String name) {
         /**
