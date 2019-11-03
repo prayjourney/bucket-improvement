@@ -16,7 +16,7 @@ public class HelloMVC{
      * prefix + returnvalue + suffix, 然后转发的相应的视图上去
      * @return
      */
-    @RequestMapping(value ="hellospringmvc")
+    @RequestMapping(value ="mvc")
     public String hello() {
         System.out.println("hello spring mvc!");
         return "success";

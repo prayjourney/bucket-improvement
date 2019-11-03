@@ -22,6 +22,6 @@
 </head>
 <body>
     <h1 class="text-center text-primary">Hello, Spring mvc!</h1>
-    <a href="hellospringmvc" class="arrow-button key-text">hello spring mvc!</a>
+    <a href="mvc" class="arrow-button key-text">hello spring mvc!</a>
 </body>
 </html>
