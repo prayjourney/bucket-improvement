@@ -1,6 +1,7 @@
 package com.zgy.learn.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -17,10 +18,10 @@ import java.time.LocalDateTime;
 @RequestMapping("requestmap")
 public class UseRequestMappingController {
     @RequestMapping(value = "gettime")
-    public String getTime(ModelAndView model) {
+    public String getTime(Model model) {
         System.out.println("get time: " + LocalDateTime.now());
         // 定义了一个变量， 用来装载我们的数据
-        model.addObject("timenow",LocalDateTime.now().toString());
+        model.addAttribute("timenow",LocalDateTime.now().toString());
         return "timenow";
     }
 
