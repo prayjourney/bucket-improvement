@@ -1,7 +1,6 @@
 package com.zgy.learn.controller;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -26,8 +25,8 @@ public class UseRequestMappingController {
     }
 
     @RequestMapping(value = "hello", method = RequestMethod.GET)
-    public String helloMap() {
-        System.out.println("hello ");
+    public String helloMap(String name) {
+        System.out.println("hello " + name);
         return "hello";
     }
 }
