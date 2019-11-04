@@ -65,5 +65,23 @@
     <br>
     <a href="/some/head">点击试验, 观察header</a>
     <br>
+    <!-- Spring mvc可以级联复合的属性-->
+    <form action="/mvc/pojo" method="post">
+        <table>
+            <tr>
+                <th class="text-center text-success">属性1</th>
+                <th class="text-center text-success">属性2</th>
+                <th class="text-center text-success">属性3</th>
+                <th class="text-center text-success">属性4</th>
+            </tr>
+            <tr>
+                <td class="text-center text-success" >姓名: <input type="text" name="name" /></td>
+                <td class="text-center text-success" >ID: <input type="text" name="id" /></td>
+                <td class="text-center text-success" >地方名: <input type="text" name="address.name" /></td>
+                <td class="text-center text-success" >地方面积: <input type="text" name="address.area" /></td>
+                <td> <input class="text-primary" type="submit" value="点击提交"/></td>
+            </tr>
+        </table>
+    </form>
 </body>
 </html>
