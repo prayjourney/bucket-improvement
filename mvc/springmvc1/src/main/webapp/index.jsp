@@ -62,5 +62,8 @@
     <a href="/some/param?name=zhangsan&age=22&gender=lv">点击试验, 参数全</a>
     <br>
     <a href="/some/param?&gender=lv">点击试验, 没有必要的参数</a>
+    <br>
+    <a href="/some/head">点击试验, 观察header</a>
+    <br>
 </body>
 </html>
