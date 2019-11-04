@@ -48,6 +48,8 @@ public class UseRequestMappingController {
         map.addAttribute("username", username);
         map.addAttribute("email", email);
         map.addAttribute("age", age);
+        // 完全是后端传给前端的一个值
+        map.addAttribute("info","你好呀, 我是一个测试的信息呀! 完全是后端传给前端的一个值");
         System.out.println("hello " + username + ", " + email + ", " + age);
         return "usepost";
     }

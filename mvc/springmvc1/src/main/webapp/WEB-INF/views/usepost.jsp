@@ -17,5 +17,7 @@
     <h2 class="text-center text-primary">name is: ${username}</h2>
     <h2 class="text-center text-danger">email is: ${email}</h2>
     <h2 class="text-input">age is: ${age}</h2>
+    <!-- 我完全是一个后端传给前端的值哦! -->
+    <h2 class="text-input">info: ${info}</h2>
 </body>
 </html>
