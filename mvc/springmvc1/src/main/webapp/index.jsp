@@ -40,5 +40,23 @@
         <br>
         <input type="submit" value="Submit"/>
     </form>
+
+    <br>
+    <!-- 在URL之中, 算是前端给后端传值, 然后在后端的Controller之中, 我们使用 Model等,
+         然后将其通过Spel, 显示在jsp页面上, 算是后端给前端的传值, 二者方向问题需要理清楚
+         同样的, 我们前后端传值和获取值的时候, 都要有对象去接收, 按照如下两种情况去区分
+         前端给后端:
+             前端url: /hello/飞轮海, 那么"飞轮海"就是我们需要从前端传给后端的数据, 那么就要在后端有参数接住, 所以要
+                      有 public String helloRest(String name) {// todo}, 这个name的入参的存在, 此处是rest风格的,
+                      所以需要是public String helloRest(@PathVariable("name") String name) {// todo}
+         后端给前端:
+             我们的数据整合在Controller的方法之中, 如果单纯要后端给前端传一个数据, 此时我们不需要什么参数, 而只是需要把
+             我们的数据封装在SpringMVC提供的模型之中, 如Model, ModelMap, ModelAndView, 比如, 下面的info就是我们创的一个值,
+             这个没有在传参等地方有体现, 完全是后端创建的, map.addAttribute("info","你好呀, 我完全是后端传给前端的一个值");
+             然后在前端的页面使用 <h2 class="text-input">info: \${info}</h2> , 这样, 前端就取到了后端的值
+    -->
+    <a href="/rest/hello/zgy">你好, zgy!</a>
+    <br>
+    <a href="/rest/hello2/z.g.y">你好, zgy!</a>
 </body>
 </html>
