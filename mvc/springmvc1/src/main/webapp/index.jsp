@@ -58,5 +58,9 @@
     <a href="/rest/hello/zgy">你好, zgy!</a>
     <br>
     <a href="/rest/hello2/z.g.y">你好, zgy!</a>
+    <br>
+    <a href="/some/param?name=zhangsan&age=22&gender=lv">点击试验, 参数全</a>
+    <br>
+    <a href="/some/param?&gender=lv">点击试验, 没有必要的参数</a>
 </body>
 </html>
