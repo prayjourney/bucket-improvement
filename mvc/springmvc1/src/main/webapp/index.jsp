@@ -31,7 +31,7 @@
     <br>
 
     <!-- post请求, 需要使用表单来草走-->
-    <form action="/requestmap/hellopost" method="post">
+    <form action="requestmap/hellopost" method="post">
         username: <input type="text" name="username" value="Tom"/>
         <br>
         email   : <input type="text" name="email" value="tom@atguigu.com"/>
@@ -55,17 +55,17 @@
              这个没有在传参等地方有体现, 完全是后端创建的, map.addAttribute("info","你好呀, 我完全是后端传给前端的一个值");
              然后在前端的页面使用 <h2 class="text-input">info: \${info}</h2> , 这样, 前端就取到了后端的值
     -->
-    <a href="/rest/hello/zgy">你好, zgy!</a>
+    <a href="/\rest/hello/zgy">你好, zgy!</a>
     <br>
-    <a href="/rest/hello2/z.g.y">你好, zgy!</a>
+    <a href="rest/hello2/z.g.y">你好, zgy!</a>
     <br>
 
     <h2 class="text-danger">你们几个是测试参数和属性的几个测试</h2>
-    <a href="/some/param?name=zhangsan&age=22&gender=lv">点击试验, 参数全</a>
+    <a href="some/param?name=zhangsan&age=22&gender=lv">点击试验, 参数全</a>
     <br>
-    <a href="/some/param?&gender=lv">点击试验, 没有必要的参数</a>
+    <a href="some/param?&gender=lv">点击试验, 没有必要的参数</a>
     <br>
-    <a href="/some/head">点击试验, 观察header</a>
+    <a href="some/head">点击试验, 观察header</a>
     <br>
     <a href="some/cookie">点击试验, 观察cookie</a>
     <br>
@@ -93,13 +93,13 @@
     <!-- Spring mvc四种后台组装数据的方式 -->
     <h2 class="text-warning" > Spring mvc四种后台组装数据的方式 </h2>
     <br>
-    <a class="text-success" href="/data/model">使用model方式获取数据</a>
+    <a class="text-success" href="data/model">使用model方式获取数据</a>
     <br>
-    <a class="text-dark" href="/data/map">使用map方式获取数据</a>
+    <a class="text-dark" href="data/map">使用map方式获取数据</a>
     <br>
-    <a class="text-danger" href="/data/modelmap">使用modelmap方式获取数据</a>
+    <a class="text-danger" href="data/modelmap">使用modelmap方式获取数据</a>
     <br>
-    <a class="text-info" href="/data/modelandview">使用modelandview方式获取数据</a>
+    <a class="text-info" href="data/modelandview">使用modelandview方式获取数据</a>
 
 
 
@@ -109,6 +109,12 @@
     <br>
     <a class="text-success" href="servlet/apitest">使用原生servlet api</a>
     <br>
-    <a class="text-success" href="/servlet/session">使用原生servlet api, 设置cookie</a>
+    <!-- href的前面, 如果前面有/, 比如/servlet/session, 这样会访问localhost:8080/servlet/session
+         我们都是使用war exploded部署的, 这样的情况下, 在win和mac会与差别, win会加上项目名称如
+         localhost:8080/springmvc-1-exploded/servlet/session, 所以我们最好使用相对路径,去掉前面的
+         / , 设置成  servlet/session这种样式, 也就是说要使用相对路径, 不要用绝对路径
+    -->
+    <%--<a class="text-success" href="/servlet/session">使用原生servlet api, 设置cookie</a>--%>
+    <a class="text-success" href="servlet/session">使用原生servlet api, 设置cookie</a>
 </body>
 </html>
