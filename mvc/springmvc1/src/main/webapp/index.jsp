@@ -100,5 +100,15 @@
     <a class="text-danger" href="/data/modelmap">使用modelmap方式获取数据</a>
     <br>
     <a class="text-info" href="/data/modelandview">使用modelandview方式获取数据</a>
+
+
+
+    <br>
+    <!-- Spring mvc使用原生servlet 的api -->
+    <h2 class="text-dark" > Spring mvc使用原生servlet 的api  </h2>
+    <br>
+    <a class="text-success" href="servlet/apitest">使用原生servlet api</a>
+    <br>
+    <a class="text-success" href="/servlet/session">使用原生servlet api, 设置cookie</a>
 </body>
 </html>
