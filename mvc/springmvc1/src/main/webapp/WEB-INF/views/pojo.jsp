@@ -13,9 +13,11 @@
 </head>
 <body>
     <!-- Spring MVC可以自动关联级联属性, POJO直接使用! -->
-    <h1 class="text-input">学生姓名: ${student.name}</h1>
+    <!-- 默认是在requestScope之中, 下面的操作, 可以把requestScope省略掉-->
+    <%--<h1 class="text-input">学生姓名: ${student.name}</h1>--%>
+    <h1 class="text-input">学生姓名: ${requestScope.student.name}</h1>
     <h1 class="text-input">学生ID : ${student.id}</h1>
-    <h1 class="text-input">学生省份: ${student.address.name}</h1>
+    <h1 class="text-input">学生省份: ${requestScope.student.address.name}</h1>
     <h1 class="text-input">学生省份面积: ${student.address.area}</h1>
 </body>
 </html>
