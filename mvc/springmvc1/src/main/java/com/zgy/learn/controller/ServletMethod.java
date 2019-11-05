@@ -20,6 +20,7 @@ import java.util.Map;
 @Controller
 @RequestMapping("servlet")
 public class ServletMethod {
+    // todo: 一个问题, request和response的分野在那儿
     @RequestMapping("setcookie")
     public String testHttpRequest(HttpServletRequest request, HttpServletResponse response) {
         request.setAttribute("JSESSIONID", "123ewqeqweqeq");
