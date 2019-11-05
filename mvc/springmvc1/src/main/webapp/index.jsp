@@ -83,5 +83,16 @@
             </tr>
         </table>
     </form>
+
+    <!-- Spring mvc四种后台组装数据的方式 -->
+    <h2 class="text-warning" > Spring mvc四种后台组装数据的方式 </h2>
+    <br>
+    <a class="text-success" href="/data/model">使用model方式获取数据</a>
+    <br>
+    <a class="text-dark" href="/data/map">使用map方式获取数据</a>
+    <br>
+    <a class="text-danger" href="/data/modelmap">使用modelmap方式获取数据</a>
+    <br>
+    <a class="text-info" href="/data/modelandview">使用modelandview方式获取数据</a>
 </body>
 </html>
