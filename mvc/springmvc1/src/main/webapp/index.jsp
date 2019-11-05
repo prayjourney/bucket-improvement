@@ -69,6 +69,8 @@
     <br>
     <a href="some/cookie">点击试验, 观察cookie</a>
     <br>
+    <a  class="text-danger" href="some/setcookie">设置cookie</a>
+    <br>
     <!-- Spring mvc可以级联复合的属性-->
     <form action="/mvc/pojo" method="post">
         <table>

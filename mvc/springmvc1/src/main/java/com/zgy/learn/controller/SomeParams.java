@@ -40,4 +40,15 @@ public class SomeParams {
         return "testparam";
     }
 
+    @RequestMapping(value = "setcookie")
+    public String TestSetCookieValue(@CookieValue("JSESSIONID")String cookie, Model model){
+        // 使用时候,还是要和cookie的具体属性相关联
+        // 其实这个都不需要任何返回的, 就是一个cookie的属性, 为了方便, 加上model, 传给前端显示
+        System.out.println("Cookie 的 JSESSIONID是: " + cookie);
+        model.addAttribute("cookieid123", "我是一个设置的cookie, 哈哈哈!哈哈😝!");
+        return "testparam";
+    }
+
+
+
 }
