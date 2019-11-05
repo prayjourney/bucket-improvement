@@ -34,9 +34,9 @@
     <form action="/requestmap/hellopost" method="post">
         username: <input type="text" name="username" value="Tom"/>
         <br>
-        email: <input type="text" name="email" value="tom@atguigu.com"/>
+        email   : <input type="text" name="email" value="tom@atguigu.com"/>
         <br>
-        age: <input type="text" name="age" value="12"/>
+        age     : <input type="text" name="age" value="12"/>
         <br>
         <input type="submit" value="Submit"/>
     </form>
@@ -59,11 +59,15 @@
     <br>
     <a href="/rest/hello2/z.g.y">你好, zgy!</a>
     <br>
+
+    <h2 class="text-danger">你们几个是测试参数和属性的几个测试</h2>
     <a href="/some/param?name=zhangsan&age=22&gender=lv">点击试验, 参数全</a>
     <br>
     <a href="/some/param?&gender=lv">点击试验, 没有必要的参数</a>
     <br>
     <a href="/some/head">点击试验, 观察header</a>
+    <br>
+    <a href="some/cookie">点击试验, 观察cookie</a>
     <br>
     <!-- Spring mvc可以级联复合的属性-->
     <form action="/mvc/pojo" method="post">
