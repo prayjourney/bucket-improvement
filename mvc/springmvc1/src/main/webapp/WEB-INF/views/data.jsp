@@ -8,6 +8,9 @@
 </head>
 <body>
     <h2 class="text-warning">Model方式拿数据 : ${requestScope.hello}</h2>
+    <!--
+        请求和响应的分野在那儿, 为什么我在此处应该是对于一个请求的响应, 但是我添加在model里面的值, 是要在requestScopes之中获取呢?
+    -->
     <h2 class="text-info">Map方式拿数据 : ${requestScope.你好}</h2>
     <h2 class="text-success">ModelMap方式拿数据 : ${what}</h2>
     <h2 class="text-danger">ModelAndView方式拿数据 : ${requestScope.ai}</h2>

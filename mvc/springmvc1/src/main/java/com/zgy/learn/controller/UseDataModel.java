@@ -17,6 +17,7 @@ import java.util.Map;
 @Controller
 @RequestMapping("data")
 public class UseDataModel {
+    // 请求和响应的分野在那儿, 为什么我在此处应该是对于一个请求的响应, 但是我添加在model里面的值, 是要在requestScopes之中获取呢?
     @RequestMapping("model")
     public String useModel(Model model){
         model.addAttribute("hello","hello-world");
