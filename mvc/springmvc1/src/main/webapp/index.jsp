@@ -117,6 +117,10 @@
     <%--<a class="text-success" href="/servlet/session">使用原生servlet api, 设置cookie</a>--%>
     <a class="text-success" href="servlet/session">使用原生servlet api, 设置cookie</a>
     <br>
-    <a class="text-success" href="/helloView">自定义的视图解析器, helloView, 按照名字来解析</a>
+    <a class="text-info" href="/helloView">自定义的视图解析器, helloView, 按照名字来解析</a>
+
+
+    <br>
+    <a class="text-danger" href="/redirectmvc">我是重定向视图</a>
 </body>
 </html>

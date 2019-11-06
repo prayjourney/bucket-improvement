@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
  * @Author: renjiaxin
- * @Description:
+ * @Description: 普通的转发和 重定向的方式
  * @Date: 2019-11-03 16:10
  * @Modified by:
  */
@@ -20,5 +20,11 @@ public class HelloMVC{
     public String hello() {
         System.out.println("hello spring mvc!");
         return "success";
+    }
+
+    @RequestMapping(value ="redirectmvc")
+    public String hellomvc() {
+        System.out.println("hello spring mvc! redirectmvc");
+        return "redirect:/success.jsp";
     }
 }
