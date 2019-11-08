@@ -47,6 +47,11 @@
 			</c:forEach>
 		</table>
 	</c:if>
+    <br>
+    <br>
+    <a  class="font-menu-button" href="emp">add new employee</a>
+
+
 	
 </body>
 </html>
