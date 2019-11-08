@@ -67,18 +67,20 @@ public class EmployeeHandler {
     /**
      * 完成员工的新创建, get的这个方法只是出现一个页面而已
      * @return list页面
+     * // /emp也不行
      */
     @RequestMapping(value = "/emp", method = RequestMethod.POST)
     public String save(Employee employee) {
         employeeDao.save(employee);
         // 重定向到显示所有员工的页面, 重定向有问题!!!为何呢?
-         return "redirect:/emps";
+        // return "redirect:/emps";
         // todo: 类型有问题? 加入失败!
-        //return "list";
+        return "list";
     }
 
     @RequestMapping(value = "/emp/{id}", method = RequestMethod.DELETE)
     public String delete(@PathVariable("id") Integer id){
-        return  "redirect:/emps";
+        return "list";
+        //return  "redirect:/emps";
     }
 }
