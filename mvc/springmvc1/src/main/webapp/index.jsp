@@ -117,10 +117,24 @@
     <%--<a class="text-success" href="/servlet/session">使用原生servlet api, 设置cookie</a>--%>
     <a class="text-success" href="servlet/session">使用原生servlet api, 设置cookie</a>
     <br>
-    <a class="text-info" href="/helloView">自定义的视图解析器, helloView, 按照名字来解析</a>
+    <a class="text-info" href="helloView">自定义的视图解析器, helloView, 按照名字来解析</a>
 
 
     <br>
-    <a class="text-danger" href="/redirectmvc">我是重定向视图</a>
+    <a class="text-danger" href="redirectmvc">我是重定向视图</a>
+
+    <!-- 表单隐藏域, 用post来实现put方法 -->
+    <h3 class="text-danger">表单隐藏域</h3>
+    <br>
+    <form method="post" action="post2put/zhangsan">
+        <input type="hidden" name="_method" value="put">
+        <input type="submit"  value="表单隐藏域, 用post来实现put方法">
+    </form>
+    <!-- 表单隐藏域, 用post来实现put方法 -->
+    <br>
+    <form method="post" action="post2delete/2">
+        <input type="hidden" name="_method" value="delete">
+        <input type="submit"  value="表单隐藏域, 用post来实现delete方法">
+    </form>
 </body>
 </html>

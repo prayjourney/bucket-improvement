@@ -17,6 +17,16 @@
         <param-value>springmvc1</param-value>
     </context-param>
 
+    <!-- HiddenHttpMethodFilter 这个拦截器要在springDispatcherServlet之前 -->
+    <filter>
+        <filter-name>HiddenHttpMethodFilter</filter-name>
+        <filter-class>org.springframework.web.filter.HiddenHttpMethodFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>HiddenHttpMethodFilter</filter-name>
+        <!-- 在这个Servlet Dispatcher是上面起作用, 就我的理解, 就是url-pattern 上面的值是: /-->
+        <servlet-name>springDispatcherServlet</servlet-name>
+    </filter-mapping>
 
     <!-- 引入SpringMVC 的配置, 配置ispatcherServlet-->
     <servlet>
