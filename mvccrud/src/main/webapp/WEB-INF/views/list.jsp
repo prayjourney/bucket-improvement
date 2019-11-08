@@ -24,8 +24,13 @@
     <script src="../js/jquery-1.9.1.min.js" type="text/javascript"></script>
     <%--<script src="jquery-1.9.1.min.js" type="text/javascript"></script>--%>
     <script type="text/javascript">
-        $(function(){
-            alert("hello boy!")
+        // $(function(){
+        //     alert("hello boy!")
+        // })
+        $(".delete").click(function(){
+            var href =$(this).attr(href);
+            $("form").attr("action", href).submit();
+            return false;
         })
     </script>
 <body>
@@ -58,7 +63,8 @@
 					<td class="text-info">${emp.birth}</td>
 					<td class="text-success">${emp.salary}</td>
 					<td><a href="">Edit</a> </td>
-					<td><a href="">Delete</a> </td>
+                    <!-- 删除的方法 -->
+                    <td><a class="delete" href="emp/${emp.id}">Delete</a></td>
 				</tr>
 
 			</c:forEach>
@@ -67,6 +73,12 @@
     <br>
     <br>
     <a  class="font-menu-button" href="emp">add new employee</a>
+
+
+    <!-- 删除一个员工的操作 -->
+    <form action="" method="post">
+        <input type="hidden" name="_method" value="DELETE">
+    </form>
 
 
 	
