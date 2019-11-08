@@ -35,6 +35,8 @@
         <span class="text-info">Department:</span>
         <form:select path="department.id" items="${departments}" itemLabel="departmentName" itemValue="id" />
         <br>
+        <br>
+        <input type="submit" value="提交创建新员工!" class="text-success"/>
     </form:form>
 </body>
 </html>

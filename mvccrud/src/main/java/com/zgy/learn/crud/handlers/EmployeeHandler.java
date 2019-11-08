@@ -15,7 +15,7 @@ import java.util.Map;
 
 /**
  * @Author: renjiaxin
- * @Description:
+ * @Description: 添加新员工的页面
  * @Date: 2019-11-09 03:19
  * @Modified by:
  */
@@ -43,14 +43,16 @@ public class EmployeeHandler {
     /**
      * 添加一个新的员工
      *
-     * @param mp
-     * @return
+     * @param model model
+     * @return 创建新员工的一个页面
      */
     @RequestMapping(value = "emp", method = RequestMethod.GET)
     public String input(ModelMap model) {
         model.addAttribute("departments", departmentDao.getDepartments());
         // 用于表单的回显, 需要在form里面对应起来, 也就是modelAttribute属性, 默认是command,
         // 修改后就是一个model的名字, 此处是employee
+
+        // 此时, 并没有进行表单回显
         model.addAttribute("employee", new Employee());
         Map<String, String> mp = new HashMap<>();
         mp.put("0", "Male");
@@ -59,5 +61,17 @@ public class EmployeeHandler {
         // 表单的回显?
         return "input";
 
+    }
+
+    /**
+     * 完成员工的新创建, get的这个方法只是出现一个页面而已
+     * @return list页面
+     */
+    @RequestMapping(value = "emp", method = RequestMethod.POST)
+    public String save(Employee employee) {
+        employeeDao.save(employee);
+        // 重定向到显示所有员工的页面, 重定向有问题!!!为何呢?
+        // return "redirect:/emps";
+        return "list";
     }
 }
