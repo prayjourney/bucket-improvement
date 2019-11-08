@@ -21,7 +21,7 @@
     <module>netty</module>
     <module>dubbo</module>
     <module>jvm</module>
-    <module>springmvc</module>
+    <module>mvccrud</module>
     <module>mvc</module>
   </modules>
 
