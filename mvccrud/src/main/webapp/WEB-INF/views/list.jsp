@@ -20,26 +20,26 @@
 		<table border="1" cellpadding="10" cellspacing="0">
 			<!-- tr是一行, td是一个表格, th是表头的意思 -->
 			<tr>
-				<th>ID</th>
-				<th>Last Name</th>
-				<th>Email</th>
-				<th>Gender</th>
-				<th>Department</th>
-				<th>Birthday</th>
-				<th>Salary</th>
-				<th>Edit</th>
-				<th>Delete</th>
+				<th class="text-primary">ID</th>
+				<th class="text-danger">Last Name</th>
+				<th class="text-info">Email</th>
+				<th class="text-info">Gender</th>
+				<th class="text-info">Department</th>
+				<th class="text-info">Birthday</th>
+				<th class="text-success">Salary</th>
+				<th class="text-primary">Edit</th>
+				<th class="text-primary">Delete</th>
 			</tr>
 			<!-- 循环取值 -->
 			<c:forEach items="${requestScope.employees}" var="emp">
 				<tr>
-					<td>${emp.id}</td>
-					<td>${emp.lastName}</td>
-					<td>${emp.email}</td>
-					<td>${emp.gender == 0 ? 'Female' :'Male'}</td>
-					<td>${emp.department}</td>
-					<td>${emp.birth}</td>
-					<td>${emp.salary}</td>
+					<td class="text-primary">${emp.id}</td>
+					<td class="text-danger">${emp.lastName}</td>
+					<td class="text-info">${emp.email}</td>
+					<td class="text-info">${emp.gender == 0 ? 'Female' :'Male'}</td>
+					<td class="text-info">${emp.department}</td>
+					<td class="text-info">${emp.birth}</td>
+					<td class="text-success">${emp.salary}</td>
 					<td><a href="">Edit</a> </td>
 					<td><a href="">Delete</a> </td>
 				</tr>
