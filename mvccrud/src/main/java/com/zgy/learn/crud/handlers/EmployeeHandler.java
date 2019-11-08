@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -67,11 +68,17 @@ public class EmployeeHandler {
      * 完成员工的新创建, get的这个方法只是出现一个页面而已
      * @return list页面
      */
-    @RequestMapping(value = "emp", method = RequestMethod.POST)
+    @RequestMapping(value = "/emp", method = RequestMethod.POST)
     public String save(Employee employee) {
         employeeDao.save(employee);
         // 重定向到显示所有员工的页面, 重定向有问题!!!为何呢?
-        // return "redirect:/emps";
-        return "list";
+         return "redirect:/emps";
+        // todo: 类型有问题? 加入失败!
+        //return "list";
+    }
+
+    @RequestMapping(value = "/emp/{id}", method = RequestMethod.DELETE)
+    public String delete(@PathVariable("id") Integer id){
+        return  "redirect:/emps";
     }
 }
