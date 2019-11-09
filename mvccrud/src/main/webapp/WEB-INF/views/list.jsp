@@ -65,7 +65,7 @@
 					<td class="text-success">${emp.salary}</td>
 					<td><a href="">Edit</a> </td>
                     <!-- 删除的方法 -->
-                    <td><a class="delete" href="emp/${emp.id}">Delete</a></td>
+                    <td><a class="delete" href="${pageContext.request.contextPath}/emp/${emp.id}">Delete</a></td>
                     <%--<td><a class="delete" href="emp2/${emp.id}">Delete2</a></td>--%>
 					<%--"${pageContext.request.contextPath}/emp"--%>
                     <td><a class="delete" href="${pageContext.request.contextPath}/emp2/${emp.id}">Delete2</a></td>
@@ -76,7 +76,7 @@
 	</c:if>
     <br>
     <br>
-    <a  class="font-menu-button" href="emp">add new employee</a>
+    <a  class="font-menu-button" href="${pageContext.request.contextPath}/emp">add new employee</a>
 
 
 	<!-- 删除一个员工的操作, 这两种方式都是支持的! -->
