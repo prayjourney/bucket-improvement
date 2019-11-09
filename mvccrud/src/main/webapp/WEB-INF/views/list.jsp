@@ -51,6 +51,7 @@
 				<th class="text-success">Salary</th>
 				<th class="text-primary">Edit</th>
 				<th class="text-primary">Delete</th>
+				<th class="text-gray">Delete2[有问题]</th>
 			</tr>
 			<!-- 循环取值 -->
 			<c:forEach items="${requestScope.employees}" var="emp">
@@ -65,6 +66,7 @@
 					<td><a href="">Edit</a> </td>
                     <!-- 删除的方法 -->
                     <td><a class="delete" href="emp/${emp.id}">Delete</a></td>
+                    <td><a class="delete" href="emp2/${emp.id}">Delete2</a></td>
 				</tr>
 
 			</c:forEach>

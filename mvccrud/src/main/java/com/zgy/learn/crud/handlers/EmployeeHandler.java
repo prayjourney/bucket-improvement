@@ -93,6 +93,23 @@ public class EmployeeHandler {
         return  "redirect:/emps";
     }
 
+    /**
+     * 处理return list为空的问题
+     * @param id 员工的id
+     * @return 剩余员工的页面
+     */
+    @RequestMapping(value = "/emp2/{id}", method = RequestMethod.GET)
+    public String delete2(@PathVariable("id") Integer id, ModelMap mp){
+        employeeDao.delete(id);
+        // 删除完之后, 在获取一遍? 为啥我直接重定向就是okay的呢? 相当于是一个完整的请求?
+        // 这就是为了所谓的回显
+        // 但是这样, 会让我们的页面出现 http://localhost:8080/emp2/emp2/1004的情况, 这样就会
+        // 无法访问, 所以貌似还是直接重定向好一些啊
+        mp.put("employees", employeeDao.getAll());
+        return "list";
+        // return  "redirect:/emps";
+    }
+
 
     /**
      * 测试重定向
