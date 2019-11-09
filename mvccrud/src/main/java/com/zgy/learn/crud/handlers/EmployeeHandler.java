@@ -9,6 +9,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -68,7 +69,7 @@ public class EmployeeHandler {
      * @return list页面
      * // /emp也不行
      */
-    @RequestMapping(value = "/emp", method = RequestMethod.POST)
+    @RequestMapping(value = "emp")
     public String save(Employee employee) {
         employeeDao.save(employee);
         // 重定向到显示所有员工的页面, 重定向有问题!!!为何呢?

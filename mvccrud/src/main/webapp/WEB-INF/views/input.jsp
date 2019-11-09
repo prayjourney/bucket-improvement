@@ -22,7 +22,7 @@
         command 的表单 bean如果该属性值也不存在，则会发生错误。此处的对应的是employee
     -->
 
-    <form:form action="emp" method="post" modelAttribute="employee">
+    <form:form action="/emp" method="post" modelAttribute="employee">
         <form:hidden path="id"/>
         <input type="hidden" name="_method" value="PUT"/>
         <!-- path 属性对应 html 表单标签的 name 属性值 -->
