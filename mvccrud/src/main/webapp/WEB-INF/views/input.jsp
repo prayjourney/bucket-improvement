@@ -22,9 +22,18 @@
     -->
 
     <form:form action="${pageContext.request.contextPath}/emp" method="POST" modelAttribute="employee">
-        LastName:<form:input path="lastName"/>
 
+        <!-- path 属性对应 html 表单标签的 name 属性值 -->
+        <c:if test="${employee.id == null}">
+            <!-- Lastname不让修改 -->
+            <span class="text-danger">LastName:</span><form:input path="lastName"/>
+            <br>
+        </c:if>
 
+        <c:if test="${employee.id != null}">
+            <form:hidden path="id"/>
+            <input type="hidden" name="_method" value="PUT"/>
+        </c:if>
 
         <span class="text-info">Email:</span> <form:input path="email"/>
         <br>

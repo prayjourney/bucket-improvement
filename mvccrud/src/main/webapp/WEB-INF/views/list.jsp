@@ -63,7 +63,8 @@
 					<td class="text-info">${emp.department}</td>
 					<td class="text-info">${emp.birth}</td>
 					<td class="text-success">${emp.salary}</td>
-					<td><a href="">Edit</a> </td>
+					<!-- 修改员工 -->
+					<td><a href="${pageContext.request.contextPath}/emp/${id}">Edit</a> </td>
                     <!-- 删除的方法 -->
                     <td><a class="delete" href="${pageContext.request.contextPath}/emp/${emp.id}">Delete</a></td>
                     <%--<td><a class="delete" href="emp2/${emp.id}">Delete2</a></td>--%>
@@ -81,8 +82,8 @@
 
 	<!-- 删除一个员工的操作, 这两种方式都是支持的! -->
     <form action="" method="post">
-        <%--<input type="hidden" name="_method" value="DTEELE">--%>
-        <input type="hidden" name="_method" value="GET">
+        <%--<input type="hidden" name="_method" value="GET">--%>
+        <input type="hidden" name="_method" value="DELETE">
     </form>
 
 
