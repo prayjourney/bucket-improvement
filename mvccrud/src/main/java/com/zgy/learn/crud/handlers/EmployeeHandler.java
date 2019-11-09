@@ -6,7 +6,6 @@ import com.zgy.learn.crud.entities.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -73,17 +72,27 @@ public class EmployeeHandler {
     public String save(Employee employee) {
         employeeDao.save(employee);
         // 重定向到显示所有员工的页面, 重定向有问题!!!为何呢?
-        // return "redirect:/emps";
+        return "redirect:/emps";
         // todo: 类型有问题? 加入失败!
-        return "list";
+        // return "list";
     }
 
-    @RequestMapping(value = "/emp/{id}", method = RequestMethod.DELETE)
+    /**
+     * 说明: 此处是要删除我们的数据, 使用restful风格, 但是如果使用了RequestMethod.GET, 则提示不支持
+     *      我们需要使用RequestMethod.GET 来代替, 则可以实现
+     *      原本的表头: @RequestMapping(value = "/emp/{id}", method = RequestMethod.POST)
+     *      https://blog.csdn.net/qq_33522312/article/details/90439730
+     * @param id 员工的id
+     * @return 剩余员工的页面
+     */
+    @RequestMapping(value = "/emp/{id}", method = RequestMethod.GET)
     public String delete(@PathVariable("id") Integer id){
         employeeDao.delete(id);
-        //return "list";
+        // 这样进入的一个页面是空的!
+        // return "list";
         return  "redirect:/emps";
     }
+
 
     /**
      * 测试重定向

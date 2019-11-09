@@ -75,9 +75,10 @@
     <a  class="font-menu-button" href="emp">add new employee</a>
 
 
-    <!-- 删除一个员工的操作 -->
+    <!-- 删除一个员工的操作, 这两种方式都是支持的! -->
     <form action="" method="post">
-        <input type="hidden" name="_method" value="DELETE">
+        <%--<input type="hidden" name="_method" value="DTEELE">--%>
+        <input type="hidden" name="_method" value="GET">
     </form>
 
 
