@@ -23,6 +23,8 @@
     -->
 
     <form:form action="emp" method="post" modelAttribute="employee">
+        <form:hidden path="id"/>
+        <input type="hidden" name="_method" value="PUT"/>
         <!-- path 属性对应 html 表单标签的 name 属性值 -->
         <span class="text-danger">LastName:</span><form:input path="lastName"/>
         <br>

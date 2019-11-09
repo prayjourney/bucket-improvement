@@ -107,6 +107,8 @@ public class EmployeeHandler {
         // 无法访问, 所以貌似还是直接重定向好一些啊
         mp.put("employees", employeeDao.getAll());
         return "list";
+        // <%--"${pageContext.request.contextPath}/emp"--%>
+        // https://blog.csdn.net/japson_iot/article/details/79660293 解决这个问题
         // return  "redirect:/emps";
     }
 
