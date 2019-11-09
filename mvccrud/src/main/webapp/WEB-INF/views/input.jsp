@@ -1,6 +1,5 @@
-<%@ page import="java.util.Map" %>
-<%@ page import="java.util.HashMap" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -22,12 +21,11 @@
         command 的表单 bean如果该属性值也不存在，则会发生错误。此处的对应的是employee
     -->
 
-    <form:form action="/emp" method="post" modelAttribute="employee">
-        <form:hidden path="id"/>
-        <input type="hidden" name="_method" value="PUT"/>
-        <!-- path 属性对应 html 表单标签的 name 属性值 -->
-        <span class="text-danger">LastName:</span><form:input path="lastName"/>
-        <br>
+    <form:form action="${pageContext.request.contextPath}/emp" method="POST" modelAttribute="employee">
+        LastName:<form:input path="lastName"/>
+
+
+
         <span class="text-info">Email:</span> <form:input path="email"/>
         <br>
         <span class="text-info">Gender:</span> <form:radiobuttons path="gender" items="${requestScope.genders}"/>

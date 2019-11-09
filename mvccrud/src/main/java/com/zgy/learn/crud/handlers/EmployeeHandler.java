@@ -69,7 +69,7 @@ public class EmployeeHandler {
      * @return list页面
      * // /emp也不行
      */
-    @RequestMapping(value = "emp")
+    @RequestMapping(value = "emp", method = RequestMethod.POST)
     public String save(Employee employee) {
         employeeDao.save(employee);
         // 重定向到显示所有员工的页面, 重定向有问题!!!为何呢?
@@ -122,6 +122,13 @@ public class EmployeeHandler {
     public String testRedirect(){
         System.out.println("为了重定向而存在的一个方法!");
         return "redirect:/emps";
+    }
+
+    @RequestMapping(value = "emp/{id}", method = RequestMethod.GET)
+    public String input(@PathVariable("id") Integer id, Map<String, Object> map){
+        map.put("employee", employeeDao.get(id));
+        map.put("departments", departmentDao.getDepartments());
+        return "input";
     }
 
 }
