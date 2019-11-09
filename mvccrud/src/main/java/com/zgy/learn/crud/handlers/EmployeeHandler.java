@@ -80,7 +80,19 @@ public class EmployeeHandler {
 
     @RequestMapping(value = "/emp/{id}", method = RequestMethod.DELETE)
     public String delete(@PathVariable("id") Integer id){
-        return "list";
-        //return  "redirect:/emps";
+        employeeDao.delete(id);
+        //return "list";
+        return  "redirect:/emps";
     }
+
+    /**
+     * 测试重定向
+     * @return 测试重定向
+     */
+    @RequestMapping(value = "/testredirect", method = RequestMethod.GET)
+    public String testRedirect(){
+        System.out.println("为了重定向而存在的一个方法!");
+        return "redirect:/emps";
+    }
+
 }
