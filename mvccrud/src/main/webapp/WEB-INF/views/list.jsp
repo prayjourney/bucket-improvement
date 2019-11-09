@@ -21,7 +21,7 @@
     -->
 
     <!-- 这两种都可以找到这个文件, 但是在web页面上面没有弹窗, 也无法下载我们的js文件 -->
-    <script src="../js/jquery-1.9.1.min.js" type="text/javascript"></script>
+    <script src="${pageContext.request.contextPath}/js/jquery-1.9.1.min.js" type="text/javascript"></script>
     <%--<script src="jquery-1.9.1.min.js" type="text/javascript"></script>--%>
     <script type="text/javascript">
         // $(function(){
