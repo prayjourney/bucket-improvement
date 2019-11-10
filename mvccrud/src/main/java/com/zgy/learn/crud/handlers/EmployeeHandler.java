@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -126,18 +125,19 @@ public class EmployeeHandler {
         return "redirect:/emps";
     }
 
+//  重复了, 所以报错了
     /**
      * 修改员工信息, 可以表单回显
      * @param id id
      * @param map map
      * @return input
      */
-    @RequestMapping(value = "emp/{id}", method = RequestMethod.GET)
-    public String input(@PathVariable("id") Integer id, Map<String, Object> map){
-        map.put("employee", employeeDao.get(id));
-        map.put("departments", departmentDao.getDepartments());
-        return "input";
-    }
+//    @RequestMapping(value = "emp/{id}", method = RequestMethod.GET)
+//    public String input(@PathVariable("id") Integer id, Map<String, Object> map){
+//        map.put("employee", employeeDao.get(id));
+//        map.put("departments", departmentDao.getDepartments());
+//        return "input";
+//    }
 
     @ModelAttribute
     public void getEmployee(@RequestParam(value="id",required=false) Integer id,
