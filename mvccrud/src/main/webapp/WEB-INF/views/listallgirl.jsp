@@ -38,5 +38,13 @@
         </table>
     </c:if>
 
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <a href="/girl/addgirl" class="text-info">添加一个女孩</a>
+
 </body>
 </html>

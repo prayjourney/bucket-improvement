@@ -46,7 +46,8 @@ public class GirlDao {
      * @return
      */
     public int addGirl(String name, int age, String size) {
-        girls.put(initId, new Girl(name, age, size));
+        Girl g = new Girl(name, age, size);
+        girls.put(initId, g);
         int id = initId;
         initId++;
         return id;
