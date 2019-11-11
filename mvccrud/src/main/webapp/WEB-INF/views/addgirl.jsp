@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-ß
+
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -18,6 +18,8 @@
     <span class="text-info">姓名: </span><input type="text" name="name">
     <span class="text-info">年龄: </span><input type="text" name="age">
     <span class="text-success">罩杯: </span><input type="text" name="size">
+    <span class="text-success">生日: </span><input type="text" name="birth">
+    <span class="text-success">工资: </span><input type="text" name="salary">
     <input type="submit" value="提交啊!">
 </form>
 

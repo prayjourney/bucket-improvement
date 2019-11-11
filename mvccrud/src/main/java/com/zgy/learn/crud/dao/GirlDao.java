@@ -3,7 +3,10 @@ package com.zgy.learn.crud.dao;
 import com.zgy.learn.crud.entities.Girl;
 import org.springframework.stereotype.Repository;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Collection;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -17,6 +20,7 @@ import java.util.Map;
 public class GirlDao {
     private static Map<Integer, Girl> girls = null;
     private static int initId = 6;
+    private static SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 
     static {
         girls = new HashMap<>();
@@ -44,8 +48,11 @@ public class GirlDao {
      * @param size
      * @return
      */
-    public int addGirl(String name, int age, String size) {
+    public int addGirl(String name, Integer age, String size, String birth, Float salary) throws ParseException {
         Girl g = new Girl(name, age, size);
+        Date d = sdf.parse(birth);
+        g.setBirth(d);
+        g.setSalary(salary);
         girls.put(initId, g);
         int id = initId;
         initId++;

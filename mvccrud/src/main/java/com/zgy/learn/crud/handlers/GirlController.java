@@ -1,13 +1,18 @@
 package com.zgy.learn.crud.handlers;
 
 import com.zgy.learn.crud.dao.GirlDao;
-import com.zgy.learn.crud.entities.Girl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Map;
 
 /**
@@ -19,6 +24,7 @@ import java.util.Map;
 @Controller
 @RequestMapping(value = "girl")
 public class GirlController {
+    private static SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 
     @Autowired
     GirlDao girlDao;
@@ -43,14 +49,21 @@ public class GirlController {
     }
 
 
-    // 添加一个女孩
+//    // 添加一个女孩
+//    @RequestMapping(value = "addgirl", method = RequestMethod.POST)
+//    // 这些name age size为空 ,这是因为form之中没有给我们的入参传值,
+//    // form 之中必须要加上name属性, 这个name属性要和我们POJO之中的字段名称对应起来, 否则就会报错!
+//    public String addGirl(String name, Integer age, String size){
+//        girlDao.addGirl(name, age, size);
+//        // 下面的这个写死的方式, 必然添加成功一个girl
+//        // girlDao.addGirl("12312312", 22, "E");
+//        System.out.println("add...");
+//        return "redirect:/girl/all";
+//    }
+    // 添加一个女孩, 加入了数值的验证
     @RequestMapping(value = "addgirl", method = RequestMethod.POST)
-    // 这些name age size为空 ,这是因为form之中没有给我们的入参传值,
-    // form 之中必须要加上name属性, 这个name属性要和我们POJO之中的字段名称对应起来, 否则就会报错!
-    public String addGirl(String name, Integer age, String size){
-        girlDao.addGirl(name, age, size);
-        // 下面的这个写死的方式, 必然添加成功一个girl
-        // girlDao.addGirl("12312312", 22, "E");
+    public String addGirl(String name, Integer age, String size, String birth, Float salary) throws ParseException {
+        girlDao.addGirl(name, age, size, birth, salary);
         System.out.println("add...");
         return "redirect:/girl/all";
     }
@@ -61,6 +74,13 @@ public class GirlController {
         girlDao.deleteGirl(id);
         System.out.println("delete...");
         return "redirect:/girl/all";
+    }
+
+    @InitBinder
+    public void init(WebDataBinder webDataBinder){
+        // 指定什么格式，前台传什么格式
+        sdf.setLenient(false);
+        webDataBinder.registerCustomEditor(Date.class, new CustomDateEditor(sdf,false));
     }
 
 

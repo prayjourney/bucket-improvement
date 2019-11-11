@@ -1,5 +1,10 @@
 package com.zgy.learn.crud.entities;
 
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.NumberFormat;
+
+import java.util.Date;
+
 /**
  * @Author: renjiaxin
  * @Description: Girl
@@ -12,6 +17,14 @@ public class Girl {
     // Integer好处理一点, 可以处理空的值
     private Integer age;
     private String size;
+
+    // 格式化
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date  birth;
+    // 格式化
+    @NumberFormat(pattern = "#,###,###,###.#")
+    private Float salary;
+    
     public Girl(){
 
     }
@@ -45,12 +58,30 @@ public class Girl {
         this.size = size;
     }
 
+    public Date getBirth() {
+        return birth;
+    }
+
+    public void setBirth(Date birth) {
+        this.birth = birth;
+    }
+
+    public Float getSalary() {
+        return salary;
+    }
+
+    public void setSalary(Float salary) {
+        this.salary = salary;
+    }
+
     @Override
     public String toString() {
         return "Girl{" +
                 "name='" + name + '\'' +
                 ", age=" + age +
                 ", size='" + size + '\'' +
+                ", birth=" + birth +
+                ", salary=" + salary +
                 '}';
     }
 }
