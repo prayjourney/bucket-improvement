@@ -56,4 +56,13 @@ public class GirlController {
     }
 
 
+    @RequestMapping(value = "deletegirl", method = RequestMethod.DELETE)
+    public String deleteGirl(Integer id){
+        girlDao.deleteGirl(id);
+        System.out.println("delete...");
+        return "redirect:/girl/all";
+    }
+
+
+
 }

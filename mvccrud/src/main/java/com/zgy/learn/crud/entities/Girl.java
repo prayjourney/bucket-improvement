@@ -15,13 +15,13 @@ public class Girl {
     public Girl(){
 
     }
-    public Girl(String name, int age, String size){
+    public Girl(String name, Integer age, String size){
         this.age=age;
         this.name=name;
         this.size=size;
     }
 
-    public void setAge(int age) {
+    public void setAge(Integer age) {
         this.age = age;
     }
 
