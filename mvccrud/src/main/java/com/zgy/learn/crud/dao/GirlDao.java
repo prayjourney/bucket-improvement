@@ -3,7 +3,6 @@ package com.zgy.learn.crud.dao;
 import com.zgy.learn.crud.entities.Girl;
 import org.springframework.stereotype.Repository;
 
-import javax.annotation.Resource;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
@@ -17,7 +16,7 @@ import java.util.Map;
 @Repository
 public class GirlDao {
     private static Map<Integer, Girl> girls = null;
-    private int initId = 6;
+    private static int initId = 6;
 
     static {
         girls = new HashMap<>();
