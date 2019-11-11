@@ -30,6 +30,8 @@
                 <th class="text-info">姓名</th>
                 <th class="text-info">年龄</th>
                 <th class="text-primary">罩杯</th>
+                <th class="text-primary">生日</th>
+                <th class="text-primary">工资</th>
                 <th class="text-gray">Add</th>
                 <th class="text-gray">Update</th>
                 <th class="text-gray">Delete</th>
@@ -39,6 +41,8 @@
                     <td class="text-info">${girl.name}</td>
                     <td class="text-info">${girl.age}</td>
                     <td class="text-primary">${girl.size}</td>
+                    <td class="text-primary">${girl.birth.toString()}</td>
+                    <td class="text-primary">${girl.salary}</td>
                     <th class="text-gray"><a href="/girl/addgirl">Add</a></th>
                     <th class="text-gray"><a href="">Update</a></th>
                     <th class="text-gray"><a href="/girl/deletegirl?id=${id}">Delete</a></th>
