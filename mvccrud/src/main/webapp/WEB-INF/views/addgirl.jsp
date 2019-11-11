@@ -14,9 +14,10 @@
 <body>
 <h2 class="text-danger">添加一个女孩</h2>
 <form action="/girl/addgirl" method="post">
-    <span class="text-info">姓名: </span><input type="text">
-    <span class="text-info">年龄: </span><input type="text">
-    <span class="text-success">罩杯: </span><input type="text">
+    <!-- form 之中必须要加上name属性, 这个name属性要和我们POJO之中的字段名称对应起来, 否则就会报错! -->
+    <span class="text-info">姓名: </span><input type="text" name="name">
+    <span class="text-info">年龄: </span><input type="text" name="age">
+    <span class="text-success">罩杯: </span><input type="text" name="size">
     <input type="submit" value="提交啊!">
 </form>
 
