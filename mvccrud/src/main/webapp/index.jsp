@@ -13,6 +13,6 @@
     <a href="${pageContext.request.contextPath}/testredirect" class="text-danger">我是为了测试重定向而从在的!</a>
 
     <br>
-    <a href ="${pageContext.request.contextPath}/girl/all" class="text-success">查看所有的姑娘</a>
+    <a href ="${pageContext.request.contextPath}/girl/all" class="text-success">管理所有的姑娘</a>
 </body>
 </html>

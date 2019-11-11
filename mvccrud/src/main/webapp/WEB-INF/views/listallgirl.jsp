@@ -10,6 +10,15 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <title>所有的姑娘</title>
+
+
+    <script type="text/javascript">
+        $(".delete").click(function(){
+            var href =$(this).attr(href);
+            $("form").attr("action", href).submit();
+            return false;
+        })
+    </script>
 </head>
 <body>
     <c:if test="${allgirl.size() <= 0}">
@@ -30,9 +39,9 @@
                     <td class="text-info">${girl.name}</td>
                     <td class="text-info">${girl.age}</td>
                     <td class="text-primary">${girl.size}</td>
-                    <th class="text-gray"><a href="">Add</a></th>
+                    <th class="text-gray"><a href="/girl/addgirl">Add</a></th>
                     <th class="text-gray"><a href="">Update</a></th>
-                    <th class="text-gray"><a href="">Delete</a></th>
+                    <th class="text-gray"><a href="/girl/deletegirl?id=${id}">Delete</a></th>
                 </tr>
             </c:forEach>
         </table>
@@ -45,6 +54,9 @@
     <br>
     <br>
     <a href="/girl/addgirl" class="text-info">添加一个女孩</a>
+    <form action="/girl/deletegirl" method="post">
+        <input type="hidden" name="_method" value="DELETE">
+    </form>
 
 </body>
 </html>
