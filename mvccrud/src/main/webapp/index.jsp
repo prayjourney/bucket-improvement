@@ -6,13 +6,17 @@
     <!-- Optional JavaScript -->
     <title> 首页啊, Crud </title>
 </head>
-<body>
-    <h2 class="text-primary">H首页啊, Crud !</h2>
-    <a href="emps" class="text-info">List all emps!</a>
-    <br>
-    <a href="${pageContext.request.contextPath}/testredirect" class="text-danger">我是为了测试重定向而从在的!</a>
+    <body>
+        <h2 class="text-primary">H首页啊, Crud !</h2>
+        <a href="emps" class="text-info">List all emps!</a>
+        <br>
+        <a href="${pageContext.request.contextPath}/testredirect" class="text-danger">我是为了测试重定向而从在的!</a>
 
-    <br>
-    <a href ="${pageContext.request.contextPath}/girl/all" class="text-success">管理所有的姑娘</a>
-</body>
+        <br>
+        <a href ="${pageContext.request.contextPath}/girl/all" class="text-success">管理所有的姑娘</a>
+
+
+        <br>
+        <a href ="${pageContext.request.contextPath}/student/all" class="text-info">管理所有的学生, HHa哈哈</a>
+    </body>
 </html>

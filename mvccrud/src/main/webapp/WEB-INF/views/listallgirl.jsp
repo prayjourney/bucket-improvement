@@ -21,7 +21,7 @@
     </script>
 </head>
 <body>
-    <c:if test="${allgirl.size() <= 0}">
+    <c:if test="${allgirl <= 0}">
         <h3 class="text-info">今晚没有姑娘了!</h3>
     </c:if>
     <c:if test="${allgirl.size() >0}">
