@@ -1,8 +1,10 @@
 package com.zgy.learn.crud.entities;
 
+import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.NumberFormat;
 
+import javax.validation.constraints.Past;
 import java.util.Date;
 
 /**
@@ -12,13 +14,16 @@ import java.util.Date;
  * @Modified by:
  */
 public class Girl {
+    // 数据校验, 不能为空
+    @NotEmpty
     private String name;
     // private int age;
     // Integer好处理一点, 可以处理空的值
     private Integer age;
     private String size;
 
-    // 格式化
+    // 数据校验, 是当前之前的一个时间, 格式化
+    @Past
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date  birth;
     // 格式化

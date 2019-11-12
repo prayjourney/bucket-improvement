@@ -48,9 +48,14 @@ public class GirlDao {
      * @param size
      * @return
      */
-    public int addGirl(String name, Integer age, String size, String birth, Float salary) throws ParseException {
+    public int addGirl(String name, Integer age, String size, String birth, Float salary) {
         Girl g = new Girl(name, age, size);
-        Date d = sdf.parse(birth);
+        Date d = null;
+        try {
+            d = sdf.parse(birth);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
         g.setBirth(d);
         g.setSalary(salary);
         girls.put(initId, g);

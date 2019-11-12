@@ -1,6 +1,7 @@
 package com.zgy.learn.crud.handlers;
 
 import com.zgy.learn.crud.dao.GirlDao;
+import com.zgy.learn.crud.entities.Girl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import javax.validation.Valid;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -65,19 +67,26 @@ public class GirlController {
     // 添加一个女孩, 加入了数值的验证
     // BindingResult来捕获转换错误的消息, 错误的信息保存在BindingResult之中
     @RequestMapping(value = "addgirl", method = RequestMethod.POST)
-    public String addGirl(String name, Integer age, String size, String birth, Float salary, BindingResult result)
-            throws ParseException {
+    public String addGirl(String name, Integer age, String size, String birth, Float salary){
         girlDao.addGirl(name, age, size, birth, salary);
         System.out.println("add...");
-        // BindingResult来捕获转换错误的消息
-        if (result.getErrorCount()>0){
-            System.out.println("出错了...");
-            for (FieldError error: result.getFieldErrors()) {
-                System.out.println(error.getField() +" : " + error.getDefaultMessage());
-            }
-        }
         return "redirect:/girl/all";
     }
+
+
+//    @RequestMapping(value = "addgirl", method = RequestMethod.POST)
+//    public String addGirl2(@Valid Girl girl, BindingResult result){
+//        girlDao.addGirl(girl.getName(), girl.getAge(), girl.getSize(),girl.getBirth().toString(), girl.getSalary());
+//        System.out.println("add...");
+//        // BindingResult来捕获转换错误的消息
+//        if (result.getErrorCount()>0){
+//            System.out.println("出错了...");
+//            for (FieldError error: result.getFieldErrors()) {
+//                System.out.println(error.getField() +" : " + error.getDefaultMessage());
+//            }
+//        }
+//        return "redirect:/girl/all";
+//    }
 
 
     @RequestMapping(value = "deletegirl", method = RequestMethod.DELETE)
