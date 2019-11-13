@@ -45,7 +45,7 @@
                         <%--<td class="text-danger">${stu.birth}</td>--%>
                         <td class="text-danger">${stu.birthStr}</td>
                         <td><a href="/student/addstudent" class="btn btn-success">Add</a></td>
-                        <td><a href="" class="btn btn-info">Update</a></td>
+                        <td><a href="/student/deletestudent" class="btn btn-info">Update</a></td>
                         <td><a href="" class="btn btn-danger">Delete</a></td>
                     </tr>
                 </c:forEach>
@@ -62,4 +62,10 @@
 
     </body>
     <a class="text-success" href="${pageContext.request.contextPath}/student/addstudent">添加一个学生</a>
+    <!-- 如果此时, 选择的某一行的数据, 直接带着这个ModelAttribute, 那么久直接删除成功了!!! -->
+    <form:form action="${pageContext.request.contextPath}/student/deletestudent" modelAttribute="student" method="post">
+        <form:hidden path="id" id="_id"></form:hidden>
+        用户名<form:input path="name"/>
+        <input type="submit" value="ti">
+    </form:form>
 </html>

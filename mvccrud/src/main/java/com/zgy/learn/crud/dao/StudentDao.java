@@ -49,11 +49,13 @@ public class StudentDao {
     }
 
     // 移除一个学生
-    public void removeStudent(Integer id) {
+    public int removeStudent(Integer id) {
         if (null == students.get(id)) {
             System.out.println("没有学生了");
+            return 0;
         } else {
             students.remove("id");
+            return 1;
         }
     }
 
@@ -65,5 +67,9 @@ public class StudentDao {
     // 获得一个学生
     public Student getStudent(Integer id) {
         return students.get(id);
+    }
+
+    public static Map<Integer, Student> getMapStudents() {
+        return students;
     }
 }
