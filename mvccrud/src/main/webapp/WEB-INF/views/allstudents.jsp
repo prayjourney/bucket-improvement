@@ -44,7 +44,7 @@
                         <td class="text-primary">${stu.phoneNumber}</td>
                         <%--<td class="text-danger">${stu.birth}</td>--%>
                         <td class="text-danger">${stu.birthStr}</td>
-                        <td class="text-gray">Add</td>
+                        <td class="text-gray"><a href="/student/addstudent">Add</a> </td>
                         <td class="text-gray">Update</td>
                         <td class="text-gray">Delete</td>
                     </tr>
