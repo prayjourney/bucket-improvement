@@ -15,6 +15,9 @@ import java.util.Date;
 @Data
 @AllArgsConstructor
 public class Student {
+    public Student(){
+    }
+    private  Integer id;
     private String name;
     private Integer age;
     private String gender;
@@ -22,6 +25,7 @@ public class Student {
     private String gradeName;
     private String email;
     private String phoneNumber;
-    private LocalDate birth;
+    // private LocalDate birth;
+    private String birthStr;
 
 }
