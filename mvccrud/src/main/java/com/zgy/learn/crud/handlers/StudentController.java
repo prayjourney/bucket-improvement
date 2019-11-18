@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
 
 import java.util.Map;
 
@@ -31,12 +30,12 @@ public class StudentController {
         return "allstudents";
     }
 
-//    @ModelAttribute
-//    public void addNewStudent(Integer id, Map<String, Object> map){
-//        if(id != null){
-//            map.put("student",  new Student());
-//        }
-//    }
+    @ModelAttribute
+    public void addNewStudent(Integer id, Map<String, Object> map){
+        if(id != null){
+            map.put("student",  new Student());
+        }
+    }
 
 
     // 新建的一个student, 用来装form表单里面组装好的对象
@@ -47,11 +46,13 @@ public class StudentController {
     }
 
 
+    // ModelAttribute方法是在所有的Controller之中的方法之前运行的, 所以此处就会需要一个ID, 而我们没有id, 那就会报错的!
     // 返回一个已经有了值得对象
-     @ModelAttribute
+    /*@ModelAttribute
      public Student upOrDeleteStudent(@RequestParam Integer id) {
         return studentDao.getMapStudents().get(id);
     }
+    */
 
     @RequestMapping("addstudent")
     public String addStudent() {

@@ -12,6 +12,22 @@
               integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
               crossorigin="anonymous">
         <title>使用Spring form来列举出所有的学生</title>
+        <!-- 如何获取我们表格之中的某一td的值呢? 并将其传送给我们的请求列表 -->
+        <!-- 在表格的某一行点击更新或者删除, 获取改行的id / 第几行 -->
+        <script src="${pageContext.request.contextPath}/js/jquery-1.9.1.min.js" type="text/javascript"></script>
+        <script type="text/javascript">
+            var $studenttable = $("#table-students").click(function () {
+                // 获取表格table的行
+                $studenttable.current
+                // 获取改行的id
+                // 调整url
+                var href =$(this).attr(href);
+                $("form").attr("action", href).submit();
+                return false;
+
+
+            });
+        </script>
     </head>
     <body>
         <h2 class="text-danger">使用Spring form来列举出所有的学生</h2>
@@ -19,8 +35,9 @@
             <h3 class="text-info">没有一个学生了!</h3>
         </c:if>
         <c:if test="${students.size() >0}">
-            <table border="1" cellpadding="10" cellspacing="0">
+            <table border="1" cellpadding="10" cellspacing="0" class="mystudent" id="table-students">
                 <tr>
+                    <th class="text-info">ID</th>
                     <th class="text-info">姓名</th>
                     <th class="text-info">年龄</th>
                     <th class="text-info">性别</th>
@@ -35,6 +52,7 @@
                 </tr>
                 <c:forEach items="${students}" var="stu">
                     <tr>
+                        <td class="text-danger">${stu.id}</td>
                         <td class="text-info">${stu.name}</td>
                         <td class="text-info">${stu.age}</td>
                         <td class="text-info">${stu.gender}</td>
@@ -45,7 +63,7 @@
                         <%--<td class="text-danger">${stu.birth}</td>--%>
                         <td class="text-danger">${stu.birthStr}</td>
                         <td><a href="/student/addstudent" class="btn btn-success">Add</a></td>
-                        <td><a href="/student/deletestudent" class="btn btn-info">Update</a></td>
+                        <td><a href="/student/deletestudent?id=${id}" class="btn btn-info">Update</a></td>
                         <td><a href="" class="btn btn-danger">Delete</a></td>
                     </tr>
                 </c:forEach>

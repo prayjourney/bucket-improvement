@@ -29,7 +29,7 @@ public class Girl {
     // 格式化
     @NumberFormat(pattern = "#,###,###,###.#")
     private Float salary;
-    
+
     public Girl(){
 
     }
