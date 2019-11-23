@@ -26,5 +26,9 @@
         <form action="${pageContext.request.contextPath}/upload" method="post" enctype="multipart/form-data">
             <input class="btn-info" type="file" name="file"><input class="btn-primary" type="submit" value="submit">
         </form>
+
+        <!-- 返回json数据-->
+        <br>
+        <a href ="${pageContext.request.contextPath}/monkeyjson/2" class="text-primary">返回json数据</a>
     </body>
 </html>
