@@ -35,7 +35,16 @@
 	 -->
 	<mvc:resources mapping="/**" location="WEB-INF/js/"/>
 
-	<!-- 开启注解模式 -->
-	<mvc:annotation-driven/>
+	<!-- 开启注解模式, 外加数据的转化 -->
+	<mvc:annotation-driven conversion-service="cv"/>
+
+	<!-- 配置数据的转换器 -->
+	<bean id="cv" class="org.springframework.context.support.ConversionServiceFactoryBean">
+		<property name="converters">
+			<set>
+				<ref bean="animalCoverter"/>
+			</set>
+		</property>
+	</bean>
 
 </beans>

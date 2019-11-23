@@ -14,19 +14,27 @@
         <title>使用Spring form来列举出所有的学生</title>
         <!-- 如何获取我们表格之中的某一td的值呢? 并将其传送给我们的请求列表 -->
         <!-- 在表格的某一行点击更新或者删除, 获取改行的id / 第几行 -->
-        <script src="${pageContext.request.contextPath}/js/jquery-1.9.1.min.js" type="text/javascript"></script>
+        <script src="${pageContext.request.contextPath}/jquery-1.9.1.min.js" type="text/javascript"></script>
         <script type="text/javascript">
-            var $studenttable = $("#table-students").click(function () {
-                // 获取表格table的行
-                $studenttable.current
-                // 获取改行的id
-                // 调整url
-                var href =$(this).attr(href);
+            //var $studenttable = $("#table-students").click(function () {
+            // 获取表格table的行
+            // 获取改行的id
+            // 调整url
+            //});
+            // alert("hello")
+
+            // 测试用的js代码, 如下可以打印的话, 就表示是可以的
+            $(function () {
+                alert("123")
+            });
+            $(".delete").click(function () {
+                var href = $(this).attr("href");
+                alert(this.id);
+                alert(href);
                 $("form").attr("action", href).submit();
                 return false;
+            })
 
-
-            });
         </script>
     </head>
     <body>
@@ -60,11 +68,13 @@
                         <td class="text-info">${stu.gradeName}</td>
                         <td class="text-primary">${stu.email}</td>
                         <td class="text-primary">${stu.phoneNumber}</td>
-                        <%--<td class="text-danger">${stu.birth}</td>--%>
+                            <%--<td class="text-danger">${stu.birth}</td>--%>
                         <td class="text-danger">${stu.birthStr}</td>
                         <td><a href="/student/addstudent" class="btn btn-success">Add</a></td>
-                        <td><a href="/student/deletestudent?id=${id}" class="btn btn-info">Update</a></td>
-                        <td><a href="" class="btn btn-danger">Delete</a></td>
+                        <td class="update"><a href="/student/deletestudent" class="btn btn-info">Update</a></td>
+                            <%--<td><a href="/student/deletestudent" class="btn btn-danger">Delete</a></td>--%>
+                            <%--<td class="delete"><a href="/student/deletestudent" class="btn btn-danger">Delete</a></td>--%>
+                        <td><a href="/student/deletestudent/${ul.value.id}" class="delete btn btn-danger">Delete</a></td>
                     </tr>
                 </c:forEach>
             </table>
@@ -80,10 +90,17 @@
 
     </body>
     <a class="text-success" href="${pageContext.request.contextPath}/student/addstudent">添加一个学生</a>
-    <!-- 如果此时, 选择的某一行的数据, 直接带着这个ModelAttribute, 那么久直接删除成功了!!! -->
-    <form:form action="${pageContext.request.contextPath}/student/deletestudent" modelAttribute="student" method="post">
+    <!-- 如果此时, 选择的某一行的数据, 直接带着这个ModelAttribute, 那么就直接删除成功了!!! -->
+    <%--<form:form action="${pageContext.request.contextPath}/student/deletestudent" modelAttribute="student" method="post">
         <form:hidden path="id" id="_id"></form:hidden>
         用户名<form:input path="name"/>
         <input type="submit" value="ti">
-    </form:form>
+    </form:form>--%>
+    <%--<form action="${pageContext.request.contextPath}/student/deletestudent" method="post">--%>
+        <%--&lt;%&ndash;<input type="hidden" name="_method" _method="put" value="DELETE">&ndash;%&gt;--%>
+        <%--<input type="hidden" name="_method" value="DELETE">--%>
+    <%--</form>--%>
+    <form action="" method="POST">
+        <input type="hidden" name="_method" value="DELETE">
+    </form>
 </html>

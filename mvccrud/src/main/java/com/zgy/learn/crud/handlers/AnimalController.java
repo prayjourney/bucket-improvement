@@ -23,15 +23,16 @@ public class AnimalController {
     AnimalDao animalDao;
 
     @RequestMapping(value = "add", method = RequestMethod.POST)
-    public String addAnimal(@RequestParam("animal") Animal animal) {
+//    public String addAnimal(@RequestParam("animal") Animal animal) {
+    public String addAnimal(Animal animal) {
         animalDao.addAnimal(animal);
         return "animals";
     }
 
-    @ModelAttribute
-    public Animal newAnimal() {
-        return new Animal();
-    }
+//    @ModelAttribute
+//    public Animal newAnimal() {
+//        return new Animal();
+//    }
 
     @RequestMapping("all")
     public String getAllAnimal(ModelMap mp) {

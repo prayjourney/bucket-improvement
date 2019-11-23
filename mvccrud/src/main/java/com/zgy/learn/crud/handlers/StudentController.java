@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -31,9 +32,9 @@ public class StudentController {
     }
 
     @ModelAttribute
-    public void addNewStudent(Integer id, Map<String, Object> map){
-        if(id != null){
-            map.put("student",  new Student());
+    public void addNewStudent(Integer id, Map<String, Object> map) {
+        if (id != null) {
+            map.put("student", new Student());
         }
     }
 
@@ -65,11 +66,18 @@ public class StudentController {
         return "redirect:/student/all";
     }
 
-    @RequestMapping(value = "deletestudent", method = RequestMethod.POST)
-    public String deleteStudent(@ModelAttribute("student") Student student) {
-        Integer id = student.getId();
-        studentDao.removeStudent(id);
+    //    @RequestMapping(value = "deletestudent?id={id}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/deletestudent/{id}", method = RequestMethod.DELETE)
+    public String deleteStudent(@PathVariable Integer id) {
+        int result = studentDao.removeStudent(id);
+        System.out.println(String.format("已经删除%d个学生", result));
         return "redirect:/student/all";
     }
+//    @RequestMapping(value = "deletestudent/{id}", method = RequestMethod.GET)
+//    public String deleteStudent(@PathVariable Integer id) {
+//        int result = studentDao.removeStudent(id);
+//        System.out.println(String.format("已经删除%d个学生", result));
+//        return "redirect:/student/all";
+//    }
 
 }
