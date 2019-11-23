@@ -23,6 +23,7 @@
     <module>jvm</module>
     <module>mvccrud</module>
     <module>mvc</module>
+      <module>basictool</module>
   </modules>
 
   <!-- improvement-java-skill  to bucket-improvement-->

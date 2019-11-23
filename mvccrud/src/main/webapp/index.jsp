@@ -20,5 +20,11 @@
         <a href ="${pageContext.request.contextPath}/student/all" class="text-info">管理所有的学生, HHa哈哈</a>
         <br>
         <a href ="${pageContext.request.contextPath}/animal/all" class="text-primary">饲养员</a>
+
+        <!-- 上传文件 -->
+        <br>
+        <form action="${pageContext.request.contextPath}/upload" method="post" enctype="multipart/form-data">
+            <input class="btn-info" type="file" name="file"><input class="btn-primary" type="submit" value="submit">
+        </form>
     </body>
 </html>
