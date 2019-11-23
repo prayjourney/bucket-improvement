@@ -18,6 +18,7 @@
 
         <br>
         <a href ="${pageContext.request.contextPath}/student/all" class="text-info">管理所有的学生, HHa哈哈</a>
+        <br>
         <a href ="${pageContext.request.contextPath}/animal/all" class="text-primary">饲养员</a>
     </body>
 </html>
