@@ -16,11 +16,11 @@
     <body>
         <form action="${pageContext.request.contextPath}/animal/add" method="get">
             <%--<input type="hidden" name="_method" value="PUT">--%>
-            <input type="hidden" name="_method" value="post">
-            <p>ID ：</p><input type="text" name="id"/><br/>
-            <p>姓名：</p><input type="text" name="name"/><br/>
-            <p>生日：</p><input type="text" name="birthday"/><br/>
-            <p>国家：</p><input type="text" name="country"/><br/>
+            <%--<input type="hidden" name="_method" value="post">--%>
+            <spap>ID ：</spap><input type="text" name="id"/><br/>
+            <span>姓名：</span><input type="text" name="name"/><br/>
+            <spap>生日：</spap><input type="text" name="birthday"/><br/>
+            <spap>国家：</spap><input type="text" name="country"/><br/>
             <input type="submit" value="提交创建新Animal!" class="text-success"/>
 
         </form>

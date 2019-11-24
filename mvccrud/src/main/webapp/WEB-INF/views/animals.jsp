@@ -44,9 +44,6 @@
     <br>
     <br>
     <br>
-    <br>
-    <br>
-    <br>
     <a href="/animal/add" class="text-info">添加一个动物</a>
 
 </body>

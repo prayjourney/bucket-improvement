@@ -22,11 +22,10 @@ public class AnimalController {
     @Autowired
     AnimalDao animalDao;
 
-    @RequestMapping(value = "add", method = RequestMethod.POST)
-//    public String addAnimal(@RequestParam("animal") Animal animal) {
-    public String addAnimal(Animal animal) {
-        animalDao.addAnimal(animal);
-        return "animals";
+    //    public String addAnimal(@RequestParam("animal") Animal animal) {
+    @RequestMapping(value = "add")
+    public String addAnimal() {
+        return "animaladd";
     }
 
 //    @ModelAttribute

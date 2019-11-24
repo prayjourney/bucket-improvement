@@ -21,6 +21,8 @@
         <br>
         <a href ="${pageContext.request.contextPath}/animal/all" class="text-primary">饲养员</a>
 
+        <br>
+        <br>
         <!-- 上传文件 -->
         <br>
         <form action="${pageContext.request.contextPath}/upload" method="post" enctype="multipart/form-data">
