@@ -1,19 +1,21 @@
 package com.zgy.learn.crud.handlers;
 
+
 import com.zgy.learn.crud.dao.MonkeyDao;
 import com.zgy.learn.crud.entities.Monkey;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-/**
- * @Author: renjiaxin
- * @Description:
- * @Date: 2019-11-25 12:57
- * @Modified by:
- */
+import javax.validation.Valid;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 @Controller
 @RequestMapping(value = "monkey")
 public class MonkeyController {
@@ -42,7 +44,7 @@ public class MonkeyController {
      * @param monkey
      * @return
      */
-    @RequestMapping(value = "add", method = RequestMethod.POST)
+    //@RequestMapping(value = "add", method = RequestMethod.POST)
     // 這樣可以
     // public String addMonkey(@RequestParam("id") Integer id, @RequestParam("name") String name, @RequestParam("gender") Integer gender,
     //        @RequestParam("birthday") LocalDate birthday) {
@@ -57,7 +59,24 @@ public class MonkeyController {
     //       dao.add(monkey);
 
     // 這樣可以, 說明有自動裝箱
-    public String addMonkey(Monkey monkey) {
+    // public String addMonkey(Monkey monkey) {
+    //     dao.add(monkey);
+    //     return "redirect:/monkey/all";
+    // }
+
+    // 添加數據校驗
+    @RequestMapping(value = "add", method = RequestMethod.POST)
+    public String addMonkey(@Valid Monkey monkey, BindingResult result, ModelMap mp) {
+        if (result.hasErrors()) {
+            List<FieldError> fieldErrors = result.getFieldErrors();
+            Map<String, Object> errorMsg = new HashMap<>();
+            for (FieldError f : fieldErrors) {
+                errorMsg.put(f.getField(), f.getDefaultMessage());
+            }
+            mp.addAttribute("errorMsg", errorMsg);
+            // 這個是重點，有錯誤，就返回到當前本頁面
+            return "addmonkey";
+        }
         dao.add(monkey);
         return "redirect:/monkey/all";
     }
