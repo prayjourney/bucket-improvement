@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <script>
+            var $tables = $(".div").find("table[name='info']");
+            //alert($tables.prop("tagName")); //TABLE
+            var length = $tables.length;
+            //alert(length); //3
+            for (var i = 0; i < length; i++) {
+                var $table = $tables.eq(i);
+                //alert($table.prop("tagName")); //TABLE
+                //eq(i)表示第i行
+                var nameTd = $table.find("tr").eq(i).children("td").eq(0);
+                //alert(nameTd.prop("tagName")); //TD
+                alert(nameTd.text());
+            }
+
+            alert(b.indexOf(a));
+        </script>
+        <title>Title</title>
+    </head>
+    <body>
+        <div class="div">
+            <table name="info" cellpadding="1">
+                <tr>
+                    <td>lily<span>okok</span></td>
+                </tr>
+                <tr>
+                    <td>18</td>
+                </tr>
+                <tr>
+                    tr标签是行,td标签是一个格子,th标签是表头<br>
+                </tr>
+                <tr>
+                    form是表单, 提交的时候默认方法是post, 还可以有隐藏域
+                </tr>
+            </table>
+            <table name="info" cellpadding="2" border="1">
+                <th>name</th>
+                <th>age</th>
+                <th>other</th>
+                <tr>
+                    <td>tom</td>
+                    <td>22</td>
+                    <td>hahhha2</td>
+                </tr>
+                <tr>
+                    <td>jerry</td>
+                    <td>12</td>
+                    <td>--</td>
+                </tr>
+                <tr>
+                    <td>熊大</td>
+                    <td>5</td>
+                    <td>棕熊</td>
+                </tr>
+                <tr>
+                    <td>葫芦娃</td>
+                    <td>4</td>
+                    <td>葫芦属性</td>
+                </tr>
+            </table>
+        </div>
+        <form method="post" action="方法">
+            <!-- https://www.cnblogs.com/chenlimei/p/10845644.html -->
+            <!-- id属性设置成为了隐藏域, 在页面上看不到 -->
+            <input type="hidden" name="id" value="1">
+            name:<input type="text" name="name"><br>
+            age :<input type="text" name="age"><br>
+            <input type="submit" value="提交">
+        </form>
+
+    </body>
+</html>
