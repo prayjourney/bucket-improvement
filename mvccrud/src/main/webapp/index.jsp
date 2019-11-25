@@ -32,5 +32,10 @@
         <!-- 返回json数据-->
         <br>
         <a href ="${pageContext.request.contextPath}/monkeyjson/2" class="text-primary">返回json数据</a>
+
+        <br>
+        <br>
+        <br>
+        <a href="/monkey/all">review all monkeys!</a>
     </body>
 </html>

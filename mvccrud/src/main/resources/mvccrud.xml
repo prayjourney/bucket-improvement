@@ -36,16 +36,18 @@
 	<mvc:resources mapping="/**" location="WEB-INF/js/"/>
 
 	<!-- 开启注解模式, 外加数据的转化 -->
-	<mvc:annotation-driven conversion-service="cv"/>
+	<mvc:annotation-driven conversion-service="conversionService"/>
 
-	<!-- 配置数据的转换器 -->
-	<bean id="cv" class="org.springframework.context.support.ConversionServiceFactoryBean">
-		<property name="converters">
-			<set>
-				<ref bean="animalCoverter"/>
-			</set>
-		</property>
-	</bean>
+    <!-- 配置自定义类型转换器 -->
+    <bean id="conversionService" class="org.springframework.context.support.ConversionServiceFactoryBean">
+        <property name="converters">
+            <set>
+                <!--<bean class="com.zgy.util.DateConversionService"/>-->
+                <ref bean="dateConversionService"/>
+                <bean class="com.zgy.learn.crud.util.AnimalCoverter"/>
+            </set>
+        </property>
+    </bean>
 
 
 	<!-- file -->
