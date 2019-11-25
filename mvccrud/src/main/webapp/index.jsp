@@ -37,5 +37,10 @@
         <br>
         <br>
         <a href="/monkey/all">review all monkeys!</a>
+        <br>
+        <br>
+        <br>
+        <!-- 首頁鏈接 -->
+        <a href="/goose/all" class="text-success">查看鹅!</a>
     </body>
 </html>
