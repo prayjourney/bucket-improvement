@@ -5,6 +5,7 @@
 <!-- 引入jsp标签库 -->
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
     <head>
@@ -24,10 +25,14 @@
             <span>gender:   </span><input type="text" name="gender"> ${errorMsg.gender}<br>
             <!-- localdate 的轉換問題 -->
             <span>birthday: </span><input type="text" name="birthday"> ${errorMsg.birthday}<br>
-            <input type="submit" value="提交創建一個猴子">
+            <!-- 國際化，使用 xx/add？language=zh_CN的方式 -->
+            <input type="submit" value= "<spring:message code="createmonkey"/>">
+
 
         </form>
-
+        <!-- 國際化是要讓人看的， 所以，是需要在前台處理的 -->
+        <!-- 國際化，使用 xx/add？language=zh_CN的方式 -->
+        <a href="" ><spring:message code="createmonkey" /></a>
         <br>
         <br>
         <br>
