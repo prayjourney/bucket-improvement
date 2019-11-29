@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	   xmlns:context="http://www.springframework.org/schema/context"
-	   xmlns:mvc="http://www.springframework.org/schema/mvc"
-	   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
-	<!-- 配置自动扫描的包 , 在spring mvc2之中扫描不到下面的包, 所以, 此处采用了挪动一个包的方式来完成基本的CRUD-->
-	<!-- 在原来的spring mvc2之中, 准备采用java config 的方式来完成动基本的CRUD-->
-	<context:component-scan base-package="com.zgy.learn"/>
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+    <!-- 配置自动扫描的包 , 在spring mvc2之中扫描不到下面的包, 所以, 此处采用了挪动一个包的方式来完成基本的CRUD-->
+    <!-- 在原来的spring mvc2之中, 准备采用java config 的方式来完成动基本的CRUD-->
+    <context:component-scan base-package="com.zgy.learn"/>
 
-	<!-- 配置视图解析器 -->
-	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		<property name="prefix" value="/WEB-INF/views/"/>
-		<property name="suffix" value=".jsp"/>
-	</bean>
+    <!-- 配置视图解析器 -->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/views/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
 
     <!--
         default-servlet-handler 将在 SpringMVC 上下文中定义一个 DefaultServletHttpRequestHandler,
@@ -24,18 +24,18 @@
 	-->
 
     <!-- 处理静态资源的请求 -->
-	<!--静态资源访问  -->
-	<mvc:default-servlet-handler/>
-	<!--把符合/js/**匹配规则的请求,映射到目录/WEB-INF/js/下-->
-	<!--
-	      /WEB-INF/js/是文件存放的地方,而我们的mapping,则是要把他映射到一个URL上面, 此处我们就映射到了:
-	      http://localhost:8080/js/jquery-1.9.1.min.js 这个URL上面, 如果/**的话, 那么就映射到
-	      http://localhost:8080/jquery-1.9.1.min.js 上面了
-	      配上mvcLresource ,方便自己使用, URL很快就可以知道!
-	 -->
-	<mvc:resources mapping="/**" location="WEB-INF/js/"/>
+    <!--静态资源访问  -->
+    <mvc:default-servlet-handler/>
+    <!--把符合/js/**匹配规则的请求,映射到目录/WEB-INF/js/下-->
+    <!--
+          /WEB-INF/js/是文件存放的地方,而我们的mapping,则是要把他映射到一个URL上面, 此处我们就映射到了:
+          http://localhost:8080/js/jquery-1.9.1.min.js 这个URL上面, 如果/**的话, 那么就映射到
+          http://localhost:8080/jquery-1.9.1.min.js 上面了
+          配上mvcLresource ,方便自己使用, URL很快就可以知道!
+     -->
+    <mvc:resources mapping="/**" location="WEB-INF/js/"/>
 
-	<!-- 开启注解模式, 外加数据的转化 -->
+    <!-- 开启注解模式, 外加数据的转化 -->
     <!-- 配置數據轉換器，配置數據校驗器, 不配置校驗器也可以，但是最好配上吧 -->
     <!--<mvc:annotation-driven conversion-service="conversionService"/>-->
     <mvc:annotation-driven conversion-service="conversionService" validator="hibernateValidator"/>
@@ -52,32 +52,41 @@
     </bean>
 
 
-	<!-- file upload settings -->
-	<bean id="multipartResolver"  class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
-		<property name="maxUploadSize" value="102400000"></property>
-	</bean>
+    <!-- file upload settings -->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <property name="maxUploadSize" value="102400000"></property>
+    </bean>
 
 
     <!-- 配置校验器， 使用Hibernate校驗器 -->
     <bean id="hibernateValidator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">
-        <property name="providerClass"  value="org.hibernate.validator.HibernateValidator" />
+        <property name="providerClass" value="org.hibernate.validator.HibernateValidator"/>
     </bean>
 
 
-	<!-- 国际化 -->
-	<!-- 存储区域设置信息, 使用session -->
-	<bean id="localeResolver" class="org.springframework.web.servlet.i18n.SessionLocaleResolver" />
+    <!-- 国际化 -->
+    <!-- 存储区域设置信息, 使用session -->
+    <bean id="localeResolver" class="org.springframework.web.servlet.i18n.SessionLocaleResolver"/>
 
-	<!-- 国际化资源文件 -->
-	<bean id="messageSource"  class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
-		<property name="basename" value="classpath:info" />
-	</bean>
+    <!-- 国际化资源文件 -->
+    <bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+        <property name="basename" value="classpath:info"/>
+    </bean>
 
-	<!-- 本地化拦截器 -->
-	<mvc:interceptors>
-		<bean id="localeChangeInterceptor" class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
-			<property name="paramName" value="lang" />
-		</bean>
-	</mvc:interceptors>
+    <!-- 本地化拦截器 -->
+    <mvc:interceptors>
+        <bean id="localeChangeInterceptor" class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
+            <property name="paramName" value="lang"/>
+        </bean>
+        <!-- 配置自己的攔截器， 可以有多個，攔截器的話主要做請求的攔截，安全驗證等工作-->
+        <bean class="com.zgy.learn.crud.util.MyInterceptor"></bean>
+
+        <mvc:interceptor>
+            <mvc:mapping path="/goose/all"/>
+            <!-- 排除这个请求 -->
+            <mvc:exclude-mapping path="/goose/add"/>
+            <bean class="com.zgy.learn.crud.util.SecondInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
 
 </beans>
