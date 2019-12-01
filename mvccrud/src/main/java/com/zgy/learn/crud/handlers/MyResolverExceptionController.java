@@ -39,4 +39,12 @@ public class MyResolverExceptionController {
         mv.addObject("errorException", ex);
         return mv;
     }
+
+    @ExceptionHandler({RuntimeException.class})
+    public ModelAndView handleArithmeticException2(Exception ex) {
+        System.out.println("出了异常---------------");
+        ModelAndView mv = new ModelAndView("error");
+        mv.addObject("errorException", ex);
+        return mv;
+    }
 }
