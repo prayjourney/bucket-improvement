@@ -46,5 +46,10 @@
         <br>
         <!-- 我的url是/testexception, 在需要些URL的地方, 写好完整的URL, 但是在controller之中, 不用写后面的参数 -->
         <a href="/testexception?i=10" class="text-danger">算术运算!</a>
+
+        <br>
+        <br>
+        <!-- 定制响应错误的信息 -->
+        <a href="/userexception?i=4" class="text-danger">定制响应错误的信息</a>
     </body>
 </html>
