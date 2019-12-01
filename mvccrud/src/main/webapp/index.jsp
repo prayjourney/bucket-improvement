@@ -51,5 +51,10 @@
         <br>
         <!-- 定制响应错误的信息 -->
         <a href="/userexception?i=4" class="text-danger">定制响应错误的信息</a>
+
+        <br>
+        <br>
+        <!-- 定制响应错误的信息 -->
+        <a href="/userexception2?i=4" class="text-danger">在方法上, 定制响应错误的信息</a>
     </body>
 </html>

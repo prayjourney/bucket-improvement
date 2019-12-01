@@ -32,4 +32,18 @@ public class UserExceptionController {
 
     }
 
+    @ResponseStatus(value = HttpStatus.GONE, reason = "NMBZZ")
+    @RequestMapping(value = "userexception2")
+    public String testException2(@RequestParam("i") Integer i, Map<String, Integer> mpmp) throws
+            UserNameNotMatchException {
+        System.out.println(i);
+        if (i == 6) {
+            throw new UserNameNotMatchException();
+        }
+        mpmp.put("res", 10 / i);
+        System.out.println("working...");
+        return "arithmeticresult";
+
+    }
+
 }
