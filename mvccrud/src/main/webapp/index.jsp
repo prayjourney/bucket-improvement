@@ -42,5 +42,9 @@
         <br>
         <!-- 首頁鏈接 -->
         <a href="/goose/all" class="text-success">查看鹅!</a>
+
+        <br>
+        <!-- 首頁鏈接 -->
+        <a href="/testexception?i=10" class="text-danger">算术运算!</a>
     </body>
 </html>
