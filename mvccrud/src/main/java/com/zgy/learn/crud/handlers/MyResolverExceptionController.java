@@ -16,6 +16,7 @@ import java.util.Map;
 @Controller
 public class MyResolverExceptionController {
 
+    // 业务可能会发生异常
     @RequestMapping(value = "testexception")
     public String testException(@RequestParam int i, Map<String, Integer> mpmp){
         System.out.println(i);
@@ -24,7 +25,8 @@ public class MyResolverExceptionController {
 
     }
 
-    @ExceptionHandler
+    // 对应的某一种类型的异常, 写到Handler注解之中, 然后出现了异常, 它就会去处理
+    @ExceptionHandler({ArithmeticException.class, OutOfMemoryError.class})
     public String handleArithmeticException(){
         System.out.println("出了异常");
         return "error";
