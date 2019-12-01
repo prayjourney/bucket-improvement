@@ -46,4 +46,13 @@ public class UserExceptionController {
 
     }
 
+    // simpleMappingException, 配置出异常的时候, 转向哪个页面
+    @RequestMapping(value = "testsimpleexception")
+    public String testSimpleMappingExceptionResolver(@RequestParam("i") Integer i){
+        String[] sss = new String[5];
+        System.out.println(sss[i]);
+        return "arithmeticresult";
+    }
+
+
 }

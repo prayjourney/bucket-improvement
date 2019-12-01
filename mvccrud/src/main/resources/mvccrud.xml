@@ -89,4 +89,18 @@
         </mvc:interceptor>
     </mvc:interceptors>
 
+    <!-- 异常映射, SimpleMappingExceptionResolver, 异常信息会自动转向页面 -->
+    <bean id="simpleExceptionMapping" class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+        <!-- 定制异常名, 本来默认是exception, 现在自定义为errorException -->
+        <property name="exceptionAttribute" value="errorException"></property>
+        <!-- 异常的映射, 跳转到映射页面 -->
+        <property name="exceptionMappings">
+            <props>
+                <!-- 一个具体的Exception, 对应她的错误页面, 配置完成 -->
+                <prop key="java.lang.ArrayIndexOutOfBoundsException">error</prop>
+            </props>
+
+        </property>
+    </bean>
+
 </beans>
