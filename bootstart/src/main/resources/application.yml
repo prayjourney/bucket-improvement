@@ -1,0 +1,16 @@
+server:
+  port: 8082
+
+
+person:
+  lastname: hello
+  age: 18
+  boos: false
+  birthday: 2000/1/1
+  maps: {key1: value1, key2: value2}
+  lists:
+    - lisi
+    - wangwu
+  dog:
+    name: 小狗
+    age: 2
