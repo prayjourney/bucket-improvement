@@ -3,9 +3,9 @@ server:
 
 
 person:
-  lastname: hello
-  age: 18
-  boos: false
+#  lastname: hello
+#  age: 18
+  bosos: false
   birthday: 2000/1/1
   maps: {key1: value1, key2: value2}
   lists:
