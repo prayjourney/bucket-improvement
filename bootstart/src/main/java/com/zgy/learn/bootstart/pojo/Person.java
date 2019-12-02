@@ -1,6 +1,7 @@
 package com.zgy.learn.bootstart.pojo;
 
 import lombok.Data;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
@@ -18,7 +19,9 @@ import java.util.Map;
 @ConfigurationProperties(prefix = "person")
 @Data
 public class Person {
+    @Value("李四啊")
     private  String lastName;
+    @Value("#{22-5*1.2}")
     private Integer age;
     private Boolean boos;
     private Date birthday;
