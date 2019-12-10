@@ -1,4 +1,4 @@
-package com.zgy.learn;
+package com.zgy.learn.pool;
 
 import org.springframework.jdbc.datasource.SimpleDriverDataSource;
 
@@ -27,14 +27,14 @@ import java.util.concurrent.TimeoutException;
  */
 public class MainTool1 {
     // 定義一個全局的數據源
-    private static DataSource dataSource;
+    //private static DataSource dataSource;
     // 定義一個全局的uuid生成器
     private static UUID uuid = UUID.randomUUID();
 
     public static void main(String[] args) throws IOException {
         // 數據庫測試
-        DataSource data = dataSource();
-        System.out.println(data.toString());
+        //DataSource data = dataSource();
+        //System.out.println(data.toString());
 
         // 使用Arrays.asList
         useAsList();
@@ -59,15 +59,15 @@ public class MainTool1 {
      * @return 數據源
      * @throws IOException
      */
-    private static DataSource dataSource() throws IOException {
-        SimpleDriverDataSource source = new SimpleDriverDataSource();
-        source.setUrl("jdbc:mysql://localhost:3306/test?characterEncoding=UTF-8&useSSL=false");
-        source.setUsername("root");
-        source.setPassword("123456");
-        source.setDriverClass(com.mysql.jdbc.Driver.class);
-        dataSource = source;
-        return dataSource;
-    }
+//    private static DataSource dataSource() throws IOException {
+//        SimpleDriverDataSource source = new SimpleDriverDataSource();
+//        source.setUrl("jdbc:mysql://localhost:3306/test?characterEncoding=UTF-8&useSSL=false");
+//        source.setUsername("root");
+//        source.setPassword("123456");
+//        source.setDriverClass(com.mysql.jdbc.Driver.class);
+//        dataSource = source;
+//        return dataSource;
+//    }
 
     /**
      * 使用Arrays.asList方法
