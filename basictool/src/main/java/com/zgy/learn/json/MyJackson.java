@@ -1,11 +1,18 @@
 package com.zgy.learn.json;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.ToString;
 
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * @Author: renjiaxin
@@ -48,10 +55,12 @@ public class MyJackson {
                     "}" +
             "}";
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, ParseException {
         System.out.println(MYSTRING4JSON);
         System.out.println("========");
         parse2Jackson();
+        System.out.println("========");
+        object2Json();
     }
 
     // 通过读取读树的方法, 获取JSON或者字符串的内容
@@ -72,6 +81,29 @@ public class MyJackson {
         System.out.println("cmdName:" +cmdName);
         System.out.println("cmdParas:" +cmdParas);
         System.out.println("robotIotId:" +robotIotId);
+
+    }
+
+    // json和对象的转化, 序列化和反序列化
+    @Data
+    @ToString
+    @AllArgsConstructor
+    public static class Fish{
+        int age;
+        String name;
+        String[] homes;
+        Date time;
+    }
+
+    public static void object2Json() throws ParseException, JsonProcessingException {
+        ObjectMapper mapper = new ObjectMapper();
+        mapper.configure(SerializationFeature.INDENT_OUTPUT, true);
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String date = "2019-04-12 03:44:23";
+        String[] homes= {"芬兰", "日本", "挪威"};
+        Fish flagFish = new Fish(2,"金枪鱼",homes, sdf.parse(date));
+        String ssss = mapper.writeValueAsString(flagFish);
+        System.out.println(ssss);
 
     }
 }
