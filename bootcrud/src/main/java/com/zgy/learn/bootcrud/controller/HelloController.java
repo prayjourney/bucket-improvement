@@ -5,6 +5,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.time.LocalDate;
+
 /**
  * @Author: renjiaxin
  * @Description:
@@ -17,7 +19,7 @@ public class HelloController {
 
     @RequestMapping("hello")
     public String helloController() {
-        logger.debug("访问方法： {0}", "helloController");
+        logger.debug("访问方法： {}, 日期：{}", "helloController", LocalDate.now());
         return "hello boot crud!";
     }
 }
