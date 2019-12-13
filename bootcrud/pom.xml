@@ -13,11 +13,10 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<name>bootcrud</name>
 	<description>spring boot crud</description>
-
 	<properties>
 		<java.version>1.8</java.version>
-		<thymeleaf.version>3.0.9.RELEASE</thymeleaf.version>
-		<thmeleaf-layout-dialect.version>2.1.1</thmeleaf-layout-dialect.version>
+		<springboot-thymeleaf.version>3.0.9.RELEASE</springboot-thymeleaf.version>
+		<thmeleaf-layout-dialect.version>2.3.0</thmeleaf-layout-dialect.version>
 	</properties>
 
 	<dependencies>
