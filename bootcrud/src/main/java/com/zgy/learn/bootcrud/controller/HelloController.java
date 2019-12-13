@@ -20,6 +20,8 @@ public class HelloController {
     @RequestMapping("hello")
     public String helloController() {
         logger.debug("访问方法： {}, 日期：{}", "helloController", LocalDate.now());
-        return "hello boot crud!";
+        // ctrl+alt+v 提取出来一个值，作为变量，并且带着他的类型
+        String crud = "crud";
+        return "hello boot " + crud + "!";
     }
 }
