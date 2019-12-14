@@ -33,8 +33,8 @@ public class HelloController {
 
     // 使用getmapping = get方法的RequestMapping， 添加了多个请求， 返回页面
     @GetMapping({"/","/index.html"})
-    public String inedx(){
-        return "inedx";
+    public String index(){
+        return "index";
     }
 
 
