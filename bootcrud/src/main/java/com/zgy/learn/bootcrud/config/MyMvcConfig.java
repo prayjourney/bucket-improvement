@@ -28,7 +28,8 @@ public class MyMvcConfig extends WebMvcConfigurerAdapter {
             @Override
             public void addViewControllers(ViewControllerRegistry registry) {
                 registry.addViewController("/").setViewName("index-test");
-                registry.addViewController("/index.html").setViewName("index");
+                registry.addViewController("/index.html").setViewName("login");
+                registry.addViewController("/login.html").setViewName("login");
                 registry.addViewController("/main.html").setViewName("dashboard");
             }
 
@@ -39,7 +40,7 @@ public class MyMvcConfig extends WebMvcConfigurerAdapter {
                 //静态资源；  *.css , *.js
                 //SpringBoot已经做好了静态资源映射
 //                registry.addInterceptor(new LoginHandlerInterceptor()).addPathPatterns("/**")
-//                        .excludePathPatterns("/index.html","/","/user/login");
+//                        .excludePathPatterns("/login.html","/","/user/login");
             }
         };
         return adapter;
