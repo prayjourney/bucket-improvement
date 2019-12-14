@@ -228,7 +228,7 @@
                                     <!-- 此处做了一个三元运算， 相当于把值转换显示了一下-->
                                     <td th:text="${emp.gender}==0?'女':'男'"></td>
                                     <td th:text="${emp.department.departmentName}"></td>
-                                    <td th:text="${emp.birth}"></td>
+                                    <td th:text="${#dates.format(emp.birth, 'yyyy‐MM‐dd HH:mm')}"></td>
                                 </tr>
                             </tbody>
                         </table>
