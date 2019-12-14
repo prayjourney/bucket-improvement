@@ -13,7 +13,7 @@
         <link th:href="@{/webjars/bootstrap/4.4.1/css/bootstrap.css}" rel="stylesheet">
 
         <!-- Custom styles for this template -->
-        <link th:href="@{asserts/css/dashboard.css}" rel="stylesheet">
+        <link th:href="@{../../static/asserts/css/dashboard.css}" rel="stylesheet">
         <style type="text/css">
             /* Chart.js */
 
@@ -103,7 +103,7 @@
                                         <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
                                         <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
                                     </svg>
-                                    Customers
+                                    员工管理
                                 </a>
                             </li>
                             <li class="nav-item">
@@ -347,13 +347,13 @@
 		<script type="text/javascript" th:src="@{/webjars/bootstrap/4.4.1/js/bootstrap.js}"></script>
 
 		<!-- Icons -->
-		<script type="text/javascript" th:src="@{/asserts/js/feather.min.js}"></script>
+		<script type="text/javascript" th:src="@{/static/asserts/js/feather.min.js}"></script>
         <script>
             feather.replace()
         </script>
 
 		<!-- Graphs -->
-		<script type="text/javascript" th:src="@{/asserts/js/Chart.min.js}"></script>
+		<script type="text/javascript" th:src="@{/static/asserts/js/Chart.min.js}"></script>
         <script>
             var ctx = document.getElementById("myChart");
             var myChart = new Chart(ctx, {
