@@ -19,21 +19,25 @@
         <form class="form-signin" action="dashboard.html">
             <!-- <img class="mb-4" src="asserts/img/bootstrap-solid.svg" alt="" width="72" height="72"> -->
             <img class="mb-4" th:src="@{/asserts/img/bootstrap-solid.svg}" alt="" width="72" height="72">
-            <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-            <label class="sr-only">Username</label>
-            <input type="text" class="form-control" placeholder="Username" required="" autofocus="">
-            <label class="sr-only">Password</label>
-            <input type="password" class="form-control" placeholder="Password" required="">
+            <h1 class="h3 mb-3 font-weight-normal" th:text="#{login.tip}">Please sign in</h1>
+            <!--            <label class="sr-only">Username</label>-->
+            <!--            th:placeholder="#{login.username}"-->
+            <input type="text" class="form-control" th:text="#{login.username}" required="" autofocus=""
+                   th:placeholder="#{login.username}" placeholder="UserName">
+            <!--            <label class="sr-only">Password</label>-->
+            <!--            th:placeholder="#{login.password}"-->
+            <input type="password" class="form-control" th:text="#{login.password}"
+                   required="" th:placeholder="#{login.password}" placeholder="Password">
             <div class="checkbox mb-3">
                 <label>
-                    <input type="checkbox" value="remember-me"> Remember me
+                    <input type="checkbox" value="remember-me"> [[#{login.remember}]]
                 </label>
             </div>
-            <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+            <button class="btn btn-lg btn-primary btn-block" type="submit" th:text="#{login.btn}">Sign in</button>
             <p class="mt-5 mb-3 text-muted">© 2017-2020</p>
-            <a class="btn btn-sm">中文(简体)</a>
-            <a class="btn btn-sm">中文(台灣)</a>
-            <a class="btn btn-sm">English</a>
+            <a class="btn btn-sm" th:href ="@{index.html(l='zh_CN')}">中文(简体)</a>
+            <a class="btn btn-sm" th:href ="@{index.html(l='zh_TW')}">中文(台灣)</a>
+            <a class="btn btn-sm" th:href ="@{index.html(l='en_US')}">English</a>
         </form>
 
     </body>

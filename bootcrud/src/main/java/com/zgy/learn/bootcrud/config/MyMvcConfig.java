@@ -46,6 +46,7 @@ public class MyMvcConfig extends WebMvcConfigurerAdapter {
         return adapter;
     }
 
+    // 添加我们自己的Locale信息
     @Bean
     public LocaleResolver localeResolver() {
 
