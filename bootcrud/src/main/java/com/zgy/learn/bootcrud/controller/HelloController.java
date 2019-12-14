@@ -2,7 +2,10 @@ package com.zgy.learn.bootcrud.controller;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.time.LocalDate;
@@ -13,15 +16,18 @@ import java.time.LocalDate;
  * @Date: 2019-12-13 01:01
  * @Modified by:
  */
-@RestController
+// @RestController
+@Controller
 public class HelloController {
     Logger logger = LoggerFactory.getLogger(getClass());
 
-    @RequestMapping("hello")
+    @ResponseBody
+    @RequestMapping("hellocrud")
     public String helloController() {
         logger.debug("访问方法： {}, 日期：{}", "helloController", LocalDate.now());
         // ctrl+alt+v 提取出来一个值，作为变量，并且带着他的类型
         String crud = "crud";
         return "hello boot " + crud + "!";
     }
+
 }
