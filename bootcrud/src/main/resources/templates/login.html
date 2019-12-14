@@ -16,18 +16,18 @@
     </head>
 
     <body class="text-center">
-        <form class="form-signin" action="dashboard.html">
+        <form class="form-signin" action="/user/login" th:action="@{/user/login}" method="post">
             <!-- <img class="mb-4" src="asserts/img/bootstrap-solid.svg" alt="" width="72" height="72"> -->
             <img class="mb-4" th:src="@{/asserts/img/bootstrap-solid.svg}" alt="" width="72" height="72">
             <h1 class="h3 mb-3 font-weight-normal" th:text="#{login.tip}">Please sign in</h1>
             <!--            <label class="sr-only">Username</label>-->
             <!--            th:placeholder="#{login.username}"-->
             <input type="text" class="form-control" th:text="#{login.username}" required="" autofocus=""
-                   th:placeholder="#{login.username}" placeholder="UserName">
+                   th:placeholder="#{login.username}" placeholder="UserName" name="username">
             <!--            <label class="sr-only">Password</label>-->
             <!--            th:placeholder="#{login.password}"-->
             <input type="password" class="form-control" th:text="#{login.password}"
-                   required="" th:placeholder="#{login.password}" placeholder="Password">
+                   required="" th:placeholder="#{login.password}" placeholder="Password" name="password">
             <div class="checkbox mb-3">
                 <label>
                     <input type="checkbox" value="remember-me"> [[#{login.remember}]]
