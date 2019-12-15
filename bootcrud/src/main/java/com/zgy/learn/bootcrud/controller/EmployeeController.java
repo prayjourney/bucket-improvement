@@ -8,7 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -37,7 +39,7 @@ public class EmployeeController {
 
     // 到员工添加页面
     @RequestMapping(value = "emp", method = RequestMethod.GET)
-    public String addEmp(Model model) {
+    public String toAddEmpPage(Model model) {
         //来到添加页面,查出所有的部门，在页面显示
         Collection<Department> departments = departmentDao.getDepartments();
         model.addAttribute("depts", departments);
@@ -54,5 +56,30 @@ public class EmployeeController {
         return "redirect:/emps";
     }
 
+    // 到员工的修改页面
+    @GetMapping("emp/{id}")
+    public String toUpdateEmpPage(@PathVariable("id") Integer id, Model model){
+        // 查出员工，然后回显
+        Employee e = dao.get(id);
+        model.addAttribute("emp",e);
+        // 页面需要显示部门
+        Collection<Department> departments = departmentDao.getDepartments();
+        model.addAttribute("depts", departments);
+
+        // 回显(修改和添加页面一致)
+        return "emp/add";
+
+    }
+
+    // 修改员工，需要提交员工的id, 是put请求, 修改
+    @PutMapping("emp")
+    public String updateEmp(Employee e){
+        System.out.println(e.toString());
+        // id作为了一个隐藏域提交过来
+        dao.save(e);
+        // 转发到所有员工的页面
+        // return "forward:/emps"; // 这个有问题， 无法达到目的
+        return "redirect:/emps";
+    }
 
 }

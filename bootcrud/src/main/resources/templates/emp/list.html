@@ -234,8 +234,8 @@
                                 <td th:text="${emp.department.departmentName}"></td>
                                 <td th:text="${#dates.format(emp.birth, 'yyyy‐MM‐dd HH:mm')}"></td>
                                 <td>
-                                    <button class="btn btn-primary btn-sm">员工更新</button>
-                                    <button class="btn btn-danger btn-sm">员工删除</button>
+                                    <a class="btn btn-primary btn-sm" href="#" th:href="@{/emp/}+${emp.id}">员工更新</a>
+                                    <a class="btn btn-danger btn-sm" href="#" th:href="@{/emp/}+${emp.id}">员工删除</a>
                                 </td>
                             </tr>
                             </tbody>
