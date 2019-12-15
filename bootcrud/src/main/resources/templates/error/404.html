@@ -12,7 +12,7 @@
         <link th:href="@{/webjars/bootstrap/4.4.1/css/bootstrap.css}" rel="stylesheet">
 
         <!-- Custom styles for this template -->
-        <link th:href="@{asserts/css/dashboard.css}" rel="stylesheet">
+        <link th:href="@{../../static/asserts/css/dashboard.css}" rel="stylesheet">
         <style type="text/css">
             /* Chart.js */
 
@@ -92,7 +92,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" >
+                                <a class="nav-link" href="#" th:href="@{/emps}">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                          fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                                          stroke-linejoin="round" class="feather feather-users">
@@ -111,7 +111,11 @@
                 </nav>
 
                 <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
-                    <h1>404</h1>
+                    <h1>status:[[${status}]]</h1>
+                    <h1>timestamp:[[${timestamp}]]</h1>
+                    <h1>error:[[${error}]]</h1>
+                    <h1>message:[[${message}]]</h1>
+                </main>
                 </main>
             </div>
         </div>
@@ -123,15 +127,14 @@
         <!-- <script type="text/javascript" src="asserts/js/popper.min.js" ></script>-->
         <script type="text/javascript" th:src="@{/webjars/popper/1.14.3/popper.js}"></script>
         <script type="text/javascript" th:src="@{/webjars/bootstrap/4.4.1/js/bootstrap.js}"></script>
-        @{/webjars/bootstrap/4.4.1/css/bootstrap.css}"
         <!-- Icons -->
-        <script type="text/javascript" th:src="@{/asserts/js/feather.min.js}"></script>
+        <script type="text/javascript" th:src="@{/static/asserts/js/feather.min.js}"></script>
         <script>
             feather.replace()
         </script>
 
         <!-- Graphs -->
-        <script type="text/javascript" th:src="@{/asserts/js/Chart.min.js}"></script>
+        <script type="text/javascript" th:src="@{/static/asserts/js/Chart.min.js}"></script>
         <script>
             var ctx = document.getElementById("myChart");
             var myChart = new Chart(ctx, {
