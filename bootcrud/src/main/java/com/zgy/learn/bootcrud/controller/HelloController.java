@@ -1,10 +1,12 @@
 package com.zgy.learn.bootcrud.controller;
 
+import com.zgy.learn.bootcrud.exception.UserNotExistException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.time.LocalDate;
@@ -29,9 +31,18 @@ public class HelloController {
         return "hello boot " + crud + "!";
     }
 
+    @ResponseBody
+    @RequestMapping("hi")
+    public String hi(@RequestParam("user") String user) {
+        if (user.equals("aaa")) {
+            throw new UserNotExistException();
+        }
+        return "hi !";
+    }
+
     // 使用getmapping = get方法的RequestMapping， 添加了多个请求， 返回页面
-    @GetMapping({"/","/index.html","login.html"})
-    public String index(){
+    @GetMapping({"/", "/index.html", "login.html"})
+    public String index() {
         return "login";
     }
 
