@@ -235,7 +235,11 @@
                                 <td th:text="${#dates.format(emp.birth, 'yyyy‐MM‐dd HH:mm')}"></td>
                                 <td>
                                     <a class="btn btn-primary btn-sm" href="#" th:href="@{/emp/}+${emp.id}">员工更新</a>
-                                    <a class="btn btn-danger btn-sm" href="#" th:href="@{/emp/}+${emp.id}">员工删除</a>
+                                    <form th:action="@{/emp/}+${emp.id}" method="post">
+                                        <input type="hidden" name="_method" value="delete">
+                                        <input type="submit" class="btn btn-danger btn-sm" value="员工删除">
+                                    </form>
+<!--                                    <a class="btn btn-danger btn-sm" href="#" th:href="@{/emp/}+${emp.id}">员工删除</a>-->
                                 </td>
                             </tr>
                             </tbody>

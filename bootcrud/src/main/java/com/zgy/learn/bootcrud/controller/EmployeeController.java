@@ -7,6 +7,7 @@ import com.zgy.learn.bootcrud.entities.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -80,6 +81,14 @@ public class EmployeeController {
         // 转发到所有员工的页面
         // return "forward:/emps"; // 这个有问题， 无法达到目的
         return "redirect:/emps";
+    }
+
+    // 删除员工
+    @DeleteMapping("emp/{id}")
+    public String deleteEmp(@PathVariable("id") Integer id){
+        dao.delete(id);
+        return "redirect:/emps";
+
     }
 
 }
