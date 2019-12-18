@@ -1,0 +1,9 @@
+spring:
+  datasource:
+    username: root
+    password: renjiaxin
+#    需要加上时区，这点得注意
+    url: jdbc:mysql://localhost:3306/jdbc?serverTimezone=UTC
+    driver-class-name: com.mysql.cj.jdbc.Driver
+#    下面的废弃了
+#    driver-class-name: com.mysql.jdbc.Driver
