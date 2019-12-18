@@ -5,9 +5,10 @@ spring:
 #    需要加上时区，这点得注意
     url: jdbc:mysql://localhost:3306/jdbc?serverTimezone=UTC
     driver-class-name: com.mysql.cj.jdbc.Driver
-    schema:
-      - classpath:department.sql
-    initialization-mode: always
+    type: com.alibaba.druid.pool.DruidDataSource
+#    schema:
+#      - classpath:department.sql
+#    initialization-mode: ALWAYS
 #    一定要注意classpath:后面没有空格
 #    schema-username: root
 #    schema-password: renjiaxin
