@@ -1,0 +1,14 @@
+spring:
+  datasource:
+    username: root
+    password: renjiaxin
+    #    需要加上时区，这点得注意
+    url: jdbc:mysql://localhost:3306/jpa?serverTimezone=UTC
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    initialization-mode: ALWAYS
+  jpa:
+    database-platform: org.hibernate.dialect.MySQLDialect
+    show-sql: true     # 显示sql
+    hibernate:
+      ddl-auto: update
+
