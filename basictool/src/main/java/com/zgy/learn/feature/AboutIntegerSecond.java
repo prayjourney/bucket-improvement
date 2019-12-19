@@ -1,5 +1,13 @@
 package com.zgy.learn.feature;
 
+/**
+ * https://www.cnblogs.com/guodongdidi/p/6953217.html#4248342
+ * 如下是写的程序测试代码， 就是说一个整数有三种定义方式：int i=xxx; Integer a =xxxx; Integer b = new Integer(xxx)，
+ * 但是受影响的除了定义方式，还有范围，受到的额外影响就是[-128,127]的范围内，创建对象都是使用缓存值，如果已经有包含这个值的对象，
+ * 那就不再去创建新对象，所以这个范围内对象是同一个，此时Integer a =xxxx; 和 Integer b = new Integer(xxx)的 a==b的结果是true,
+ * 此范围之外，就是会创建一个新的对象，a==b就相当于是两个对象比较地址是不是相同了， 而int i =xxx 和 下面两种Integer a =xxxx;
+ * Integer b = new Integer(xxx)， 都是比较字面值，拆箱之后的字面值， 和对象比较没有关系了
+ */
 public class AboutIntegerSecond {
     public static void main(String[] args) {
         System.out.println("有三种定义方式：" +
