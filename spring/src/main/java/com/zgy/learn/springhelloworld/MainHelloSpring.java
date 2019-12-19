@@ -8,6 +8,8 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  * @Despcription: Spring HelloWorld！
  * @Date: Created in 2019/10/10 22:31
  * @Modified by:
+ * @SoruceAnalyse: https://my.oschina.net/klausprince/blog/1791357
+ *                 https://my.oschina.net/klausprince/blog/1793623
  */
 public class MainHelloSpring {
 
