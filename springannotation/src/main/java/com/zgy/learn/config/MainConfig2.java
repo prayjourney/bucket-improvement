@@ -29,17 +29,20 @@ public class MainConfig2 {
      * 懒加载：
      * 单实例bean：默认在容器启动的时候创建对象；
      * 懒加载：容器启动不创建对象。第一次使用(获取)Bean创建对象，并初始化；
-     * @see ConfigurableBeanFactory#SCOPE_SINGLETON
-     * @see org.springframework.web.context.WebApplicationContext#SCOPE_REQUEST  request
-     * @see org.springframework.web.context.WebApplicationContext#SCOPE_SESSION     sesssion
+     * ConfigurableBeanFactory#SCOPE_SINGLETON
+     * org.springframework.web.context.WebApplicationContext#SCOPE_REQUEST  request
+     * org.springframework.web.context.WebApplicationContext#SCOPE_SESSION     sesssion
      */
     @Bean(name = "guanyu")
+    @Scope(scopeName = "singleton") // 默认就是singleton
     public Person getPerson() {
+        System.out.println("开始调用，创建对象。。。");
         return new Person("guanyu", 27);
     }
     @Scope(value = "prototype")
     @Bean(name="ceshi")
     public Person getPerson2(){
+        System.out.println("开始调用，创建对象。。。");
         return new Person("王麻子",23);
 
     }
