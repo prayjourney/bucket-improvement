@@ -7,6 +7,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.FilterType;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 
 /**
  * @Author: renjiaxin
@@ -19,7 +20,8 @@ import org.springframework.stereotype.Repository;
 //        @ComponentScan.Filter(type = FilterType.ANNOTATION, classes = {Controller.class, Service.class})
 //})  // 包扫描，指定位置, 指定com.zgy.learn
 @ComponentScan(value = "com.zgy.learn", includeFilters = {
-        @ComponentScan.Filter(type = FilterType.ANNOTATION, classes = {Controller.class, Repository.class})
+        @ComponentScan.Filter(type = FilterType.ANNOTATION, classes = {Controller.class, Repository.class}),
+        @ComponentScan.Filter(type = FilterType.ASSIGNABLE_TYPE, classes = {Service.class})
 }, useDefaultFilters = false) // 指定只包含的时候，需要关闭默认扫描规则
 //@ComponentScan  value:指定要扫描的包
 //excludeFilters = Filter[] ：指定扫描的时候按照什么规则排除那些组件
