@@ -3,6 +3,7 @@ package com.zgy.learn.config;
 import com.zgy.learn.bean.Person;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Scope;
 
 /**
  * @Author: renjiaxin
@@ -35,5 +36,11 @@ public class MainConfig2 {
     @Bean(name = "guanyu")
     public Person getPerson() {
         return new Person("guanyu", 27);
+    }
+    @Scope(value = "prototype")
+    @Bean(name="ceshi")
+    public Person getPerson2(){
+        return new Person("王麻子",23);
+
     }
 }

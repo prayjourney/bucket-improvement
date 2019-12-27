@@ -36,4 +36,17 @@ public class AllTest {
         System.out.println("bean1 == bean2 : " + (bean1 == bean2));
     }
 
+    // bean的scope设置为prototype， 这个时候，每次new的都是新对象
+    @Test
+    public void test03() {
+        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(MainConfig2.class);
+        String[] names = context.getBeanDefinitionNames();
+        for (String name : names) {
+            System.out.println(name);
+        }
+
+        Person bean1 = (Person) context.getBean("ceshi");
+        Person bean2 = (Person) context.getBean("ceshi");
+        System.out.println("bean1 == bean2 : " + (bean1 == bean2));
+    }
 }
