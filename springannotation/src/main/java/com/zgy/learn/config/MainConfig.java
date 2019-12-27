@@ -14,9 +14,13 @@ import org.springframework.context.annotation.Configuration;
 public class MainConfig {
 
     // 给容器返回一个bean, 类型是Person，默认的名字是方法名，首字母小写
-    @Bean
-    public Person person(){
-        return new Person("张三",25);
-
+//    @Bean
+//    public Person person(){
+//        return new Person("张三",25);
+//
+//    }
+    @Bean(name = "helloperson")
+    public Person person01() {
+        return new Person("Lili", 22);
     }
 }
