@@ -1,7 +1,10 @@
 package com.zgy.learn.config;
 
 import com.zgy.learn.bean.Person;
+import com.zgy.learn.condition.LinuxCondition;
+import com.zgy.learn.condition.WindowsCondition;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Conditional;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.context.annotation.Scope;
@@ -12,6 +15,8 @@ import org.springframework.context.annotation.Scope;
  * @Date: Created in 2019/12/28 2:24
  * @Modified by:
  */
+//类中组件统一设置。满足当前条件，这个类中配置的所有bean注册才能生效；
+//@Conditional({WindowsCondition.class})
 @Configuration
 public class MainConfig2 {
 
@@ -28,9 +33,9 @@ public class MainConfig2 {
      * session：同一个session创建一个实例
      * <p>
      * 懒加载：
-     *      单实例bean：默认在容器启动的时候创建对象；
-     *      懒加载：容器启动不创建对象。第一次使用(获取)Bean创建对象，并初始化；
-     *
+     * 单实例bean：默认在容器启动的时候创建对象；
+     * 懒加载：容器启动不创建对象。第一次使用(获取)Bean创建对象，并初始化；
+     * <p>
      * ConfigurableBeanFactory#SCOPE_SINGLETON
      * org.springframework.web.context.WebApplicationContext#SCOPE_REQUEST  request
      * org.springframework.web.context.WebApplicationContext#SCOPE_SESSION     sesssion
@@ -61,18 +66,20 @@ public class MainConfig2 {
 
     /**
      * @Conditional({Condition}) ： 按照一定的条件进行判断，满足条件给容器中注册bean
-     *
+     * <p>
      * 如果系统是windows，给容器中注册("bill")
      * 如果是linux系统，给容器中注册("linus")
      */
 
     @Bean("bill gates")
-    public Person winPerson(){
-        return new Person("bill gates",62);
+    @Conditional(value = WindowsCondition.class)// 按照WindowsCondition的匹配条件来匹配
+    public Person winPerson() {
+        return new Person("bill gates", 62);
     }
 
     @Bean("linux")
-    public Person linuxPerson(){
-        return new Person("linux",51);
+    @Conditional(value = LinuxCondition.class)
+    public Person linuxPerson() {
+        return new Person("linux", 51);
     }
 }
