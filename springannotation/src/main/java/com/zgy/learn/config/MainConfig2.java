@@ -58,4 +58,21 @@ public class MainConfig2 {
         return new Person("大麻子", 23);
 
     }
+
+    /**
+     * @Conditional({Condition}) ： 按照一定的条件进行判断，满足条件给容器中注册bean
+     *
+     * 如果系统是windows，给容器中注册("bill")
+     * 如果是linux系统，给容器中注册("linus")
+     */
+
+    @Bean("bill gates")
+    public Person winPerson(){
+        return new Person("bill gates",62);
+    }
+
+    @Bean("linux")
+    public Person linuxPerson(){
+        return new Person("linux",51);
+    }
 }

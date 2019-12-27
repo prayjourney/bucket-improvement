@@ -84,4 +84,16 @@ public class AllTest {
         //context.getBean("ceshi2");
         System.out.println("singleton默认容器创建就加载，使用@Lazy, 可以让它在调用的时候再去创建！");
     }
+
+
+
+    // 按照类型获取所有的person的bean
+    @Test
+    public void test06() {
+        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(MainConfig2.class);
+        String[] names = context.getBeanNamesForType(Person.class);
+        for (String name : names) {
+            System.out.println(name);
+        }
+    }
 }
