@@ -4,7 +4,9 @@ import com.zgy.learn.bean.Person;
 import com.zgy.learn.config.MainConfig;
 import com.zgy.learn.config.MainConfig2;
 import org.junit.Test;
+import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.core.env.Environment;
 
 /**
  * @Author: renjiaxin
@@ -86,7 +88,6 @@ public class AllTest {
     }
 
 
-
     // 按照类型获取所有的person的bean
     @Test
     public void test06() {
@@ -95,5 +96,15 @@ public class AllTest {
         for (String name : names) {
             System.out.println(name);
         }
+        ConfigurableListableBeanFactory beanFactory = context.getBeanFactory();
+        Environment environment = context.getEnvironment();
+        ClassLoader classLoader = context.getClassLoader();
+        String applicationName = context.getApplicationName();
+        System.out.println("beanFactory :" + beanFactory.getClass().getName());
+        System.out.println("environment :" + environment.toString());
+        System.out.println("classLoader :" + classLoader.getClass().getName());
+        System.out.println("applicationName :" + applicationName);
+
+
     }
 }
