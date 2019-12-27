@@ -3,11 +3,9 @@ package com.zgy.learn.config;
 import com.zgy.learn.bean.Person;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.ComponentScans;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.FilterType;
-import org.springframework.stereotype.Controller;
-import org.springframework.stereotype.Repository;
-import org.springframework.stereotype.Service;
 
 /**
  * @Author: renjiaxin
@@ -19,10 +17,21 @@ import org.springframework.stereotype.Service;
 //@ComponentScan(value = "com.zgy.learn", excludeFilters = {
 //        @ComponentScan.Filter(type = FilterType.ANNOTATION, classes = {Controller.class, Service.class})
 //})  // 包扫描，指定位置, 指定com.zgy.learn
-@ComponentScan(value = "com.zgy.learn", includeFilters = {
-        @ComponentScan.Filter(type = FilterType.ANNOTATION, classes = {Controller.class, Repository.class}),
-        @ComponentScan.Filter(type = FilterType.ASSIGNABLE_TYPE, classes = {Service.class})
-}, useDefaultFilters = false) // 指定只包含的时候，需要关闭默认扫描规则
+
+//@ComponentScan(value = "com.zgy.learn", includeFilters = {
+//        @ComponentScan.Filter(type = FilterType.ANNOTATION, classes = {Controller.class, Repository.class}),
+//        @ComponentScan.Filter(type = FilterType.ASSIGNABLE_TYPE, classes = {Service.class})
+//}, useDefaultFilters = false) // 指定只包含的时候，需要关闭默认扫描规则
+
+@ComponentScans(
+        value = {
+                @ComponentScan(value = "com.zgy.learn", includeFilters = {
+/*						@Filter(type=FilterType.ANNOTATION,classes={Controller.class}),
+						@Filter(type=FilterType.ASSIGNABLE_TYPE,classes={BookService.class}),*/
+                        @ComponentScan.Filter(type = FilterType.CUSTOM, classes = {MyTypeFilter.class})
+                }, useDefaultFilters = false)
+        }
+)
 //@ComponentScan  value:指定要扫描的包
 //excludeFilters = Filter[] ：指定扫描的时候按照什么规则排除那些组件
 //includeFilters = Filter[] ：指定扫描的时候只需要包含哪些组件
