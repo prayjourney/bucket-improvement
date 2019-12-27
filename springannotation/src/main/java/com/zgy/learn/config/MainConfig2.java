@@ -3,6 +3,7 @@ package com.zgy.learn.config;
 import com.zgy.learn.bean.Person;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.context.annotation.Scope;
 
 /**
@@ -39,11 +40,21 @@ public class MainConfig2 {
         System.out.println("开始调用，创建对象。。。");
         return new Person("guanyu", 27);
     }
+
     @Scope(value = "prototype")
-    @Bean(name="ceshi")
-    public Person getPerson2(){
+    @Bean(name = "ceshi")
+    public Person getPerson2() {
         System.out.println("开始调用，创建对象。。。");
-        return new Person("王麻子",23);
+        return new Person("王麻子", 23);
+
+    }
+
+    @Scope(value = "singleton")
+    @Bean(name = "ceshi2")
+    @Lazy(value = true) // 懒加载默认是true, singleton默认容器创建就加载，使用@Lazy, 可以让它在调用的时候再去创建
+    public Person getPerson3() {
+        System.out.println("开始调用，创建对象。。。");
+        return new Person("大麻子", 23);
 
     }
 }

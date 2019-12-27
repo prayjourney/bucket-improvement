@@ -68,4 +68,20 @@ public class AllTest {
         }
         System.out.println("我还没有使用propotype scope的bean，所以我没调用bean的创建方法！");
     }
+
+    // singleton的bean, 使用懒加载
+    @Test
+    public void test05() {
+        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(MainConfig2.class);
+        String[] names = context.getBeanDefinitionNames();
+        for (String name : names) {
+            // 名字是一直有的，但是没有创建对象
+//            if ("ceshi2".equals(name)) {
+//                System.out.println("ceshi2的bean已经创建好了！");
+//            }
+            System.out.println(name);
+        }
+        //context.getBean("ceshi2");
+        System.out.println("singleton默认容器创建就加载，使用@Lazy, 可以让它在调用的时候再去创建！");
+    }
 }
