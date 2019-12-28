@@ -1,6 +1,7 @@
 package com.zgy.learn.config;
 
 import com.zgy.learn.bean.Color;
+import com.zgy.learn.bean.ColorFactoryBean;
 import com.zgy.learn.bean.Person;
 import com.zgy.learn.bean.Red;
 import com.zgy.learn.condition.MyImportBeanDefinitionRegistrar;
@@ -28,5 +29,13 @@ public class BeanDefineConfig {
     public Person getPerson() {
         return new Person("关羽", 38);
     }
+
+    // 把自定义的FactoryBean添加到组件之中
+    @Bean
+    public ColorFactoryBean getColorFactoryBean() {
+        // 虽然获取的是ColorFactoryBean, 但是我们是拿到的其中的对象
+        return new ColorFactoryBean();
+    }
+
 
 }
