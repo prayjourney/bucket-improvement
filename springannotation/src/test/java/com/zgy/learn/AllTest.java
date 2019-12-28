@@ -128,6 +128,16 @@ public class AllTest {
 
         // ColorFactoryBean来获取bean
         System.out.println("使用ColorFactoryBean来获取bean。。。");
+        // 获取我们自定义的factoryBean，然后输出他的类型， 是它里面的包含的类型信息的类型
+        // factoryBean.getClass(): class com.zgy.learn.bean.Color
+        Object factoryBean = context.getBean("colorFactoryBean");
+        System.out.println("factoryBean.getClass(): " + factoryBean.getClass());
+        // 获取我们的自定义的bean工厂的类型， name之前要用&来修饰
+        // factoryBean2.getClass(): class com.zgy.learn.bean.ColorFactoryBean
+        Object factoryBean2 = context.getBean("&colorFactoryBean");
+        System.out.println("factoryBean2.getClass(): " + factoryBean2.getClass());
+
+        // 下面的不算， 我们自己去创建管理了ColorFactoryBean， 但是还是证明了它是prototype的
         ColorFactoryBean colorBean = new ColorFactoryBean();
         System.out.println("colorBean的类型：" + colorBean.getClass());
         try {

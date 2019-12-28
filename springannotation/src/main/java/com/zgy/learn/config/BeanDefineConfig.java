@@ -32,7 +32,7 @@ public class BeanDefineConfig {
 
     // 把自定义的FactoryBean添加到组件之中
     @Bean
-    public ColorFactoryBean getColorFactoryBean() {
+    public ColorFactoryBean colorFactoryBean() {
         // 虽然获取的是ColorFactoryBean, 但是我们是拿到的其中的对象
         return new ColorFactoryBean();
     }
