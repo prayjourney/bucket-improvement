@@ -1,6 +1,7 @@
 package com.zgy.learn;
 
 import com.zgy.learn.bean.Person;
+import com.zgy.learn.config.BeanDefineConfig;
 import com.zgy.learn.config.MainConfig;
 import com.zgy.learn.config.MainConfig2;
 import org.junit.Test;
@@ -105,6 +106,18 @@ public class AllTest {
         System.out.println("classLoader :" + classLoader.getClass().getName());
         System.out.println("applicationName :" + applicationName);
 
+
+    }
+
+    // 使用不同的方式创建bean
+    @Test
+    public void test07() {
+        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(BeanDefineConfig.class);
+        // 获取所有定义了的bean
+        String[] names = context.getBeanDefinitionNames();
+        for (String name : names) {
+            System.out.println(name);
+        }
 
     }
 }

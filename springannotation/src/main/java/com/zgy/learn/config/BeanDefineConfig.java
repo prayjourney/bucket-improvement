@@ -1,8 +1,11 @@
 package com.zgy.learn.config;
 
+import com.zgy.learn.bean.Color;
 import com.zgy.learn.bean.Person;
+import com.zgy.learn.bean.Red;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
 
 /**
  * @Author: renjiaxin
@@ -11,6 +14,7 @@ import org.springframework.context.annotation.Configuration;
  * @Modified by:
  */
 @Configuration
+@Import(value = {Red.class, Color.class}) // 快速导入组件，默认的名称是全类名的小写，如com.zgy.learn.bean.Red，可以放多个，成为一个数组
 public class BeanDefineConfig {
     // 普通的bean定义方式
     @Bean(value = "guanyu01")
