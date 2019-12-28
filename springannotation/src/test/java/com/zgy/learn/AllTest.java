@@ -1,6 +1,7 @@
 package com.zgy.learn;
 
 import com.zgy.learn.bean.Person;
+import com.zgy.learn.bean.Rainbow;
 import com.zgy.learn.config.BeanDefineConfig;
 import com.zgy.learn.config.MainConfig;
 import com.zgy.learn.config.MainConfig2;
@@ -118,6 +119,10 @@ public class AllTest {
         for (String name : names) {
             System.out.println(name);
         }
+        // 测试scope是否起效， 为singleton
+        Rainbow rainbow1 = (Rainbow) context.getBean("rainbow");
+        Rainbow rainbow2 = (Rainbow) context.getBean("rainbow");
+        System.out.println("rainbow1 == rainbow2: " + (rainbow1 == rainbow2));
 
     }
 }
