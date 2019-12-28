@@ -1,5 +1,7 @@
 package com.zgy.learn;
 
+import com.zgy.learn.bean.Color;
+import com.zgy.learn.bean.ColorFactoryBean;
 import com.zgy.learn.bean.Person;
 import com.zgy.learn.bean.Rainbow;
 import com.zgy.learn.config.BeanDefineConfig;
@@ -124,5 +126,16 @@ public class AllTest {
         Rainbow rainbow2 = (Rainbow) context.getBean("rainbow");
         System.out.println("rainbow1 == rainbow2: " + (rainbow1 == rainbow2));
 
+        // ColorFactoryBean来获取bean
+        System.out.println("使用ColorFactoryBean来获取bean。。。");
+        ColorFactoryBean colorBean = new ColorFactoryBean();
+        System.out.println("colorBean的类型：" + colorBean.getClass());
+        try {
+            Color object1 = colorBean.getObject();
+            Color object2 = colorBean.getObject();
+            System.out.println("object1==object2: " + (object1 == object2));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
