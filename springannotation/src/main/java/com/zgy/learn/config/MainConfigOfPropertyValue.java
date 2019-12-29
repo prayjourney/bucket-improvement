@@ -2,6 +2,7 @@ package com.zgy.learn.config;
 
 import com.zgy.learn.bean.Person;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 /**
@@ -11,6 +12,7 @@ import org.springframework.context.annotation.Configuration;
  * @Modified by:
  */
 @Configuration
+@ComponentScan(value = "com.zgy.learn.bean")
 public class MainConfigOfPropertyValue {
 
     @Bean
