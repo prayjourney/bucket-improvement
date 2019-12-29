@@ -62,7 +62,7 @@ import org.springframework.context.annotation.Configuration;
  */
 @Configuration
 // 配合@Component，就可以把组件注入到容器之中， 否则下面的就需要使用@Bean 来创建了我们需要的car的bean了
-@ComponentScan(value = "com.zgy.learn.bean")
+@ComponentScan(value = {"com.zgy.learn.bean","com.zgy.learn.config"})
 public class BeanLifeCycleConfig {
     // 定义了初始化方法和销毁方法
     @Bean(initMethod = "init", destroyMethod = "myDestoryMethod")
