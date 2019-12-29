@@ -2,6 +2,7 @@ package com.zgy.learn;
 
 import com.zgy.learn.bean.Car;
 import com.zgy.learn.bean.Cat;
+import com.zgy.learn.bean.Dog;
 import com.zgy.learn.config.BeanLifeCycleConfig;
 import org.junit.After;
 import org.junit.Before;
@@ -34,6 +35,8 @@ public class LifeCycleTest {
     public void test01() {
         Cat cat = (Cat) context.getBean("cat");
         Car car = (Car) context.getBean("littleCar");
+        Dog dog = (Dog) context.getBean("chaiquan");
+        System.out.println(dog);
     }
 
 

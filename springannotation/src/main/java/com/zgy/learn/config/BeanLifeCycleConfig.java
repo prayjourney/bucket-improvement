@@ -1,6 +1,7 @@
 package com.zgy.learn.config;
 
 import com.zgy.learn.bean.Cat;
+import com.zgy.learn.bean.Dog;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -67,5 +68,12 @@ public class BeanLifeCycleConfig {
     @Bean(initMethod = "init", destroyMethod = "myDestoryMethod")
     public Cat cat() {
         return new Cat();
+    }
+
+    // 没有使用@Component注解，自己去创建bean
+    @Bean(value = "chaiquan")
+    public Dog dog() {
+        return new Dog();
+
     }
 }
