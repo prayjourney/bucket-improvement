@@ -1,5 +1,6 @@
 package com.zgy.learn;
 
+import com.zgy.learn.bean.Car;
 import com.zgy.learn.bean.Cat;
 import com.zgy.learn.config.BeanLifeCycleConfig;
 import org.junit.After;
@@ -32,6 +33,7 @@ public class LifeCycleTest {
     @Test
     public void test01() {
         Cat cat = (Cat) context.getBean("cat");
+        Car car = (Car) context.getBean("littleCar");
     }
 
 
