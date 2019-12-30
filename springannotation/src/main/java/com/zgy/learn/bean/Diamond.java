@@ -6,10 +6,6 @@ import lombok.ToString;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.util.Date;
-
 /**
  * @Author: renjiaxin
  * @Despcription:
@@ -28,9 +24,9 @@ public class Diamond {
 
     @Value("蓝色火焰")
     private String name;
-    @Value("22.5")
+    @Value("#{23-2}")
     private Double weight;
-    @Value("22123112333.0")
+    @Value("${diamond.price}")
     private Double price;
     //@Value("2019-1-2")
     //private Date date;
