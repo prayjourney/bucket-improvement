@@ -20,9 +20,18 @@ public class ProfileConfigTest {
     //2、代码的方式激活某种环境；
     @Test
     public void test01() {
+//        AnnotationConfigApplicationContext applicationContext =
+//                new AnnotationConfigApplicationContext(ConfigOfProfile.class);
+        // 使用代码的方式来激活某种环境
         AnnotationConfigApplicationContext applicationContext =
-                new AnnotationConfigApplicationContext(ConfigOfProfile.class);
-
+                new AnnotationConfigApplicationContext();
+        //1、创建一个applicationContext
+        //2、设置需要激活的环境
+        applicationContext.getEnvironment().setActiveProfiles("dev");
+        //3、注册主配置类
+        applicationContext.register(ConfigOfProfile.class);
+        //4、启动刷新容器
+        applicationContext.refresh();
 
 
         String[] namesForType = applicationContext.getBeanNamesForType(ComboPooledDataSource.class);

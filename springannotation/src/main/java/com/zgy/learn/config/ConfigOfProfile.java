@@ -46,7 +46,8 @@ public class ConfigOfProfile implements EmbeddedValueResolverAware {
     }
 
     // 写了@profile注解， 必须激活才能起作用，如果写default则默认起作用
-    @Profile("default")
+    // @Profile("default")
+    @Profile("test")
     @Bean("testDataSource")
     public ComboPooledDataSource dataSourceTest(@Value("${db.password}") String pwd) throws Exception {
         ComboPooledDataSource dataSource = new ComboPooledDataSource();
