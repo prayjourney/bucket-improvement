@@ -17,9 +17,10 @@ import javax.annotation.Resource;
 @Service
 public class BookService {
 
-    //@Autowired()
+    @Autowired()
     @Qualifier("bookDao")
-    @Resource
+    //@Resource
+    //@Inject
     private BookDao bookDao;
 
     public void print(){
