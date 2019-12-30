@@ -31,7 +31,7 @@ public class AutowiredTest {
 
     @Test
     public void test01() {
-        BookDao bean = context.getBean(BookDao.class);
-        System.out.println(bean.getLable());
+        //BookDao bean = context.getBean(BookDao.class);
+        //System.out.println(bean.getLable());
     }
 }

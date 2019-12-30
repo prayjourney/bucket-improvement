@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class BookService {
     //@Qualifier("bookDao")
-    @Autowired
+    @Autowired(required = false)
     private BookDao bookDao;
 
     public void print(){
