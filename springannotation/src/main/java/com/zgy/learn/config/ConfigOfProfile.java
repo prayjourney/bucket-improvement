@@ -8,6 +8,7 @@ package com.zgy.learn.config;
  */
 
 import com.mchange.v2.c3p0.ComboPooledDataSource;
+import com.zgy.learn.bean.Yellow;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.EmbeddedValueResolverAware;
 import org.springframework.context.annotation.Bean;
@@ -39,7 +40,13 @@ public class ConfigOfProfile implements EmbeddedValueResolverAware {
 
     private String driverClass;
 
+    @Bean
+    public Yellow yellow() {
+        return new Yellow();
+    }
 
+    // 写了@profile注解， 必须激活才能起作用，如果写default则默认起作用
+    @Profile("default")
     @Bean("testDataSource")
     public ComboPooledDataSource dataSourceTest(@Value("${db.password}") String pwd) throws Exception {
         ComboPooledDataSource dataSource = new ComboPooledDataSource();
