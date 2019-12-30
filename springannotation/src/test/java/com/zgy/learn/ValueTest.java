@@ -6,6 +6,7 @@ import com.zgy.learn.config.MainConfigOfPropertyValue;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.core.env.ConfigurableEnvironment;
 
 /**
  * @Author: renjiaxin
@@ -34,5 +35,8 @@ public class ValueTest {
     public void test02() {
         Diamond diamond = (Diamond) context.getBean("diamondxxx");
         System.out.println(diamond);
+        // 配置文件中的值，加载之后，就会传入到环境之中，ConfigurableEnvironment，可以获取
+        ConfigurableEnvironment environment = context.getEnvironment();
+        System.out.println("diamond price :"+environment.getProperty("diamond.price"));
     }
 }
