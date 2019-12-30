@@ -1,9 +1,12 @@
 package com.zgy.learn.service;
 
 import com.zgy.learn.dao.BookDao;
+import org.hibernate.service.spi.InjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
+
+import javax.annotation.Resource;
 
 /**
  * @Author: renjiaxin
@@ -14,8 +17,9 @@ import org.springframework.stereotype.Service;
 @Service
 public class BookService {
 
-    @Autowired()
-    // @Qualifier("bookDao2")
+    //@Autowired()
+    @Qualifier("bookDao")
+    @Resource
     private BookDao bookDao;
 
     public void print(){

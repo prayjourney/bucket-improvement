@@ -18,6 +18,7 @@ public class MainConfigAutowired {
 
     // 此处注册的bean是bookDao2, 所以当前有两个bean
     // @Primary, 这样有多个bean的时候， 就把他设置为首选注入的bean
+    @Primary
     @Bean("bookDao2")
     public BookDao bookDao() {
         BookDao bookDao = new BookDao();
