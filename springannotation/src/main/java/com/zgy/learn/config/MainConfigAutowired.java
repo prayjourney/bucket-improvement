@@ -3,6 +3,7 @@ package com.zgy.learn.config;
 import com.zgy.learn.bean.Boss;
 import com.zgy.learn.bean.Car;
 import com.zgy.learn.dao.BookDao;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -29,7 +30,8 @@ public class MainConfigAutowired {
     }
 
     @Bean("boss")
-    public Boss boss(Car car){
+    //@Autowired
+    public Boss boss(@Autowired Car car){
         Boss boss = new Boss();
         boss.setCar(car);
         return boss;
