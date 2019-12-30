@@ -1,5 +1,7 @@
 package com.zgy.learn;
 
+import com.zgy.learn.bean.Boss;
+import com.zgy.learn.bean.Car;
 import com.zgy.learn.config.MainConfigAutowired;
 import com.zgy.learn.dao.BookDao;
 import org.junit.After;
@@ -33,5 +35,14 @@ public class AutowiredTest {
     public void test01() {
         BookDao bean = context.getBean(BookDao.class);
         System.out.println(bean.getLable());
+    }
+
+    @Test
+    public void test02() {
+        // 通过类型获取
+        Boss bean = (Boss)context.getBean(Boss.class);
+        System.out.println(bean);
+        Car car = (Car)context.getBean("littleCar");
+        System.out.println(car);
     }
 }

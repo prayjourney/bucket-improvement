@@ -1,5 +1,7 @@
 package com.zgy.learn.config;
 
+import com.zgy.learn.bean.Boss;
+import com.zgy.learn.bean.Car;
 import com.zgy.learn.dao.BookDao;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -25,4 +27,12 @@ public class MainConfigAutowired {
         bookDao.setLable("2");
         return bookDao;
     }
+
+    @Bean("boss")
+    public Boss boss(Car car){
+        Boss boss = new Boss();
+        boss.setCar(car);
+        return boss;
+    }
+
 }
