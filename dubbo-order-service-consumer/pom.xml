@@ -5,32 +5,10 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.zgy.learn</groupId>
-  <!-- artifactId 从 imporvement-java-skill 修改为bucket-improvement -->
-  <artifactId>bucket-improvement</artifactId>
-  <packaging>pom</packaging>
+  <artifactId>dubbo-order-service-consumer</artifactId>
   <version>1.0-SNAPSHOT</version>
-  <modules>
-    <module>redis</module>
-    <module>mongo</module>
-    <module>spring</module>
-    <module>database</module>
-    <module>activemq</module>
-    <module>thread</module>
-    <module>net</module>
-    <module>java8</module>
-    <module>netty</module>
-    <module>dubbo</module>
-    <module>jvm</module>
-    <module>mvccrud</module>
-    <module>mvc</module>
-    <module>basictool</module>
-    <module>springannotation</module>
-      <module>dubbo-user-service-provider</module>
-    <module>dubbo-order-service-consumer</module>
-  </modules>
 
-  <!-- improvement-java-skill  to bucket-improvement-->
-  <name>bucket-improvement</name>
+  <name>untitled</name>
   <!-- FIXME change it to the project's website -->
   <url>http://www.example.com</url>
 
