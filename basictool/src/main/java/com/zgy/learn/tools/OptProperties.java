@@ -1,5 +1,8 @@
 package com.zgy.learn.tools;
 
+import org.springframework.util.FileSystemUtils;
+import sun.security.util.Resources;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -18,12 +21,14 @@ public class OptProperties {
     public static void getPathTest() {
         // 取到绝对路径, 但是这个是target里面的, 带了file:
         URL is = Thread.currentThread().getContextClassLoader().getResource("myinfo.properties");
-        System.out.println(is);
+        System.out.println("--->URL is :" + is);
+        String urlPath = is.getPath();
+        System.out.println("===>urlPath is :" + urlPath);
         // 取到绝对路径, 但是这个是target里面的，去掉了file
         String path1 = OptProperties.class.getResource("/myinfo.properties").getPath();
-        System.out.println(path1);
+        System.out.println("+++>paht1 is " + path1 +"\n");
 
-        // 获取当前项目的路径
+        // 获取当前项目的路径, 自己拼接路径
         String property = System.getProperty("user.dir");
         System.out.println(property);
         String mypath = property + "\\basictool\\src\\main\\resources\\myinfo.properties";
@@ -31,19 +36,18 @@ public class OptProperties {
 
         // 在target目录下的文件名
         String fileName = OptProperties.class.getClassLoader().getResource("\\myinfo.properties").getPath();
-        System.out.println(fileName);
+        System.out.println("fileName:=====:" + fileName);
     }
 
     public static void main(String[] args) {
-        //getPathTest();
+        getPathTest();
         String property = System.getProperty("user.dir");
         String mypath = property + "\\basictool\\src\\main\\resources\\myinfo.properties";
         String mypathtemp = property + "\\basictool\\src\\main\\resources\\myinfotemp.properties";
-        System.out.println(mypath);
+        //System.out.println(mypath);
         //readProperties(mypath);
         writeProperties(mypath, mypathtemp);
         //readProperties2();
-
     }
 
     public static void readProperties(String name) {
