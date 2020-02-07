@@ -36,12 +36,13 @@ public class OptProperties {
 
     public static void main(String[] args) {
         //getPathTest();
-        String property =System.getProperty("user.dir");
+        String property = System.getProperty("user.dir");
         String mypath = property + "\\basictool\\src\\main\\resources\\myinfo.properties";
         String mypathtemp = property + "\\basictool\\src\\main\\resources\\myinfotemp.properties";
         System.out.println(mypath);
         //readProperties(mypath);
-        writeProperties(mypath,mypathtemp);
+        writeProperties(mypath, mypathtemp);
+        //readProperties2();
 
     }
 
@@ -61,7 +62,7 @@ public class OptProperties {
         }
     }
 
-    public static void writeProperties(String path,String path2) {
+    public static void writeProperties(String path, String path2) {
         try {
             // 读取
             FileInputStream fis = new FileInputStream(path);
@@ -79,8 +80,8 @@ public class OptProperties {
             fos.close();
 
             // 文件删除和改名
-            File  f1 = new File(path);
-            File  f2 = new File(path2);
+            File f1 = new File(path);
+            File f2 = new File(path2);
             f1.delete();
             f2.renameTo(f1);
         } catch (FileNotFoundException e) {
@@ -90,4 +91,21 @@ public class OptProperties {
         }
     }
 
+    // 在pom文件下面添加了resources, 没啥作用啊
+    public static void readProperties2() {
+        try {
+            FileInputStream fis = new FileInputStream("/myinfo2.properties");
+            Properties pro = new Properties();
+            pro.load(fis);
+            System.out.println(pro.getProperty("age"));
+            System.out.println(pro.getProperty("name"));
+            System.out.println(pro.getProperty("tag"));
+            fis.close();
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }

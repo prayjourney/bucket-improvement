@@ -111,5 +111,11 @@
                 </plugin>
             </plugins>
         </pluginManagement>
+        <!-- 静态资源 -->
+        <resources>
+            <resource>
+                <directory>/src/main/resources</directory>
+            </resource>
+        </resources>
     </build>
 </project>
