@@ -11,6 +11,7 @@ import java.util.concurrent.TimeUnit;
  * @Author: renjiaxin
  * @Despcription: 测试BlockingQueue
  * @Date: Created in 2020/2/13 13:57
+ * @URL: https://www.cnblogs.com/tjudzj/p/4454490.html, https://www.cnblogs.com/tjudzj/p/4454490.html
  * @Modified by:
  */
 public class MyBlockingQueue {
