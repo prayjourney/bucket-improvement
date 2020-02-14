@@ -9,7 +9,7 @@ import java.util.List;
 
 /**
  * @Author: renjiaxin
- * @Despcription:
+ * @Despcription: org.apache.commons.collections4的几个方法以及java.util.Arrays的类，java.util.Collections的类的一些方法的测用。
  * @Date: Created in 2020/2/14 21:27
  * @Modified by:
  */
