@@ -142,6 +142,11 @@
             <version>1.18.8</version>
             <scope>provided</scope>
         </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.9</version>
+        </dependency>
 
         <!-- 没有javax.servlet就会出现如下的错误， 一般项目里可以引入tomcat自带的jar包解决 -->
         <!-- https://blog.csdn.net/weixin_40901329/article/details/81748073 -->
