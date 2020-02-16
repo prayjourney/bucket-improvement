@@ -27,6 +27,7 @@
     <module>dubbo-user-service-provider</module>
     <module>dubbo-order-service-consumer</module>
     <module>dubbo-common-interface</module>
+      <module>spring-shiro</module>
   </modules>
 
   <!-- improvement-java-skill  to bucket-improvement-->
