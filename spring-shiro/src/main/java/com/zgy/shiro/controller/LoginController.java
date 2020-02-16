@@ -44,8 +44,10 @@ public class LoginController {
             //每个Realm都能在必要时对提交的AuthenticationTokens作出反应
             //所以这一步在调用login(token)方法时,它会走到MyRealm.doGetAuthenticationInfo()方法中,具体验证方式详见此方法
             System.out.println("对用户[" + username + "]进行登录验证..验证开始");
-            currentUser.login(token);
-            System.out.println("对用户[" + username + "]进行登录验证..验证通过");
+            if ("123"== username && "123" == password){
+                currentUser.login(token);
+                System.out.println("对用户[" + username + "]进行登录验证..验证通过");
+            }
         } catch (UnknownAccountException uae) {
             System.out.println("对用户[" + username + "]进行登录验证..验证未通过,未知账户");
             request.setAttribute("message_login", "未知账户");
