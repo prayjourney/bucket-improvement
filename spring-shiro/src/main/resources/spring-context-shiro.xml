@@ -48,6 +48,7 @@
         <property name="filterChainDefinitions">
             <value>
                 /login.jsp = anon
+                /list.jsp = anon
                 # everything else requires authentication:
                 /** = authc
             </value>
