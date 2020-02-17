@@ -1,6 +1,7 @@
 package com.zgy.learn.springbootshiro.config;
 
 import com.zgy.learn.springbootshiro.realm.MyRealm;
+import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
 import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -43,9 +44,9 @@ public class ShiroConfig {
          **/
         Map<String, String> filterMap = new LinkedHashMap<>();
 
-        filterMap.put("/index","anon");
+        filterMap.put("/index", "anon");
         filterMap.put("/login", "anon");
-        filterMap.put("/index.html","anon");
+        filterMap.put("/index.html", "anon");
         filterMap.put("/login.html", "anon");
 //      filterMap.put("/vip/index", "roles[vip]");
         filterMap.put("/static/**", "anon");
@@ -68,10 +69,25 @@ public class ShiroConfig {
     }
 
     /**
-     * 创建自定义的Realm
+     * 创建自定义的Realm, 替换了原始的加密方式，改成了新的hashedCredentialsMatcher()的方式，MD5， 加密1024次数。
      */
     @Bean(name = "myFirstRealm")
-    public MyRealm getRealm() {
-        return new MyRealm();
+    public MyRealm getRealm(@Qualifier("hashedCredentialsMatcher") HashedCredentialsMatcher hashedCredentialsMatcher) {
+        MyRealm mr = new MyRealm();
+        mr.setCredentialsMatcher(hashedCredentialsMatcher);
+        return mr;
+    }
+
+    /**
+     * 盐值加密算法和次数
+     *
+     * @return
+     */
+    @Bean(name = "hashedCredentialsMatcher")
+    public HashedCredentialsMatcher hashedCredentialsMatcher() {
+        HashedCredentialsMatcher hashedCredentialsMatcher = new HashedCredentialsMatcher();
+        hashedCredentialsMatcher.setHashAlgorithmName("MD5"); // 散列算法
+        hashedCredentialsMatcher.setHashIterations(1024); // 散列次数
+        return hashedCredentialsMatcher;
     }
 }
