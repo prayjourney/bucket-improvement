@@ -27,11 +27,11 @@ public class ShiroConfig {
         // 设置 SecurityManager
         bean.setSecurityManager(securityManager);
 
-        //bean.setSuccessUrl("/list");
+        bean.setSuccessUrl("/list");
         // 设置登录跳转页面
-        //bean.setLoginUrl("/index");
+        bean.setLoginUrl("/index");
         // 设置未授权提示页面
-        //bean.setUnauthorizedUrl("/404");
+        bean.setUnauthorizedUrl("/404");
         /**
          * Shiro内置过滤器，可以实现拦截器相关的拦截器
          *    常用的过滤器：
@@ -43,13 +43,12 @@ public class ShiroConfig {
          **/
         Map<String, String> filterMap = new LinkedHashMap<>();
 
-        filterMap.put("/index.html","anon");
-        filterMap.put("/login.html", "anon");
         filterMap.put("/index","anon");
         filterMap.put("/login", "anon");
-//        filterMap.put("/vip/index", "roles[vip]");
+        filterMap.put("/index.html","anon");
+        filterMap.put("/login.html", "anon");
+//      filterMap.put("/vip/index", "roles[vip]");
         filterMap.put("/static/**", "anon");
-//
         filterMap.put("/**", "authc");
         filterMap.put("/logout", "logout");
 

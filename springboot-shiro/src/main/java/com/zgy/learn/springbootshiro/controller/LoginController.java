@@ -7,6 +7,7 @@ import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  * @Author: renjiaxin
@@ -17,12 +18,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Slf4j
 @Controller
 public class LoginController {
-
     // Logger log =LoggerFactory.getLogger(LoginController.class);
-    @RequestMapping(value = "login")
-    // public String login(@RequestParam("username") String username, @RequestParam("password") String password) {
-    public String login(String username, String password) {
 
+    @RequestMapping(value = {"/", "/index.html"})
+    public String index() {
+        return "index";
+    }
+
+    @RequestMapping(value = "login")
+    public String login(@RequestParam("username") String username, @RequestParam("password") String password) {
         Subject currentUser = SecurityUtils.getSubject();
         if (!currentUser.isAuthenticated()) {
             // 把用户名和密码封装为 UsernamePasswordToken对象
@@ -37,7 +41,6 @@ public class LoginController {
                 log.error("登录失败: ", e);
             }
         }
-
         return "list";
     }
 
