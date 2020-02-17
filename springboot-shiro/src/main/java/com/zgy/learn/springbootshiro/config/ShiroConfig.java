@@ -1,13 +1,16 @@
 package com.zgy.learn.springbootshiro.config;
 
 import com.zgy.learn.springbootshiro.realm.MyRealm;
+import com.zgy.learn.springbootshiro.realm.MySha1Realm;
 import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
+import org.apache.shiro.realm.Realm;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
 import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -61,10 +64,17 @@ public class ShiroConfig {
      * 创建DefaultWebSecurityManager, 里面主要定义了登录，创建subject，登出等操作
      */
     @Bean(name = "securityManager")
-    public DefaultWebSecurityManager getDefaultWebSecurityManager(@Qualifier("myFirstRealm") MyRealm myFirstRealm) {
+    public DefaultWebSecurityManager getDefaultWebSecurityManager(@Qualifier("myFirstRealm") MyRealm myFirstRealm,
+                                                                  @Qualifier("mySha1Realm") MySha1Realm mySha1Realm) {
         DefaultWebSecurityManager securityManager = new DefaultWebSecurityManager();
-        // 关联realm
-        securityManager.setRealm(myFirstRealm);
+        // 关联realm, 这是单个的Realm的情况
+        // securityManager.setRealm(myFirstRealm);
+
+        // 去除和mySha1Realm相关的内容，就是一个realm的情况
+        ArrayList<Realm> realms = new ArrayList<>();
+        realms.add(myFirstRealm);
+        realms.add(mySha1Realm);
+        securityManager.setRealms(realms);
         return securityManager;
     }
 
@@ -76,6 +86,14 @@ public class ShiroConfig {
         MyRealm mr = new MyRealm();
         mr.setCredentialsMatcher(hashedCredentialsMatcher);
         return mr;
+    }
+
+    @Bean(name = "mySha1Realm")
+    public MySha1Realm getMySha1Realm(@Qualifier("hashedCredentialsMatcher") HashedCredentialsMatcher
+                                              hashedCredentialsMatcher) {
+        MySha1Realm msr = new MySha1Realm();
+        msr.setCredentialsMatcher(hashedCredentialsMatcher);
+        return msr;
     }
 
     /**
