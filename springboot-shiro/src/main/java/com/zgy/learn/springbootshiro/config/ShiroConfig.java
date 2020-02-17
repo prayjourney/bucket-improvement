@@ -21,8 +21,8 @@ public class ShiroConfig {
     /**
      * 创建ShiroFilterFactoryBean
      */
-    @Bean
-    public ShiroFilterFactoryBean shirFilter(@Qualifier("securityManager") DefaultWebSecurityManager securityManager) {
+    @Bean(name = "shiroFilter")
+    public ShiroFilterFactoryBean shiroFilter(@Qualifier("securityManager") DefaultWebSecurityManager securityManager) {
         ShiroFilterFactoryBean bean = new ShiroFilterFactoryBean();
         // 设置 SecurityManager
         bean.setSecurityManager(securityManager);
