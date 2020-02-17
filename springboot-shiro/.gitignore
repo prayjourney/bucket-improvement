@@ -1,0 +1,9 @@
+/target
+*.iml
+/build
+# 不去忽略以下的文件或者是目录
+!templates
+!src
+!test
+!pom.xml
+!.gitignore
