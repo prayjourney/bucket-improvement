@@ -2,7 +2,12 @@ package com.zgy.learn.springbootshiro.config;
 
 import com.zgy.learn.springbootshiro.realm.MyRealm;
 import com.zgy.learn.springbootshiro.realm.MySha1Realm;
+import org.apache.shiro.authc.Authenticator;
 import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
+import org.apache.shiro.authc.pam.AtLeastOneSuccessfulStrategy;
+import org.apache.shiro.authc.pam.AuthenticationStrategy;
+import org.apache.shiro.authc.pam.FirstSuccessfulStrategy;
+import org.apache.shiro.authc.pam.ModularRealmAuthenticator;
 import org.apache.shiro.realm.Realm;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
 import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
@@ -65,16 +70,21 @@ public class ShiroConfig {
      */
     @Bean(name = "securityManager")
     public DefaultWebSecurityManager getDefaultWebSecurityManager(@Qualifier("myFirstRealm") MyRealm myFirstRealm,
-                                                                  @Qualifier("mySha1Realm") MySha1Realm mySha1Realm) {
+                                                                  @Qualifier("mySha1Realm") MySha1Realm mySha1Realm,
+                                                                  @Qualifier("myAuthenticator") Authenticator myAuthenticator) {
         DefaultWebSecurityManager securityManager = new DefaultWebSecurityManager();
         // 关联realm, 这是单个的Realm的情况
         // securityManager.setRealm(myFirstRealm);
 
+        securityManager.setAuthenticator(myAuthenticator);
         // 去除和mySha1Realm相关的内容，就是一个realm的情况
         ArrayList<Realm> realms = new ArrayList<>();
         realms.add(myFirstRealm);
         realms.add(mySha1Realm);
         securityManager.setRealms(realms);
+        // securityManager.setAuthenticator(myAuthenticator);
+        // 在后面设置就会导致No realms have been configured! One or more realms must be present问题
+        // https://blog.csdn.net/qq_35981283/article/details/78632312
         return securityManager;
     }
 
@@ -108,4 +118,24 @@ public class ShiroConfig {
         hashedCredentialsMatcher.setHashIterations(1024); // 散列次数
         return hashedCredentialsMatcher;
     }
+
+    // 认证器， 包含了认证策略
+    @Bean
+    public Authenticator myAuthenticator(@Qualifier("myAuthenticationStrategy")
+                                                 AuthenticationStrategy myAuthenticationStrategy) {
+        ModularRealmAuthenticator authenticator = new ModularRealmAuthenticator();
+        authenticator.setAuthenticationStrategy(myAuthenticationStrategy);
+        return authenticator;
+    }
+
+    // 验证策略
+    @Bean
+    public AuthenticationStrategy myAuthenticationStrategy() {
+        // 所有的realm验证都要通过才可以
+        // return new AllSuccessfulStrategy();
+        // return new AtLeastOneSuccessfulStrategy();
+        return new FirstSuccessfulStrategy();
+    }
+
+
 }
