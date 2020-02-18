@@ -7,17 +7,32 @@ import org.apache.shiro.authc.LockedAccountException;
 import org.apache.shiro.authc.SimpleAuthenticationInfo;
 import org.apache.shiro.authc.UnknownAccountException;
 import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.authz.AuthorizationInfo;
+import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.crypto.hash.SimpleHash;
 import org.apache.shiro.realm.AuthenticatingRealm;
+import org.apache.shiro.realm.AuthorizingRealm;
+import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.util.ByteSource;
+
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * @Author: renjiaxin
- * @Despcription: 实现自己的Realm, 专门用来登录
+ * @Despcription: 实现自己的Realm
+ *               1. AuthenticatingRealm是登录检测的类，也就是认证的类
+ *               2. AuthorizingRealm类是授权相关的类，它是AuthenticatingRealm类的子类
+ *               3. AuthorizingRealm类继承自AuthenticatingRealm, 但没有实现 AuthenticatingRealm 中的
+ *                  doGetAuthenticationInfo, 所以认证和授权只需要继承 AuthorizingRealm 就可以了. 同时实现他的两个抽象方法.
+ *                  doGetAuthenticationInfo(AuthenticationToken token)     用来登录
+ *                      返回SimpleAuthenticationInfo对象
+ *                  doGetAuthorizationInfo(PrincipalCollection principals) 用来授权
+ *                      返回SimpleAuthorizationInfo对象
  * @Date: Created in 2020/2/17 13:46
  * @Modified by:
  */
-public class MySha1Realm extends AuthenticatingRealm {
+public class MySha1Realm extends AuthorizingRealm {
 
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
@@ -69,5 +84,29 @@ public class MySha1Realm extends AuthenticatingRealm {
 
         Object result = new SimpleHash(hashAlgorithmName, credentials, salt, hashIterations);
         System.out.println(result);
+    }
+
+    /**
+     * 授权的方法
+     * @param principals principals
+     * @return AuthorizationInfo
+     */
+    @Override
+    protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
+        //1. 从 PrincipalCollection 中来获取登录用户的信息
+        Object principal = principals.getPrimaryPrincipal();
+
+        //2. 利用登录的用户的信息来用户当前用户的角色或权限(可能需要查询数据库)
+        Set<String> roles = new HashSet<>();
+        roles.add("user");
+        if("admin".equals(principal)){
+            roles.add("admin");
+        }
+
+        //3. 创建 SimpleAuthorizationInfo, 并设置其 reles 属性.
+        SimpleAuthorizationInfo info = new SimpleAuthorizationInfo(roles);
+
+        //4. 返回 SimpleAuthorizationInfo 对象.
+        return info;
     }
 }
