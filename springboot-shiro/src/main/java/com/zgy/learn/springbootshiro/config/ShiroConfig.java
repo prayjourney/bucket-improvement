@@ -52,14 +52,18 @@ public class ShiroConfig {
          **/
         Map<String, String> filterMap = new LinkedHashMap<>();
 
+        // 下面是验证的配置
         filterMap.put("/index", "anon");
         filterMap.put("/login", "anon");
         filterMap.put("/index.html", "anon");
         filterMap.put("/login.html", "anon");
-//      filterMap.put("/vip/index", "roles[vip]");
+        // 下面是授权的配置
+        filterMap.put("/admin", "roles[admin]");
+        filterMap.put("/user", "roles[user, admin]");
+
         filterMap.put("/static/**", "anon");
-        filterMap.put("/**", "authc");
         filterMap.put("/logout", "logout");
+        filterMap.put("/**", "authc"); // 这个要放在最后，不然下面的配置就不起作用了，第一次匹配到就起作用，匹配不到，就不起作用了
 
         bean.setFilterChainDefinitionMap(filterMap);
         return bean;
