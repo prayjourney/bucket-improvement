@@ -44,7 +44,7 @@ public class LoginController {
             }
         }
 
-        return "user";
+        return "list";
     }
 
 }

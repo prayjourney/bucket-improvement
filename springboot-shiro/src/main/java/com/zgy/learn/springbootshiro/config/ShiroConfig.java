@@ -133,8 +133,8 @@ public class ShiroConfig {
     public AuthenticationStrategy myAuthenticationStrategy() {
         // 所有的realm验证都要通过才可以
         // return new AllSuccessfulStrategy();
-        // return new AtLeastOneSuccessfulStrategy();
-        return new FirstSuccessfulStrategy();
+        return new AtLeastOneSuccessfulStrategy();
+        // return new FirstSuccessfulStrategy();
     }
 
 
