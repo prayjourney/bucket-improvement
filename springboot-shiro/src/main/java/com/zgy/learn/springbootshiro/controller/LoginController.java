@@ -32,7 +32,7 @@ public class LoginController {
         if (!currentUser.isAuthenticated()) {
             // 把用户名和密码封装为 UsernamePasswordToken对象
             UsernamePasswordToken token = new UsernamePasswordToken(username, password);
-            // remember me
+            // remember me, 记住我设置为true
             token.setRememberMe(true);
             try {
                 // 尝试登录

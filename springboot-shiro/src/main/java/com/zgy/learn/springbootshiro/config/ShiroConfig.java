@@ -57,9 +57,10 @@ public class ShiroConfig {
         filterMap.put("/login", "anon");
         filterMap.put("/index.html", "anon");
         filterMap.put("/login.html", "anon");
+        filterMap.put("/list.html", "user"); //list.html页面需要user登录就可以了
         // 下面是授权的配置
-        filterMap.put("/admin", "roles[admin]");
-        filterMap.put("/user", "roles[user, admin]");
+        filterMap.put("/admin", "authc, roles[admin]");  //需要验证和角色
+        filterMap.put("/user", "authc, roles[user, admin]");
 
         filterMap.put("/static/**", "anon");
         filterMap.put("/logout", "logout");
