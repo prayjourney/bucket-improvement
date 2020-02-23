@@ -1,4 +1,4 @@
-package com.zgy.learn.factory;
+package com.zgy.learn.factorymethod;
 
 /**
  * @Author: renjiaxin
@@ -6,9 +6,9 @@ package com.zgy.learn.factory;
  * @Date: Created in 2020/2/23 22:01
  * @Modified by:
  */
-public class AudiFactory implements CarFactory {
+public class TeslaFactory implements CarFactory {
     @Override
     public Car getCar() {
-        return new Audi();
+        return new Tesla();
     }
 }

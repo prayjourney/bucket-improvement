@@ -1,4 +1,4 @@
-package com.zgy.learn.factory;
+package com.zgy.learn.factorymethod;
 
 /**
  * @Author: renjiaxin
