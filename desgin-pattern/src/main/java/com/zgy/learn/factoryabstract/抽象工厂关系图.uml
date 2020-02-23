@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>com.zgy.learn.factoryabstract.AbstractProductFactory</OriginalElement>
+  <nodes>
+    <node x="109.57850877192982" y="454.0">com.zgy.learn.factoryabstract.XiaomiFactory</node>
+    <node x="10.5" y="262.0">com.zgy.learn.factoryabstract.XiaomiPhone</node>
+    <node x="784.0986842105262" y="0.0">com.zgy.learn.factoryabstract.PcProduct</node>
+    <node x="531.5" y="594.0">com.zgy.learn.factoryabstract.Client</node>
+    <node x="297.84868421052624" y="0.0">com.zgy.learn.factoryabstract.PhoneProduct</node>
+    <node x="249.5" y="262.0">com.zgy.learn.factoryabstract.XiaomiPc</node>
+    <node x="496.5" y="288.0">com.zgy.learn.factoryabstract.AbstractProductFactory</node>
+    <node x="870.7736842105262" y="454.0">com.zgy.learn.factoryabstract.AppleFactory</node>
+    <node x="833.5" y="262.0">com.zgy.learn.factoryabstract.ApplePhone</node>
+    <node x="1072.5" y="262.0">com.zgy.learn.factoryabstract.ApplePc</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="com.zgy.learn.factoryabstract.AppleFactory" target="com.zgy.learn.factoryabstract.PcProduct">
+      <point x="63.39999999999998" y="-45.0" />
+      <point x="1092.673684210526" y="429.0" />
+      <point x="1062.0" y="429.0" />
+      <point x="1062.0" y="182.0" />
+      <point x="916.5153508771929" y="182.0" />
+      <point x="18.91666666666663" y="71.0" />
+    </edge>
+    <edge source="com.zgy.learn.factoryabstract.XiaomiPhone" target="com.zgy.learn.factoryabstract.PhoneProduct">
+      <point x="0.0" y="-71.0" />
+      <point x="114.0" y="202.0" />
+      <point x="349.59868421052624" y="202.0" />
+      <point x="-51.75" y="71.0" />
+    </edge>
+    <edge source="com.zgy.learn.factoryabstract.XiaomiFactory" target="com.zgy.learn.factoryabstract.PhoneProduct">
+      <point x="-63.39999999999998" y="-45.0" />
+      <point x="204.67850877192984" y="429.0" />
+      <point x="228.0" y="429.0" />
+      <point x="228.0" y="212.0" />
+      <point x="384.09868421052624" y="212.0" />
+      <point x="-17.25" y="71.0" />
+    </edge>
+    <edge source="com.zgy.learn.factoryabstract.AppleFactory" target="com.zgy.learn.factoryabstract.ApplePc">
+      <point x="126.80000000000001" y="-45.0" />
+      <point x="1156.0736842105262" y="429.0" />
+      <point x="1186.0" y="429.0" />
+      <point x="0.0" y="71.0" />
+    </edge>
+    <edge source="com.zgy.learn.factoryabstract.XiaomiPc" target="com.zgy.learn.factoryabstract.PcProduct">
+      <point x="0.0" y="-71.0" />
+      <point x="363.0" y="232.0" />
+      <point x="840.8486842105262" y="232.0" />
+      <point x="-56.75" y="71.0" />
+    </edge>
+    <edge source="com.zgy.learn.factoryabstract.XiaomiFactory" target="com.zgy.learn.factoryabstract.XiaomiPc">
+      <point x="63.40000000000009" y="-45.0" />
+      <point x="331.4785087719299" y="429.0" />
+      <point x="363.0" y="429.0" />
+      <point x="0.0" y="71.0" />
+    </edge>
+    <edge source="com.zgy.learn.factoryabstract.Client" target="com.zgy.learn.factoryabstract.AppleFactory">
+      <point x="49.39999999999998" y="-32.0" />
+      <point x="704.4" y="564.0" />
+      <point x="1029.2736842105262" y="564.0" />
+      <point x="0.0" y="45.0" />
+    </edge>
+    <edge source="com.zgy.learn.factoryabstract.ApplePc" target="com.zgy.learn.factoryabstract.PcProduct">
+      <point x="0.0" y="-71.0" />
+      <point x="1186.0" y="172.0" />
+      <point x="954.3486842105262" y="172.0" />
+      <point x="56.75" y="71.0" />
+    </edge>
+    <edge source="com.zgy.learn.factoryabstract.XiaomiFactory" target="com.zgy.learn.factoryabstract.PcProduct">
+      <point x="0.0" y="-45.0" />
+      <point x="268.0785087719298" y="429.0" />
+      <point x="239.0" y="429.0" />
+      <point x="239.0" y="222.0" />
+      <point x="803.0153508771929" y="222.0" />
+      <point x="-94.58333333333337" y="71.0" />
+    </edge>
+    <edge source="com.zgy.learn.factoryabstract.Client" target="com.zgy.learn.factoryabstract.XiaomiFactory">
+      <point x="-49.40000000000009" y="-32.0" />
+      <point x="605.5999999999999" y="564.0" />
+      <point x="268.0785087719298" y="564.0" />
+      <point x="0.0" y="45.0" />
+    </edge>
+    <edge source="com.zgy.learn.factoryabstract.AbstractProductFactory" target="com.zgy.learn.factoryabstract.PcProduct">
+      <point x="79.25" y="-45.0" />
+      <point x="734.25" y="242.0" />
+      <point x="878.6820175438596" y="242.0" />
+      <point x="-18.91666666666663" y="71.0" />
+    </edge>
+    <edge source="com.zgy.learn.factoryabstract.XiaomiFactory" target="com.zgy.learn.factoryabstract.AbstractProductFactory">
+      <point x="126.79999999999995" y="-45.0" />
+      <point x="394.8785087719298" y="429.0" />
+      <point x="549.3333333333334" y="429.0" />
+      <point x="-105.66666666666663" y="45.0" />
+    </edge>
+    <edge source="com.zgy.learn.factoryabstract.AppleFactory" target="com.zgy.learn.factoryabstract.ApplePhone">
+      <point x="-63.400000000000006" y="-45.0" />
+      <point x="965.8736842105262" y="429.0" />
+      <point x="937.0" y="429.0" />
+      <point x="0.0" y="71.0" />
+    </edge>
+    <edge source="com.zgy.learn.factoryabstract.AppleFactory" target="com.zgy.learn.factoryabstract.AbstractProductFactory">
+      <point x="-126.80000000000001" y="-45.0" />
+      <point x="902.4736842105262" y="429.0" />
+      <point x="760.6666666666667" y="429.0" />
+      <point x="105.66666666666674" y="45.0" />
+    </edge>
+    <edge source="com.zgy.learn.factoryabstract.AbstractProductFactory" target="com.zgy.learn.factoryabstract.PhoneProduct">
+      <point x="-79.25" y="-45.0" />
+      <point x="575.75" y="212.0" />
+      <point x="418.59868421052624" y="212.0" />
+      <point x="17.25" y="71.0" />
+    </edge>
+    <edge source="com.zgy.learn.factoryabstract.AppleFactory" target="com.zgy.learn.factoryabstract.PhoneProduct">
+      <point x="0.0" y="-45.0" />
+      <point x="1029.2736842105262" y="429.0" />
+      <point x="1051.0" y="429.0" />
+      <point x="1051.0" y="192.0" />
+      <point x="487.59868421052624" y="192.0" />
+      <point x="86.25" y="71.0" />
+    </edge>
+    <edge source="com.zgy.learn.factoryabstract.XiaomiFactory" target="com.zgy.learn.factoryabstract.XiaomiPhone">
+      <point x="-126.79999999999995" y="-45.0" />
+      <point x="141.27850877192986" y="429.0" />
+      <point x="114.0" y="429.0" />
+      <point x="0.0" y="71.0" />
+    </edge>
+    <edge source="com.zgy.learn.factoryabstract.Client" target="com.zgy.learn.factoryabstract.PcProduct">
+      <point x="98.79999999999995" y="-32.0" />
+      <point x="753.8" y="574.0" />
+      <point x="1310.0" y="574.0" />
+      <point x="1310.0" y="162.0" />
+      <point x="992.1820175438596" y="162.0" />
+      <point x="94.58333333333337" y="71.0" />
+    </edge>
+    <edge source="com.zgy.learn.factoryabstract.ApplePhone" target="com.zgy.learn.factoryabstract.PhoneProduct">
+      <point x="0.0" y="-71.0" />
+      <point x="937.0" y="202.0" />
+      <point x="453.09868421052624" y="202.0" />
+      <point x="51.75" y="71.0" />
+    </edge>
+    <edge source="com.zgy.learn.factoryabstract.Client" target="com.zgy.learn.factoryabstract.AbstractProductFactory">
+      <point x="0.0" y="-32.0" />
+      <point x="0.0" y="45.0" />
+    </edge>
+    <edge source="com.zgy.learn.factoryabstract.Client" target="com.zgy.learn.factoryabstract.PhoneProduct">
+      <point x="-98.80000000000007" y="-32.0" />
+      <point x="556.1999999999999" y="574.0" />
+      <point x="0.0" y="574.0" />
+      <point x="0.0" y="192.0" />
+      <point x="315.09868421052624" y="192.0" />
+      <point x="-86.25" y="71.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.0" x="655.0" y="329.5" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Methods</Category>
+    <Category>Properties</Category>
+    <Category>Inner Classes</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
