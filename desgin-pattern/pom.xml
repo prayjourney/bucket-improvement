@@ -5,41 +5,17 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.zgy.learn</groupId>
-    <!-- artifactId 从 imporvement-java-skill 修改为bucket-improvement -->
-    <artifactId>bucket-improvement</artifactId>
-    <packaging>pom</packaging>
+    <artifactId>desgin-pattern</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <modules>
-        <module>redis</module>
-        <module>mongo</module>
-        <module>spring</module>
-        <module>database</module>
-        <module>activemq</module>
-        <module>thread</module>
-        <module>net</module>
-        <module>java8</module>
-        <module>netty</module>
-        <module>jvm</module>
-        <module>mvccrud</module>
-        <module>mvc</module>
-        <module>basictool</module>
-        <module>springannotation</module>
-        <module>dubbo-user-service-provider</module>
-        <module>dubbo-order-service-consumer</module>
-        <module>dubbo-common-interface</module>
-        <module>spring-shiro</module>
-        <module>desgin-pattern</module>
-    </modules>
 
-    <!-- improvement-java-skill  to bucket-improvement-->
-    <name>bucket-improvement</name>
+    <name>desgin-pattern</name>
     <!-- FIXME change it to the project's website -->
     <url>http://www.example.com</url>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
+        <maven.compiler.source>1.7</maven.compiler.source>
+        <maven.compiler.target>1.7</maven.compiler.target>
     </properties>
 
     <dependencies>
