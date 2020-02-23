@@ -15,18 +15,15 @@ public class XiaomiPhone implements PhoneProduct {
     @Override
     public void shutDown() {
         System.out.println("小米关机");
-
     }
 
     @Override
     public void sendSMS() {
         System.out.println("小米发短信");
-
     }
 
     @Override
     public void callUp() {
         System.out.println("小米打电话");
-
     }
 }

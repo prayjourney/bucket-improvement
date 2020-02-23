@@ -21,12 +21,10 @@ public class ApplePhone implements PhoneProduct {
     @Override
     public void sendSMS() {
         System.out.println("iPhone发短信");
-
     }
 
     @Override
     public void callUp() {
         System.out.println("iPhone打电话");
-
     }
 }

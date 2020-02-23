@@ -2,7 +2,7 @@ package com.zgy.learn.factoryabstract;
 
 /**
  * @Author: renjiaxin
- * @Despcription:
+ * @Despcription: 用户类，使用和调用
  * @Date: Created in 2020/2/23 22:55
  * @Modified by:
  */
