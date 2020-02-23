@@ -2,11 +2,17 @@ package com.zgy.learn.singleton;
 
 /**
  * @Author: renjiaxin
- * @Despcription: 单例饿汉式实现
+ * @Despcription: 单例饿汉式实现， 线程安全，但是会造成空间的浪费，不能延时加载
  * @Date: Created in 2020/2/23 11:55
  * @Modified by:
  */
 public class SingletonEHan01 {
+    // 饿汉式问题所在，如果没有使用到，这些空间会很浪费
+    private int[] data1 = new int[1024];
+    private int[] data2 = new int[1024];
+    private int[] data3 = new int[1024];
+    private int[] data4 = new int[1024];
+
     // 1. 构造器私有化
     private SingletonEHan01() {
     }
