@@ -17,7 +17,7 @@ public class SingletonEHan01 {
     private SingletonEHan01() {
     }
 
-    // 2. 保证一个类只有一个实例
+    // 2. 保证一个类只有一个实例, 立即加载该对象
     private static SingletonEHan01 eHaninstance = new SingletonEHan01();
 
     // 3. 提供一个全局的访问方式
