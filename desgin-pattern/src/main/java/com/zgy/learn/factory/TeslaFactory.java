@@ -1,0 +1,14 @@
+package com.zgy.learn.factory;
+
+/**
+ * @Author: renjiaxin
+ * @Despcription:
+ * @Date: Created in 2020/2/23 22:01
+ * @Modified by:
+ */
+public class TeslaFactory implements CarFactory {
+    @Override
+    public Car getCar() {
+        return new Tesla();
+    }
+}
