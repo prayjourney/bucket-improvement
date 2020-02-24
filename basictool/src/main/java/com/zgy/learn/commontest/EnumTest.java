@@ -2,7 +2,8 @@ package com.zgy.learn.commontest;
 
 /**
  * @Author: renjiaxin
- * @Despcription:
+ * @Despcription: 枚举类的定义和使用，枚举类和普通的类，最大的区别就是，他在定义的时候，就定义好了其中包含的数据
+ *                而这些数据的定义，是按照它提供的构造函数来定义的，可以有多个字段，可以使用getset方法，和普通类一样。
  * @Date: Created in 2020/2/25 3:29
  * @Modified by:
  */
