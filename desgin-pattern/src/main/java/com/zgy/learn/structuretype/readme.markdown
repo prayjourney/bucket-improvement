@@ -1,0 +1,1 @@
+com.zgy.learn.structuretype的package下面，都是结构型的模式，把类或对象结合在一起形成一个更大的结构。
