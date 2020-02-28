@@ -27,4 +27,13 @@ public class RealtorProxy implements Landlord {
         // 代理实现了出租
         landlord.rentOut();
     }
+
+    public void watchHouse(){
+        System.out.println("带领租客看房子");
+    }
+
+    public void fixRefrigerator(){
+        System.out.println("帮租客修理冰箱");
+    }
+
 }

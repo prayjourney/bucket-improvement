@@ -19,6 +19,9 @@ public class Tenant {
         // 这个是代理方法
         proxy.rentOut();
 
+        // 这是代理类的扩展方法，并没有去修改真实对象的类，符合开闭原则
+        proxy.watchHouse();
+        proxy.fixRefrigerator();
 
     }
 }
