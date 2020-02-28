@@ -16,6 +16,8 @@ public class Customer {
         HaitaoDynamicProxy proxy = new HaitaoDynamicProxy(ht);
         Haitao instance = (Haitao)proxy.getProxyInstance();
         instance.buy();
+        proxy.checkGoods();
+        proxy.findWhere();
 
     }
 }
