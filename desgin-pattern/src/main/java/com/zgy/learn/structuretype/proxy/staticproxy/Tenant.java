@@ -8,9 +8,17 @@ package com.zgy.learn.structuretype.proxy.staticproxy;
  */
 public class Tenant {
     public static void main(String[] args) {
+        /*
         // 如果我能直接找到房东，那也就可以去租房了，但问题是找不到
         Landlord landlord = new WankeLandlord();
         landlord.rentOut();
+         */
+        // 代理方式，实现出租
+        Landlord landlord = new WankeLandlord();
+        RealtorProxy proxy = new RealtorProxy(landlord);
+        // 这个是代理方法
+        proxy.rentOut();
+
 
     }
 }
