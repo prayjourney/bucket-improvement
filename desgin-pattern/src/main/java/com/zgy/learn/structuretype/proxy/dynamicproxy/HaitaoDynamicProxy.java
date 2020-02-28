@@ -32,7 +32,23 @@ public class HaitaoDynamicProxy implements InvocationHandler {
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
         // 动态代理的本质，就是使用反射机制
+        goodsRequire();
         Object result = method.invoke(target, args);
         return result;
     }
+
+    // 代理方法增强
+    public void goodsRequire() {
+        System.out.println("服务咨询！");
+    }
+
+    public void checkGoods() {
+        System.out.println("真伪检验!");
+    }
+
+    public void findWhere() {
+        System.out.println("查询目前到哪儿了!");
+    }
+
+
 }
