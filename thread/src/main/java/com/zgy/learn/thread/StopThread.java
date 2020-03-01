@@ -15,6 +15,8 @@ public class StopThread implements Runnable {
         while (flag) {
             try {
                 Thread.sleep(1000);
+                // run之后会新建一个thread, 但是主线程还是在的叫做main,在新建的线程里，是自己的名字，而在main之中，是main线程
+                System.out.println("Thread.currentThread()的name: " + Thread.currentThread().getName());
                 System.out.println("hello my world ! ");
             } catch (InterruptedException e) {
                 e.printStackTrace();
@@ -31,6 +33,8 @@ public class StopThread implements Runnable {
         StopThread st = new StopThread();
         Thread thread = new Thread(st);
         thread.start();
+        // run之后会新建一个thread, 但是主线程还是在的叫做main,在新建的线程里，是自己的名字，而在main之中，是main线程
+        // run之后的thread, 获取名字，要在run之中才保险，通过Thread.currentThread()方法的话
         System.out.println("thread的name: " + thread.getName());
         System.out.println("Thread.currentThread()的name: " + Thread.currentThread().getName());
         try {
