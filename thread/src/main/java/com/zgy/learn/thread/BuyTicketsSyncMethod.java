@@ -108,6 +108,8 @@ class UnSafeBuyTickets implements Runnable {
     // 外部停止方式
     boolean flag = true;
 
+    // 这样就变成单线程了， 不应该给run加synchronized
+    //public synchronized void run() {
     @Override
     public void run() {
         while (flag) {
