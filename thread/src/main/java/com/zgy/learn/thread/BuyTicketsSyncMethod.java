@@ -111,6 +111,12 @@ class UnSafeBuyTickets implements Runnable {
     @Override
     public void run() {
         while (flag) {
+            // 有一个睡眠，才能让其他人拿到CPU的时间片，这样才能去执行，否则一直有时间片，然后就会一直去执行。
+            try {
+                Thread.sleep(100);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
             buyTickets();
         }
 
@@ -124,14 +130,14 @@ class UnSafeBuyTickets implements Runnable {
             flag = false;
             return;
         }
-        try {
-            // 模拟延时
-            Thread.sleep(100);
+        //try {
+            // 模拟延时, 不应该有
+            //Thread.sleep(100);
             String name = Thread.currentThread().getName();
             System.out.println(Thread.currentThread().getName() + "拿到" + allTickets-- + "张票！");
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        //} catch (InterruptedException e) {
+        //    e.printStackTrace();
+        //}
     }
 
     public static void main(String[] args) {
