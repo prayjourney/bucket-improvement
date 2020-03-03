@@ -98,3 +98,50 @@ class TicketSeller implements Runnable {
     }
 
 }
+
+// 变成单线程了
+class UnSafeBuyTickets implements Runnable {
+
+    // 下面的出现了问题，单线程
+    // 总的票数
+    private Integer allTickets = 10;
+    // 外部停止方式
+    boolean flag = true;
+
+    @Override
+    public void run() {
+        while (flag) {
+            buyTickets();
+        }
+
+    }
+
+    // 只用synchronized锁的是this, 也就是Seller这个类的类锁
+    public synchronized void buyTickets() {
+        // all是剩余的车票数量，此处应该只是一次买票的计算
+        if (allTickets <= 0) {
+            System.out.println("车票不足！");
+            flag = false;
+            return;
+        }
+        try {
+            // 模拟延时
+            Thread.sleep(100);
+            String name = Thread.currentThread().getName();
+            System.out.println(Thread.currentThread().getName() + "拿到" + allTickets-- + "张票！");
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void main(String[] args) {
+        UnSafeBuyTickets seller = new UnSafeBuyTickets();
+        Thread t1 = new Thread(seller, "张三");
+        Thread t2 = new Thread(seller, "李四");
+        Thread t3 = new Thread(seller, "王五");
+        t1.start();
+        t2.start();
+        t3.start();
+    }
+
+}
