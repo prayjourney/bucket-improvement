@@ -6,6 +6,63 @@ package com.zgy.learn.thread;
  * @Date: Created in 2020/3/4 12:44
  * @Modified by:
  */
+// 测试原子性
+class TestAtomicVolatile {
+    public volatile long inc = 0;
+
+    public void increase() {
+        inc++;
+    }
+
+    public static void main(String[] args) {
+        final TestAtomicVolatile test = new TestAtomicVolatile();
+        for (int i = 0; i < 5; i++) {
+            new Thread() {
+                @Override
+                public void run() {
+                    for (int j = 0; j < 5; j++) {
+                        test.increase();
+                    }
+                }
+
+                ;
+            }.start();
+        }
+
+
+        // 保证前面的线程都执行完
+        // while (Thread.activeCount() > 1)
+        //       Thread.yield();
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        System.out.println(test.inc);
+    }
+}
+
+// 测试透明性
+class TestTransparentVolatile extends Thread {
+    // 没有volatile关键字，那就会一直执行
+    volatile boolean flag = false;
+    int i = 0;
+
+    public void run() {
+        while (!flag) {
+            i++;
+        }
+    }
+
+    public static void main(String[] args) throws Exception {
+        TestTransparentVolatile vt = new TestTransparentVolatile();
+        vt.start();
+        Thread.sleep(2000);
+        vt.flag = true;
+        System.out.println("stope：" + vt.i);
+    }
+}
+
 // 下面总是有问题？？？ 为何呢？？？
 public class UseVolatile {
 
