@@ -1,4 +1,4 @@
-package com.zgy.learn.thread;
+package com.zgy.learn.thread.threadbasic;
 
 /**
  * @Author: renjiaxin
