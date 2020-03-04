@@ -1,4 +1,4 @@
-package com.zgy.learn.thread.tranditionmutil;
+package com.zgy.learn.thread.tradmutil;
 
 /**
  * @Author: renjiaxin
