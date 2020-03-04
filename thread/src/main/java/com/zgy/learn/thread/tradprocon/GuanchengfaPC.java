@@ -13,18 +13,18 @@ public class GuanchengfaPC {
     public static void main(String[] args) {
         ChickenContainer ch = new ChickenContainer();
         Producer p1 = new Producer(ch);
-        Producer p2 = new Producer(ch);
+        //Producer p2 = new Producer(ch);
         Consumer c1 = new Consumer(ch);
         new Thread(c1).start();
         p1.start();
-        p2.start();
+        //p2.start();
     }
 }
 
 // 生产者
 class Producer extends Thread {
     ChickenContainer container;
-    private int id = 1;
+    private volatile int id = 1;
 
     public Producer(ChickenContainer container) {
         this.container = container;
@@ -32,7 +32,7 @@ class Producer extends Thread {
 
     @Override
     public void run() {
-        while (true) {
+        for (int i = 0; i < 100; i++) {
             try {
                 Thread.sleep(100);
                 produce();
@@ -45,9 +45,13 @@ class Producer extends Thread {
     public void produce() {
         Chicken chicken = new Chicken(id);
         container.plate.add(chicken);
-        System.out.println(Thread.currentThread().getName() + "炸好了 " + id + "号炸鸡！");
+        System.out.println(Thread.currentThread().getName() + "炸好了 " + chicken.toString() + "号炸鸡！");
         id++;
+        if (id == 10) {
+            id = 0;
+        }
     }
+
 }
 
 // 消费者
@@ -60,9 +64,9 @@ class Consumer implements Runnable {
 
     @Override
     public void run() {
-        while (true) {
+        for (int i = 0; i < 100; i++) {
             try {
-                Thread.sleep(200);
+                Thread.sleep(130);
                 consume();
             } catch (InterruptedException e) {
                 e.printStackTrace();
@@ -104,29 +108,33 @@ class ChickenContainer {
 
     // 往盘子里面装鸡儿
     public synchronized void add(Chicken chicken) {
+        // 如果容器满了，生产者等待，通知消费者消费
         if (plate.size() >= 10) {
-            System.out.println("现在盘子的容量为10，装不下了，请及时消费！");
+            // 生产者等待，通知消费者消费
             try {
-                plate.wait();
+                this.wait();
+                System.out.println("容器满, 等待生产者生产，消费者等待");
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         }
-        plate.notifyAll();
         plate.add(chicken);
+        this.notifyAll();
     }
 
     // 从盘子里面拿鸡儿
     public synchronized Chicken pop() {
+        // 如果容器空了，消费者等待，通知生产者生产
         if (plate.size() <= 0) {
-            System.out.println("现在盘子的容量为0，请快生产炸鸡吧！");
+            // 等待生产者生产，消费者等待
             try {
-                plate.wait();
+                System.out.println("容器空了，消费者等待，通知生产者生产！");
+                this.wait();
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         }
-        plate.notifyAll();
+        this.notifyAll();
         return plate.remove(0);
     }
 }
