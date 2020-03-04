@@ -1,4 +1,4 @@
-package com.zgy.learn.thread;
+package com.zgy.learn.thread.tranditionmutil;
 
 import java.util.ArrayList;
 import java.util.concurrent.CopyOnWriteArrayList;
