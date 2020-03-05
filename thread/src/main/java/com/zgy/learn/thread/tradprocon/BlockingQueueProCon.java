@@ -24,9 +24,9 @@ public class BlockingQueueProCon {
         ProProducer pp2 = new ProProducer(queue, objectLock);
         ProConsumer pc1 = new ProConsumer(queue, objectLock);
         // 1个消费者,2个生产者
-        Thread producer1 = new Thread(pp1);
-        Thread producer2 = new Thread(pp2);
-        Thread consumer1 = new Thread(pc1);
+        Thread producer1 = new Thread(pp1, "生产者1");
+        Thread producer2 = new Thread(pp2, "生产者2");
+        Thread consumer1 = new Thread(pc1, "消费者");
         producer1.start();
         producer2.start();
         consumer1.start();
@@ -63,13 +63,14 @@ class ProProducer implements Runnable {
      * @throws InterruptedException
      */
     public synchronized void produce() throws InterruptedException {
-        synchronized (objectLock){
+        synchronized (objectLock) {
             if (queue.size() >= 10) {
                 // 生产者生产导致容器满了, 那么生产者等待, 唤醒消费者消费
                 System.out.println("生产者生产导致容器满了, 那么生产者等待, 唤醒消费者消费");
                 objectLock.wait();
             }
-            queue.put("hello");
+            //queue.put("hello"); // 可以阻塞的方法
+            queue.add("hello");
             System.out.println("生产者: " + Thread.currentThread().getName() + ": 完成了hello的插入, 在"
                     + LocalDateTime.now().format(DateTimeFormatter.ISO_LOCAL_TIME) + ", 目前的容量是: " +
                     queue.size());
@@ -107,13 +108,14 @@ class ProConsumer implements Runnable {
      * @throws InterruptedException
      */
     public synchronized void consume() throws InterruptedException {
-        synchronized (objectLock){
+        synchronized (objectLock) {
             if (queue.size() <= 0) {
                 // 消费者消费到容器之中没有对象, 那么消费者等待, 唤醒生产者
                 System.out.println("消费者消费到容器之中没有对象, 那么消费者等待, 唤醒生产者");
                 objectLock.wait();
             }
-            String msg = queue.take();
+            // String msg = queue.take();//可以阻塞的方法
+            String msg = queue.remove();
             System.out.println("消费者: " + Thread.currentThread().getName() + ": 完成了" + msg + "的消费, 在:"
                     + LocalDateTime.now().format(DateTimeFormatter.ISO_LOCAL_TIME) + ", 目前的容量是: " +
                     queue.size());
