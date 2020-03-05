@@ -68,14 +68,16 @@ class ProProducer implements Runnable {
                 // 生产者生产导致容器满了, 那么生产者等待, 唤醒消费者消费
                 System.out.println("生产者生产导致容器满了, 那么生产者等待, 唤醒消费者消费");
                 objectLock.wait();
+                // 唤醒消费者消费
+                objectLock.notifyAll();
             }
             //queue.put("hello"); // 可以阻塞的方法
             queue.add("hello");
             System.out.println("生产者: " + Thread.currentThread().getName() + ": 完成了hello的插入, 在"
                     + LocalDateTime.now().format(DateTimeFormatter.ISO_LOCAL_TIME) + ", 目前的容量是: " +
                     queue.size());
-            // 唤醒消费者消费
-            objectLock.notifyAll();
+            //// 唤醒消费者消费
+            //objectLock.notifyAll();
         }
     }
 
@@ -113,14 +115,16 @@ class ProConsumer implements Runnable {
                 // 消费者消费到容器之中没有对象, 那么消费者等待, 唤醒生产者
                 System.out.println("消费者消费到容器之中没有对象, 那么消费者等待, 唤醒生产者");
                 objectLock.wait();
+                // 唤醒消生产者生产
+                objectLock.notifyAll();
             }
             // String msg = queue.take();//可以阻塞的方法
             String msg = queue.remove();
             System.out.println("消费者: " + Thread.currentThread().getName() + ": 完成了" + msg + "的消费, 在:"
                     + LocalDateTime.now().format(DateTimeFormatter.ISO_LOCAL_TIME) + ", 目前的容量是: " +
                     queue.size());
-            // 唤醒消生产者生产
-            objectLock.notifyAll();
+            //// 唤醒消生产者生产
+            //objectLock.notifyAll();
         }
 
     }
