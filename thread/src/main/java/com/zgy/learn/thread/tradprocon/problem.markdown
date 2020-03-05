@@ -20,3 +20,6 @@
 5. BlockingQueue
    **队列与速度, 这个时候不要使用可以阻塞的队列方法,take和put,使用add和remove**
 6. 生产和消费的速度不同, 可能导致死锁, 这个问题应该如何去分析?
+   使用jconsole
+   使用线程快照在idea之中
+   使用jps+jstack的信息
