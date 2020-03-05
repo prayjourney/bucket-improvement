@@ -77,7 +77,7 @@ class ProProducer implements Runnable {
                     + LocalDateTime.now().format(DateTimeFormatter.ISO_LOCAL_TIME) + ", 目前的容量是: " +
                     queue.size());
             // 唤醒消费者消费
-            objectLock.notifyAll();
+            //objectLock.notifyAll();//wait和notify分开,就会产生超标的作用,然后退化成单线程的操作
         }
     }
 
@@ -124,7 +124,7 @@ class ProConsumer implements Runnable {
                     + LocalDateTime.now().format(DateTimeFormatter.ISO_LOCAL_TIME) + ", 目前的容量是: " +
                     queue.size());
             // 唤醒消生产者生产
-            objectLock.notifyAll();
+            //objectLock.notifyAll();//wait和notify分开,就会产生超标的作用,然后退化成单线程的操作
         }
 
     }
