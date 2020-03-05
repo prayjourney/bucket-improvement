@@ -62,7 +62,7 @@ class ProProducer implements Runnable {
      *
      * @throws InterruptedException
      */
-    public synchronized void produce() throws InterruptedException {
+    public void produce() throws InterruptedException {
         synchronized (objectLock) {
             if (queue.size() >= 10) {
                 // 生产者生产导致容器满了, 那么生产者等待, 唤醒消费者消费
@@ -109,7 +109,7 @@ class ProConsumer implements Runnable {
      *
      * @throws InterruptedException
      */
-    public synchronized void consume() throws InterruptedException {
+    public void consume() throws InterruptedException {
         synchronized (objectLock) {
             if (queue.size() <= 0) {
                 // 消费者消费到容器之中没有对象, 那么消费者等待, 唤醒生产者
