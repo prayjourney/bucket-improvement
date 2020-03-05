@@ -10,8 +10,16 @@ import java.util.concurrent.BlockingQueue;
  * @Description: 使用BlockingQueue來完成生产者消费者的功能
  * @Date: 2020-03-06 01:39
  * @Modified by:
- * 查看多线程程序的状态, 使用jps查看进程id, 然后用jstack查看里面的情况,
- * 一个生产者, 一个消费者的时候, 这样是okay的, 但是两个生产者的时候, 就出现了问题
+ * 多线程问题死锁,解决的方法
+ *     1.使用jconsole
+ *     2.使用线程快照在idea之中
+ *     3.使用jps+jstack的信息
+ *     4.使用jps+ jcmd pid Thread.print, 可以打印出来信息
+ *     https://blog.csdn.net/u010647035/article/details/79769177
+ *     https://www.cnblogs.com/wy697495/p/9757982.html
+ *     https://blog.csdn.net/wang0112233/article/details/83749927
+ *     https://blog.csdn.net/sxhong/article/details/78603671
+ *     https://blog.csdn.net/u010647035/article/details/79770534
  */
 public class BlockingQueueProCon {
     // 容器, 容量为10
