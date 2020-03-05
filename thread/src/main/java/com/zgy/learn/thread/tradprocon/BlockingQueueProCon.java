@@ -63,13 +63,15 @@ class ProProducer implements Runnable {
      * @throws InterruptedException
      */
     public void produce() throws InterruptedException {
-        synchronized (objectLock) {
+        //synchronized (objectLock) {
             if (queue.size() >= 10) {
                 // 生产者生产导致容器满了, 那么生产者等待, 唤醒消费者消费
                 System.out.println("生产者生产导致容器满了, 那么生产者等待, 唤醒消费者消费");
-                objectLock.wait();
+                //objectLock.wait();
+                this.wait();
                 // 唤醒消费者消费
-                objectLock.notifyAll();
+                //objectLock.notifyAll();
+                this.notifyAll();
             }
             //queue.put("hello"); // 可以阻塞的方法
             queue.add("hello");
@@ -78,7 +80,7 @@ class ProProducer implements Runnable {
                     queue.size());
             //// 唤醒消费者消费
             //objectLock.notifyAll();
-        }
+        //}
     }
 
 }
@@ -110,13 +112,15 @@ class ProConsumer implements Runnable {
      * @throws InterruptedException
      */
     public void consume() throws InterruptedException {
-        synchronized (objectLock) {
+        //synchronized (objectLock) {
             if (queue.size() <= 0) {
                 // 消费者消费到容器之中没有对象, 那么消费者等待, 唤醒生产者
                 System.out.println("消费者消费到容器之中没有对象, 那么消费者等待, 唤醒生产者");
-                objectLock.wait();
+                //objectLock.wait();
+                this.wait();
                 // 唤醒消生产者生产
-                objectLock.notifyAll();
+                //objectLock.notifyAll();
+                this.notifyAll();
             }
             // String msg = queue.take();//可以阻塞的方法
             String msg = queue.remove();
@@ -125,7 +129,7 @@ class ProConsumer implements Runnable {
                     queue.size());
             //// 唤醒消生产者生产
             //objectLock.notifyAll();
-        }
+        //}
 
     }
 }
