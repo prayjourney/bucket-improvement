@@ -28,7 +28,7 @@ public class BlockingQueueProCon {
         Thread producer2 = new Thread(pp2);
         Thread consumer1 = new Thread(pc1);
         producer1.start();
-        //producer2.start();
+        producer2.start();
         consumer1.start();
     }
 }
