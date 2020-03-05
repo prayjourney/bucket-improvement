@@ -26,7 +26,7 @@ public class BlockingQueueProCon {
         Thread producer2 = new Thread(pp2);
         Thread consumer1 = new Thread(pc1);
         producer1.start();
-        producer2.start();
+        //producer2.start();
         consumer1.start();
     }
 }
@@ -60,19 +60,19 @@ class ProProducer implements Runnable {
      *
      * @throws InterruptedException
      */
-    public void produce() throws InterruptedException {
-        synchronized (objectLock) {
+    public synchronized void produce() throws InterruptedException {
+        synchronized (objectLock){
             if (queue.size() >= 10) {
                 // 生产者生产导致容器满了, 那么生产者等待, 唤醒消费者消费
                 System.out.println("生产者生产导致容器满了, 那么生产者等待, 唤醒消费者消费");
                 objectLock.wait();
-                // 唤醒消费者消费
-                objectLock.notifyAll();
             }
             queue.put("hello");
             System.out.println("生产者: " + Thread.currentThread().getName() + ": 完成了hello的插入, 在"
-                    + LocalDateTime.now().format(DateTimeFormatter.ISO_LOCAL_TIME) + "目前的容量是: " +
+                    + LocalDateTime.now().format(DateTimeFormatter.ISO_LOCAL_TIME) + ", 目前的容量是: " +
                     queue.size());
+            // 唤醒消费者消费
+            objectLock.notifyAll();
         }
     }
 
@@ -104,19 +104,19 @@ class ProConsumer implements Runnable {
      *
      * @throws InterruptedException
      */
-    public void consume() throws InterruptedException {
-        synchronized (objectLock) {
+    public synchronized void consume() throws InterruptedException {
+        synchronized (objectLock){
             if (queue.size() <= 0) {
                 // 消费者消费到容器之中没有对象, 那么消费者等待, 唤醒生产者
                 System.out.println("消费者消费到容器之中没有对象, 那么消费者等待, 唤醒生产者");
                 objectLock.wait();
-                // 唤醒消生产者生产
-                objectLock.notifyAll();
             }
             String msg = queue.take();
             System.out.println("消费者: " + Thread.currentThread().getName() + ": 完成了" + msg + "的消费, 在:"
-                    + LocalDateTime.now().format(DateTimeFormatter.ISO_LOCAL_TIME) + "目前的容量是: " +
+                    + LocalDateTime.now().format(DateTimeFormatter.ISO_LOCAL_TIME) + ", 目前的容量是: " +
                     queue.size());
+            // 唤醒消生产者生产
+            objectLock.notifyAll();
         }
 
     }
