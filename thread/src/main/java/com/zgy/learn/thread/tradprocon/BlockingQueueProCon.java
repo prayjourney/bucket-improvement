@@ -76,8 +76,8 @@ class ProProducer implements Runnable {
             System.out.println("生产者: " + Thread.currentThread().getName() + ": 完成了hello的插入, 在"
                     + LocalDateTime.now().format(DateTimeFormatter.ISO_LOCAL_TIME) + ", 目前的容量是: " +
                     queue.size());
-            //// 唤醒消费者消费
-            //objectLock.notifyAll();
+            // 唤醒消费者消费
+            objectLock.notifyAll();
         }
     }
 
@@ -123,8 +123,8 @@ class ProConsumer implements Runnable {
             System.out.println("消费者: " + Thread.currentThread().getName() + ": 完成了" + msg + "的消费, 在:"
                     + LocalDateTime.now().format(DateTimeFormatter.ISO_LOCAL_TIME) + ", 目前的容量是: " +
                     queue.size());
-            //// 唤醒消生产者生产
-            //objectLock.notifyAll();
+            // 唤醒消生产者生产
+            objectLock.notifyAll();
         }
 
     }
