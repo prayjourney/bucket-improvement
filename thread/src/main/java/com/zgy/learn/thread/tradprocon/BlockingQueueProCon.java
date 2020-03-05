@@ -10,9 +10,11 @@ import java.util.concurrent.BlockingQueue;
  * @Description: 使用BlockingQueue來完成生产者消费者的功能
  * @Date: 2020-03-06 01:39
  * @Modified by:
+ * 查看多线程程序的状态, 使用jps查看进程id, 然后用jstack查看里面的情况,
+ * 一个生产者, 一个消费者的时候, 这样是okay的, 但是两个生产者的时候, 就出现了问题
  */
 public class BlockingQueueProCon {
-    // 容器
+    // 容器, 容量为10
     static BlockingQueue<String> queue = new ArrayBlockingQueue<String>(10);
     // 使用相同的锁
     static Object objectLock = new Object();
