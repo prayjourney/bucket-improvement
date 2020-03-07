@@ -6,7 +6,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
 
 /**
  * @Author: renjiaxin
- * @Despcription:
+ * @Despcription: 线程安全的ArrayList三种方式
  * @Date: Created in 2020/3/8 1:38
  * @Modified by:
  */
