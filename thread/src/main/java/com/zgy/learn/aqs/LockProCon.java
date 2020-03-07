@@ -72,11 +72,14 @@ class ProducerWithLock {
             while (queue.size() >= 10) {
                 System.out.println("盘子满了，没法继续生产，生产者等待，消费者唤醒消费！");
                 condition.await(200,TimeUnit.MILLISECONDS);
+                // 唤醒消费者，此处是生产等盘子满了之后，再去唤醒
+                condition.signalAll();
             }
             // 生产
             queue.add("hello");
             System.out.println(Thread.currentThread().getName() + "：=_=生产了hello, 当前的容量是：" + queue.size());
-            condition.signalAll();
+            // 唤醒消费者，此处是生产一个之后，立马唤醒
+            // condition.signalAll();
         } catch (InterruptedException e) {
             e.printStackTrace();
         } finally {
@@ -103,11 +106,14 @@ class ConsumerWithLock {
             while (queue.size() <= 0) {
                 System.out.println("盘子空了，没法继续消费，消费者等待，生产者唤醒生产！");
                 condition.await(300,TimeUnit.MILLISECONDS);
+                // 唤醒生产者，此处是消费光了之后，再去唤醒
+                condition.signalAll();
             }
             // 消费
             queue.remove("hello");
             System.out.println(Thread.currentThread().getName() + "：====》消耗了：hello, 当前的容量是：" + queue.size());
-            condition.signalAll();
+            // 唤醒生产者，此处是消费一个之后，立马唤醒
+            // condition.signalAll();
         } catch (InterruptedException e) {
             e.printStackTrace();
         } finally {
