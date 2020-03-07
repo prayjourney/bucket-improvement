@@ -72,7 +72,9 @@ class ProProducer implements Runnable {
      */
     public void produce() throws InterruptedException {
         synchronized (objectLock) {
-            if (queue.size() >= 10) {
+            // 这儿应该使用while, 如果是if, 可能会有线程虚假唤醒的问题
+            // if (queue.size() >= 10) {
+            while (queue.size() >= 10) {
                 // 生产者生产导致容器满了, 那么生产者等待, 唤醒消费者消费
                 System.out.println("生产者生产导致容器满了, 那么生产者等待, 唤醒消费者消费");
                 objectLock.wait(1000);
@@ -119,7 +121,9 @@ class ProConsumer implements Runnable {
      */
     public void consume() throws InterruptedException {
         synchronized (objectLock) {
-            if (queue.size() <= 0) {
+            // 这儿应该使用while, 如果是if, 可能会有线程虚假唤醒的问题
+            //if (queue.size() <= 0) {
+            while (queue.size() <= 0) {
                 // 消费者消费到容器之中没有对象, 那么消费者等待, 唤醒生产者
                 System.out.println("消费者消费到容器之中没有对象, 那么消费者等待, 唤醒生产者");
                 objectLock.wait(1000);
