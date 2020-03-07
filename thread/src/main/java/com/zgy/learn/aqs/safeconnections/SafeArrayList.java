@@ -1,4 +1,4 @@
-package com.zgy.learn.aqs.tool;
+package com.zgy.learn.aqs.safeconnections;
 
 import java.util.List;
 import java.util.UUID;
