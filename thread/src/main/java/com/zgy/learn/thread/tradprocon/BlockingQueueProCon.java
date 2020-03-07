@@ -79,7 +79,7 @@ class ProProducer implements Runnable {
                 System.out.println("生产者生产导致容器满了, 那么生产者等待, 唤醒消费者消费");
                 objectLock.wait(1000);
                 // 唤醒消费者消费
-                //objectLock.notifyAll();
+                objectLock.notifyAll();
             }
             //queue.put("hello"); // 可以阻塞的方法
             queue.add("hello");
@@ -87,7 +87,7 @@ class ProProducer implements Runnable {
                     + LocalDateTime.now().format(DateTimeFormatter.ISO_LOCAL_TIME) + ", 目前的容量是: " +
                     queue.size());
             // 唤醒消费者消费
-            objectLock.notifyAll();//wait和notify分开,就会产生超标的作用,然后退化成单线程的操作
+            //objectLock.notifyAll();//wait和notify分开,就会产生超标的作用,然后退化成单线程的操作
         }
     }
 
@@ -128,7 +128,7 @@ class ProConsumer implements Runnable {
                 System.out.println("消费者消费到容器之中没有对象, 那么消费者等待, 唤醒生产者");
                 objectLock.wait(1000);
                 // 唤醒消生产者生产
-                //objectLock.notifyAll();
+                objectLock.notifyAll();
             }
             // String msg = queue.take();//可以阻塞的方法
             String msg = queue.remove();
@@ -136,7 +136,7 @@ class ProConsumer implements Runnable {
                     + LocalDateTime.now().format(DateTimeFormatter.ISO_LOCAL_TIME) + ", 目前的容量是: " +
                     queue.size());
             // 唤醒消生产者生产
-            objectLock.notifyAll();//wait和notify分开,就会产生超标的作用,然后退化成单线程的操作
+            //objectLock.notifyAll();//wait和notify分开,就会产生超标的作用,然后退化成单线程的操作
         }
 
     }
