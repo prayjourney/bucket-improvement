@@ -26,5 +26,13 @@ public class SafeHashSet {
                 System.out.println(set);
             }, String.valueOf(i)).start();
         }
+
+        testNullCopyOnWriteSet();
+    }
+
+    public static void testNullCopyOnWriteSet() {
+        CopyOnWriteArraySet cp = new CopyOnWriteArraySet();
+        cp.add(null);
+        System.out.println(cp.size());
     }
 }
