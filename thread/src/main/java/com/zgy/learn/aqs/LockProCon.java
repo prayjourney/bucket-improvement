@@ -22,6 +22,7 @@ public class LockProCon {
         new Thread(() -> {
             while (true) {
                 try {
+                    // 全新的sleep方法
                     TimeUnit.MILLISECONDS.sleep(200);
                     pwl1.produce();
                 } catch (InterruptedException e) {
@@ -42,7 +43,7 @@ public class LockProCon {
         new Thread(() -> {
             while (true) {
                 try {
-                    TimeUnit.MILLISECONDS.sleep(120);
+                    TimeUnit.MILLISECONDS.sleep(30);
                     cwl1.consume();
                 } catch (InterruptedException e) {
                     e.printStackTrace();
@@ -65,14 +66,12 @@ class ProducerWithLock {
     // 生产方法
     public void produce() {
         // 尝试获取锁
-//        lock.tryLock();
-        lock.lock();
+        lock.tryLock();
         try {
-            // 业务处理
+            // 业务处理 ，使用while破除虚假唤醒
             while (queue.size() >= 10) {
                 System.out.println("盘子满了，没法继续生产，生产者等待，消费者唤醒消费！");
-                condition.await(300,TimeUnit.MILLISECONDS);
-                //condition.signalAll();
+                condition.await(200,TimeUnit.MILLISECONDS);
             }
             // 生产
             queue.add("hello");
@@ -100,11 +99,10 @@ class ConsumerWithLock {
     public void consume() {
         lock.lock();
         try {
-            // 业务处理
+            // 业务处理，使用while破除虚假唤醒
             while (queue.size() <= 0) {
                 System.out.println("盘子空了，没法继续消费，消费者等待，生产者唤醒生产！");
                 condition.await(300,TimeUnit.MILLISECONDS);
-                //condition.signalAll();
             }
             // 消费
             queue.remove("hello");
