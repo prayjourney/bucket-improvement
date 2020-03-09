@@ -1,5 +1,6 @@
 package com.zgy.learn.java8.kuangs;
 
+import java.util.function.Function;
 import java.util.function.Predicate;
 
 /**
@@ -15,6 +16,7 @@ import java.util.function.Predicate;
 public class Big4Interface {
     public static void main(String[] args) {
         usePredicate();
+        useFunction();
 
     }
 
@@ -35,5 +37,26 @@ public class Big4Interface {
             return num > 100;
         };
         System.out.println(predicate2.test(111));
+    }
+
+    /**
+     * 函数型接口，1个参数，1个返回值，Function
+     */
+    public static void useFunction() {
+        // 传统方式
+        Function<String, Integer> function = new Function<String, Integer>() {
+            @Override
+            public Integer apply(String s) {
+                return s.length();
+            }
+        };
+        System.out.println(function.apply("my dream！"));
+
+        // 函数式方式
+        Function<String, Integer> function2 = (s1) -> {
+            return s1.length();
+        };
+        System.out.println(function2.apply("renjiaxin!!!"));
+
     }
 }
