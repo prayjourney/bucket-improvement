@@ -18,8 +18,10 @@ public class Big4Interface {
 
     }
 
+    /**
+     * 段言行接口，返回一个布尔值，一个参数，Predicate
+     */
     public static void usePredicate() {
-        // 段言行接口，返回一个布尔值，一个参数
         // 传统方式
         Predicate<Integer> predicate = new Predicate<Integer>() {
             @Override
