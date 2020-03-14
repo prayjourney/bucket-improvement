@@ -15,28 +15,43 @@ import java.util.concurrent.locks.ReentrantLock;
  * @Date: 2020-03-14 14:22
  * @Modified by:
  */
-public class ListProblemError {
+
+/**
+ * 错误的点：
+ *        1.生产和消费，都应该是惟一的方法，如果方法不同，那坑定就是作用不同，作用不同那才有新的方法，所以，多个方法是有问题的，这样不行
+ *
+ */
+public class ListProblemError1 {
     public static void main(String[] args) {
         List<String> list = new ArrayList<>();
-        MyList myList = new MyList(list);
-        new Thread(()->{
-            myList.add1(UUID.randomUUID().toString());
-        },"A").start();
-        new Thread(()->{
-            myList.add2(UUID.randomUUID().toString());
-        },"B").start();
-        new Thread(()->{
-            myList.remove1();
-        },"C").start();
-        new Thread(()->{
-            myList.remove2();
-        },"D").start();
+        MyList2 myList2 = new MyList2(list);
+        new Thread(() -> {
+            for (int i = 0; i < 10; i++) {
+                myList2.add1(UUID.randomUUID().toString());
+            }
+        }, "A").start();
+        new Thread(() -> {
+            for (int i = 0; i < 10; i++) {
+                myList2.add2(UUID.randomUUID().toString());
+            }
+        }, "B").start();
+        new Thread(() -> {
+            for (int i = 0; i < 10; i++) {
+                myList2.remove1();
+            }
+        }, "C").start();
+        new Thread(() -> {
+            for (int i = 0; i < 10; i++) {
+                myList2.remove2();
+            }
+        }, "D").start();
     }
 }
 
-class MyList {
+class MyList2 {
     private List<String> list;
-    MyList(List<String> list){
+
+    MyList2(List<String> list) {
         this.list = list;
     }
 
@@ -44,18 +59,20 @@ class MyList {
         return list;
     }
 
-    Lock  lock = new ReentrantLock();
+    Lock lock = new ReentrantLock();
     Condition c1 = lock.newCondition();
     Condition c2 = lock.newCondition();
     Condition c3 = lock.newCondition();
     Condition c4 = lock.newCondition();
+
     public void add1(String s) {
-        lock.tryLock();
+        lock.lock();
         try {
-            c1.await();
-            if (!list.contains(s)){
+            if (!list.contains(s)) {
                 list.add(s);
+                System.out.println(Thread.currentThread().getName() + ": 为list添加了 " + s);
             }
+            c1.await();
             c2.signal();
         } catch (InterruptedException e) {
             e.printStackTrace();
@@ -63,13 +80,15 @@ class MyList {
             lock.unlock();
         }
     }
+
     public void add2(String s) {
-        lock.tryLock();
+        lock.lock();
         try {
-            c2.await();
-            if (!list.contains(s)){
+            if (!list.contains(s)) {
                 list.add(s);
+                System.out.println(Thread.currentThread().getName() + ": 为list添加了 " + s);
             }
+            c2.await();
             c3.signal();
         } catch (InterruptedException e) {
             e.printStackTrace();
@@ -79,12 +98,13 @@ class MyList {
     }
 
     public void remove1() {
-        lock.tryLock();
-        try{
-            c3.await();
-            while (!list.isEmpty()){
-                list.remove(0);
+        lock.lock();
+        try {
+            if (!list.isEmpty()) {
+                String str = list.remove(0);
+                System.out.println(Thread.currentThread().getName() + ": 消費了 " + str);
             }
+            c3.await();
             c4.signal();
         } catch (InterruptedException e) {
             e.printStackTrace();
@@ -92,13 +112,15 @@ class MyList {
             lock.unlock();
         }
     }
+
     public void remove2() {
-        lock.tryLock();
-        try{
-            c4.await();
-            while (!list.isEmpty()){
-                list.remove(0);
+        lock.lock();
+        try {
+            if (!list.isEmpty()) {
+                String str = list.remove(0);
+                System.out.println(Thread.currentThread().getName() + ": 消費了 " + str);
             }
+            c4.await();
             c1.signal();
         } catch (InterruptedException e) {
             e.printStackTrace();
