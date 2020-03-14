@@ -13,7 +13,8 @@ import java.util.concurrent.locks.ReentrantLock;
 public class DoWithSeq {
     public static void main(String[] args) {
         Work work = new Work();
-        //要求，先执行A线程，然后执行B线程，再执行C线程，有执行A线程，循环
+        // 要求，先执行A线程，然后执行B线程，再执行C线程，有执行A线程，循环
+        // 需要A, B, C三个线程，那么Work之中，就需要有三个方法，让其相互的唤醒。
         new Thread(() -> {
             for (int i = 0; i < 10; i++) {
                 work.work001();
@@ -85,7 +86,7 @@ class Work {
         // 加锁
         lock.lock();
         try {
-            // 业务，判断，要防止我们虚假唤醒
+            // 当number不为3的时候，condition就会阻塞，而这个锁lock，就是共享的锁
             while (num != 3) {
                 // 等待
                 condition3.await();
