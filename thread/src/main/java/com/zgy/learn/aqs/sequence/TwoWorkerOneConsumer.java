@@ -9,7 +9,7 @@ import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * @Author: renjiaxin
- * @Despcription:
+ * @Despcription: 按顺序唤醒和执行
  * @Date: Created in 2020/3/7 20:00
  * @Modified by:
  */
