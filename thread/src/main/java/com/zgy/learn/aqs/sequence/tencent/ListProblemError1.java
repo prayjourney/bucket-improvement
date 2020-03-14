@@ -1,4 +1,4 @@
-package com.zgy.learn.aqs.sequence;
+package com.zgy.learn.aqs.sequence.tencent;
 
 import java.util.ArrayList;
 import java.util.List;
