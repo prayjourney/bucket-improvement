@@ -10,8 +10,9 @@ import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * @Author: renjiaxin
- * @Despcription: *          1）、设计4个线程，其中两个线程每次向List集合list中添加一个元素，另外两个线程每次从集合中取出并删除一个元素。
- * *          2）、删除数组中的重复项；
+ * @Despcription:
+ *              1）、设计4个线程，其中两个线程每次向List集合list中添加一个元素，另外两个线程每次从集合中取出并删除一个元素。
+ *              2）、删除数组中的重复项；
  * @Date: Created in 2020/3/14 17:12
  * @Modified by:
  */
@@ -23,7 +24,7 @@ public class ListProblem {
         new Thread(()->{
             while(true){
                 try {
-                    TimeUnit.MILLISECONDS.sleep(90);
+                    TimeUnit.MILLISECONDS.sleep(140);
                     w4e.addElement(UUID.randomUUID().toString());
                 } catch (InterruptedException e) {
                     e.printStackTrace();
@@ -33,7 +34,7 @@ public class ListProblem {
         new Thread(()->{
             while(true){
                 try {
-                    TimeUnit.MILLISECONDS.sleep(110);
+                    TimeUnit.MILLISECONDS.sleep(120);
                     w4e.addElement(UUID.randomUUID().toString());
                 } catch (InterruptedException e) {
                     e.printStackTrace();
@@ -53,7 +54,7 @@ public class ListProblem {
         new Thread(()->{
             while(true){
                 try {
-                    TimeUnit.MILLISECONDS.sleep(200);
+                    TimeUnit.MILLISECONDS.sleep(220);
                     w4e.removeElement();
                 } catch (InterruptedException e) {
                     e.printStackTrace();
@@ -77,7 +78,8 @@ public class ListProblem {
         public void addElement(String str) {
             lock.lock();
             try {
-                while (list.size() >= 10 && !list.contains(str)) {
+                // 当容量大于等于10，或者是包含已有的str的时候，wait
+                while (list.size() >= 10 || list.contains(str)) {
                     c1.await();
                 }
                 list.add(str);
