@@ -6,7 +6,7 @@ import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * @Author: renjiaxin
- * @Despcription: 按顺序执行
+ * @Despcription: 按顺序执行， 还是有问题啊？这个。。。。============>因为C只是调用了一次，所以就有问题了，需要都是10次，才能正常啊！
  * @Date: Created in 2020/3/7 19:33
  * @Modified by:
  */
@@ -25,7 +25,9 @@ public class DoWithSeq {
             }
         }, "B").start();
         new Thread(() -> {
-            work.work003();
+            for (int i = 0; i < 10; i++) {
+                work.work003();
+            }
         }, "C").start();
     }
 }
