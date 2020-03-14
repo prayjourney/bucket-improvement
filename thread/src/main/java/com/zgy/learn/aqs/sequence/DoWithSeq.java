@@ -16,34 +16,35 @@ public class DoWithSeq {
         //要求，先执行A线程，然后执行B线程，再执行C线程，有执行A线程，循环
         new Thread(() -> {
             for (int i = 0; i < 10; i++) {
-                work.workFirst();
+                work.work001();
             }
         }, "A").start();
         new Thread(() -> {
             for (int i = 0; i < 10; i++) {
-                work.workSecond();
+                work.work002();
             }
         }, "B").start();
         new Thread(() -> {
-            work.workThird();
+            work.work003();
         }, "C").start();
     }
 }
 
 class Work {
-    private int num = 1;
     private Lock lock = new ReentrantLock();
     Condition condition1 = lock.newCondition();
     Condition condition2 = lock.newCondition();
     Condition condition3 = lock.newCondition();
+    private int num = 1;
 
-    public void workFirst() {
+    public void work001() {
         // 加锁
         lock.lock();
         try {
             // 业务，判断，要防止我们虚假唤醒
             while (num != 1) {
                 // 等待
+                // 不行 // condition1.await(200, TimeUnit.MILLISECONDS);
                 condition1.await();
             }
             System.out.println(Thread.currentThread().getName() + "===>正在执行，当前的num值是：" + num);
@@ -58,7 +59,7 @@ class Work {
         }
     }
 
-    public void workSecond() {
+    public void work002() {
         // 加锁
         lock.lock();
         try {
@@ -78,7 +79,7 @@ class Work {
         }
     }
 
-    public void workThird() {
+    public void work003() {
         // 加锁
         lock.lock();
         try {
