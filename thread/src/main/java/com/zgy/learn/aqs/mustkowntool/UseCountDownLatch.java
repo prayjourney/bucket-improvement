@@ -26,7 +26,7 @@ public class UseCountDownLatch {
             }, ("学生" + i)).start();
         }
         // 保证关门是最后的一个动作！
-        // latch.await();
+        latch.await(); // 这个放开，才是会在最后一个执行
         System.out.println("警告：教室门要关闭了！！！");
     }
 }
