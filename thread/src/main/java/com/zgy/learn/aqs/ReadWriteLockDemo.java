@@ -45,22 +45,22 @@ public class ReadWriteLockDemo {
  * 资源类，一个缓存
  */
 class MyCache {
-    public  Map<String, Object> mycache = new HashMap<>();
-    ReadWriteLock lock = new ReentrantReadWriteLock();
+    public volatile Map<String, Object> mycache = new HashMap<>();
+    ReadWriteLock readWriteLock = new ReentrantReadWriteLock();
 
     /**
      * 读取缓存，读读共享，读写互斥
      * //现在这样，写锁上了锁，而读锁没有上锁，这样会导致读和写不互斥，所以会出现问题
      */
     public Object get(String key) {
-//        // 上锁
-//        lock.readLock().lock();
-//        try{
+        // 上锁
+        readWriteLock.readLock().lock();
+        try {
             return mycache.get(key);
-//        }finally {
-//            // 开锁
-//            lock.readLock().unlock();
-//        }
+        } finally {
+            // 开锁
+            readWriteLock.readLock().unlock();
+        }
     }
 
     /**
@@ -68,15 +68,15 @@ class MyCache {
      */
     public void set(String key, Object value) {
         // 上锁
-        lock.writeLock().lock();
-        try{
+        readWriteLock.writeLock().lock();
+        try {
             TimeUnit.MILLISECONDS.sleep(200);
             mycache.put(key, value);
         } catch (InterruptedException e) {
             e.printStackTrace();
         } finally {
             // 开锁
-            lock.writeLock().unlock();
+            readWriteLock.writeLock().unlock();
         }
     }
 
