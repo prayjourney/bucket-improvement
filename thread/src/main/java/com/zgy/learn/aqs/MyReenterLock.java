@@ -8,9 +8,9 @@ import java.util.concurrent.TimeUnit;
  * @Date: Created in 2020/3/11 2:41
  * @Modified by:
  */
-public class ReEnterLock {
+public class MyReenterLock {
     public static void main(String[] args) throws InterruptedException {
-        new ReEnterLock().testA();
+        new MyReenterLock().testA();
 
     }
 
