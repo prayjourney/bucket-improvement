@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 /**
  * @Author: renjiaxin
@@ -43,19 +44,28 @@ public class ReadWriteLockDemo {
  */
 class MyCache {
     public volatile Map<String, Object> mycache = new HashMap<>();
+    ReentrantReadWriteLock lock = new ReentrantReadWriteLock();
 
     /**
-     * 读取缓存
+     * 读取缓存，现在这样，写锁上了锁，而读锁没有上锁，这样会导致读和写不互斥，所以会出现问题
      */
     public Object get(String key) {
         return mycache.get(key);
     }
 
     /**
-     * 写入缓存
+     * 写入缓存，写写互斥，读写互斥
      */
     public void set(String key, Object value) {
-        mycache.put(key, value);
+        // 上锁
+        lock.writeLock();
+        try{
+            mycache.put(key, value);
+        }finally {
+            // 开锁
+            lock.writeLock().unlock();
+        }
+
     }
 
 }
