@@ -7,6 +7,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * @Author: renjiaxin
  * @Despcription:
@@ -46,5 +49,37 @@ public class TestController {
         User user = new User("王美娟", 26, "女");
         System.out.println(user);
         return user;
+    }
+
+    // 返回一个list
+    @RequestMapping(value = "/json3", produces = "application/json;charset=utf-8")
+    @ResponseBody
+    public String json3() throws JsonProcessingException {
+        List<User> users = new ArrayList<>();
+        User user1 = new User("王美娟1", 26, "女");
+        User user2 = new User("王美娟2", 22, "女");
+        User user3 = new User("王美娟3", 29, "男");
+        users.add(user1);
+        users.add(user2);
+        users.add(user3);
+        System.out.println(users);
+        return new ObjectMapper().writeValueAsString(users);
+//        [
+//            {
+//                "name": "王美娟1",
+//                    "age": 26,
+//                    "gender": "女"
+//            },
+//            {
+//                "name": "王美娟2",
+//                    "age": 22,
+//                    "gender": "女"
+//            },
+//            {
+//                "name": "王美娟3",
+//                    "age": 29,
+//                    "gender": "男"
+//            }
+//        ]
     }
 }
