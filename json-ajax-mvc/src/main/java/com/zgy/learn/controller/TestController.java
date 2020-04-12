@@ -94,4 +94,20 @@ public class TestController {
         // 返回时间戳
         return String.valueOf(System.currentTimeMillis());
     }
+    // 不让返回时间戳
+    @RequestMapping(value = "/time2", produces = "application/json;charset=utf-8")
+    @ResponseBody
+    public String time2() throws JsonProcessingException {
+        ObjectMapper mapper = new ObjectMapper();
+        // 1.不让返回时间戳，就要关闭时间戳功能
+        mapper.configure(SerializationFeature.WRITE_DATE_KEYS_AS_TIMESTAMPS, false);
+        // 2.自定义时间格式
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        // 3.指定日期格式
+        mapper.setDateFormat(sdf);
+
+        // 给一个时间戳
+        return mapper.writeValueAsString(new Date());
+    }
+
 }
