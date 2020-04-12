@@ -54,4 +54,31 @@ public class AjaxController {
         return users;
     }
 
+    @RequestMapping("login")
+    public String login(){
+        return "login";
+    }
+
+    // 这就是一个正常的请求，不过是要给前端返回信息
+    @RequestMapping(value = "/a3")
+    @ResponseBody
+    public String ajax3(String name, String pwd) throws IOException {
+        String msg = "";
+        if (null != name){
+            if ("admin".equals(name)){
+                msg ="OK";
+            }else {
+                msg ="username error!";
+            }
+        }
+        if (null != pwd){
+            if ("pwd123456".equals(pwd)){
+                msg ="OK";
+            }else {
+                msg ="password error!";
+            }
+        }
+        return msg;
+    }
+
 }

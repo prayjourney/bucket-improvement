@@ -12,6 +12,7 @@
         <!-- 直接跳转有问题 -->
         <%-- <a href="${pageContext.request.contextPath}/forAjaxList.jsp" id="learnAjax">ajax的学习<br></a>--%>
         <a href="${pageContext.request.contextPath}/ajax/learnajax" id="learnAjax">ajax的学习<br></a>
+        <a href="${pageContext.request.contextPath}/ajax/login" id="login">登录页面<br></a>
         <style type="text/css">
             a#learnAjax {
                 color: aquamarine;
