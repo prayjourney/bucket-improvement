@@ -7,6 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -81,5 +83,11 @@ public class TestController {
 //                    "gender": "男"
 //            }
 //        ]
+    }
+
+    @RequestMapping(value = "/json4", produces = "application/json;charset=utf-8")
+    @ResponseBody
+    public String json4() throws JsonProcessingException {
+        return new ObjectMapper().writeValueAsString(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
     }
 }
