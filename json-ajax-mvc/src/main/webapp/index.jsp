@@ -9,6 +9,26 @@
     </head>
     <body>
         <h2>Hello World!</h2>
+        <!-- 直接跳转有问题 -->
+        <%-- <a href="${pageContext.request.contextPath}/forAjaxList.jsp" id="learnAjax">ajax的学习<br></a>--%>
+        <a href="${pageContext.request.contextPath}/ajax/learnajax" id="learnAjax">ajax的学习<br></a>
+        <style type="text/css">
+            a#learnAjax {
+                color: aquamarine;
+                font-family: 方正粗黑宋简体;
+                font-size: 18px;
+                margin-left: 20px;
+            }
+
+            a:hover {
+                color: #FF00FF
+            }
+
+            a:visited {
+                color: red;
+                font-size: 28px
+            }
+        </style>
 
 
         <script type="text/javascript">
@@ -34,7 +54,7 @@
                     data: {"name": $("#txtName").val()},
                     success: function (data, status) {
                         console.log(data, status);
-                        window.alert("data")
+                        console.log("data")
                     }
                 });
             }
