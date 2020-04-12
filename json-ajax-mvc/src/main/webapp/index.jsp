@@ -2,8 +2,9 @@
 <html>
     <head>
         <title>测试ajax!</title>
-        <!-- jquery的路径问题，需要导入，注意点， 路径问题！-->
-        <%--        <script src="${pageContext.request.contextPath}/static/js/jquery-3.4.1.js"/>--%>
+        <!-- jquery的路径问题，需要导入，注意点， 路径问题！暂时没有解决使用本地的文件，后续需要注意-->
+        <%-- <script src="${pageContext.request.contextPath}/static/js/jquery-3.4.1.js"/>--%>
+        <%-- <script src="$/WEB-INF/static/js/jquery-3.4.1.js"/> --%>
         <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     </head>
     <body>
@@ -40,7 +41,7 @@
         </script>
 
         <!-- onblur 失去焦点，产生事件 -->
-        <span > 请输入姓名: </span>
+        <span> 请输入姓名: </span>
         <input type="text" id="txtName" onblur="ajaxMethod01()"/>
     </body>
 </html>

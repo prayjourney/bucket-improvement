@@ -18,4 +18,7 @@
         <property name="prefix" value="/WEB-INF/views/"></property>
         <property name="suffix" value=".jsp"></property>
     </bean>
+
+    <!-- 静态资源请求 -->
+    <mvc:resources location="/WEB-INF/static/js/" mapping="/js/**" />
 </beans>
