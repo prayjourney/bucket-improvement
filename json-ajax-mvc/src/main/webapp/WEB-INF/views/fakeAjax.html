@@ -3,12 +3,21 @@
     <head>
         <meta charset="UTF-8">
         <title>伪造Ajax</title>
+        <script type="text/javascript">
+            window.onload = function f() {
+                var mydate = new Date();
+                document.getElementById("nowTime").innerText = "当前时间是：" + mydate.getTime();
+            }
+
+            // window.onload = f(); //先定义，然后这样调用的话，无法起作用
+        </script>
     </head>
     <body>
         <div>
+            <p id="nowTime"></p>
             <p>请输入要载入的地址：</p>
             <p>
-                <input type="text" id ="url" value="https://baidu.com">
+                <input type="text" id="url" value="https://baidu.com">
                 <input type="button" value="提交" onclick="">
             </p>
         </div>
@@ -18,6 +27,6 @@
 
             </iframe>
         </div>
-        
+
     </body>
 </html>
