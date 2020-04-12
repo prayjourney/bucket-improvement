@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>测试delete和put</title>
+        <style>
+            p#yiwen{
+                color: red;
+                font-size: 20px;
+                font-family: 方正粗黑宋简体;
+            }
+        </style>
+    </head>
+    <body>
+        <form method="post" action="/swagger/deletestudent">
+            <p id="yiwen">在springbooot的框架下，是否需要把delete 请求转换为post类型呢？ </p>
+            id: <input type="text" value="1">
+            <input type="submit" value="删除一个学生">
+        </form>
+
+        <form method="get" action="/swagger/getallstudent">
+            <p>获取所有学生 </p>
+            <input type="submit" value="获取所有学生">
+        </form>
+
+    </body>
+</html>
