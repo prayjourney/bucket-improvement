@@ -37,4 +37,11 @@ public class TestController {
         String s = mapper.writeValueAsString(user);
         return s;
     }
+
+    // 使用@ResponseBody，就可以直接返回json类型，不看方法的返回类型是什么
+    @RequestMapping("/json2")
+    @ResponseBody
+    public User json2() throws JsonProcessingException {
+        return new User("王美娟", 26, "女");
+    }
 }
