@@ -23,7 +23,7 @@ public class TestController {
 
     // @RequestBody, 前端请求的时候，作为一个json传入
     // @ResponseBody, 将服务器端返回的对象，转换为json对象，响应回去
-    @RequestMapping("/json1")
+    @RequestMapping(value = "/json1", produces = "application/json;charset=utf-8")
     @ResponseBody
     public String json1() throws JsonProcessingException {
         // 需要一个对象
@@ -35,13 +35,16 @@ public class TestController {
 
         // 将Java对象转换为json字符串
         String s = mapper.writeValueAsString(user);
+        System.out.println(s);
         return s;
     }
 
     // 使用@ResponseBody，就可以直接返回json类型，不看方法的返回类型是什么
-    @RequestMapping("/json2")
+    @RequestMapping(value = "/json2", produces = "application/json;charset=utf-8")
     @ResponseBody
     public User json2() throws JsonProcessingException {
-        return new User("王美娟", 26, "女");
+        User user = new User("王美娟", 26, "女");
+        System.out.println(user);
+        return user;
     }
 }
