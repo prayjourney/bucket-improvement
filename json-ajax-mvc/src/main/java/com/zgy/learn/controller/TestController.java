@@ -94,6 +94,7 @@ public class TestController {
         // 返回时间戳
         return String.valueOf(System.currentTimeMillis());
     }
+
     // 不让返回时间戳
     @RequestMapping(value = "/time2", produces = "application/json;charset=utf-8")
     @ResponseBody
@@ -110,4 +111,10 @@ public class TestController {
         return mapper.writeValueAsString(new Date());
     }
 
+    // 使用Java8的时间
+    @RequestMapping(value = "/time3", produces = "application/json;charset=utf-8")
+    @ResponseBody
+    public String time3() throws JsonProcessingException {
+        return new ObjectMapper().writeValueAsString(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
+    }
 }
