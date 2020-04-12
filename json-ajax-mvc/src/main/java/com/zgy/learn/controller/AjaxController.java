@@ -38,12 +38,18 @@ public class AjaxController {
     @ResponseBody
     public List<User> ajax2() throws IOException {
         List<User> users = new ArrayList<>();
-        User user1 = new User("王美娟1", 26, "女");
-        User user2 = new User("王美娟2", 22, "女");
-        User user3 = new User("王美娟3", 29, "男");
+        User user1 = new User("周芷若", 26, "女");
+        User user2 = new User("赵敏", 23, "女");
+        User user3 = new User("苏小昭", 22, "女");
+        User user4 = new User("张无忌", 29, "男");
+        User user5 = new User("谢逊", 67, "男");
+        User user6 = new User("张三丰", 119, "男");
         users.add(user1);
         users.add(user2);
         users.add(user3);
+        users.add(user4);
+        users.add(user5);
+        users.add(user6);
         System.out.println(users);
         return users;
     }
