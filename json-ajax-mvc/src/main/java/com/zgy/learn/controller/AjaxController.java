@@ -5,6 +5,7 @@ import com.zgy.learn.pojo.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletResponse;
@@ -36,9 +37,9 @@ public class AjaxController {
     }
 
     // 返回多个值
-    @RequestMapping("/a2")
+    @RequestMapping(value = "/a2")
     @ResponseBody
-    public List<User> ajax2(String name, HttpServletResponse response) throws IOException {
+    public List<User> ajax2() throws IOException {
         List<User> users = new ArrayList<>();
         User user1 = new User("王美娟1", 26, "女");
         User user2 = new User("王美娟2", 22, "女");
