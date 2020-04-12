@@ -2,14 +2,17 @@ package com.zgy.learn.controller;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
 import com.zgy.learn.pojo.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -85,9 +88,10 @@ public class TestController {
 //        ]
     }
 
-    @RequestMapping(value = "/json4", produces = "application/json;charset=utf-8")
+    @RequestMapping(value = "/time1", produces = "application/json;charset=utf-8")
     @ResponseBody
-    public String json4() throws JsonProcessingException {
-        return new ObjectMapper().writeValueAsString(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
+    public String time1() {
+        // 返回时间戳
+        return String.valueOf(System.currentTimeMillis());
     }
 }
