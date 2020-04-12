@@ -29,6 +29,7 @@
         <module>dubbo-common-interface</module>
         <module>spring-shiro</module>
         <module>desgin-pattern</module>
+        <module>json-ajax-mvc</module>
     </modules>
 
     <!-- improvement-java-skill  to bucket-improvement-->
