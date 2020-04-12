@@ -7,6 +7,7 @@
     <body>
         <script>
             function userMethod() {
+                // ajax使用
                 $.ajax({
                     url: "${pageContext.request.contextPath}/ajax/a3",
                     data: {"name": $("#name").val()},
