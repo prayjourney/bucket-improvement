@@ -22,7 +22,7 @@
         <!--ajax处理-->
         <script type="text/javascript">
             $(function () {
-                $("btn").click(function () {
+                $("#btn").click(function () {
                     // ajax的请求链接和回调处理函数
                     $.post("${pageContext.request.contextPath}/ajax/a2", function (data) {
                         // 回调处理函数的内容，主要是获取数据，然后写入
