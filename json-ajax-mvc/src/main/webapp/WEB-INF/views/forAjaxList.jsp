@@ -8,6 +8,14 @@
                 font-family: 方正粗黑宋简体;
                 color: chocolate;
             }
+            #content td{
+                padding-left: 10px;
+                border: 1px;
+                border-color: chocolate;
+                border-style: dotted;
+
+            }
+
         </style>
         <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
         <script>
@@ -43,7 +51,7 @@
         </script>
 
         <input type="button" id="btn" value="获取数据">
-        <table style="margin-left: 20px; padding-left: 1px; border: aliceblue; solid-color: bisque">
+        <table style="margin-left: 20px; padding-left: 1px; border: 1px; border-color: #FF00FF; border-style: dot-dash">
             <th>姓名</th>
             <th>年龄</th>
             <th>性别</th>
