@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>更新学生</title>
+        <!-- 这样虽然可以获取到js, 但是没有办法使用-->
+        <!--<script src="/js/jquery-3.5.0.js"/>-->
+        <!-- 本地文件，也无法访问-->
+        <!--<script src="file:///D://jquery-3.5.0.js"/>-->
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <style type="text/css">
+            #allStudent {
+                border-style: solid;
+                border-color: deepskyblue;
+                color: chocolate;
+                padding-left: 5px;
+                border-width: 1px
+            }
+
+            th {
+                border-style: solid;
+                border-width: 1px;
+                color: aqua;
+            }
+
+            td {
+                border-style: solid;
+                border-width: 1px;
+                color: #ff81aa;
+            }
+        </style>
+        <script type="text/javascript">
+            function f() {
+                window.alert('111');
+                console.log("111");
+            }
+
+            // TODO: id的问题
+            // 删除一个学生
+            function deleteOneStudent() {
+                $.ajax({
+                    url: "/deletestudentbyid",
+                    type: "POST",
+                    // data: {"stId": $("#stId").val()},
+                    data: {"stId": 1},
+                    dataType: "json",
+                    success: function (data, status) {
+                        console.log(data)
+                        console.log(status)
+                        var myHtmlContent = "";
+                        if (null != data && (data != "id is not correct!" || data != "student is not exists!")){
+                            for (var i = 0; i < data.length; i++) {
+                                var stu = data[i];
+                                myHtmlContent += "<tr>" +
+                                    "<td id= 'stId'>" + stu.stId + "</td>" +
+                                    "<td>" + stu.stName + "</td>" +
+                                    "<td>" + stu.stGender + "</td>" +
+                                    "<td>" + stu.stGrade + "</td>" +
+                                    "<td>" + stu.stClass + "</td>" +
+                                    "<td>" + "<input id='deleteOneStudent' style='color: red' type='submit' value='删除一个学生' onclick='deleteOneStudent()'>" + "</td>" +
+                                    "</tr>";
+                            }
+                        }
+                        $("#studentInfo").html(myHtmlContent);
+                    }
+            })
+                // window.alert("hello!");
+
+            }
+
+            // 页面加载后，使用ajax， 装载入数据
+            // window.onload = function () {
+            function ss() {
+                $.ajax({
+                    url: "/allstudent",
+                    type: "GET", // 请求的类型
+                    data: {},  // 空值的时候，传个大括号就行
+                    dataType: "json", // 数据类型一定要写
+                    success: function (data, status) {
+                        console.log(data);
+                        console.log(status);
+                        console.log("===>" + data)
+                        var myHtmlContent = "";
+                        // 信息核对成功
+                        if (null != data) {
+                            for (var i = 0; i < data.length; i++) {
+                                var stu = data[i];
+                                myHtmlContent += "<tr>" +
+                                    // "<td id=('stId'+stu.stId)>" + stu.stId + "</td>" +
+                                    "<td id= 'stId'>" + stu.stId + "</td>" +
+                                    "<td>" + stu.stName + "</td>" +
+                                    "<td>" + stu.stGender + "</td>" +
+                                    "<td>" + stu.stGrade + "</td>" +
+                                    "<td>" + stu.stClass + "</td>" +
+                                    "<td>" + "<input id='deleteOneStudent' style='color: red' type='submit' value='删除一个学生' onclick='deleteOneStudent()'>" + "</td>" +
+                                    "</tr>";
+                            }
+                            // 打印数据
+                            console.log("123Hello===>" + data.toString())
+                            // 下面是一个测试
+                            //     myHtmlContent += "<tr>" +
+                            //         "<td>" + "100" + "</td>" +
+                            //         "<td>" + "张三" + "</td>" +
+                            //         "<td>" + "男" + "</td>" +
+                            //         "<td>" + "二年级" + "</td>" +
+                            //         "<td>" + "3班" + "</td>" +
+                            //         "<td>" + "删除" + "</td>" +
+                            //         "</tr>";
+                        }
+                        $("#studentInfo").html(myHtmlContent);
+                    }
+                })
+            }
+
+            window.onload = ss();
+        </script>
+    </head>
+    <body>
+        <!-- test -->
+        <p>Hello world!</p>
+        <input type="button" value="Hello test!" onclick="f()"/>
+        <script type="text/javascript">
+            function updateStudent() {
+                $.post({
+                    url: "/updateStudentById",
+                    data: {},
+                    success: function (data) {
+                        console.log(data);
+                        // 信息核对成功
+                        if (data.toString() != '没有这个学生的信息' &&
+                            data.toString() != 'student info is error!') {
+                            var myHtmlContent = "";
+                            for (var i = 0; i < data.length; i++) {
+                                console.log(data[i].stId);
+                                console.log(data[i].stGender);
+
+                                myHtmlContent += "<tr>" +
+                                    "<td>" + data[i].stId + "</td>" +
+                                    "<td>" + data[i].stName + "</td>" +
+                                    "<td>" + data[i].stGender + "</td>" +
+                                    "<td>" + data[i].stGrade + "</td>" +
+                                    "<td>" + data[i].stClass + "</td>" +
+                                    "<td>" + "删除" + "</td>" +
+                                    "</tr>";
+                            }
+                        }
+                        $('#students').html(myHtmlContent)
+                    }
+                })
+            }
+
+        </script>
+        <div>
+            <table id="allStudent" style="margin: 20px; border: deepskyblue;
+            border-width: medium; border-style: inset; border-width: 1px">
+                <th>学生id</th>
+                <th>学生姓名</th>
+                <th>学生性别</th>
+                <th>学生年级</th>
+                <th>学生班级</th>
+                <th id="updateOne">update</th>
+                <tbody id="studentInfo">
+
+                </tbody>
+            </table>
+            <input type="submit" value="获取学生信息" onclick="ss()">
+        </div>
+
+
+    </body>
+</html>
