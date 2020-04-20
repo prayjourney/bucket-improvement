@@ -8,11 +8,11 @@
         <version>2.1.13.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.zgy.learn.bootswaggermailquartzmongo</groupId>
-    <artifactId>boot-swagger-mail-quartz-mongo</artifactId>
+    <groupId>com.zgy.learn.bootswaggermailquartzmongoredis</groupId>
+    <artifactId>boot-swagger-mail-quartz-mongo-redis</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>boot-swagger-mail-quartz-mongo</name>
-    <description>boot-swagger-mail-quartz-mongo</description>
+    <name>boot-swagger-mail-quartz-mongo-redis</name>
+    <description>boot-swagger-mail-quartz-mongo-redis</description>
 
     <properties>
         <java.version>1.8</java.version>
