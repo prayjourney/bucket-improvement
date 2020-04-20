@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
 //@SpringBootApplication(exclude = {MongoAutoConfiguration.class, MongoDataAutoConfiguration.class})
-@SpringBootApplication()
+@SpringBootApplication
 @EnableScheduling // 开启定时任务
 public class BootSwaggerMailQuartzMongoRedisApplication {
 
