@@ -30,7 +30,7 @@
         <module>spring-shiro</module>
         <module>desgin-pattern</module>
         <module>json-ajax-mvc</module>
-        <module>boot-swagger-mail-quartz-mongo</module>
+        <module>boot-swagger-mail-quartz-mongo-redis</module>
     </modules>
 
     <!-- improvement-java-skill  to bucket-improvement-->
