@@ -19,7 +19,7 @@ public class SwaggerConfig {
                 .pathMapping("/")
                 .select()
                 .apis(RequestHandlerSelectors.basePackage(
-                        "com.zgy.learn.bootswaggermailquartzmongo.controller"))
+                        "com.zgy.learn.bootswaggermailquartzmongoredis.controller"))
                 .paths(PathSelectors.any())
                 .build().apiInfo(new ApiInfoBuilder()
                         .title("SpringBoot整合Swagger")
@@ -39,7 +39,7 @@ public class SwaggerConfig {
                 .groupName("zgy") // 分组名，默认是default
                 .select()
                 .apis(RequestHandlerSelectors.basePackage(
-                        "com.zgy.learn.bootswaggermailquartzmongo.controller"))
+                        "com.zgy.learn.bootswaggermailquartzmongoredis.controller"))
                 .paths(PathSelectors.any())
                 .build().apiInfo(new ApiInfoBuilder()
                         .title("SpringBoot整合Swagger, boot, swagger, mail, quartz, mongo的学习例子")
