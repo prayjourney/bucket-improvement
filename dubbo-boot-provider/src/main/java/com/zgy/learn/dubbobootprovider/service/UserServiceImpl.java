@@ -15,7 +15,8 @@ import java.util.List;
  * @Modified by:
  */
 @Service // 暴露dubbo服务
-public class UserServiceImplBoot implements UserService {
+@Component
+public class UserServiceImpl implements UserService {
 
     @Override
     public List<UserAddress> getUserAddressList(String userId) {

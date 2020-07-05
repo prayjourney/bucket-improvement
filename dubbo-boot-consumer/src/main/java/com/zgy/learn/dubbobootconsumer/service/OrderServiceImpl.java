@@ -23,7 +23,7 @@ import java.util.List;
  * 2、让服务消费者去注册中心订阅服务提供者的服务地址
  */
 @Service
-public class OrderServiceImplBoot implements OrderService {
+public class OrderServiceImpl implements OrderService {
     // 使用远程接口
     @Reference
     UserService userService;
