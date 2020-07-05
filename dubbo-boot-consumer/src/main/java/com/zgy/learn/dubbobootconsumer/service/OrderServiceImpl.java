@@ -25,7 +25,8 @@ import java.util.List;
 @Service
 public class OrderServiceImpl implements OrderService {
     // 使用远程接口, check= fasle, 启动时不设置检查服务提供者是否启动, 设置使用版本为*, 可能调用1.0，也可能调用2.0
-    @Reference(check = false, timeout = 2000, version = "*", retries = 3)
+    @Reference(check = false, timeout = 2000, version = "*", retries = 3, stub = "com.zgy.learn.dubbobootconsumer" +
+            ".service.UserServiceStub")
     UserService userService;
 
     @Override
