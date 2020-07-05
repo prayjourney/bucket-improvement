@@ -15,7 +15,7 @@ import java.util.List;
  * @Modified by:
  */
 @Service // 暴露dubbo服务
-@Component
+// @Component // 这个写不写其实无所谓了，不写也可以
 public class UserServiceImpl implements UserService {
 
     @Override
