@@ -15,19 +15,20 @@ import java.util.List;
  * @Modified by:
  */
 @Slf4j
-@Service(version = "1.0", timeout = 2000) // 暴露dubbo服务
-// @Component // 这个写不写其实无所谓了，不写也可以
-public class UserServiceImpl implements UserService {
+@Service(version = "2.0", timeout = 1000)
+public class UserServiceImpl02 implements UserService {
 
     @Override
     public List<UserAddress> getUserAddressList(String userId) {
-        log.info("UserServiceImpl.....version: 1.0");
+        log.info("UserServiceImpl.....version: 2.0");
 
         // 模拟数据库的实现
         UserAddress address1 = new UserAddress(1, "北京市昌平区宏福科技园综合楼3层",
                 "1", "李老师", "010-56253825", "Y");
         UserAddress address2 = new UserAddress(2, "深圳市宝安区西部硅谷大厦B座3层（深圳分校）",
-                "1", "王老师", "010-56253825", "N");
-        return Arrays.asList(address1, address2);
+                "2", "王老师", "010-56253825", "N");
+        UserAddress address3 = new UserAddress(2, "成都市青羊区航天科技大厦B座",
+                "3", "张老师", "13324563489", "N");
+        return Arrays.asList(address1, address2, address3);
     }
 }
