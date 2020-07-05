@@ -24,8 +24,8 @@ import java.util.List;
  */
 @Service
 public class OrderServiceImpl implements OrderService {
-    // 使用远程接口
-    @Reference
+    // 使用远程接口, check= fasle, 启动时不设置检查服务提供者是否启动
+    @Reference(check = false)
     UserService userService;
 
     @Override
