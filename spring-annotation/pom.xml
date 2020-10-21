@@ -5,10 +5,10 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.zgy.learn</groupId>
-    <artifactId>springannotation</artifactId>
+    <artifactId>spring-annotation</artifactId>
     <version>1.0-SNAPSHOT</version>
 
-    <name>springannotation</name>
+    <name>spring-annotation</name>
     <!-- FIXME change it to the project's website -->
     <url>http://www.example.com</url>
 
