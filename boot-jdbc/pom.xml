@@ -9,9 +9,9 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.zgy.learn</groupId>
-    <artifactId>bootjdbc</artifactId>
+    <artifactId>boot-jdbc</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>bootjdbc</name>
+    <name>boot-jdbc</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>
