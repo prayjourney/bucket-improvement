@@ -11,3 +11,7 @@ net: 网络, socket
 netty: netty
 db: mysql
 database orm: hibernate, mybatis, jdbc, jdbctemplate, jpa
+
+
+命名方式：
+一般使用boot-xx，xx表示技术，如果这个技术比较重要，则用这个技术开头，比如dubbo，kafka，shiro
