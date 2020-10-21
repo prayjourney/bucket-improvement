@@ -18,9 +18,9 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.zgy.learn</groupId>
-    <artifactId>bootstart</artifactId>
+    <artifactId>boot-start</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>bootstart</name>
+    <name>boot-start</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>
