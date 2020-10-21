@@ -12,7 +12,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <!--<groupId>com.zgy.learn</groupId>-->
-    <artifactId>mvccrud</artifactId>
+    <artifactId>mvc-crud</artifactId>
     <packaging>war</packaging>
 
     <name>springmvc Maven Webapp</name>
