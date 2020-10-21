@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.zgy.learn</groupId>
-	<artifactId>bootcrud</artifactId>
+	<artifactId>boot-crud</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>bootcrud</name>
+	<name>boot-crud</name>
 	<description>spring boot crud</description>
 	<properties>
 		<java.version>1.8</java.version>
