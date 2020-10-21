@@ -7,9 +7,7 @@
     <groupId>com.zgy.learn</groupId>
     <artifactId>dubbo-user-service-provider</artifactId>
     <version>1.0-SNAPSHOT</version>
-
     <name>dubbo-user-service-provider</name>
-    <url>http://www.example.com</url>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
