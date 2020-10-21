@@ -9,9 +9,9 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.zgy.learn.bootjpa</groupId>
-    <artifactId>bootjpa</artifactId>
+    <artifactId>boot-jpa</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>bootjpa</name>
+    <name>boot-jpa</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>
