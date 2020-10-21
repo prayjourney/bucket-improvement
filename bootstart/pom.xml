@@ -2,6 +2,15 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+    <!--
+        使用springboot结构的项目, 都要以Springbootstarter为parent, 一个项目之中好像不能写两个parent,
+        这样的话, 我们如果要使用maven的依赖管理, 就有一些问题
+    -->
+    <!--    <parent>-->
+    <!--        <artifactId>bucket-improvement</artifactId>-->
+    <!--        <groupId>com.zgy.learn</groupId>-->
+    <!--        <version>1.0-SNAPSHOT</version>-->
+    <!--    </parent>-->
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>

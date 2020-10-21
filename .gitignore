@@ -27,4 +27,6 @@ hs_err_pid*
 improvement-java-skill.iml
 target
 *.iml
-
+.mvn/
+mvnw
+mvnw.cmd
