@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zgy.learn.bootmybatisredisactivemqshiro.mapper.StudentMapper">
+    <select id="getAllStudents" resultType="com.zgy.learn.bootmybatisredisactivemqshiro.pojo.Student">
+        select stId, stName, stAge, stPhoneNo, stGender, stClass, stHome from student;
+    </select>
+
+    <select id="getStudentById" parameterType="integer"
+            resultType="com.zgy.learn.bootmybatisredisactivemqshiro.pojo.Student">
+        select stId, stName, stAge, stPhoneNo, stGender, stClass, stHome from student where stId = #{stId}
+    </select>
+
+    <!--<insert id="addStudent" parameterType="object">-->
+    <!--    insert into student(stName, stAge, stPhoneNo, stGender, stClass, stHome) value stId, stName, stAge,
+    stPhoneNo, stGender, stClass, stHome-->
+    <!--</insert>-->
+    <!-- 类型就是传入参数的类型 -->
+    <insert id="addStudent" parameterType="com.zgy.learn.bootmybatisredisactivemqshiro.pojo.Student">
+        insert into student(stName, stAge, stPhoneNo, stGender, stClass, stHome)
+        values (#{stName, jdbcType=VARCHAR}, #{stAge, jdbcType=INTEGER}, #{stPhoneNo, jdbcType=VARCHAR}, #{stGender, jdbcType=VARCHAR}, #{stClass}, #{stHome})
+    </insert>
+
+    <delete id="deleteStudentById" parameterType="integer">
+        delete from student where stId = #{stId, jdbcType=INTEGER}
+    </delete>
+
+    <update id="updateStudentById" parameterType="com.zgy.learn.bootmybatisredisactivemqshiro.pojo.Student">
+        update student set stName =#{stName}, stAge = #{stAge}, stPhoneNo= #{stPhoneNo}, stGender=#{stGender}, stClass =#{stClass} where stId = #{stId, jdbcType=INTEGER}
+    </update>
+
+    <resultMap id="basicInfo" type="com.zgy.learn.bootmybatisredisactivemqshiro.pojo.Student">
+        <id column="stId" property="stId"/>
+        <result column="stName" property="stName" jdbcType="VARCHAR"/>
+        <result column="stGender" property="stGender" jdbcType="VARCHAR"/>
+        <result column="stClass" property="stClass" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <select id="studentBasicInfo" resultMap="basicInfo" parameterType="integer">
+        select stId, stName, stGender, stClass from student where stId =#{stId}
+    </select>
+
+    <!-- 整合部分信息 -->
+    <resultMap id="importantInfo" type="map">
+        <result column="stId" jdbcType="INTEGER" javaType="Integer"/>
+        <result column="stName" jdbcType="VARCHAR" javaType="String"/>
+        <result column="stGender" jdbcType="VARCHAR" javaType="String"/>
+        <result column="stClass" jdbcType="VARCHAR" javaType="String"/>
+    </resultMap>
+
+    <select id="studentImportantInfo" resultMap="importantInfo" parameterType="integer">
+        select stId, stName, stGender, stClass from student where stId =#{stId}
+    </select>
+
+    <!-- 返回为map的话， 则只要求必须只有一个的值，此处的stClass, stHome写不写，在返回里面都有完整的信息，所以我们后端去处理需要显示返回哪些信息 -->
+    <select id="getStudentByNameGender" resultType="map">
+        select stId, stName, stAge, stPhoneNo, stGender, stClass, stHome from student where stGender = #{stGender} and stName like #{stName}
+    </select>
+
+    <!-- 返回多个值，放在list之中 -->
+    <select id="getStudentByNameGender2" resultType="com.zgy.learn.bootmybatisredisactivemqshiro.pojo.Student">
+        select stId, stName, stAge, stPhoneNo, stGender, stClass, stHome from student where stGender = #{stGender} and stName like #{stName}
+    </select>
+</mapper>

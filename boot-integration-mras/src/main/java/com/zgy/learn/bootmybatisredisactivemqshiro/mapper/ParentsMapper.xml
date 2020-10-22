@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zgy.learn.bootmybatisredisactivemqshiro.mapper.ParentsMapper">
+    <insert id="addParents" parameterType="map">
+        insert into parents(fatherName, motherName) values(#{fatherName}, #{motherName});
+    </insert>
+
+    <delete id="deleteParents" parameterType="integer">
+        delete from parents where parentsId = #{parentsId};
+    </delete>
+
+    <!-- set的动态SQL，注意逗号-->
+    <update id="updateParents" parameterType="com.zgy.learn.bootmybatisredisactivemqshiro.pojo.Parents">
+        update parents
+        <set>
+            <if test="fatherName !=null">
+                fatherName =#{fatherName},
+            </if>
+            <if test="motherName !=null">
+                motherName =#{motherName}
+            </if>
+        </set>
+        <where>
+            parentsId = #{parentsId}
+        </where>
+    </update>
+
+    <!-- where和if的动态SQL-->
+    <select id="getParentsByFatherMother" resultType="com.zgy.learn.bootmybatisredisactivemqshiro.pojo.Parents">
+        select parentsId, fatherName, motherName from parents
+        <where>
+            <if test="fatherName != null">
+                fatherName = #{fatherName}
+            </if>
+            <if test="motherName != null">
+                and motherName = #{motherName}
+            </if>
+        </where>
+    </select>
+
+    <resultMap id="parentsHaveManyKids" type="com.zgy.learn.bootmybatisredisactivemqshiro.pojo.Parents">
+        <result column="parentsId" property="parentsId"/>
+        <result column="fatherName" property="fatherName"/>
+        <result column="motherName" property="motherName"/>
+        <collection property="kids" ofType="com.zgy.learn.bootmybatisredisactivemqshiro.pojo.Student">
+            <result column="stId" property="stId"/>
+            <result column="stName" property="stName"/>
+            <result column="stClass" property="stClass"/>
+            <result column="stGender" property="stGender"/>
+            <result column="stParentsId" property="stParentsId"/>
+        </collection>
+    </resultMap>
+    <select id="getParentsKids2" parameterType="integer" resultMap="parentsHaveManyKids">
+        select parentsId, fatherName, motherName, stId, stName, stClass, stGender, stParentsId from parents left join
+        student on parentsId = stParentsId where parentsId = #{parentsId}
+    </select>
+
+</mapper>

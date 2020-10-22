@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Springboot2.x和Mybatis的整合</title>
+        <style>
+            #big {
+                font-family: 方正兰亭超细黑简体;
+                font-size: x-large;
+                color: deepskyblue;
+            }
+
+            a#allstudent {
+                font-family: 方正兰亭超细黑简体;
+                font-size: x-large;
+                color: lightblue;
+            }
+
+            a:hover {
+                color: red;
+            }
+
+            #stId {
+                border-style: dot-dot-dash;
+                color: #ff4d65;
+                background-color: azure;
+            }
+
+            #btnCommit #btnDelete {
+                border-style: dashed;
+                color: teal;
+            }
+
+            #addstudent {
+                border-style: initial;
+                color: darkorchid;
+                background: #fff9c3;
+                font-family: 方正兰亭超细黑简体;
+                font-size: 25px;
+            }
+
+            a#updatestudent {
+                border-style: initial;
+                color: #ccbc6e;
+                font-family: 方正兰亭超细黑简体;
+                font-size: 25px;
+            }
+
+            a#updatestudent:hover {
+                color: tomato;
+            }
+
+            span {
+                font-size: medium;
+                font-style: italic;
+                color: aquamarine;
+            }
+
+            span.h2 {
+                font-size: medium;
+                font-feature-settings: revert;
+                font-family: "Arial Black";
+                font-style: italic;
+                color: tomato;
+            }
+        </style>
+    </head>
+    <body>
+        <p id="big">Springboot2.x和Mybatis的整合</p>
+        <a id="allstudent" href="/student/getallstudent">获取所有学生</a><br>
+        <a id="addstudent" href="addstudent.html">添加学生</a><br>
+        <a id="updatestudent" href="updatestudent.html">更新学生</a><br>
+        <form action="/student/getonestudent" method="get">
+            stId: <input id="stId" type="text" name="stId"/>&emsp;
+            <input id="btnCommit" type="submit" value="提交查询">
+        </form>
+        <form action="/student/getonestudentbasicinfo" method="get">
+            输入学生stId，查询基本信息: <input id="stBasicInfo" type="text" name="stId"/>&emsp;
+            <input id="btnbasicCommit" type="submit" value="查询基本信息">
+        </form>
+
+        <form action="/student/deletestudent" method="post">
+            删除学生, 输入stId: <input id="stDelete" type="text" name="stId"/>&emsp;
+            <input id="btnDelete" type="submit" value="删除学生">
+        </form>
+
+
+        <form action="/student/getstudentbynamegender" method="post">
+            <span>stName&nbsp;&nbsp;</span>: <input id="stMohucha11" type="text" name="stName"/><br>
+            <span>stGender</span>: <input id="stMohucha12" type="text" name="stGender"/><br>
+            &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;
+            <input id="btnMohucha1" type="submit" value="姓名和性别模糊查询">
+        </form>
+
+        <form action="/student/getstudentbynamegender2" method="post">
+            <span class="h2">stName&nbsp;&nbsp;</span>: <input id="stMohucha21" type="text" name="stName"/><br>
+            <span class="h2">stGender</span>: <input id="stMohucha22" type="text" name="stGender"/><br>
+            &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input id="btnMohucha2" type="submit" value="姓名和性别模糊查询">
+        </form>
+    </body>
+</html>

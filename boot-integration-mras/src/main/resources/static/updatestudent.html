@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>更新学生</title>
+    </head>
+    <style type="text/css">
+        #students {
+            border-style: solid;
+            border-color: deepskyblue;
+            color: chocolate;
+            padding-left: 5px;
+            border-width: 1px
+        }
+
+        th {
+            border-style: solid;
+            border-width: 1px
+        }
+
+        td {
+            border-style: solid;
+            border-width: 1px
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript">
+        <!-- xhr, 这个就是ajax的方式获取值 -->
+        function getallstudent() {
+            $.ajax({
+                url: "/student/getallstudent",
+                type: "get",
+                dataType: "json",
+                data: {},
+                success: function (data) {
+                    console.log(data)
+                    var myHtmlContent = "";
+                    if (data != null) {
+                        for (var i = 0; i < data.length; i++) {
+                            myHtmlContent += "<tr>" +
+                                "<td>" + data[i].stId + "</td>" +
+                                "<td>" + data[i].stName + "</td>" +
+                                "<td>" + data[i].stAge + "</td>" +
+                                "<td>" + data[i].stPhoneNo + "</td>" +
+                                "<td>" + data[i].stGender + "</td>" +
+                                "<td>" + data[i].stClass + "</td>" +
+                                "<td>" + data[i].stHome + "</td>" +
+                                "<td>" + "update" + "</td>" +
+                                "<td>" + "delete" +"</td>" +
+                                "</tr>"
+                        }
+                    }
+                    $('#students').html(myHtmlContent);
+                }
+            })
+        }
+
+        window.onload = getallstudent();
+    </script>
+    <body>
+        <div>
+            <table id="allStudent" style="margin: 20px; border: deepskyblue;
+            border-width: thick; border-style: wave; border-width: 1px">
+                <th>学生&nbsp;i&nbsp;d</th>
+                <th>学生姓名</th>
+                <th>学生年龄</th>
+                <th>学生电话</th>
+                <th>学生性别</th>
+                <th>学生班级</th>
+                <th>家庭住址</th>
+                <th id="updateOne">update</th>
+                <th id="deleteOne">delete</th>
+                <tbody id="students">
+
+                </tbody>
+            </table>
+            <input type="submit" value="获取学生信息" onclick="getallstudent()">
+
+            <div id="update">
+                <input type="text" name="stId" id="updateStIdText"/>
+                <input type="submit" value="获取要更新的值的信息" onclick="getonestudent()">
+            </div>
+            <form action="/student/updatestudent" method="post">
+                学生&nbsp;I&nbsp;&nbsp;D：<input id="st1Id" name="stId"><br>
+                学生姓名：<input id="st1Name" name="stName"><br>
+                学生年龄：<input id="st1Age" name="stAge"><br>
+                学生手机：<input id="st1PhoneNo" name="stPhoneNo"><br>
+                学生性别：<input id="st1Gender" name="stGender"><br>
+                学生班级：<input id="st1Class" name="stClass"><br>
+                家庭住址：<input id="st1Home" name="stHome"><br>
+                &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;
+                <input id="btnsubmit" type="submit" value="更新员工信息" style="font-size: medium">
+            </form>
+        </div>
+        <script>
+            <!-- xhr, 这个就是ajax的方式获取值 -->
+            function getonestudent() {
+                $.ajax({
+                    url: "/student/getonestudent",
+                    type: "get",
+                    dataType: "json",
+                    data: {"stId": $("#updateStIdText").val()},  // 从input之中获取输入的值
+                    success: function (data) {
+                        console.log(data)
+                        // console.log("1234===>")
+                        // console.log(data.length)
+                        if (data!=null) {
+                            $("#st1Id").val(data.stId);
+                            $("#st1Name").val(data.stName);
+                            $("#st1Age").val(data.stAge);
+                            $("#st1PhoneNo").val(data.stPhoneNo);
+                            $("#st1Gender").val(data.stGender);
+                            $("#st1Class").val(data.stClass);
+                            $("#st1Home").val(data.stHome);
+                        }else{
+                            window.alert("没有这个学生！")
+                        }
+                    }
+                })
+            }
+
+        </script>
+    </body>
+</html>

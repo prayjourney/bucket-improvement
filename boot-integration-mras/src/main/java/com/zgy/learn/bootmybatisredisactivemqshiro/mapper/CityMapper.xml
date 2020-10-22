@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zgy.learn.bootmybatisredisactivemqshiro.mapper.CityMapper">
+
+    <resultMap id="mySouvenir" type="com.zgy.learn.bootmybatisredisactivemqshiro.pojo.City">
+        <!-- 结果返回来的是property的名称， 也就是说是java的POJO的内容 -->
+        <!-- 下面的几个结果， 其实都是， 加不加javaType和jdbcType都是可以的，一般可以省略，但是最好加上-->
+        <id column="ctId" property="ctId" javaType="integer" jdbcType="INTEGER"/>
+        <result column="ctName" property="ctName"/>
+        <result column="ctProvince" property="ctProvince"/>
+        <collection property="souvenirs" ofType="com.zgy.learn.bootmybatisredisactivemqshiro.pojo.Souvenir">
+            <result column="sid" property="soId"/>     <!-- 这里的column对应的是下面查询的别名，而不是表字段名 -->
+            <result column="name" property="soName"/>  <!-- property对应JavaBean中的属性名 -->
+            <!-- <result column="s.ctId" property="ctId"/> 这样的话，映射会出问题，所以值为空， 一般需要取别名！-->
+            <result column="cityID" property="ctId"/> <!--这样的话，映射会出问题，所以值为空-->
+        </collection>
+    </resultMap>
+    <select id="getSouvenirByName" parameterType="string" resultMap="mySouvenir">
+        select c.ctId, c.ctName, c.ctProvince, s.soId as sid, s.soName as name, s.ctId as cityID from city as c
+        LEFT JOIN souvenir as s ON c.ctId = s.ctId where ctName = #{ctName};
+    </select>
+</mapper>
