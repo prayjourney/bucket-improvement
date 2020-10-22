@@ -10,19 +10,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * @Modified by:
  */
 @Controller
-public class HelloMVC{
+public class HelloMVC {
     /**
      * 通过视图解析器InternalResourceViewResolver, 将视图解析为实际的物理视图, 会解析为
      * prefix + returnvalue + suffix, 然后转发的相应的视图上去
+     *
      * @return
      */
-    @RequestMapping(value ="mvc")
+    @RequestMapping(value = "mvc")
     public String hello() {
         System.out.println("hello spring mvc!");
         return "success";
     }
 
-    @RequestMapping(value ="redirectmvc")
+    @RequestMapping(value = "redirectmvc")
     public String hellomvc() {
         System.out.println("hello spring mvc! redirectmvc");
         return "redirect:/success.jsp";

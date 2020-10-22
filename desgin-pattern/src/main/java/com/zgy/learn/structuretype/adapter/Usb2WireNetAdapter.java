@@ -9,6 +9,7 @@ package com.zgy.learn.structuretype.adapter;
 public class Usb2WireNetAdapter implements NetAdapter {
     // 使用组合的方式，来完成了适配器模式，面向接口编程的思想符合
     WireAdaptee wire = new WireAdaptee();
+
     @Override
     public void handler() {
         wire.goToNet();

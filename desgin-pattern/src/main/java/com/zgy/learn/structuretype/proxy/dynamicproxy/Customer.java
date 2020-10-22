@@ -14,7 +14,7 @@ public class Customer {
         Haitao ht = new XiaomingHaitao();
         // 代理角色, 现在没有，但是要动态生成，通过InvocationHandler
         HaitaoDynamicProxy proxy = new HaitaoDynamicProxy(ht);
-        Haitao instance = (Haitao)proxy.getProxyInstance();
+        Haitao instance = (Haitao) proxy.getProxyInstance();
         instance.buy();
         proxy.checkGoods();
         proxy.findWhere();

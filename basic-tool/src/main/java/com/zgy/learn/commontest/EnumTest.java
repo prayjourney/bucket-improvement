@@ -3,7 +3,7 @@ package com.zgy.learn.commontest;
 /**
  * @Author: renjiaxin
  * @Despcription: 枚举类的定义和使用，枚举类和普通的类，最大的区别就是，他在定义的时候，就定义好了其中包含的数据
- *                而这些数据的定义，是按照它提供的构造函数来定义的，可以有多个字段，可以使用getset方法，和普通类一样。
+ * 而这些数据的定义，是按照它提供的构造函数来定义的，可以有多个字段，可以使用getset方法，和普通类一样。
  * @Date: Created in 2020/2/25 3:29
  * @Modified by:
  */
@@ -20,6 +20,7 @@ enum MyColor {
     MyColor(String name) {
         this.name = name;
     }
+
     public String getName() {
         return name;
     }
@@ -31,7 +32,7 @@ enum MyColor {
 
 // 有参数的枚举
 enum Dog {
-    ZH("中华田园犬",998), JP("日本柴犬",720), EN("英国哈士奇"),DE("德国牧羊犬",1433),
+    ZH("中华田园犬", 998), JP("日本柴犬", 720), EN("英国哈士奇"), DE("德国牧羊犬", 1433),
     JP2("日本秋田犬");
     // 属性: 品种
     String kind;
@@ -71,6 +72,7 @@ enum Dog {
                 '}';
     }
 }
+
 public class EnumTest {
     public static void main(String[] args) {
         System.out.println("我最喜欢的颜色：" + MyColor.RED.name);
@@ -78,7 +80,7 @@ public class EnumTest {
 
         // Dog.valueOf("中华田园犬"); // 错误
         System.out.println(Dog.valueOf("ZH"));
-        System.out.println(Dog.JP.getKind()+ "的价格是: "  + Dog.JP.getVal());
+        System.out.println(Dog.JP.getKind() + "的价格是: " + Dog.JP.getVal());
     }
 
 }

@@ -16,7 +16,7 @@ public class J8Optional {
 
     }
 
-    public void testCreateOptional(){
+    public void testCreateOptional() {
         // empty, 只是创建空实例
         Optional<Object> empty = Optional.empty();
         // of不能创建null实例
@@ -29,10 +29,10 @@ public class J8Optional {
         System.out.println(hello.get());
     }
 
-    public void testCreateOptional02(){
+    public void testCreateOptional02() {
         // ofNullable, 如果为空就创建null, 不为空就正常创建
         Optional<String> s = Optional.ofNullable(null);
-        if (s.isPresent()){
+        if (s.isPresent()) {
             System.out.println();
         }
         // 如果为空，提供了一个默认值

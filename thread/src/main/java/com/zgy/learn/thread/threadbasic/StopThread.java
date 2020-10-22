@@ -44,7 +44,7 @@ public class StopThread implements Runnable {
         }
         System.out.println("准备停止thread线程");
         st.stop();
-        while(thread.getState()!= Thread.State.TERMINATED){
+        while (thread.getState() != Thread.State.TERMINATED) {
             System.out.println("thread线程的状态：" + thread.getState());
         }
 

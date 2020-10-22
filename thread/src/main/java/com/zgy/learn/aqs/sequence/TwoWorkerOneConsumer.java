@@ -62,7 +62,7 @@ class Data2 {
             }
             // 唤醒，唤醒指定的人，B
             list.add(str);
-            System.out.println(Thread.currentThread().getName() + "=>AAAAAAA===>插入：" +str);
+            System.out.println(Thread.currentThread().getName() + "=>AAAAAAA===>插入：" + str);
             condition2.signal();
         } catch (Exception e) {
             e.printStackTrace();
@@ -81,7 +81,7 @@ class Data2 {
             }
             // 唤醒，唤醒指定的人，C
             list.add(str);
-            System.out.println(Thread.currentThread().getName() + "=>BBBBBB===>插入:" +str);
+            System.out.println(Thread.currentThread().getName() + "=>BBBBBB===>插入:" + str);
             condition3.signal();
         } catch (Exception e) {
             e.printStackTrace();
@@ -100,7 +100,7 @@ class Data2 {
             }
             // 唤醒，唤醒指定的人，A
             String str = list.remove(0);
-            System.out.println(Thread.currentThread().getName() + "=>CCCCCC===>消费： " +str);
+            System.out.println(Thread.currentThread().getName() + "=>CCCCCC===>消费： " + str);
             condition1.signal();
         } catch (Exception e) {
             e.printStackTrace();

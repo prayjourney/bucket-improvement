@@ -48,7 +48,7 @@ public class MainDetail {
         System.out.println(singers2010.toString());
 
         // 测试null
-        Song songOld = (Song)ctx.getBean("null4Song");
+        Song songOld = (Song) ctx.getBean("null4Song");
         System.out.println(songOld);
 
         // 测试级联属性

@@ -42,7 +42,7 @@ public class MyMvcConfig extends WebMvcConfigurerAdapter {
                 //SpringBoot已经做好了静态资源映射
                 // 拦截了所有的请求，除了下面三个路径
                 registry.addInterceptor(new LoginHandlerInterceptor()).addPathPatterns("/**")
-                        .excludePathPatterns("/login.html","/","/user/login");
+                        .excludePathPatterns("/login.html", "/", "/user/login");
             }
         };
         return adapter;

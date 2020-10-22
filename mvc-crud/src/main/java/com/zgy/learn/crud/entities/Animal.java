@@ -21,5 +21,6 @@ public class Animal {
     //private String birthday;
     private String country;
 
-    public Animal(){}
+    public Animal() {
+    }
 }

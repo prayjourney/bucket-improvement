@@ -4,9 +4,9 @@ package com.zgy.learn.thread.tradmulti;
  * @Author: renjiaxin
  * @Despcription: 同步方法，来买票，此时，只有一个类操作
  * 启示:  1.不应该给run方法加synchronized
- *        2. 同步的应该是具体的操作方法，或者是共享的资源，如下面的buy或者tickets
- *        3. 如果要多次循环，应该在run方法之中去循环，此处可以去停顿，而在一次正常的操作之中，最好别去停顿
- *        4. 如果要多次循环，需要有一个停止的标志
+ * 2. 同步的应该是具体的操作方法，或者是共享的资源，如下面的buy或者tickets
+ * 3. 如果要多次循环，应该在run方法之中去循环，此处可以去停顿，而在一次正常的操作之中，最好别去停顿
+ * 4. 如果要多次循环，需要有一个停止的标志
  * @Date: Created in 2020/3/1 22:49
  * @Modified by:
  */
@@ -133,10 +133,10 @@ class UnSafeBuyTickets implements Runnable {
             return;
         }
         //try {
-            // 模拟延时, 不应该有
-            //Thread.sleep(100);
-            String name = Thread.currentThread().getName();
-            System.out.println(Thread.currentThread().getName() + "拿到" + allTickets-- + "张票！");
+        // 模拟延时, 不应该有
+        //Thread.sleep(100);
+        String name = Thread.currentThread().getName();
+        System.out.println(Thread.currentThread().getName() + "拿到" + allTickets-- + "张票！");
         //} catch (InterruptedException e) {
         //    e.printStackTrace();
         //}

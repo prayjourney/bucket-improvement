@@ -13,9 +13,9 @@ import javax.servlet.http.HttpServletRequest;
  */
 @Controller
 public class UserController {
-    @RequestMapping(value="/userinfo")
-    public String getUserInfo(HttpServletRequest request){
-        String currentUser = (String)request.getSession().getAttribute("currentUser");
+    @RequestMapping(value = "/userinfo")
+    public String getUserInfo(HttpServletRequest request) {
+        String currentUser = (String) request.getSession().getAttribute("currentUser");
         System.out.println("当前登录的用户为[" + currentUser + "]");
         request.setAttribute("currUser", currentUser);
         return "/user";

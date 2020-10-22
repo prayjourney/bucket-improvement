@@ -8,7 +8,10 @@ package com.zgy.learn.createtype.factoryabstract;
  */
 public interface PcProduct {
     void open();
+
     void shutDown();
+
     void writeNovel();
+
     void playGame();
 }

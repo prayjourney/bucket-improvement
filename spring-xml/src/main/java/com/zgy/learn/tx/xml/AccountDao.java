@@ -24,6 +24,7 @@ public class AccountDao {
     public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
+
     /**
      * 检查是否有这个账户
      *

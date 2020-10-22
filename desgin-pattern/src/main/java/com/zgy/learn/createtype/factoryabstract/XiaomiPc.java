@@ -6,7 +6,7 @@ package com.zgy.learn.createtype.factoryabstract;
  * @Date: Created in 2020/2/23 22:54
  * @Modified by:
  */
-public class XiaomiPc implements  PcProduct {
+public class XiaomiPc implements PcProduct {
     @Override
     public void open() {
         System.out.println("小米开机");

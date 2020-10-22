@@ -71,8 +71,8 @@ public class UseVolatile {
         UnsafeLong ul = new UnsafeLong();
         SafeLong sl = new SafeLong();
 
-        for (int i = 0; i < 10 ; i++) {
-            new Thread(ul,"unsafe").start();
+        for (int i = 0; i < 10; i++) {
+            new Thread(ul, "unsafe").start();
         }
 
         try {
@@ -83,8 +83,8 @@ public class UseVolatile {
         }
 
         // safe
-        for (int i = 0; i < 10 ; i++) {
-            new Thread(sl,"safe").start();
+        for (int i = 0; i < 10; i++) {
+            new Thread(sl, "safe").start();
         }
         try {
             Thread.sleep(3000);

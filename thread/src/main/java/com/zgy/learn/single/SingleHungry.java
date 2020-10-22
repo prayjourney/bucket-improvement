@@ -6,6 +6,7 @@ package com.zgy.learn.single;
 public class SingleHungry {
     private SingleHungry() {
     }
+
     // 存在空间浪费的问题
     private byte[] b1 = new byte[1024];
     private byte[] b2 = new byte[1024];

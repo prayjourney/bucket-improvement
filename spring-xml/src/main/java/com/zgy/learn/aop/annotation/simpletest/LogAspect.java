@@ -25,16 +25,17 @@ public class LogAspect {
      * 后面的其他通知直接使用方法名来引用当前的切入点表达式.
      */
     @Pointcut("execution(* com.zgy.learn.aop.annotation.simpletest.*.*(..))")
-    public void declareJointPointExpression(){}
+    public void declareJointPointExpression() {
+    }
 
     /**
      * 在 com.zgy.learn.aop.annotation.XiaoMing每一个方法开始之前执行一段代码
      */
     // 切点的位置很重要
     @Before("execution(* com.zgy.learn.aop.annotation..simpletest.*.*(..))")
-    public void beforeMethod(JoinPoint joinPoint){
+    public void beforeMethod(JoinPoint joinPoint) {
         String methodName = joinPoint.getSignature().getName();
-        Object [] args = joinPoint.getArgs();
+        Object[] args = joinPoint.getArgs();
 
         System.out.println("The method [" + methodName + "] begins with " + Arrays.asList(args));
     }
@@ -43,7 +44,7 @@ public class LogAspect {
      * 在方法执行之后执行的代码. 无论该方法是否出现异常
      */
     @After("declareJointPointExpression()")
-    public void afterMethod(JoinPoint joinPoint){
+    public void afterMethod(JoinPoint joinPoint) {
         String methodName = joinPoint.getSignature().getName();
         System.out.println("The method [" + methodName + "] ends");
     }

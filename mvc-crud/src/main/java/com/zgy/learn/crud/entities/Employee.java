@@ -11,97 +11,97 @@ import javax.validation.constraints.Past;
 
 public class Employee {
 
-	private Integer id;
-	@NotEmpty
-	private String lastName;
+    private Integer id;
+    @NotEmpty
+    private String lastName;
 
-	@Email
-	private String email;
-	// 1 male, 0 female
-	private Integer gender;
-	
-	private Department department;
-	
-	@Past
-	@DateTimeFormat(pattern="yyyy-MM-dd")
-	private Date birth;
-	
-	@NumberFormat(pattern="#,###,###.#")
-	private Float salary;
+    @Email
+    private String email;
+    // 1 male, 0 female
+    private Integer gender;
 
-	public Integer getId() {
-		return id;
-	}
+    private Department department;
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
+    @Past
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date birth;
 
-	public String getLastName() {
-		return lastName;
-	}
+    @NumberFormat(pattern = "#,###,###.#")
+    private Float salary;
 
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
+    public Integer getId() {
+        return id;
+    }
 
-	public String getEmail() {
-		return email;
-	}
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
+    public String getLastName() {
+        return lastName;
+    }
 
-	public Integer getGender() {
-		return gender;
-	}
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
 
-	public void setGender(Integer gender) {
-		this.gender = gender;
-	}
+    public String getEmail() {
+        return email;
+    }
 
-	public Department getDepartment() {
-		return department;
-	}
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
-	public void setDepartment(Department department) {
-		this.department = department;
-	}
+    public Integer getGender() {
+        return gender;
+    }
 
-	public Date getBirth() {
-		return birth;
-	}
+    public void setGender(Integer gender) {
+        this.gender = gender;
+    }
 
-	public void setBirth(Date birth) {
-		this.birth = birth;
-	}
+    public Department getDepartment() {
+        return department;
+    }
 
-	public Float getSalary() {
-		return salary;
-	}
+    public void setDepartment(Department department) {
+        this.department = department;
+    }
 
-	public void setSalary(Float salary) {
-		this.salary = salary;
-	}
+    public Date getBirth() {
+        return birth;
+    }
 
-	@Override
-	public String toString() {
-		return "Employee [id=" + id + ", lastName=" + lastName + ", email="
-				+ email + ", gender=" + gender + ", department=" + department
-				+ ", birth=" + birth + ", salary=" + salary + "]";
-	}
+    public void setBirth(Date birth) {
+        this.birth = birth;
+    }
 
-	public Employee(Integer id, String lastName, String email, Integer gender,
-			Department department) {
-		super();
-		this.id = id;
-		this.lastName = lastName;
-		this.email = email;
-		this.gender = gender;
-		this.department = department;
-	}
+    public Float getSalary() {
+        return salary;
+    }
 
-	public Employee() {
-	}
+    public void setSalary(Float salary) {
+        this.salary = salary;
+    }
+
+    @Override
+    public String toString() {
+        return "Employee [id=" + id + ", lastName=" + lastName + ", email="
+                + email + ", gender=" + gender + ", department=" + department
+                + ", birth=" + birth + ", salary=" + salary + "]";
+    }
+
+    public Employee(Integer id, String lastName, String email, Integer gender,
+                    Department department) {
+        super();
+        this.id = id;
+        this.lastName = lastName;
+        this.email = email;
+        this.gender = gender;
+        this.department = department;
+    }
+
+    public Employee() {
+    }
 }

@@ -18,6 +18,6 @@ public class CommonUseData {
             new Employee(107, "赵云", 31, 18000),
             new Employee(109, "马超", 31, 18000),
             new Employee(109, "马超", 32, 20000),
-            new Employee(120,"黄忠", 60, 19000)
+            new Employee(120, "黄忠", 60, 19000)
     );
 }

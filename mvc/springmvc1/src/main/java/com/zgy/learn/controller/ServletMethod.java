@@ -43,7 +43,7 @@ public class ServletMethod {
             throws IOException {
         // 使用session API
         System.out.println("testAPIServlet" + request + "," + servletSession);
-        System.out.println("session的名称:"+servletSession.getAttributeNames());
+        System.out.println("session的名称:" + servletSession.getAttributeNames());
         mp.put("sessionID", servletSession.getId());
         return "servletmethod";
     }

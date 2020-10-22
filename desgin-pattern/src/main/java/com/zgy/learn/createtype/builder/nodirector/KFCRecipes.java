@@ -8,7 +8,7 @@ package com.zgy.learn.createtype.builder.nodirector;
  */
 public class KFCRecipes {
     // 默认菜谱
-    private String recipe1= "可乐";
+    private String recipe1 = "可乐";
     private String recipe2 = "汉堡";
     private String recipe3 = "鸡块";
 

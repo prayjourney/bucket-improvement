@@ -11,8 +11,8 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  */
 public class GenericMain {
     public static void main(String[] args) {
-        ApplicationContext context =new ClassPathXmlApplicationContext("spring-generic-inject.xml");
-        UserService us = (UserService)context.getBean("uservice");
+        ApplicationContext context = new ClassPathXmlApplicationContext("spring-generic-inject.xml");
+        UserService us = (UserService) context.getBean("uservice");
         us.add();
     }
 }

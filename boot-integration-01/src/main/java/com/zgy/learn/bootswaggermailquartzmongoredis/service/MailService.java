@@ -19,7 +19,8 @@ public class MailService {
 
     /**
      * 简单文本邮件
-     * @param to 收件人
+     *
+     * @param to      收件人
      * @param subject 主题
      * @param content 内容
      */
@@ -35,6 +36,6 @@ public class MailService {
     /**
      * 带有附件的邮件发送
      */
-    public void sendMailWithAppendix(){
+    public void sendMailWithAppendix() {
     }
 }

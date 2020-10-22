@@ -12,7 +12,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 public class Boss {
     private String name;
     private Car car;
-    public Boss(){}
+
+    public Boss() {
+    }
 
     public Boss(Car car) {
         this.car = car;

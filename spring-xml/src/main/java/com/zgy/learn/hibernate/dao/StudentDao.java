@@ -17,11 +17,11 @@ public class StudentDao {
     private SessionFactory sessionFactory;
 
     // 获取和当前线程绑定的session
-    public Session getSession(){
+    public Session getSession() {
         return sessionFactory.getCurrentSession();
     }
 
-    public int findStudentNameById(int id){
+    public int findStudentNameById(int id) {
         return 0;
 
     }

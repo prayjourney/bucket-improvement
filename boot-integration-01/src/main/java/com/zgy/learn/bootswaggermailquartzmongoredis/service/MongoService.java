@@ -68,7 +68,7 @@ public class MongoService {
         // 主键不是stId，而是_id
         // 每一个字段，都要去按照key来更新
         update.set("stName", student.getStName()).set("stGender", student.getStGender()).
-                set("stGrade",student.getStGrade()).set("stClass",student.getStClass());
+                set("stGrade", student.getStGrade()).set("stClass", student.getStClass());
         UpdateResult updateResult = mongoTemplate.updateFirst(query, update, Student.class, "student");
         long modifiedCount = updateResult.getModifiedCount();
         if (modifiedCount == 1) {

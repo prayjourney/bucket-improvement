@@ -20,7 +20,7 @@ import java.util.Map;
 @Data
 public class Person {
     @Value("李四啊")
-    private  String lastName;
+    private String lastName;
     @Value("#{22-5*1.2}")
     private Integer age;
     private Boolean boos;

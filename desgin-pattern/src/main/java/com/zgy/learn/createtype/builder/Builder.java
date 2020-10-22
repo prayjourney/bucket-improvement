@@ -9,8 +9,11 @@ package com.zgy.learn.createtype.builder;
 public abstract class Builder {
     // 四个步骤
     abstract void buildA(String str);
+
     abstract void buildB(String str);
+
     abstract void buildC(String str);
+
     abstract void buildD(String str);
 
     // 完工后，得到这个具体的产品

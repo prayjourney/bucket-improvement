@@ -26,7 +26,7 @@ public class OptProperties {
         System.out.println("===>urlPath is :" + urlPath);
         // 取到绝对路径, 但是这个是target里面的，去掉了file
         String path1 = OptProperties.class.getResource("/myinfo.properties").getPath();
-        System.out.println("+++>paht1 is " + path1 +"\n");
+        System.out.println("+++>paht1 is " + path1 + "\n");
 
         // 获取当前项目的路径, 自己拼接路径
         String property = System.getProperty("user.dir");

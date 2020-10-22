@@ -15,10 +15,13 @@
     </head>
     <body>
         <form action="${pageContext.request.contextPath}/animal/add" method="get">
-            <spap>ID ：</spap><input type="text" name="id"/><br/>
+            <spap>ID ：</spap>
+            <input type="text" name="id"/><br/>
             <span>姓名：</span><input type="text" name="name"/><br/>
-            <spap>生日：</spap><input type="text" name="birthday"/><br/>
-            <spap>国家：</spap><input type="text" name="country"/><br/>
+            <spap>生日：</spap>
+            <input type="text" name="birthday"/><br/>
+            <spap>国家：</spap>
+            <input type="text" name="country"/><br/>
             <input type="submit" value="提交创建新Animal!" class="text-success"/>
         </form>
     </body>

@@ -41,7 +41,7 @@ public class MyBlockingQueue {
 class MyConsumer implements Runnable {
     private BlockingQueue<String> queue;
     // 消费线程的状态，一直运行，如果不行，当没有可以消费的对象， 那就会自动阻塞。
-    private boolean isRunning =true;
+    private boolean isRunning = true;
 
     public MyConsumer(BlockingQueue queue) {
         this.queue = queue;
@@ -50,7 +50,7 @@ class MyConsumer implements Runnable {
     @Override
     public void run() {
         try {
-            while(isRunning){
+            while (isRunning) {
                 Thread.sleep(300);
                 System.out.println(Thread.currentThread().getName() + ": 正在消费信息!");
                 String text = queue.poll(1000, TimeUnit.MILLISECONDS);
@@ -69,7 +69,7 @@ class MyConsumer implements Runnable {
 class MyProducer implements Runnable {
     private BlockingQueue<String> queue;
     // 生产线程的状态，一直运行，如果不行，当没有可以消费的对象， 那就会自动阻塞。
-    private boolean isRunning =true;
+    private boolean isRunning = true;
 
     public MyProducer(BlockingQueue queue) {
         this.queue = queue;
@@ -78,7 +78,7 @@ class MyProducer implements Runnable {
     @Override
     public void run() {
         try {
-            while(isRunning){
+            while (isRunning) {
                 Thread.sleep(500);
                 System.out.println(Thread.currentThread().getName() + ": 正在生产信息!");
                 Random r = new Random(100);

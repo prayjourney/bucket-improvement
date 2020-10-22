@@ -32,7 +32,7 @@ public class UseFinal {
     public static void main(String[] args) {
         UseFinal uf = new UseFinal(150);
         new Thread(() -> {
-            for (int i = 0; i < 2 ; i++) {
+            for (int i = 0; i < 2; i++) {
                 try {
                     TimeUnit.SECONDS.sleep(2);
                     uf.shopping();
@@ -42,7 +42,7 @@ public class UseFinal {
             }
         }, "小明").start();
         new Thread(() -> {
-            for (int i = 0; i < 3 ; i++) {
+            for (int i = 0; i < 3; i++) {
                 try {
                     TimeUnit.SECONDS.sleep(3);
                     uf.shopping();

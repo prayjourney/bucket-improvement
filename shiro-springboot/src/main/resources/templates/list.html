@@ -7,16 +7,17 @@
     </head>
     <body>
         list page!
-        Welcom:<shiro:principal></shiro:principal>
-            <br>
-            <shiro:hasRole th:name="admin">
-                <a href="/admin">admin page!</a>
-            </shiro:hasRole>
+        Welcom:
+        <shiro:principal></shiro:principal>
+        <br>
+        <shiro:hasRole th:name="admin">
+            <a href="/admin">admin page!</a>
+        </shiro:hasRole>
 
-            <br>
-            <shiro:hasRole th:name="user">
-                <a href="/user">user page!</a>
-            </shiro:hasRole>
+        <br>
+        <shiro:hasRole th:name="user">
+            <a href="/user">user page!</a>
+        </shiro:hasRole>
 
     </body>
 </html>

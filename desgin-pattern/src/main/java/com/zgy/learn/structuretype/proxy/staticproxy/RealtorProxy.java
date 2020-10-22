@@ -28,11 +28,11 @@ public class RealtorProxy implements Landlord {
         landlord.rentOut();
     }
 
-    public void watchHouse(){
+    public void watchHouse() {
         System.out.println("带领租客看房子");
     }
 
-    public void fixRefrigerator(){
+    public void fixRefrigerator() {
         System.out.println("帮租客修理冰箱");
     }
 

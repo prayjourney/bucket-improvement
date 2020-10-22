@@ -8,8 +8,9 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class BraveKnightMain {
     private static Logger logger = LoggerFactory.getLogger(BraveKnight.class);
+
     public static void main(String[] args) {
-        ApplicationContext context =new ClassPathXmlApplicationContext();
+        ApplicationContext context = new ClassPathXmlApplicationContext();
         ApplicationContext ac = new ClassPathXmlApplicationContext("spring-aop-annotation2.xml");
         BraveKnight br = (BraveKnight) ac.getBean("knight");
         logger.debug("准备调用 %s 方法", "br.saying()");

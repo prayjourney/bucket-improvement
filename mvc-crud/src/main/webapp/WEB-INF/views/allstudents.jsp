@@ -74,7 +74,8 @@
                         <td class="update"><a href="/student/deletestudent" class="btn btn-info">Update</a></td>
                             <%--<td><a href="/student/deletestudent" class="btn btn-danger">Delete</a></td>--%>
                             <%--<td class="delete"><a href="/student/deletestudent" class="btn btn-danger">Delete</a></td>--%>
-                        <td><a href="/student/deletestudent/${ul.value.id}" class="delete btn btn-danger">Delete</a></td>
+                        <td><a href="/student/deletestudent/${ul.value.id}" class="delete btn btn-danger">Delete</a>
+                        </td>
                     </tr>
                 </c:forEach>
             </table>
@@ -97,8 +98,8 @@
         <input type="submit" value="ti">
     </form:form>--%>
     <%--<form action="${pageContext.request.contextPath}/student/deletestudent" method="post">--%>
-        <%--&lt;%&ndash;<input type="hidden" name="_method" _method="put" value="DELETE">&ndash;%&gt;--%>
-        <%--<input type="hidden" name="_method" value="DELETE">--%>
+    <%--&lt;%&ndash;<input type="hidden" name="_method" _method="put" value="DELETE">&ndash;%&gt;--%>
+    <%--<input type="hidden" name="_method" value="DELETE">--%>
     <%--</form>--%>
     <form action="" method="POST">
         <input type="hidden" name="_method" value="DELETE">

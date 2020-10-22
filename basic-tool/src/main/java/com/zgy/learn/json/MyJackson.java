@@ -32,31 +32,31 @@ public class MyJackson {
                     "\"userAppId\": \"196e06cc0d8d4230b5fd5f09d7fc4ac3\"," +
                     "\"eventData\":" +
                     "{" +
-                        "\"destDevList\": " +
-                            "[" +
-                                "\"095581FC6B5CBB7E4C4BCA135F888888\"," +
-                                "\"095581FC6B5CBB7E4C4BCA135F888777\"" +
-                            "]," +
-                        "\"devSpecToken\": \"3a968043-e0be-4144-b808-18713b07e0e8\"," +
-                        "\"cmdTime\": \"2018-10-25 13:51:53\"," +
-                        "\"cmdName\": \"CMD_SWITCH\"," +
-                        "\"cmdParas\": " +
-                            "{" +
-                                "\"robotIotId\": \"1231werwr\"," +
-                                "\"stmId\": \"asdsadsa123131\"," +
-                                "\"xLocation\": 22.5," +
-                                "\"yLocation\": 33.9," +
-                                "\"angle\": 27.79," +
-                                "\"createWorkFlow\": \"yes\"," +
-                                "\"uniqueNo\": \"ifouaiosfhkoiu\"" +
-                            "}," +
-                        "\"cmdMetaInfo\":" +
-                            "{" +
-                                "\"lightSwitch\": \"灯开关\"," +
-                                "\"lightBrand\": \"長城燈泡\"" +
-                            "}" +
+                    "\"destDevList\": " +
+                    "[" +
+                    "\"095581FC6B5CBB7E4C4BCA135F888888\"," +
+                    "\"095581FC6B5CBB7E4C4BCA135F888777\"" +
+                    "]," +
+                    "\"devSpecToken\": \"3a968043-e0be-4144-b808-18713b07e0e8\"," +
+                    "\"cmdTime\": \"2018-10-25 13:51:53\"," +
+                    "\"cmdName\": \"CMD_SWITCH\"," +
+                    "\"cmdParas\": " +
+                    "{" +
+                    "\"robotIotId\": \"1231werwr\"," +
+                    "\"stmId\": \"asdsadsa123131\"," +
+                    "\"xLocation\": 22.5," +
+                    "\"yLocation\": 33.9," +
+                    "\"angle\": 27.79," +
+                    "\"createWorkFlow\": \"yes\"," +
+                    "\"uniqueNo\": \"ifouaiosfhkoiu\"" +
+                    "}," +
+                    "\"cmdMetaInfo\":" +
+                    "{" +
+                    "\"lightSwitch\": \"灯开关\"," +
+                    "\"lightBrand\": \"長城燈泡\"" +
                     "}" +
-            "}";
+                    "}" +
+                    "}";
 
     public static void main(String[] args) throws IOException, ParseException {
         System.out.println(MYSTRING4JSON);
@@ -74,18 +74,18 @@ public class MyJackson {
         ObjectMapper mapper = new ObjectMapper();
         // Jackson提供一个树节点被称为"JsonNode",ObjectMapper提供方法来读json作为树的JsonNode根节点
         JsonNode node = mapper.readTree(MYSTRING4JSON);
-        System.out.println("JsonNode的Node Type"  + node.getNodeType());
+        System.out.println("JsonNode的Node Type" + node.getNodeType());
         String eventData = node.get("eventData").toString();
         String destDevList = node.get("eventData").path("destDevList").textValue();
         String cmdName = node.get("eventData").path("cmdName").textValue();
         JsonNode node2 = node.get("eventData").path("cmdParas");
         String cmdParas = node2.textValue();
-        String robotIotId  = String.valueOf(node2.path("robotIotId"));
+        String robotIotId = String.valueOf(node2.path("robotIotId"));
         System.out.println("eventData:" + eventData);
-        System.out.println("destDevList:" +destDevList);
-        System.out.println("cmdName:" +cmdName);
-        System.out.println("cmdParas:" +cmdParas);
-        System.out.println("robotIotId:" +robotIotId);
+        System.out.println("destDevList:" + destDevList);
+        System.out.println("cmdName:" + cmdName);
+        System.out.println("cmdParas:" + cmdParas);
+        System.out.println("robotIotId:" + robotIotId);
 
     }
 
@@ -93,12 +93,14 @@ public class MyJackson {
     @Data
     @ToString
     @AllArgsConstructor
-    public class Fish{
+    public class Fish {
         int age;
         String name;
         String[] homes;
         Date time;
-        public Fish(){}
+
+        public Fish() {
+        }
     }
 
     public static String object2Json() throws ParseException, JsonProcessingException {
@@ -109,8 +111,8 @@ public class MyJackson {
         mapper.configure(SerializationFeature.INDENT_OUTPUT, true);
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String date = "2019-04-12 03:44:23";
-        String[] homes= {"芬兰", "日本", "挪威"};
-        Fish flagFish = new MyJackson().new Fish(2,"金枪鱼",homes, sdf.parse(date));
+        String[] homes = {"芬兰", "日本", "挪威"};
+        Fish flagFish = new MyJackson().new Fish(2, "金枪鱼", homes, sdf.parse(date));
         String sstr = mapper.writeValueAsString(flagFish);
         System.out.println(sstr);
         return sstr;
@@ -121,7 +123,7 @@ public class MyJackson {
         String strJson = object2Json();
         ObjectMapper mapper = new ObjectMapper();
         mapper.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
-        Fish fish =mapper.readValue(strJson, Fish.class);
+        Fish fish = mapper.readValue(strJson, Fish.class);
         System.out.println(fish.toString());
         return fish;
 
@@ -135,17 +137,17 @@ public class MyJackson {
         JsonNode node = mapper.readTree(strJson);
         int age = node.get("age").asInt();
         String name = node.path("name").asText();
-        JsonNode homesNode  =node.path("homes");
+        JsonNode homesNode = node.path("homes");
         String home[] = {};
         ArrayList<String> sTemp = new ArrayList<>();
-        for (JsonNode no: node) {
+        for (JsonNode no : node) {
             sTemp.add(no.textValue());
         }
         String dateTime = node.get("time").asText();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         Date t = sdf.parse(dateTime);
 
-        Fish fish = new Fish(age,name, home,t);
+        Fish fish = new Fish(age, name, home, t);
 
         System.out.println(fish.toString());
         return fish;

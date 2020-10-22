@@ -75,7 +75,7 @@ public class DealService {
         int result = accountService.payForBookById(id, no);
         if (result == 1) {
             System.out.println("购买成功！");
-        }else {
+        } else {
             System.out.println("购买失败！");
         }
 

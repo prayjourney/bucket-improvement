@@ -20,5 +20,5 @@
     </bean>
 
     <!-- 静态资源请求 -->
-    <mvc:resources location="/WEB-INF/static/js/" mapping="/js/**" />
+    <mvc:resources location="/WEB-INF/static/js/" mapping="/js/**"/>
 </beans>

@@ -27,10 +27,10 @@ public class QuartzController {
     @RequestMapping(value = "/getNowTime", method = RequestMethod.GET)
     @ResponseBody
     public String getNowTime() throws JsonProcessingException {
-        try{
+        try {
             return JSONUtils.getJsonFromObject(quartzService.getTime());
-        }catch (Exception e){
-            log.error("获取时间错误，{}",e.getStackTrace());
+        } catch (Exception e) {
+            log.error("获取时间错误，{}", e.getStackTrace());
             return "获取时间错误";
         }
     }
@@ -38,10 +38,10 @@ public class QuartzController {
     @RequestMapping(value = "/sendMailFixed", method = RequestMethod.GET)
     @ResponseBody
     public String sendMailFixed() throws JsonProcessingException {
-        try{
+        try {
             return JSONUtils.getJsonFromObject(quartzService.sendMailFixedTime());
-        }catch (Exception e){
-            log.error("发送邮件错误，{}",e.getStackTrace());
+        } catch (Exception e) {
+            log.error("发送邮件错误，{}", e.getStackTrace());
             return "发送邮件错误";
         }
     }

@@ -9,9 +9,8 @@ import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * @Author: renjiaxin
- * @Description:
- *          1）、设计4个线程，其中两个线程每次向List集合list中添加一个元素，另外两个线程每次从集合中取出并删除一个元素。
- *          2）、删除数组中的重复项；
+ * @Description: 1）、设计4个线程，其中两个线程每次向List集合list中添加一个元素，另外两个线程每次从集合中取出并删除一个元素。
+ * 2）、删除数组中的重复项；
  * @Date: 2020-03-14 14:22
  * @Modified by:
  */

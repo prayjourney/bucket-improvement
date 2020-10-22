@@ -25,7 +25,7 @@ public class CollectionsTest {
         // 这个是java.util之中的方法，主要常用的就是max,min,synchronizedSet,synchronizedMap, list
         // sort, binarySearch, reverse, reverseOrder等方法，这个用的挺多的。
         Collections.sort(a);
-        for (Object s: a){
+        for (Object s : a) {
             System.out.print(s);
         }
         System.out.println("\n");

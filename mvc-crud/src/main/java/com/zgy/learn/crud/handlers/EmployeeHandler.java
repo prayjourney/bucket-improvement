@@ -67,6 +67,7 @@ public class EmployeeHandler {
 
     /**
      * 完成员工的新创建, get的这个方法只是出现一个页面而已
+     *
      * @return list页面
      * // /emp也不行
      */
@@ -81,27 +82,29 @@ public class EmployeeHandler {
 
     /**
      * 说明: 此处是要删除我们的数据, 使用restful风格, 但是如果使用了RequestMethod.GET, 则提示不支持
-     *      我们需要使用RequestMethod.GET 来代替, 则可以实现
-     *      原本的表头: @RequestMapping(value = "/emp/{id}", method = RequestMethod.POST)
-     *      https://blog.csdn.net/qq_33522312/article/details/90439730
+     * 我们需要使用RequestMethod.GET 来代替, 则可以实现
+     * 原本的表头: @RequestMapping(value = "/emp/{id}", method = RequestMethod.POST)
+     * https://blog.csdn.net/qq_33522312/article/details/90439730
+     *
      * @param id 员工的id
      * @return 剩余员工的页面
      */
     @RequestMapping(value = "/emp/{id}", method = RequestMethod.GET)
-    public String delete(@PathVariable("id") Integer id){
+    public String delete(@PathVariable("id") Integer id) {
         employeeDao.delete(id);
         // 这样进入的一个页面是空的!
         // return "list";
-        return  "redirect:/emps";
+        return "redirect:/emps";
     }
 
     /**
      * 处理return list为空的问题
+     *
      * @param id 员工的id
      * @return 剩余员工的页面
      */
     @RequestMapping(value = "/emp2/{id}", method = RequestMethod.GET)
-    public String delete2(@PathVariable("id") Integer id, ModelMap mp){
+    public String delete2(@PathVariable("id") Integer id, ModelMap mp) {
         employeeDao.delete(id);
         // 删除完之后, 在获取一遍? 为啥我直接重定向就是okay的呢? 相当于是一个完整的请求?
         // 这就是为了所谓的回显
@@ -117,18 +120,21 @@ public class EmployeeHandler {
 
     /**
      * 测试重定向
+     *
      * @return 测试重定向
      */
     @RequestMapping(value = "/testredirect", method = RequestMethod.GET)
-    public String testRedirect(){
+    public String testRedirect() {
         System.out.println("为了重定向而存在的一个方法!");
         return "redirect:/emps";
     }
 
 //  重复了, 所以报错了
+
     /**
      * 修改员工信息, 可以表单回显
-     * @param id id
+     *
+     * @param id  id
      * @param map map
      * @return input
      */
@@ -138,17 +144,16 @@ public class EmployeeHandler {
 //        map.put("departments", departmentDao.getDepartments());
 //        return "input";
 //    }
-
     @ModelAttribute
-    public void getEmployee(@RequestParam(value="id",required=false) Integer id,
-                            Map<String, Object> map){
-        if(id != null){
+    public void getEmployee(@RequestParam(value = "id", required = false) Integer id,
+                            Map<String, Object> map) {
+        if (id != null) {
             map.put("employee", employeeDao.get(id));
         }
     }
 
     @RequestMapping(value = "emp", method = RequestMethod.PUT)
-    public String update(Employee e){
+    public String update(Employee e) {
         employeeDao.save(e);
         return "redirect:/emps";
     }

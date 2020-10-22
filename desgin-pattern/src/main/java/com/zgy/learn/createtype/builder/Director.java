@@ -8,7 +8,7 @@ package com.zgy.learn.createtype.builder;
  */
 public class Director {
     // 指挥工人，构建Car, 具体的步骤，就在此处决定的
-    public Car build(Builder builder){
+    public Car build(Builder builder) {
         builder.buildA("雅马哈底盘");
         builder.buildB("米其林轮胎");
         builder.buildC("斯巴鲁引擎");

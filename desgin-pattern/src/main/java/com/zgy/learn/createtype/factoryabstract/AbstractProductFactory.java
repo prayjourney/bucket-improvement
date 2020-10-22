@@ -8,5 +8,6 @@ package com.zgy.learn.createtype.factoryabstract;
  */
 public interface AbstractProductFactory {
     PcProduct createPc();
+
     PhoneProduct createPhone();
 }

@@ -11,15 +11,15 @@ import java.util.concurrent.BlockingQueue;
  * @Date: 2020-03-06 01:39
  * @Modified by:
  * 多线程问题死锁,解决的方法
- *     1.使用jconsole
- *     2.使用线程快照在idea之中
- *     3.使用jps+jstack的信息
- *     4.使用jps+ jcmd pid Thread.print, 可以打印出来信息
- *     https://blog.csdn.net/u010647035/article/details/79769177
- *     https://www.cnblogs.com/wy697495/p/9757982.html
- *     https://blog.csdn.net/wang0112233/article/details/83749927
- *     https://blog.csdn.net/sxhong/article/details/78603671
- *     https://blog.csdn.net/u010647035/article/details/79770534
+ * 1.使用jconsole
+ * 2.使用线程快照在idea之中
+ * 3.使用jps+jstack的信息
+ * 4.使用jps+ jcmd pid Thread.print, 可以打印出来信息
+ * https://blog.csdn.net/u010647035/article/details/79769177
+ * https://www.cnblogs.com/wy697495/p/9757982.html
+ * https://blog.csdn.net/wang0112233/article/details/83749927
+ * https://blog.csdn.net/sxhong/article/details/78603671
+ * https://blog.csdn.net/u010647035/article/details/79770534
  */
 public class BlockingQueueProCon {
     // 容器, 容量为10

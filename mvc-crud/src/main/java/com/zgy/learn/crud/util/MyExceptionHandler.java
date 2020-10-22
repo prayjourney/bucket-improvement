@@ -13,7 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 @ControllerAdvice
 public class MyExceptionHandler {
     @ExceptionHandler({ArithmeticException.class})
-    public ModelAndView handleException(Exception ex){
+    public ModelAndView handleException(Exception ex) {
         System.out.println("----------->出了异常");
         ModelAndView mv = new ModelAndView("error");
         mv.addObject("errorException", ex);

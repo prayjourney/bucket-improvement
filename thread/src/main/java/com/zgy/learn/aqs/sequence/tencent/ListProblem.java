@@ -10,9 +10,8 @@ import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * @Author: renjiaxin
- * @Despcription:
- *              1）、设计4个线程，其中两个线程每次向List集合list中添加一个元素，另外两个线程每次从集合中取出并删除一个元素。
- *              2）、删除数组中的重复项；
+ * @Despcription: 1）、设计4个线程，其中两个线程每次向List集合list中添加一个元素，另外两个线程每次从集合中取出并删除一个元素。
+ * 2）、删除数组中的重复项；
  * @Date: Created in 2020/3/14 17:12
  * @Modified by:
  */
@@ -21,8 +20,8 @@ public class ListProblem {
         // list容量为10
         List<String> list = new ArrayList<>(10);
         Worker4Element w4e = new Worker4Element(list);
-        new Thread(()->{
-            while(true){
+        new Thread(() -> {
+            while (true) {
                 try {
                     TimeUnit.MILLISECONDS.sleep(140);
                     w4e.addElement(UUID.randomUUID().toString());
@@ -30,9 +29,9 @@ public class ListProblem {
                     e.printStackTrace();
                 }
             }
-        },"生产者A").start();
-        new Thread(()->{
-            while(true){
+        }, "生产者A").start();
+        new Thread(() -> {
+            while (true) {
                 try {
                     TimeUnit.MILLISECONDS.sleep(120);
                     w4e.addElement(UUID.randomUUID().toString());
@@ -40,9 +39,9 @@ public class ListProblem {
                     e.printStackTrace();
                 }
             }
-        },"生产者B").start();
-        new Thread(()->{
-            while(true){
+        }, "生产者B").start();
+        new Thread(() -> {
+            while (true) {
                 try {
                     TimeUnit.MILLISECONDS.sleep(100);
                     w4e.removeElement();
@@ -50,9 +49,9 @@ public class ListProblem {
                     e.printStackTrace();
                 }
             }
-        },"中国消费者").start();
-        new Thread(()->{
-            while(true){
+        }, "中国消费者").start();
+        new Thread(() -> {
+            while (true) {
                 try {
                     TimeUnit.MILLISECONDS.sleep(220);
                     w4e.removeElement();
@@ -60,7 +59,7 @@ public class ListProblem {
                     e.printStackTrace();
                 }
             }
-        },"日本消费者").start();
+        }, "日本消费者").start();
     }
 
 
@@ -97,7 +96,7 @@ public class ListProblem {
         public void removeElement() {
             lock.lock();
             try {
-                while(list.size() ==0){
+                while (list.size() == 0) {
                     c2.await();
                 }
                 String str = list.remove(0);

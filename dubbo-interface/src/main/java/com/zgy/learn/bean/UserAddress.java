@@ -6,6 +6,7 @@ package com.zgy.learn.bean;
  * @Date: Created in 2020/1/2 1:03
  * @Modified by:
  */
+
 import lombok.Builder;
 import lombok.Data;
 
@@ -13,8 +14,8 @@ import java.io.Serializable;
 
 /**
  * 用户地址
- * @author lfy
  *
+ * @author lfy
  */
 @Data
 @Builder

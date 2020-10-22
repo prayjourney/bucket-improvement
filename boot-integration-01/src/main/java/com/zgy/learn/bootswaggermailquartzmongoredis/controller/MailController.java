@@ -20,7 +20,7 @@ public class MailController {
     @GetMapping("sendmail")
     @ResponseBody
     public String sendSimpleMail(String to, String subject, String content) {
-        if (null == to || null == subject || null == subject){
+        if (null == to || null == subject || null == subject) {
             return "不允许为空";
         }
         mailService.sendMailWithoutAppendix(to, subject, content);

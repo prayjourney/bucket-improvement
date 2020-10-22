@@ -32,7 +32,7 @@ public class TestInterview {
             }
         }, "HR").start();
         new Thread(() -> {
-            while(resume.getFlag()) {
+            while (resume.getFlag()) {
                 try {
                     TimeUnit.MILLISECONDS.sleep(3);
                     resume.resolveResume();
@@ -112,8 +112,8 @@ class Resume {
     public void resolveResume() {
         lock.lock();
         try {
-            if (no.get() ==100){
-                flag =false;
+            if (no.get() == 100) {
+                flag = false;
                 return;
             }
             if (noCount.get() == 0) {

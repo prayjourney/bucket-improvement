@@ -9,9 +9,8 @@ import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * @Author: renjiaxin
- * @Description:
- *          1）、设计4个线程，其中两个线程每次向List集合list中添加一个元素，另外两个线程每次从集合中取出并删除一个元素。
- *          2）、删除数组中的重复项；
+ * @Description: 1）、设计4个线程，其中两个线程每次向List集合list中添加一个元素，另外两个线程每次从集合中取出并删除一个元素。
+ * 2）、删除数组中的重复项；
  * @Date: 2020-03-14 14:22
  * @Modified by:
  */
@@ -24,24 +23,25 @@ public class ListProblemError0 {
     public static void main(String[] args) {
         List<String> list = new ArrayList<>();
         MyList myList = new MyList(list);
-        new Thread(()->{
+        new Thread(() -> {
             myList.add1(UUID.randomUUID().toString());
-        },"A").start();
-        new Thread(()->{
+        }, "A").start();
+        new Thread(() -> {
             myList.add2(UUID.randomUUID().toString());
-        },"B").start();
-        new Thread(()->{
+        }, "B").start();
+        new Thread(() -> {
             myList.remove1();
-        },"C").start();
-        new Thread(()->{
+        }, "C").start();
+        new Thread(() -> {
             myList.remove2();
-        },"D").start();
+        }, "D").start();
     }
 }
 
 class MyList {
     private List<String> list;
-    MyList(List<String> list){
+
+    MyList(List<String> list) {
         this.list = list;
     }
 
@@ -49,16 +49,17 @@ class MyList {
         return list;
     }
 
-    Lock  lock = new ReentrantLock();
+    Lock lock = new ReentrantLock();
     Condition c1 = lock.newCondition();
     Condition c2 = lock.newCondition();
     Condition c3 = lock.newCondition();
     Condition c4 = lock.newCondition();
+
     public void add1(String s) {
         lock.tryLock();
         try {
             c1.await();
-            if (!list.contains(s)){
+            if (!list.contains(s)) {
                 list.add(s);
             }
             c2.signal();
@@ -68,11 +69,12 @@ class MyList {
             lock.unlock();
         }
     }
+
     public void add2(String s) {
         lock.tryLock();
         try {
             c2.await();
-            if (!list.contains(s)){
+            if (!list.contains(s)) {
                 list.add(s);
             }
             c3.signal();
@@ -85,9 +87,9 @@ class MyList {
 
     public void remove1() {
         lock.tryLock();
-        try{
+        try {
             c3.await();
-            while (!list.isEmpty()){
+            while (!list.isEmpty()) {
                 list.remove(0);
             }
             c4.signal();
@@ -97,11 +99,12 @@ class MyList {
             lock.unlock();
         }
     }
+
     public void remove2() {
         lock.tryLock();
-        try{
+        try {
             c4.await();
-            while (!list.isEmpty()){
+            while (!list.isEmpty()) {
                 list.remove(0);
             }
             c1.signal();

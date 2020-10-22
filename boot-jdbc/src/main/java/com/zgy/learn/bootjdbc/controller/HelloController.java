@@ -26,7 +26,7 @@ public class HelloController {
     public Map<String, Object> dataMap() {
         List<Map<String, Object>> maps = template.queryForList("SELECT * FROM department");
         // return maps.get(0);
-        maps.set(0,new HashMap<String, Object>(1,122));
+        maps.set(0, new HashMap<String, Object>(1, 122));
         return maps.get(0);
 
     }

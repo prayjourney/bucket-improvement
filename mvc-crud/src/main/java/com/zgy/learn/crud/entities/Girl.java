@@ -25,18 +25,19 @@ public class Girl {
     // 数据校验, 是当前之前的一个时间, 格式化
     @Past
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private Date  birth;
+    private Date birth;
     // 格式化
     @NumberFormat(pattern = "#,###,###,###.#")
     private Float salary;
 
-    public Girl(){
+    public Girl() {
 
     }
-    public Girl(String name, Integer age, String size){
-        this.age=age;
-        this.name=name;
-        this.size=size;
+
+    public Girl(String name, Integer age, String size) {
+        this.age = age;
+        this.name = name;
+        this.size = size;
     }
 
     public void setAge(Integer age) {

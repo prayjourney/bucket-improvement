@@ -16,13 +16,13 @@ public class ConsumerController {
     @Autowired
     OrderService orderService;
 
-    @GetMapping(value = {"/","index","test"})
-    public String testConsumer(){
+    @GetMapping(value = {"/", "index", "test"})
+    public String testConsumer() {
         return "hello world!";
     }
 
     @GetMapping("consumer")
-    public String testOrderConsumer(){
+    public String testOrderConsumer() {
         return orderService.initOrder("10").toString();
     }
 }

@@ -15,17 +15,17 @@
     </head>
     <body>
         <h2 class="text-danger">使用Spring form来添加一个学生</h2>
-        <form:form action="addstudent" method="post" modelAttribute="student" >
-            <span class="text-info">id:  </span><form:input path="id"/><br>
-            <span class="text-info">姓名: </span><form:input path="name"/><br>
-            <span class="text-info">年龄: </span><form:input path="age"/><br>
-            <span class="text-info">性别: </span><form:input path="gender"/><br>
-            <span class="text-info">班级: </span><form:input path="classId"/><br>
-            <span class="text-info">年级: </span><form:input path="gradeName"/><br>
-            <span class="text-info">邮件: </span><form:input path="email"/><br>
-            <span class="text-success">手机号码: </span><form:input path="phoneNumber"/><br>
+        <form:form action="addstudent" method="post" modelAttribute="student">
+        <span class="text-info">id:  </span><form:input path="id"/><br>
+        <span class="text-info">姓名: </span><form:input path="name"/><br>
+        <span class="text-info">年龄: </span><form:input path="age"/><br>
+        <span class="text-info">性别: </span><form:input path="gender"/><br>
+        <span class="text-info">班级: </span><form:input path="classId"/><br>
+        <span class="text-info">年级: </span><form:input path="gradeName"/><br>
+        <span class="text-info">邮件: </span><form:input path="email"/><br>
+        <span class="text-success">手机号码: </span><form:input path="phoneNumber"/><br>
             <%--<span class="text-success">生日: <form:input path="birth"/><br>--%>
-            <span class="text-success">生日: <form:input path="birthStr"/><br>
+        <span class="text-success">生日: <form:input path="birthStr"/><br>
             <input type="submit" value="提交啊!">
         </form:form>
     </body>

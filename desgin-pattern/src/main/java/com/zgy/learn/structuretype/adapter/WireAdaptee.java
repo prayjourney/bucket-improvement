@@ -7,7 +7,7 @@ package com.zgy.learn.structuretype.adapter;
  * @Modified by:
  */
 public class WireAdaptee {
-    public void goToNet(){
+    public void goToNet() {
         System.out.println("正在上网。。。");
     }
 }

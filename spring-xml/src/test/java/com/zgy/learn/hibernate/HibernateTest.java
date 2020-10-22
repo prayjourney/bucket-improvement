@@ -36,16 +36,16 @@ public class HibernateTest {
     }
 
     @Test
-    public void testFindTeacherById(){
+    public void testFindTeacherById() {
         TeacherService ts = (TeacherService) ctx.getBean("teacherService");
         int no = ts.findTeacherNameById(1);
         System.out.println(no);
     }
 
     @Test
-    public void testUpdateTeacherById(){
+    public void testUpdateTeacherById() {
         TeacherService ts = (TeacherService) ctx.getBean("teacherService");
-        ts.updateTeacherNameById(1,"xxx");
+        ts.updateTeacherNameById(1, "xxx");
     }
 
 }

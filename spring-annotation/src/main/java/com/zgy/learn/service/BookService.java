@@ -23,7 +23,7 @@ public class BookService {
     //@Inject
     private BookDao bookDao;
 
-    public void print(){
+    public void print() {
         System.out.println(bookDao);
     }
 

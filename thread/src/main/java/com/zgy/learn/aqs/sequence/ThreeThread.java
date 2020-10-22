@@ -47,7 +47,7 @@ class Data4ThreadError {
     // 这样不行， 问题在于没有释放锁，但还要唤醒别人，那就不行了啊, 不能自己去唤醒自己啊
     public void numberInfo() {
         lock.lock();
-        try{
+        try {
 
             if (number != 0) {
                 c1.await();
@@ -56,7 +56,7 @@ class Data4ThreadError {
             System.out.println(Thread.currentThread().getName() + "::::::》设置number为 " + number);
             c2.signal();
 
-            if(number != 1) {
+            if (number != 1) {
                 c2.await();
             }
             number = 2;

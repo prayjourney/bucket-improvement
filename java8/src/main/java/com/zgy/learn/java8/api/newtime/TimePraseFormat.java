@@ -31,10 +31,10 @@ public class TimePraseFormat {
         System.out.println(ss3);
 
         System.out.println("----------------");
-        String tt ="2018-09-04日 02:03:04";
+        String tt = "2018-09-04日 02:03:04";
         DateTimeFormatter dtf4 = DateTimeFormatter.ofPattern("yyyy-MM-dd日 HH:mm:ss");
         // 解析字符串
-        LocalDateTime ldt4 = LocalDateTime.parse(tt,dtf4);
+        LocalDateTime ldt4 = LocalDateTime.parse(tt, dtf4);
         System.out.println(ldt4);
 
     }

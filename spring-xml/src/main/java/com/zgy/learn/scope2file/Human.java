@@ -30,6 +30,7 @@ public class Human {
     public void setSex(String sex) {
         this.sex = sex;
     }
+
     public String getSex() {
         return sex;
     }

@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class ProviderController {
 
-    @GetMapping(value = {"/","index","test"})
-    public String testProvider(){
+    @GetMapping(value = {"/", "index", "test"})
+    public String testProvider() {
         return "我是服务提供者！";
     }
 }

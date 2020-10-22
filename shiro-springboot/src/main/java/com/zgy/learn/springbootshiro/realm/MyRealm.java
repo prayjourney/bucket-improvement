@@ -21,14 +21,14 @@ import java.util.Set;
 /**
  * @Author: renjiaxin
  * @Despcription: 实现自己的Realm
- *               1. AuthenticatingRealm是登录检测的类，也就是认证的类
- *               2. AuthorizingRealm类是授权相关的类，它是AuthenticatingRealm类的子类
- *               3. AuthorizingRealm类继承自AuthenticatingRealm, 但没有实现 AuthenticatingRealm 中的
- *                  doGetAuthenticationInfo, 所以认证和授权只需要继承 AuthorizingRealm 就可以了. 同时实现他的两个抽象方法.
- *                  doGetAuthenticationInfo(AuthenticationToken token)     用来登录
- *                      返回SimpleAuthenticationInfo对象
- *                  doGetAuthorizationInfo(PrincipalCollection principals) 用来授权
- *                      返回SimpleAuthorizationInfo对象
+ * 1. AuthenticatingRealm是登录检测的类，也就是认证的类
+ * 2. AuthorizingRealm类是授权相关的类，它是AuthenticatingRealm类的子类
+ * 3. AuthorizingRealm类继承自AuthenticatingRealm, 但没有实现 AuthenticatingRealm 中的
+ * doGetAuthenticationInfo, 所以认证和授权只需要继承 AuthorizingRealm 就可以了. 同时实现他的两个抽象方法.
+ * doGetAuthenticationInfo(AuthenticationToken token)     用来登录
+ * 返回SimpleAuthenticationInfo对象
+ * doGetAuthorizationInfo(PrincipalCollection principals) 用来授权
+ * 返回SimpleAuthorizationInfo对象
  * @Date: Created in 2020/2/17 13:46
  * @Modified by:
  */
@@ -37,9 +37,10 @@ public class MyRealm extends AuthorizingRealm {
 
     /**
      * 登录认证的方法
+     *
      * @param token AuthenticationToken token
-     * @return  SimpleAuthenticationInfo info
-     * @throws AuthenticationException  e
+     * @return SimpleAuthenticationInfo info
+     * @throws AuthenticationException e
      */
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
@@ -70,9 +71,9 @@ public class MyRealm extends AuthorizingRealm {
         Object principal = username;
         //2). credentials: 密码.
         Object credentials = null; //"fc1709d0a95a6be30bc5926fdb7f22f4";
-        if("admin".equals(username)){
+        if ("admin".equals(username)) {
             credentials = "038bdaf98f2037b31f1e75b5b4c9b26e";
-        }else if("user".equals(username)){
+        } else if ("user".equals(username)) {
             credentials = "098d2c478e9c11555ce2823231e02ec1";
         }
         //3). realmName: 当前 realm 对象的 name. 调用父类的 getName() 方法即可
@@ -83,10 +84,12 @@ public class MyRealm extends AuthorizingRealm {
         SimpleAuthenticationInfo info = new SimpleAuthenticationInfo(principal, credentials, credentialsSalt, realmName);
         return info;
     }
+
     public static void main(String[] args) {
         String hashAlgorithmName = "MD5";
         Object credentials = "123456";
-        Object salt = ByteSource.Util.bytes("admin");;
+        Object salt = ByteSource.Util.bytes("admin");
+        ;
         int hashIterations = 1024;
 
         Object result = new SimpleHash(hashAlgorithmName, credentials, salt, hashIterations);
@@ -95,6 +98,7 @@ public class MyRealm extends AuthorizingRealm {
 
     /**
      * 授权的方法
+     *
      * @param principals principals
      * @return AuthorizationInfo
      */
@@ -106,7 +110,7 @@ public class MyRealm extends AuthorizingRealm {
         //2. 利用登录的用户的信息来用户当前用户的角色或权限(可能需要查询数据库)
         Set<String> roles = new HashSet<>();
         roles.add("user");
-        if("admin".equals(principal)){
+        if ("admin".equals(principal)) {
             roles.add("admin");
         }
 

@@ -7,9 +7,11 @@ package com.zgy.learn.createtype.builder.nodirector;
  * @Modified by:
  */
 public abstract class KFCBuilder {
-    abstract  KFCBuilder buildA(String str); // 薯条
-    abstract  KFCBuilder buildB(String str); // 可乐
-    abstract  KFCBuilder buildC(String str); // 炸鸡
+    abstract KFCBuilder buildA(String str); // 薯条
+
+    abstract KFCBuilder buildB(String str); // 可乐
+
+    abstract KFCBuilder buildC(String str); // 炸鸡
 
     // 获得产品
     abstract KFCRecipes getRecipes();

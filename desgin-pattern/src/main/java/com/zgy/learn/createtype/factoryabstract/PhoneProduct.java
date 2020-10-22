@@ -8,7 +8,10 @@ package com.zgy.learn.createtype.factoryabstract;
  */
 public interface PhoneProduct {
     void open();
+
     void shutDown();
+
     void sendSMS();
+
     void callUp();
 }

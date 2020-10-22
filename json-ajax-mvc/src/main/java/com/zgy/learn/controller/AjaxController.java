@@ -21,15 +21,15 @@ import java.util.List;
 public class AjaxController {
     @RequestMapping("/a1")
     public void ajax(String name, HttpServletResponse response) throws IOException {
-        if ("admin".equals(name)){
+        if ("admin".equals(name)) {
             response.getWriter().print(true);
-        }else{
+        } else {
             response.getWriter().print(false);
         }
     }
 
     @RequestMapping("learnajax")
-    public String goToPage(){
+    public String goToPage() {
         return "forAjaxList";
     }
 
@@ -55,7 +55,7 @@ public class AjaxController {
     }
 
     @RequestMapping("login")
-    public String login(){
+    public String login() {
         return "login";
     }
 
@@ -64,18 +64,18 @@ public class AjaxController {
     @ResponseBody
     public String ajax3(String name, String pwd) throws IOException {
         String msg = "";
-        if (null != name){
-            if ("admin".equals(name)){
-                msg ="OK";
-            }else {
-                msg ="username error!";
+        if (null != name) {
+            if ("admin".equals(name)) {
+                msg = "OK";
+            } else {
+                msg = "username error!";
             }
         }
-        if (null != pwd){
-            if ("pwd123456".equals(pwd)){
-                msg ="OK";
-            }else {
-                msg ="password error!";
+        if (null != pwd) {
+            if ("pwd123456".equals(pwd)) {
+                msg = "OK";
+            } else {
+                msg = "password error!";
             }
         }
         return msg;

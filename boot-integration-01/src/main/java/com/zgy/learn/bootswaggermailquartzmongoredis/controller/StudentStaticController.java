@@ -52,19 +52,19 @@ public class StudentStaticController {
     @ResponseBody
     @GetMapping("getstudentbyid")
     public String getStudentById(@RequestParam("stId") Integer stId) throws JsonProcessingException {
-                Student st = new Student();
-                if (null == stId || stId < 0) {
-                    return "id is not correct!";
-                } else if (ids.contains(stId)) {
-                    for (int i = 0; i < ids.size(); i++) {
-                        if (students.get(i).getStId() == stId) {
-                            st = students.get(i);
-                        }
-                    }
-                } else {
-                    return "there isn't have a student use this id!";
+        Student st = new Student();
+        if (null == stId || stId < 0) {
+            return "id is not correct!";
+        } else if (ids.contains(stId)) {
+            for (int i = 0; i < ids.size(); i++) {
+                if (students.get(i).getStId() == stId) {
+                    st = students.get(i);
                 }
-                return JSONUtils.getJsonFromObject(st);
+            }
+        } else {
+            return "there isn't have a student use this id!";
+        }
+        return JSONUtils.getJsonFromObject(st);
     }
 
     // 添加一个新的学生

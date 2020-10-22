@@ -20,7 +20,7 @@ public class Post2PutDeleteController {
     @RequestMapping(value = "post2put/{name}", method = RequestMethod.PUT)
     public String post2Put(@PathVariable("name") String name, ModelMap map) {
         String newName = "new Name";
-        System.out.println("我更新了name: " + name +", 新的值是: "  + newName);
+        System.out.println("我更新了name: " + name + ", 新的值是: " + newName);
         map.addAttribute("oldname", name);
         map.addAttribute("newname", newName);
         return "post2put";

@@ -71,7 +71,7 @@ class ProducerWithLock {
             // 业务处理 ，使用while破除虚假唤醒
             while (queue.size() >= 10) {
                 System.out.println("盘子满了，没法继续生产，生产者等待，消费者唤醒消费！");
-                condition.await(200,TimeUnit.MILLISECONDS);
+                condition.await(200, TimeUnit.MILLISECONDS);
                 // 唤醒消费者，此处是生产等盘子满了之后，再去唤醒
                 condition.signalAll();
             }
@@ -105,7 +105,7 @@ class ConsumerWithLock {
             // 业务处理，使用while破除虚假唤醒
             while (queue.size() <= 0) {
                 System.out.println("盘子空了，没法继续消费，消费者等待，生产者唤醒生产！");
-                condition.await(300,TimeUnit.MILLISECONDS);
+                condition.await(300, TimeUnit.MILLISECONDS);
                 // 唤醒生产者，此处是消费光了之后，再去唤醒
                 condition.signalAll();
             }

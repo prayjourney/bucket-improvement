@@ -40,9 +40,9 @@ public class AutowiredTest {
     @Test
     public void test02() {
         // 通过类型获取
-        Boss bean = (Boss)context.getBean(Boss.class);
+        Boss bean = (Boss) context.getBean(Boss.class);
         System.out.println(bean);
-        Car car = (Car)context.getBean("littleCar");
+        Car car = (Car) context.getBean("littleCar");
         System.out.println(car);
     }
 }

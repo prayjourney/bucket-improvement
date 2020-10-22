@@ -26,7 +26,7 @@ public class WatchState {
         state = t.getState();
         System.out.println("当前的线程状态 ： " + state);
 
-        while(state!=Thread.State.TERMINATED){
+        while (state != Thread.State.TERMINATED) {
             Thread.sleep(300);
             state = t.getState();
             System.out.println("当前的线程状态 ： " + state);

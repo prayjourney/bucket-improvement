@@ -50,7 +50,7 @@ class DeepCloneTest implements Cloneable {
 
     @Override
     protected Object clone() throws CloneNotSupportedException {
-        DeepCloneTest obj = (DeepCloneTest)super.clone();
+        DeepCloneTest obj = (DeepCloneTest) super.clone();
         // 对这个对象的属性，做一些操作
         Date date = new Date(951556988); // 2000-02-26 17:23:08
         obj.setDate(date);

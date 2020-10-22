@@ -37,6 +37,6 @@ public class ValueTest {
         System.out.println(diamond);
         // 配置文件中的值，加载之后，就会传入到环境之中，ConfigurableEnvironment，可以获取
         ConfigurableEnvironment environment = context.getEnvironment();
-        System.out.println("diamond price :"+environment.getProperty("diamond.price"));
+        System.out.println("diamond price :" + environment.getProperty("diamond.price"));
     }
 }

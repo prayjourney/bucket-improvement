@@ -50,7 +50,7 @@ public class EmployeeController {
 
     // springmvc 自动将请求入参和入参对象的属性一一绑定，要求请求入参和javabean的属性名一致
     @PostMapping("emp")
-    public String addEmp(Employee e){
+    public String addEmp(Employee e) {
         dao.save(e);
         // redirect：重定向到一个地址， /代表当前项目路径
         // forward：转发到一个地址
@@ -59,10 +59,10 @@ public class EmployeeController {
 
     // 到员工的修改页面
     @GetMapping("emp/{id}")
-    public String toUpdateEmpPage(@PathVariable("id") Integer id, Model model){
+    public String toUpdateEmpPage(@PathVariable("id") Integer id, Model model) {
         // 查出员工，然后回显
         Employee e = dao.get(id);
-        model.addAttribute("emp",e);
+        model.addAttribute("emp", e);
         // 页面需要显示部门
         Collection<Department> departments = departmentDao.getDepartments();
         model.addAttribute("depts", departments);
@@ -74,7 +74,7 @@ public class EmployeeController {
 
     // 修改员工，需要提交员工的id, 是put请求, 修改
     @PutMapping("emp")
-    public String updateEmp(Employee e){
+    public String updateEmp(Employee e) {
         System.out.println(e.toString());
         // id作为了一个隐藏域提交过来
         dao.save(e);
@@ -85,7 +85,7 @@ public class EmployeeController {
 
     // 删除员工
     @DeleteMapping("emp/{id}")
-    public String deleteEmp(@PathVariable("id") Integer id){
+    public String deleteEmp(@PathVariable("id") Integer id) {
         dao.delete(id);
         return "redirect:/emps";
 

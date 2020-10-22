@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class UsePOJO {
     @RequestMapping(value = "/mvc/pojo")
-    public String testPojo(ModelMap map, Student student){
+    public String testPojo(ModelMap map, Student student) {
         System.out.println("Spring MVC可以自动关联级联属性, POJO直接使用!");
         map.addAttribute("student", student);
         return "pojo";

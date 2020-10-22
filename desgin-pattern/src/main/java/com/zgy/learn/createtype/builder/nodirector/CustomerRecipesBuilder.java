@@ -8,7 +8,7 @@ package com.zgy.learn.createtype.builder.nodirector;
  */
 public class CustomerRecipesBuilder extends KFCBuilder {
     // 这是自己的菜单
-    private  KFCRecipes recipes;
+    private KFCRecipes recipes;
 
     // 具体的建造者来建造
     public CustomerRecipesBuilder() {

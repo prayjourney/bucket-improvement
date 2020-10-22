@@ -38,6 +38,7 @@ public class StringIsNumber {
         System.out.println(strIsNum03("t*123:"));
         System.out.println(strIsNum03("-123:"));
     }
+
     // org.apache.commons.lang3.StringUtils.isNumeric方法
     public static boolean strIsNum01(String str) {
         return StringUtils.isNumeric(str);

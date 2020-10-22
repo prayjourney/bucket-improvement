@@ -8,7 +8,8 @@
                 font-family: 方正粗黑宋简体;
                 color: chocolate;
             }
-            #content td{
+
+            #content td {
                 padding-left: 10px;
                 border: 1px;
                 border-color: chocolate;

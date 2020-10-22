@@ -26,13 +26,13 @@
             <!-- localdate 的轉換問題 -->
             <span>birthday: </span><input type="text" name="birthday"> ${errorMsg.birthday}<br>
             <!-- 國際化，使用 xx/add？language=zh_CN的方式 -->
-            <input type="submit" value= "<spring:message code="createmonkey"/>">
+            <input type="submit" value="<spring:message code="createmonkey"/>">
 
 
         </form>
         <!-- 國際化是要讓人看的， 所以，是需要在前台處理的 -->
         <!-- 國際化，使用 xx/add？language=zh_CN的方式 -->
-        <a href="" ><spring:message code="createmonkey" /></a>
+        <a href=""><spring:message code="createmonkey"/></a>
         <br>
         <br>
         <br>

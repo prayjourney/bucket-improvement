@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class HelloViewController {
     @RequestMapping("helloView")
-    public String helloViewTest(){
+    public String helloViewTest() {
         return "helloView";
     }
 

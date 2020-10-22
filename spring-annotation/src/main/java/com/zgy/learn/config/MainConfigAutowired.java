@@ -31,7 +31,7 @@ public class MainConfigAutowired {
 
     @Bean("boss")
     //@Autowired
-    public Boss boss(@Autowired Car car){
+    public Boss boss(@Autowired Car car) {
         Boss boss = new Boss();
         boss.setCar(car);
         return boss;

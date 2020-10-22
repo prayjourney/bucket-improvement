@@ -27,7 +27,7 @@ public class StrLambda {
     @Test
     public void subStr() {
         // 返回的是一个String
-        String subStr = operate("你好啊，中国！人民万岁 啊，真正的！", (s) -> s.substring(1,10));
+        String subStr = operate("你好啊，中国！人民万岁 啊，真正的！", (s) -> s.substring(1, 10));
         System.out.println(subStr);
     }
 }

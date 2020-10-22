@@ -9,7 +9,7 @@ public class RobotService {
     @Autowired
     Robot robot;
 
-    public void openRobot(){
+    public void openRobot() {
         robot.openRobot();
     }
 
@@ -21,7 +21,7 @@ public class RobotService {
         robot.infuseTea();
     }
 
-    public void closeRobot(){
+    public void closeRobot() {
         robot.closeRobot();
     }
 

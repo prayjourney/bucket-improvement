@@ -8,9 +8,9 @@ package com.zgy.learn.feature;
  */
 public class ConstructorAndExtends {
     public static void main(String[] args) {
-        People p1 = new People("张三",22);
-        People p2 = new Chinese("李四",27,"中国");
-        Chinese c1 = new Chinese("王五",25,"中国台湾");
+        People p1 = new People("张三", 22);
+        People p2 = new Chinese("李四", 27, "中国");
+        Chinese c1 = new Chinese("王五", 25, "中国台湾");
         System.out.println(p1.toString());
         System.out.println(p2.toString());
         System.out.println(c1.toString());

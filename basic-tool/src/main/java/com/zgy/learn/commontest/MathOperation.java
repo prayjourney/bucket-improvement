@@ -21,7 +21,7 @@ public class MathOperation {
         System.out.println(Math.round(1.2));  //1.0
         System.out.println(Math.round(5.8));  //6.0
         // 幂次方
-        System.out.println(Math.pow(2,3));
+        System.out.println(Math.pow(2, 3));
         // 开二次方
         System.out.println(Math.sqrt(9.3));
     }

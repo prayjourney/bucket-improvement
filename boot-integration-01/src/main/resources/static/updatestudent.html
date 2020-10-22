@@ -27,7 +27,7 @@
                 border-width: 1px
             }
 
-            input.btn{
+            input.btn {
                 color: #fff;
                 background: #28abde;
                 border-radius: 2px;
@@ -42,40 +42,40 @@
             }
 
             // 给编号赋值id, 每个id都不同的
-            $(".tdContent").each(function(){
-                $(this).attr('id',"tdContent"+$(this).index());
-                $(this).text("tdContent"+$(this).index())
+            $(".tdContent").each(function () {
+                $(this).attr('id', "tdContent" + $(this).index());
+                $(this).text("tdContent" + $(this).index())
             })
 
             // 删除学生
             function deleteOne() {
                 $.ajax({
-                        url: "/deletestudentbyid",
-                        type: "POST", //请求的方法
-                        data:{"stId": $("#tdContent"+$(this).index()).val()},//获取对应的组件上的值,转换成int
-                        dataType: "json",
-                        success: function (data) {
-                            console.log(data);
-                            console.log(status);
-                            var myHtmlContent = "";
-                            // 信息核对成功
-                            if (null != data) {
-                                for (var i = 0; i < data.length; i++) {
-                                    myHtmlContent += "<tr>" +
-                                        "<td class ='tdContent'>" + data[i].stId + "</td>" +
-                                        "<td class ='tdContent'>" + data[i].stName + "</td>" +
-                                        "<td class ='tdContent'>" + data[i].stGender + "</td>" +
-                                        "<td class ='tdContent'>" + data[i].stGrade + "</td>" +
-                                        "<td class ='tdContent'>" + data[i].stClass + "</td>" +
-                                        "<td >" + "<input class= 'btn' type=button value='更新学生' " +
-                                        "onclick='updateStudent()' />" + "</td>" +
-                                        "<td >" + "<input class= 'btn' type=button value='删除学生' " +
-                                        "onclick='deleteOne()' />" + "</td>" +
-                                        "</tr>";
-                                }
+                    url: "/deletestudentbyid",
+                    type: "POST", //请求的方法
+                    data: {"stId": $("#tdContent" + $(this).index()).val()},//获取对应的组件上的值,转换成int
+                    dataType: "json",
+                    success: function (data) {
+                        console.log(data);
+                        console.log(status);
+                        var myHtmlContent = "";
+                        // 信息核对成功
+                        if (null != data) {
+                            for (var i = 0; i < data.length; i++) {
+                                myHtmlContent += "<tr>" +
+                                    "<td class ='tdContent'>" + data[i].stId + "</td>" +
+                                    "<td class ='tdContent'>" + data[i].stName + "</td>" +
+                                    "<td class ='tdContent'>" + data[i].stGender + "</td>" +
+                                    "<td class ='tdContent'>" + data[i].stGrade + "</td>" +
+                                    "<td class ='tdContent'>" + data[i].stClass + "</td>" +
+                                    "<td >" + "<input class= 'btn' type=button value='更新学生' " +
+                                    "onclick='updateStudent()' />" + "</td>" +
+                                    "<td >" + "<input class= 'btn' type=button value='删除学生' " +
+                                    "onclick='deleteOne()' />" + "</td>" +
+                                    "</tr>";
                             }
-                            $('#students').html(myHtmlContent)
                         }
+                        $('#students').html(myHtmlContent)
+                    }
                 })
 
             }
@@ -118,7 +118,7 @@
     <body>
         <!-- test -->
         <p>Hello world!</p>
-        <input class= "btn" type="button" value="Hello test!" onclick="f()"/>
+        <input class="btn" type="button" value="Hello test!" onclick="f()"/>
         <div>
             <table id="allStudent" style="margin: 20px; border: deepskyblue;
             border-width: thick; border-style: wave; border-width: 1px">
