@@ -4,11 +4,14 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.zgy.learn.bootmybatisredisactivemqshiro.mapper.ParentsMapper">
     <insert id="addParents" parameterType="map">
-        insert into parents(fatherName, motherName) values(#{fatherName}, #{motherName});
+        insert into parents(fatherName, motherName)
+        values (#{fatherName}, #{motherName});
     </insert>
 
     <delete id="deleteParents" parameterType="integer">
-        delete from parents where parentsId = #{parentsId};
+        delete
+        from parents
+        where parentsId = #{parentsId};
     </delete>
 
     <!-- set的动态SQL，注意逗号-->
@@ -53,8 +56,18 @@
         </collection>
     </resultMap>
     <select id="getParentsKids2" parameterType="integer" resultMap="parentsHaveManyKids">
-        select parentsId, fatherName, motherName, stId, stName, stClass, stGender, stParentsId from parents left join
-        student on parentsId = stParentsId where parentsId = #{parentsId}
+        select parentsId,
+               fatherName,
+               motherName,
+               stId,
+               stName,
+               stClass,
+               stGender,
+               stParentsId
+        from parents
+                 left join
+             student on parentsId = stParentsId
+        where parentsId = #{parentsId}
     </select>
 
 </mapper>

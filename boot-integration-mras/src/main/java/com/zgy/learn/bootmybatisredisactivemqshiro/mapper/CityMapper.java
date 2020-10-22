@@ -15,6 +15,7 @@ import java.util.List;
 public interface CityMapper {
     /**
      * 一个城市，对应多个特产，1对多
+     *
      * @param soName 城市名称
      * @return list
      */

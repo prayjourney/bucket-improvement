@@ -81,7 +81,8 @@ public class DruidDBConfig {
      * StatFilter属性slowSqlMillis用来配置SQL慢的标准
      * 解决 spring.datasource.filters=stat,wall,log4j 无法正常注册
      */
-    @Bean@ConfigurationProperties(prefix = "spring.datasource")
+    @Bean
+    @ConfigurationProperties(prefix = "spring.datasource")
     @Primary
     public DataSource dataSource() {
         DruidDataSource datasource = new DruidDataSource();

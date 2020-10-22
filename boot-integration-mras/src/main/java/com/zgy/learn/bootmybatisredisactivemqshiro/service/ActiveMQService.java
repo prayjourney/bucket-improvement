@@ -19,13 +19,13 @@ public class ActiveMQService {
     //        return destination;
     //    }
 
-    public String sendMessage(String message){
+    public String sendMessage(String message) {
         template.convertAndSend("testQueue", message);
         return "send okay!";
     }
 
     //    @JmsListener(destination = "test")
-    public String receiveMessage(){
+    public String receiveMessage() {
         Message<?> message = template.receive("testQueue");
         return "receive okay!";
     }

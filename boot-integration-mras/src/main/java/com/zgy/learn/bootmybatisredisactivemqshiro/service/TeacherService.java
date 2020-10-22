@@ -27,8 +27,8 @@ public class TeacherService {
         return mapper.getAllTeachers();
     }
 
-    public  Teacher getTeacherByNameAndGender(Map<String, Object> map){
-        return  mapper.getTeacherByNameAndGender(map);
+    public Teacher getTeacherByNameAndGender(Map<String, Object> map) {
+        return mapper.getTeacherByNameAndGender(map);
     }
 
     public List<Teacher> getTeacherWithPage(Integer teId, Integer page, Integer pageSize) {

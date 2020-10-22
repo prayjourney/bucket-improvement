@@ -15,6 +15,7 @@ public class ActiveMQConfig {
     public Queue testQueue() {
         return new ActiveMQQueue("testQueue");
     }
+
     @Bean
     public Topic testTopic() {
         return new ActiveMQTopic("testTopic");

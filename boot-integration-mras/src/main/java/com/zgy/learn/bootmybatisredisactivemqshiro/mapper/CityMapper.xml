@@ -18,7 +18,9 @@
         </collection>
     </resultMap>
     <select id="getSouvenirByName" parameterType="string" resultMap="mySouvenir">
-        select c.ctId, c.ctName, c.ctProvince, s.soId as sid, s.soName as name, s.ctId as cityID from city as c
-        LEFT JOIN souvenir as s ON c.ctId = s.ctId where ctName = #{ctName};
+        select c.ctId, c.ctName, c.ctProvince, s.soId as sid, s.soName as name, s.ctId as cityID
+        from city as c
+                 LEFT JOIN souvenir as s ON c.ctId = s.ctId
+        where ctName = #{ctName};
     </select>
 </mapper>
