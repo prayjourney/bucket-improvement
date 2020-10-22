@@ -9,9 +9,9 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.zgy.learn.bootswaggermailquartzmongoredis</groupId>
-    <artifactId>boot-integration-tech</artifactId>
+    <artifactId>boot-integration-01</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>boot-integration-tech</name>
+    <name>boot-integration-01</name>
     <description>boot-swagger-mail-quartz-mongo-redis</description>
 
     <properties>
