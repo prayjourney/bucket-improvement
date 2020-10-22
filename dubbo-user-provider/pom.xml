@@ -32,7 +32,7 @@
         <!-- 导入公共的dubbo-common-interface 接口模块 -->
         <dependency>
             <groupId>com.zgy.learn</groupId>
-            <artifactId>dubbo-common-interface</artifactId>
+            <artifactId>dubbo-interface</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
 
