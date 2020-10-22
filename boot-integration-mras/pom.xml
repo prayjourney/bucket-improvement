@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.zgy.learn</groupId>
-	<artifactId>boot-mybatis-redis-activemq-shiro</artifactId>
+	<artifactId>boot-integration-mras</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>boot-mybatis-redis-activemq-shiro</name>
+	<name>boot-integration-mras</name>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>
