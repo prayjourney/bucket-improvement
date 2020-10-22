@@ -23,7 +23,7 @@ public class MyController {
     Logger logger = LoggerFactory.getLogger(getClass());
 
     @RequestMapping("mycon")
-    public String mycontroller() {
+    public String test() {
         logger.debug("开始访问mycontroller方法, 直接返回一个json子字符串, 返回的字符串就是retrn内容");
         // 返回的是json, 而不是一个页面, 所以在templates里面不需要对应名称的html页面
         Map<String, String> mp = new HashMap<>();
