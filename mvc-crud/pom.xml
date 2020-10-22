@@ -13,7 +13,7 @@
     <groupId>com.zgy.learn</groupId>
     <artifactId>mvc-crud</artifactId>
     <packaging>war</packaging>
-    <name>springmvc Maven Webapp</name>
+    <name>mvc-crud Maven Webapp</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
