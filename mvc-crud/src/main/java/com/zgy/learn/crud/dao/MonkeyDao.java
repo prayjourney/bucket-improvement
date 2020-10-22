@@ -15,8 +15,6 @@ import java.util.Map;
  * @Date: 2019-11-24 03:27
  * @Modified by:
  */
-
-
 @Repository
 public class MonkeyDao {
     static Map<Integer, Monkey> monkeys = new HashMap<>();
