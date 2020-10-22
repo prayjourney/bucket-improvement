@@ -33,12 +33,9 @@
         <module>java8</module>
         <module>json-ajax-mvc</module>
         <module>jvm</module>
-        <module>mongo</module>
         <module>mvc</module>
         <module>mvc-crud</module>
-        <module>net</module>
-        <module>netty</module>
-        <module>redis</module>
+        <module>net-socket</module>
         <module>spring-xml</module>
         <module>spring-annotation</module>
         <module>shiro-spring</module>
